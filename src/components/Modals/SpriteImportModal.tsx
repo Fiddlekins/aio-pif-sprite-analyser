@@ -19,6 +19,15 @@ const DropBox = styled(Box)<BoxProps>(({theme}) => ({
   },
 }));
 
+const ProgressContainer = styled(Box)<BoxProps>(() => ({
+  position: 'absolute',
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
 const canvas = document.createElement('canvas');
 canvas.width = 288;
 canvas.height = 288;
@@ -192,9 +201,12 @@ export function SpriteImportModal() {
         <Button
           variant={'outlined'}
           onClick={executePaste}
+          sx={{minWidth: '60px', width: '60px'}}
         >
           {isLoading ? (
-            <CircularProgress/>
+            <ProgressContainer>
+              <CircularProgress disableShrink/>
+            </ProgressContainer>
           ) : (
             <ContentPasteGoSharp/>
           )}
