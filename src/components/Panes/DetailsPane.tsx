@@ -60,17 +60,21 @@ export function DetailsPane() {
 
   const handleChange = useCallback((_event: SyntheticEvent, newValue: number) => {
     updateTabIndex(newValue);
-  }, [setTabIndex]);
+  }, [updateTabIndex]);
 
   useEffect(() => {
-    if (partialPixelReport?.verdict !== 'success') {
-      updateTabIndex(TabIndexes.PartialPixels);
-    } else if (transparencyReport?.verdict !== 'success') {
-      updateTabIndex(TabIndexes.Transparency);
-    } else {
-      updateTabIndex(TabIndexes.Colours);
+    // Check if current time is sufficiently close to when spriteInput last changed
+    // This avoids updating the tab index whenever the reports are regenerated until spriteInput itself changes
+    if (Date.now() - (spriteInput?.timestamp || 0) < 100) {
+      if (partialPixelReport?.verdict !== 'success') {
+        updateTabIndex(TabIndexes.PartialPixels);
+      } else if (transparencyReport?.verdict !== 'success') {
+        updateTabIndex(TabIndexes.Transparency);
+      } else {
+        updateTabIndex(TabIndexes.Colours);
+      }
     }
-  }, [spriteInput]);
+  }, [spriteInput, partialPixelReport, transparencyReport, updateTabIndex]);
 
   return (
     <Box

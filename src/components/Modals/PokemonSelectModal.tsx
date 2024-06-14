@@ -1,6 +1,6 @@
 import {DoneSharp} from "@mui/icons-material";
 import {Autocomplete, Box, BoxProps, Button, styled, TextField} from "@mui/material";
-import {useCallback} from "react";
+import {SyntheticEvent, useCallback} from "react";
 import {pokemonIdToDataMap} from "../../data/pokemonIdToDataMap.ts";
 import {pokemonNameToIdMap} from "../../data/pokemonNameToIdMap.ts";
 import {PokemonImage} from "../PokemonImage.tsx";
@@ -50,7 +50,7 @@ export function PokemonSelectModal(
     title,
   }: PokemonSelectModalProps
 ) {
-  const onChange = useCallback((_event: any, newValue: string | null) => {
+  const onChange = useCallback((_event: SyntheticEvent, newValue: string | null) => {
     if (newValue) {
       setPokemonId(pokemonNameToIdMap[newValue] || null)
     } else {

@@ -10,7 +10,7 @@ import {
   ToggleButtonGroup,
   Typography
 } from "@mui/material";
-import {useCallback, useContext, useMemo, useState} from "react";
+import {MouseEvent, useCallback, useContext, useMemo, useState} from "react";
 import tinycolor from "tinycolor2";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {getFormattedPercent} from "../../utils/getFormattedPercent.ts";
@@ -176,10 +176,7 @@ export function ColoursTable() {
       checkboxesCheckedNew[colourKey] = true;
     })
     return checkboxesCheckedNew;
-  }, [
-    // Object ref always changes so convert to stable string
-    [...highlightedColourState.checked].join(','),
-  ]);
+  }, [highlightedColourState]);
 
   const getHeaderCell = useCallback((column: Column) => {
     switch (column.id) {
@@ -329,7 +326,7 @@ export function ColoursTable() {
   }, [colourSpace]);
 
   const handleColourSpaceChange = useCallback((
-    _event: any,
+    _event: MouseEvent<HTMLElement>,
     colourSpaceNew: ColourSpace | null,
   ) => {
     if (colourSpaceNew) {
@@ -339,7 +336,7 @@ export function ColoursTable() {
   }, [setColourSpace])
 
   const handleHighlightStyleChange = useCallback((
-    _event: any,
+    _event: MouseEvent<HTMLElement>,
     highlightModeNew: string | null,
   ) => {
     if (highlightModeNew) {

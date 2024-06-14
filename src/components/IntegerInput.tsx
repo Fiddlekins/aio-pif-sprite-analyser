@@ -73,7 +73,7 @@ export function IntegerInput(
   }, [min, max, onValueChange]);
 
   const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    let trimmedValue = event.target.value.trim();
+    const trimmedValue = event.target.value.trim();
     const isNegative = trimmedValue.charAt(0) === '-';
     const nonNegativeTrimmedValue = isNegative ? trimmedValue.slice(1) : trimmedValue;
     if (!/\D/.test(nonNegativeTrimmedValue)) {

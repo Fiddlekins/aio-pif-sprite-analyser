@@ -17,7 +17,7 @@ import {
   Tooltip,
   Typography
 } from "@mui/material";
-import {ChangeEvent, Fragment, useCallback, useContext, useEffect, useState} from "react";
+import {ChangeEvent, Fragment, MouseEvent, SyntheticEvent, useCallback, useContext, useEffect, useState} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {BackgroundContext} from "../../contexts/BackgroundContext.tsx";
 import {battleAssetManifest, battlerMaps, BattlerTime, battlerTimes} from "../../data/battleAssetManifest.ts";
@@ -62,13 +62,13 @@ export function BackgroundModal() {
     setBattlerSceneCanvasRef(ref);
   }, [setBattlerSceneCanvasRef]);
 
-  const onBattlerMapChange = useCallback((_event: any, battlerMapNew: string | null) => {
+  const onBattlerMapChange = useCallback((_event: SyntheticEvent, battlerMapNew: string | null) => {
     if (battlerMapNew) {
       setBattlerMap(battlerMapNew);
     }
   }, [setBattlerMap]);
 
-  const handleBattlerTimeChange = useCallback((_event: any, battlerTimeNew: BattlerTime | null) => {
+  const handleBattlerTimeChange = useCallback((_event: MouseEvent<HTMLElement>, battlerTimeNew: BattlerTime | null) => {
     if (battlerTimeNew) {
       setBattlerTime(battlerTimeNew);
     }

@@ -11,7 +11,7 @@ import {AnalysisContext} from "./AnalysisContext.tsx";
 
 export const battlerBackgroundId = 'battler';
 
-const backgroundSolidFills: BackgroundSolidFill[] = [
+const defaultBackgroundSolidFills: BackgroundSolidFill[] = [
   {id: 'white', fill: [255, 255, 255, 255]},
   {id: 'lightgrey', fill: [196, 196, 196, 255]},
   {id: 'discord', fill: [49, 51, 56, 255]},
@@ -90,7 +90,7 @@ export const BackgroundContext = createContext<BackgroundContextInterface>({
   backgroundImageData: null,
   battlerSceneBackgroundImageData: null,
   battlerSceneImageData: null,
-  backgroundSolidFills: backgroundSolidFills,
+  backgroundSolidFills: defaultBackgroundSolidFills,
   backgroundId: 'discord',
   setBackgroundId: defaultHandler,
   overrideBody: true,
@@ -117,6 +117,7 @@ export function BackgroundProvider(
 ) {
   const {bodyId, spriteInput} = useContext(AnalysisContext);
   const [isBackgroundModalOpen, setIsBackgroundModalOpen] = useState<boolean>(false);
+  const [backgroundSolidFills] = useState<BackgroundSolidFill[]>(defaultBackgroundSolidFills);
   const [backgroundId, setBackgroundIdInternal] = useState<string>(
     retrieveString('BackgroundContext.backgroundId', 'discord')
   );
@@ -200,7 +201,7 @@ export function BackgroundProvider(
       }
       return generateBackgroundFillImageData(fill.fill);
     }
-  }, [backgroundId]);
+  }, [backgroundSolidFills, backgroundId]);
 
   const backgroundImageData = useMemo(() => {
     let backgroundImageDataNew: ImageData | null;

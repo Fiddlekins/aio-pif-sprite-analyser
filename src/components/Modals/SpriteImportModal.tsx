@@ -82,7 +82,7 @@ export function SpriteImportModal() {
       setError(`File is invalid`);
       setIsLoading(false);
     }
-  }, [setError]);
+  }, [setError, setBodyId, setHeadId, setIsImportModalOpen, setSpriteInput]);
 
   const executePaste = useCallback(async () => {
     const clipboardContents = await navigator.clipboard.read();
@@ -96,7 +96,7 @@ export function SpriteImportModal() {
       }
       if (item.types.includes("text/html")) {
         const htmlText = await (await item.getType("text/html")).text();
-        const match = htmlText.match(/[^\/\\]+\.png/)
+        const match = htmlText.match(/[^/\\]+\.png/)
         if (match) {
           name = match[0];
         }
@@ -119,7 +119,7 @@ export function SpriteImportModal() {
               setError('The requested host site blocks fetching outside whitelisted domains');
               return;
             }
-            const match = url.match(/[^\/\\]+\.png/)
+            const match = url.match(/[^/\\]+\.png/)
             if (match) {
               name = match[0];
             }

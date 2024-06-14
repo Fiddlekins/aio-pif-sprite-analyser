@@ -68,7 +68,7 @@ export function RichTableRow<Data extends RowDataBase>(
         </TableCell>
       );
     })
-  }, [columns, row, getCell]);
+  }, [nonCheckboxColumns, row, getCell]);
 
   const onMouseEnter = useCallback(() => {
     onRowEnter?.(row);

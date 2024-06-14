@@ -1,5 +1,5 @@
 import {Box, Paper, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
-import {useCallback, useContext, useEffect, useRef} from "react";
+import {MouseEvent, useCallback, useContext, useEffect, useRef} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {getFormattedPercent} from "../../utils/getFormattedPercent.ts";
 import {CanvasWithBackground} from "../CanvasWithBackground.tsx";
@@ -27,7 +27,7 @@ export function PartialPixelsPane() {
   }, [canvasRef, partialPixelReport]);
 
   const handlePartialPixelOutputModeChange = useCallback((
-    _event: any,
+    _event: MouseEvent<HTMLElement>,
     partialPixelOutputModeNew: string | null,
   ) => {
     if (partialPixelOutputModeNew) {

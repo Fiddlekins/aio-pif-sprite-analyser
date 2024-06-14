@@ -11,6 +11,7 @@ export interface SpriteInput {
   imageData: ImageData;
   name: string | null;
   sourceUrl: string | null;
+  timestamp: number;
 }
 
 interface HighlightedColourState {
@@ -45,10 +46,10 @@ function highlightedColourStateReducer(
       render: state.render,
     };
   }
+  // Start with shallow clone so value refs don't change if their content doesn't
   const stateNew: HighlightedColourState = {
     ...state,
-    checked: new Set(state.checked),
-    hovered: {...state.hovered},
+    // hovered: {...state.hovered},
   };
   switch (action.operation) {
     case "renderOn":
@@ -57,14 +58,26 @@ function highlightedColourStateReducer(
     case "renderOff":
       stateNew.render = false;
       break;
-    case "check":
-      action.colourKey && stateNew.checked.add(action.colourKey)
+    case "check": {
+      if (action.colourKey) {
+        // Update ref now that we're mutating the content
+        stateNew.checked = new Set(state.checked);
+        stateNew.checked.add(action.colourKey)
+      }
       break;
-    case "uncheck":
-      action.colourKey && stateNew.checked.delete(action.colourKey)
+    }
+    case "uncheck": {
+      if (action.colourKey) {
+        // Update ref now that we're mutating the content
+        stateNew.checked = new Set(state.checked);
+        stateNew.checked.delete(action.colourKey)
+      }
       break;
+    }
     case "hoverStart": {
       if (action.colourKey) {
+        // Update ref now that we're mutating the content
+        stateNew.hovered = {...state.hovered};
         // Always override other hover operations in the same frame
         stateNew.hovered.lastUpdateTimestamp = Date.now();
         stateNew.hovered.colourKey = action.colourKey;
@@ -75,6 +88,8 @@ function highlightedColourStateReducer(
       // If there's been a hoverStart this frame then don't update
       const timestamp = Date.now();
       if (stateNew.hovered.lastUpdateTimestamp !== timestamp) {
+        // Update ref now that we're mutating the content
+        stateNew.hovered = {...state.hovered};
         stateNew.hovered.lastUpdateTimestamp = timestamp;
         stateNew.hovered.colourKey = null;
       }
@@ -105,8 +120,8 @@ export interface AnalysisContextInterface {
   dispatchHighlightedColourState: Dispatch<HighlightedColourOperation>;
   partialPixelOutputMode: string;
   setPartialPixelOutputMode: (partialPixelOutputModeNew: string) => void;
-  semiTransparentOutputMode:string;
-  setSemiTransparentOutputMode:(semiTransparentOutputModeNew: string) => void;
+  semiTransparentOutputMode: string;
+  setSemiTransparentOutputMode: (semiTransparentOutputModeNew: string) => void;
   colouredTransparencyOutputMode: string;
   setColouredTransparencyOutputMode: (colouredTransparencyOutputModeNew: string) => void;
   highlightMode: string;
@@ -171,21 +186,20 @@ export function AnalysisProvider(
   );
   const [highlightedColourState, dispatchHighlightedColourState] = useReducer(highlightedColourStateReducer, initialHighlightedColourState);
 
-
   const setSpriteInput = useCallback(
     (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null) => {
       setSpriteInputInternal({
         imageData: imageDataNew,
         name: nameNew,
         sourceUrl: sourceUrlNew,
+        timestamp: Date.now(),
       });
       dispatchHighlightedColourState({operation: 'reset'});
     },
     [
       setSpriteInputInternal,
       dispatchHighlightedColourState,
-    ]
-  );
+    ]);
 
   const partialPixelReport = useMemo(() => {
     return spriteInput ? getPartialPixelReport(
@@ -194,19 +208,18 @@ export function AnalysisProvider(
       partialPixelOutputMode
     ) : null;
   }, [
-    spriteInput?.imageData,
-    macroPixelSize,
+    spriteInput,
     partialPixelOutputMode,
   ]);
 
   const transparencyReport = useMemo(() => {
     return spriteInput ? getTransparencyReport(
       spriteInput.imageData,
-        semiTransparentOutputMode,
+      semiTransparentOutputMode,
       colouredTransparencyOutputMode,
     ) : null;
   }, [
-    spriteInput?.imageData,
+    spriteInput,
     semiTransparentOutputMode,
     colouredTransparencyOutputMode,
   ]);
@@ -216,7 +229,7 @@ export function AnalysisProvider(
       spriteInput.imageData,
     ) : null;
   }, [
-    spriteInput?.imageData,
+    spriteInput,
   ]);
 
   const setPartialPixelOutputMode = useCallback((partialPixelOutputModeNew: string) => {
