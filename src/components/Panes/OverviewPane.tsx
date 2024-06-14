@@ -1,10 +1,12 @@
 import {Box, BoxProps, styled} from "@mui/material";
 import {useContext, useEffect, useRef} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
+import {getPngInfoSummary} from "../../utils/getPngInfoSummary.ts";
 import {applyHighlightColours} from "../../utils/image/applyHighlightColours.ts";
 import {getPixelFromHex8} from "../../utils/image/getPixelFromHex8.ts";
 import {Pixel} from "../../utils/image/types.ts";
 import {CanvasWithBackground} from "../CanvasWithBackground.tsx";
+import {PngInfoTooltip} from "../PngInfoTooltip.tsx";
 import {PokemonSummary} from "../PokemonSummary.tsx";
 import {BackgroundPane} from "./BackgroundPane.tsx";
 
@@ -39,6 +41,17 @@ export function OverviewPane() {
 
   return (
     <OverviewBox py={2}>
+      <Box display={'flex'} flexDirection={'row'} alignItems={'center'} px={4}>
+        {spriteInput
+          ? (
+            <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={0.5}>
+              {`Input File: ${getPngInfoSummary(spriteInput.info)}`}
+              <PngInfoTooltip info={spriteInput.info}/>
+            </Box>
+          )
+          : 'Awaiting input'
+        }
+      </Box>
       <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
         <PokemonSummary/>
       </Box>

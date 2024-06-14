@@ -1,6 +1,6 @@
 import {ContentPasteGoSharp} from "@mui/icons-material";
 import {Alert, Box, BoxProps, Button, CircularProgress, styled, Typography} from "@mui/material";
-import {ChannelOrder, decodePng, TypedArray} from "image-in-browser";
+import {ChannelOrder, PngDecoder, TypedArray} from "image-in-browser";
 import {useCallback, useContext, useEffect, useState} from "react";
 import {useDropzone} from 'react-dropzone';
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
@@ -48,18 +48,20 @@ export function SpriteImportModal() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const importImage = useCallback((data: TypedArray, name: string | null, sourceUrl: string | null) => {
-    const image = decodePng({data});
-    console.log(data, image);
+    const dataUint8 = new Uint8Array(data);
+    const decoder = new PngDecoder();
+    const image = decoder.decode({
+      bytes: dataUint8,
+    });
     if (image) {
-      console.log(
-        'format', image.format,
-        'numChannels', image.numChannels,
-        'palette', image.palette,
-        'formatType', image.formatType,
-        'isLdrFormat', image.isLdrFormat,
-        'isHdrFormat', image.isHdrFormat,
-        'hasAlpha', image.hasAlpha
-      );
+      const pngInfo = {
+        colourType: decoder.info.colorType || 0,
+        bitsPerChannel: decoder.info.bits,
+        channelCount: image.numChannels,
+        fileSize: data.length,
+        width: image.width,
+        height: image.height,
+      };
       for (const {width, height, upscale} of acceptedDimensions) {
         if (image.width === width && image.height === height) {
           if (context) {
@@ -67,12 +69,23 @@ export function SpriteImportModal() {
             const rawBytes = image.getBytes({
               order: ChannelOrder.rgba,
             });
-            imageData.data.set(rawBytes);
+            if (image.palette) {
+              for (let pixelIndex = 0; pixelIndex < rawBytes.length; pixelIndex++) {
+                const paletteIndex = rawBytes[pixelIndex];
+                const offset = pixelIndex * 4;
+                imageData.data[offset] = image.palette.get(paletteIndex, 0);
+                imageData.data[offset + 1] = image.palette.get(paletteIndex, 1);
+                imageData.data[offset + 2] = image.palette.get(paletteIndex, 2);
+                imageData.data[offset + 3] = image.palette.get(paletteIndex, 3);
+              }
+            } else {
+              imageData.data.set(rawBytes);
+            }
             if (upscale > 1) {
               imageData = upscaleImageData(imageData, upscale);
             }
             setIsImportModalOpen(false);
-            setSpriteInput(imageData, name, sourceUrl);
+            setSpriteInput(imageData, name, sourceUrl, pngInfo);
             const {headId, bodyId} = parseName(name);
             // If image name has no pokemon IDs then don't update, to allow users to pick pokemon and then iteratively post raw image data into the app
             if (headId || bodyId) {

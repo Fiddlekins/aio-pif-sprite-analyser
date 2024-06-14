@@ -7,11 +7,21 @@ import {storeString} from "../utils/localStorage/storeString.ts";
 
 const macroPixelSize = 3;
 
+export interface PngInfo {
+  colourType: number;
+  bitsPerChannel: number;
+  channelCount: number;
+  fileSize: number;
+  width: number;
+  height: number;
+}
+
 export interface SpriteInput {
   imageData: ImageData;
   name: string | null;
   sourceUrl: string | null;
   timestamp: number;
+  info: PngInfo;
 }
 
 interface HighlightedColourState {
@@ -108,7 +118,7 @@ export interface AnalysisContextInterface {
   isImportModalOpen: boolean;
   setIsImportModalOpen: (isImportModalOpenNew: boolean) => void;
   spriteInput: SpriteInput | null;
-  setSpriteInput: (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null) => void;
+  setSpriteInput: (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null, pngInfo: PngInfo) => void;
   headId: number | null;
   setHeadId: (headIdNew: number | null) => void;
   bodyId: number | null;
@@ -187,12 +197,13 @@ export function AnalysisProvider(
   const [highlightedColourState, dispatchHighlightedColourState] = useReducer(highlightedColourStateReducer, initialHighlightedColourState);
 
   const setSpriteInput = useCallback(
-    (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null) => {
+    (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null, info:PngInfo) => {
       setSpriteInputInternal({
         imageData: imageDataNew,
         name: nameNew,
         sourceUrl: sourceUrlNew,
         timestamp: Date.now(),
+        info,
       });
       dispatchHighlightedColourState({operation: 'reset'});
     },
