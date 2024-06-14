@@ -1,4 +1,5 @@
 import tinycolor from "tinycolor2";
+import {getHex8FromPixel} from "./getHex8FromPixel.ts";
 import {scan} from "./scan.ts";
 import {Pixel} from "./types.ts";
 
@@ -6,14 +7,6 @@ const Severity = {
   success: 1,
   warning: 2,
   error: 3,
-}
-
-function getChannelHexString(channel: number) {
-  return channel.toString(16).padStart(2, '0');
-}
-
-function getColourHexString(r: number, g: number, b: number, a: number) {
-  return `${getChannelHexString(r)}${getChannelHexString(g)}${getChannelHexString(b)}${getChannelHexString(a)}`;
 }
 
 export class ColourAnalysis {
@@ -44,9 +37,8 @@ export class ColourAnalysis {
   }
 
   addPixel(pixel: Pixel) {
-    const [r, g, b, a] = pixel;
     this.pixelCount += 1;
-    const colourKey = getColourHexString(r, g, b, a);
+    const colourKey = getHex8FromPixel(pixel);
     const colour = tinycolor(colourKey);
     if (!this.colourCounts[colourKey]) {
       this.colourCounts[colourKey] = 0;

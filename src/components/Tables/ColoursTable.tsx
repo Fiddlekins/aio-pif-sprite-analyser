@@ -397,8 +397,11 @@ export function ColoursTable() {
             <ToggleButton value="monotone">
               Monotone
             </ToggleButton>
-            <ToggleButton value="inverse">
-              Inverse
+            <ToggleButton value="negative">
+              Negative
+            </ToggleButton>
+            <ToggleButton value="rotate">
+              Rotate
             </ToggleButton>
           </ToggleButtonGroup>
           <Button
