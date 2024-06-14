@@ -67,12 +67,12 @@ export async function generateBattlerImageData(
     databoxNormal,
     databoxNormalFoe,
   ] = await Promise.all([
-    getAsset(`/battler-assets/maps/${mapAssetName}/background.png`),
-    getAsset(`/battler-assets/maps/${mapAssetName}/enemy-base.png`),
-    getAsset(`/battler-assets/maps/${mapAssetName}/player-base.png`),
-    getAsset(`/battler-assets/shadows/${battlerConfig.shadowSize}.png`),
-    getAsset(`/battler-assets/overlay/databox_normal.png`),
-    getAsset(`/battler-assets/overlay/databox_normal_foe.png`),
+    getAsset(`./battler-assets/maps/${mapAssetName}/background.png`),
+    getAsset(`./battler-assets/maps/${mapAssetName}/enemy-base.png`),
+    getAsset(`./battler-assets/maps/${mapAssetName}/player-base.png`),
+    getAsset(`./battler-assets/shadows/${battlerConfig.shadowSize}.png`),
+    getAsset(`./battler-assets/overlay/databox_normal.png`),
+    getAsset(`./battler-assets/overlay/databox_normal_foe.png`),
   ]);
   if (!ctx || !spriteCtx) {
     throw new Error('No context');

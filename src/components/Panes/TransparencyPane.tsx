@@ -2,7 +2,6 @@ import {Box, Paper, ToggleButton, ToggleButtonGroup, Typography} from "@mui/mate
 import {useCallback, useContext, useEffect, useRef} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {getFormattedPercent} from "../../utils/getFormattedPercent.ts";
-import {Canvas} from "../Canvas.tsx";
 import {CanvasWithBackground} from "../CanvasWithBackground.tsx";
 import {VerdictIcon} from "../VerdictIcon.tsx";
 

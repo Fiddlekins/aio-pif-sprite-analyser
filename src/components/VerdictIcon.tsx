@@ -1,5 +1,5 @@
 import {CheckCircleOutlineSharp, ErrorOutlineSharp, HelpOutlineSharp, WarningAmberSharp} from "@mui/icons-material";
-import {Verdict} from "../contexts/AnalysisContext.tsx";
+import {Verdict} from "../utils/image/types.ts";
 
 export interface VerdictIconProps {
   verdict: Verdict | null;

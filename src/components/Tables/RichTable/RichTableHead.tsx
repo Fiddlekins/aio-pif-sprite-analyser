@@ -1,12 +1,12 @@
 import {TableCell, TableHead, TableRow, TableSortLabel} from "@mui/material";
-import {Column, HeaderCellBuilder, OrderDirection, SortChangeHandler} from "./types.ts";
+import {Column, HeaderCellBuilder, OrderDirection} from "./types.ts";
 
 export interface RichTableHeadProps {
   columns: Column[];
   orderBy?: string;
   orderDirection?: OrderDirection;
   getHeaderCell?: HeaderCellBuilder;
-  onSortChange?: SortChangeHandler;
+  onSortChange?: (orderByNew: string, orderDirectionNew: OrderDirection) => void;
 }
 
 export function RichTableHead(
