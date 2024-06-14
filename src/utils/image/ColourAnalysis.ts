@@ -67,7 +67,8 @@ export class ColourAnalysis {
     if (this.coloursCount > 32) {
       severity = Math.max(severity, Severity.error);
     } else if (this.coloursCount > 20) {
-      severity = Math.max(severity, Severity.warning);
+      // Need colour similarity analysis to determine warning threshold
+      // severity = Math.max(severity, Severity.warning);
     }
     switch (severity) {
       case 1:

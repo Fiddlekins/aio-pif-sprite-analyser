@@ -20,7 +20,7 @@ export interface SpriteInput {
   imageData: ImageData;
   name: string | null;
   sourceUrl: string | null;
-  timestamp: number;
+  id: number;
   info: PngInfo;
 }
 
@@ -202,7 +202,7 @@ export function AnalysisProvider(
         imageData: imageDataNew,
         name: nameNew,
         sourceUrl: sourceUrlNew,
-        timestamp: Date.now(),
+        id: Math.random(),
         info,
       });
       dispatchHighlightedColourState({operation: 'reset'});

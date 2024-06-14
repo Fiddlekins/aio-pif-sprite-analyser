@@ -1,5 +1,5 @@
 import {Box, styled, Tab, tabClasses, TabProps, Tabs} from "@mui/material";
-import {ReactNode, SyntheticEvent, useCallback, useContext, useEffect, useState} from "react";
+import {ReactNode, SyntheticEvent, useCallback, useContext, useEffect, useRef, useState} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {VerdictIcon} from "../VerdictIcon.tsx";
 import {ColoursPane} from "./ColoursPane.tsx";
@@ -47,6 +47,7 @@ export function DetailsPane() {
     dispatchHighlightedColourState,
   } = useContext(AnalysisContext);
 
+  const lastHandledSpriteId = useRef(-1);
   const [tabIndex, setTabIndex] = useState(0);
 
   const updateTabIndex = useCallback((tabIndexNew: number) => {
@@ -63,9 +64,10 @@ export function DetailsPane() {
   }, [updateTabIndex]);
 
   useEffect(() => {
-    // Check if current time is sufficiently close to when spriteInput last changed
+    // Use a ref to store the last sprite ID that was handled
     // This avoids updating the tab index whenever the reports are regenerated until spriteInput itself changes
-    if (Date.now() - (spriteInput?.timestamp || 0) < 100) {
+    if (spriteInput && spriteInput.id !== lastHandledSpriteId.current) {
+      lastHandledSpriteId.current = spriteInput.id;
       if (partialPixelReport?.verdict !== 'success') {
         updateTabIndex(TabIndexes.PartialPixels);
       } else if (transparencyReport?.verdict !== 'success') {
