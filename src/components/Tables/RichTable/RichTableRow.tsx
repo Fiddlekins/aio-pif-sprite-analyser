@@ -1,5 +1,6 @@
-import {Checkbox, styled, TableCell, TableRow, TableRowProps} from "@mui/material";
-import {useCallback, useMemo} from "react";
+import {styled, TableRow, TableRowProps} from "@mui/material";
+import {useMemo} from "react";
+import {RichTableRowContent} from "./RichTableRowContent.tsx";
 import {CellBuilder, CheckboxChangeHandler, Column, RowDataBase, RowEnterHandler, RowLeaveHandler} from "./types.ts";
 
 const StyledTableRow = styled(TableRow)<TableRowProps>(() => ({
@@ -29,63 +30,37 @@ export function RichTableRow<Data extends RowDataBase>(
     onCheckboxChange,
   }: RichTableRowProps<Data>
 ) {
-  let checkboxColumn: Column | null = null;
-  let nonCheckboxColumns: Column[];
-  if (onCheckboxChange) {
-    [checkboxColumn, ...nonCheckboxColumns] = columns;
-  } else {
-    nonCheckboxColumns = columns;
-  }
-
-  const checkboxCellElement = useMemo(() => {
-    if (checkboxColumn) {
-      return (
-        <TableCell
-          key={checkboxColumn.id}
-          align={checkboxColumn.align}
-        >
-          <Checkbox
-            checked={checkboxChecked}
-            onChange={(e) => {
-              onCheckboxChange?.(row, e.target.checked);
-            }}
-            sx={{padding: 0}}
-          />
-        </TableCell>
-      );
+  const onMouseEnter = useMemo(() => {
+    if (onRowEnter) {
+      return () => {
+        onRowEnter(row);
+      }
     }
-    return null;
-  }, [checkboxColumn, row, onCheckboxChange, checkboxChecked]);
-
-  const nonCheckboxCellElements = useMemo(() => {
-    return nonCheckboxColumns.map((column) => {
-      return (
-        <TableCell
-          key={column.id}
-          align={column.align}
-        >
-          {getCell(row, column.id)}
-        </TableCell>
-      );
-    })
-  }, [nonCheckboxColumns, row, getCell]);
-
-  const onMouseEnter = useCallback(() => {
-    onRowEnter?.(row);
+    return undefined;
   }, [onRowEnter, row]);
 
-  const onMouseLeave = useCallback(() => {
-    onRowLeave?.(row);
+  const onMouseLeave = useMemo(() => {
+    if (onRowLeave) {
+      return () => {
+        onRowLeave(row);
+      }
+    }
+    return undefined;
   }, [onRowLeave, row]);
 
   return (
     <StyledTableRow
       key={row.id}
-      onMouseEnter={onRowEnter && onMouseEnter}
-      onMouseLeave={onRowLeave && onMouseLeave}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
-      {checkboxCellElement}
-      {...nonCheckboxCellElements}
+      <RichTableRowContent
+        columns={columns}
+        row={row}
+        getCell={getCell}
+        checkboxChecked={checkboxChecked}
+        onCheckboxChange={onCheckboxChange}
+      />
     </StyledTableRow>
   );
 }

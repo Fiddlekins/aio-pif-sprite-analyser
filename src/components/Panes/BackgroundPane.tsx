@@ -11,6 +11,7 @@ interface StyledButtonProps extends ButtonProps {
 }
 
 const StyledButton = styled(Button)<StyledButtonProps>(({theme, selected, colour}) => ({
+  minWidth: 0,
   aspectRatio: 1,
   backgroundColor: colour ? `rgba(${colour[0]},${colour[1]},${colour[2]},${colour[3]})` : undefined,
   outlineColor: alpha(theme.palette.primary.main, 0.54),

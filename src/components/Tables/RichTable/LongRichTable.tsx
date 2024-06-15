@@ -1,10 +1,34 @@
-import {Table, TableBody, TableContainer, TableHead} from "@mui/material";
-import {useCallback, useMemo, useState} from "react";
+import {Table, TableBody, TableContainer, TableHead, TableRow} from "@mui/material";
+import {forwardRef, ReactNode, useCallback, useMemo, useState} from "react";
+import {TableComponents, TableVirtuoso} from "react-virtuoso";
 import {RichTableHeadRow} from "./RichTableHeadRow.tsx";
-import {RichTableRow} from "./RichTableRow.tsx";
+import {RichTableRowContent} from "./RichTableRowContent.tsx";
 import {OrderDirection, RichTableProps, RowDataBase} from "./types.ts";
 
-export function RichTable<Data extends RowDataBase>(
+const VirtuosoTableComponents: TableComponents<ReactNode> = {
+  Scroller: forwardRef<HTMLDivElement>((props, ref) => (
+    <TableContainer {...props} ref={ref}/>
+  )),
+  Table: (props) => (
+    <Table size="small" {...props} sx={{borderCollapse: 'separate', tableLayout: 'fixed'}}/>
+  ),
+  TableHead: forwardRef<HTMLTableSectionElement>((props, ref) => (
+    <TableHead {...props} ref={ref}/>
+  )),
+  TableRow: ({item: _item, ...props}) => <TableRow {...props} />,
+  TableBody: forwardRef<HTMLTableSectionElement>((props, ref) => (
+    <TableBody {...props} ref={ref}/>
+  )),
+};
+
+function rowContent(_index: number, row: ReactNode) {
+  return row;
+}
+
+export interface LongRichTableProps<Data extends RowDataBase> extends RichTableProps<Data> {
+}
+
+export function LongRichTable<Data extends RowDataBase>(
   {
     columns,
     rows,
@@ -18,7 +42,7 @@ export function RichTable<Data extends RowDataBase>(
     checkboxesChecked,
     onCheckboxChange,
     checkboxRelativeWidth,
-  }: RichTableProps<Data>,
+  }: LongRichTableProps<Data>,
 ) {
   const [orderBy, setOrderBy] = useState<string>(defaultOrderBy);
   const [orderDirection, setOrderDirection] = useState<OrderDirection>(defaultOrderDirection);
@@ -35,10 +59,28 @@ export function RichTable<Data extends RowDataBase>(
     return columns;
   }, [columns, onCheckboxChange, checkboxRelativeWidth]);
 
+  const fixedHeaderContent = useCallback(() => {
+    return (
+      <RichTableHeadRow
+        columns={columnsProcessed}
+        orderBy={orderBy}
+        orderDirection={orderDirection}
+        getHeaderCell={getHeaderCell}
+        onSortChange={onSortChange}
+      />
+    );
+  }, [
+    columnsProcessed,
+    orderBy,
+    orderDirection,
+    getHeaderCell,
+    onSortChange,
+  ]);
+
   const rowElementsAndMetaData = useMemo(() => {
     return rows.map((row) => {
       const element = (
-        <RichTableRow
+        <RichTableRowContent
           key={row.id}
           columns={columnsProcessed}
           row={row}
@@ -67,24 +109,12 @@ export function RichTable<Data extends RowDataBase>(
   }, [rowElementsAndMetaData, rowComparator, orderBy, orderDirection]);
 
   return (
-    <TableContainer>
-      <Table
-        size="small"
-        sx={{borderCollapse: 'separate', tableLayout: 'fixed'}}
-      >
-        <TableHead>
-          <RichTableHeadRow
-            columns={columnsProcessed}
-            orderBy={orderBy}
-            orderDirection={orderDirection}
-            getHeaderCell={getHeaderCell}
-            onSortChange={onSortChange}
-          />
-        </TableHead>
-        <TableBody>
-          {...sortedRowElements}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <TableVirtuoso
+      data={sortedRowElements}
+      components={VirtuosoTableComponents}
+      fixedHeaderContent={fixedHeaderContent}
+      itemContent={rowContent}
+      style={{height: 400, tableLayout: 'auto'}}
+    />
   );
 }

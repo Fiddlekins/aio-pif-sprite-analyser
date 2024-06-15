@@ -12,6 +12,7 @@ export interface Column {
   label: string;
   sortable?: boolean;
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
+  relativeWidth?: number;
 }
 
 export interface RowElementAndMetaData<Data extends RowDataBase> {
@@ -30,3 +31,18 @@ export type RowEnterHandler<Data extends RowDataBase> = (row: Data) => void;
 export type RowLeaveHandler<Data extends RowDataBase> = (row: Data) => void;
 
 export type CheckboxChangeHandler<Data extends RowDataBase> = (rowData: Data, isCheckedNew: boolean) => void;
+
+export interface RichTableProps<Data extends RowDataBase> {
+  columns: Column[];
+  rows: Data[];
+  defaultOrderBy: string;
+  defaultOrderDirection: OrderDirection;
+  rowComparator?: RowComparator<Data>;
+  getHeaderCell?: HeaderCellBuilder;
+  getCell: CellBuilder<Data>;
+  onRowEnter?: RowEnterHandler<Data>;
+  onRowLeave?: RowLeaveHandler<Data>;
+  checkboxesChecked?: Record<string, boolean>;
+  onCheckboxChange?: CheckboxChangeHandler<Data>;
+  checkboxRelativeWidth?: number;
+}

@@ -18,51 +18,56 @@ import {retrieveTyped} from "../../utils/localStorage/retrieveTyped.ts";
 import {storeString} from "../../utils/localStorage/storeString.ts";
 import {ColourSwatch} from "../ColourSwatch.tsx";
 import {VerdictIcon} from "../VerdictIcon.tsx";
+import {LongRichTable} from "./RichTable/LongRichTable.tsx";
 import {RichTable} from "./RichTable/RichTable.tsx";
 import {Column, OrderDirection, RowComparator, RowDataBase} from "./RichTable/types.ts";
 
 type ColourSpace = 'RGB' | 'HSV' | 'HSL';
 
+const checkboxRelativeWidth = 2;
+
 const columns: Column[] = [
-  {
-    id: 'checkbox',
-    label: '',
-  },
   {
     id: 'colour',
     label: 'Colour',
+    relativeWidth: 5,
   },
   {
     id: 'usage',
     label: 'Usage',
     sortable: true,
     align: 'right',
+    relativeWidth: 4,
   },
   {
     id: 'channel0',
     label: 'Channel 0',
     sortable: true,
     align: 'right',
+    relativeWidth: 3,
   },
   {
     id: 'channel1',
     label: 'Channel 1',
     sortable: true,
     align: 'right',
+    relativeWidth: 3,
   },
   {
     id: 'channel2',
     label: 'Channel 2',
     sortable: true,
     align: 'right',
+    relativeWidth: 3,
   },
   {
     id: 'channel3',
     label: 'Channel 3',
     sortable: true,
     align: 'right',
+    relativeWidth: 3,
   },
-]
+];
 
 interface RowData extends RowDataBase {
   colour: tinycolor.Instance;
@@ -424,19 +429,37 @@ export function ColoursTable() {
             </Box>
           </AccordionSummary>
           <AccordionDetails>
-            <RichTable
-              columns={columns}
-              rows={rowBackgroundDataUnsorted}
-              defaultOrderBy={'usage'}
-              defaultOrderDirection={'desc'}
-              rowComparator={rowComparator}
-              getHeaderCell={getHeaderCell}
-              getCell={getCell}
-              onRowEnter={onRowEnter}
-              onRowLeave={onRowLeave}
-              checkboxesChecked={checkboxesChecked}
-              onCheckboxChange={onCheckboxChange}
-            />
+            {rowBackgroundDataUnsorted.length > 32 ? (
+              <LongRichTable
+                columns={columns}
+                rows={rowBackgroundDataUnsorted}
+                defaultOrderBy={'usage'}
+                defaultOrderDirection={'desc'}
+                rowComparator={rowComparator}
+                getHeaderCell={getHeaderCell}
+                getCell={getCell}
+                onRowEnter={onRowEnter}
+                onRowLeave={onRowLeave}
+                checkboxesChecked={checkboxesChecked}
+                onCheckboxChange={onCheckboxChange}
+                checkboxRelativeWidth={checkboxRelativeWidth}
+              />
+            ) : (
+              <RichTable
+                columns={columns}
+                rows={rowBackgroundDataUnsorted}
+                defaultOrderBy={'usage'}
+                defaultOrderDirection={'desc'}
+                rowComparator={rowComparator}
+                getHeaderCell={getHeaderCell}
+                getCell={getCell}
+                onRowEnter={onRowEnter}
+                onRowLeave={onRowLeave}
+                checkboxesChecked={checkboxesChecked}
+                onCheckboxChange={onCheckboxChange}
+                checkboxRelativeWidth={checkboxRelativeWidth}
+              />
+            )}
           </AccordionDetails>
         </Accordion>
         <Accordion
@@ -451,19 +474,37 @@ export function ColoursTable() {
             </Box>
           </AccordionSummary>
           <AccordionDetails>
-            <RichTable
-              columns={columns}
-              rows={rowNonBackgroundDataUnsorted}
-              defaultOrderBy={'usage'}
-              defaultOrderDirection={'desc'}
-              rowComparator={rowComparator}
-              getHeaderCell={getHeaderCell}
-              getCell={getCell}
-              onRowEnter={onRowEnter}
-              onRowLeave={onRowLeave}
-              checkboxesChecked={checkboxesChecked}
-              onCheckboxChange={onCheckboxChange}
-            />
+            {rowNonBackgroundDataUnsorted.length > 32 ? (
+              <LongRichTable
+                columns={columns}
+                rows={rowNonBackgroundDataUnsorted}
+                defaultOrderBy={'usage'}
+                defaultOrderDirection={'desc'}
+                rowComparator={rowComparator}
+                getHeaderCell={getHeaderCell}
+                getCell={getCell}
+                onRowEnter={onRowEnter}
+                onRowLeave={onRowLeave}
+                checkboxesChecked={checkboxesChecked}
+                onCheckboxChange={onCheckboxChange}
+                checkboxRelativeWidth={checkboxRelativeWidth}
+              />
+            ) : (
+              <RichTable
+                columns={columns}
+                rows={rowNonBackgroundDataUnsorted}
+                defaultOrderBy={'usage'}
+                defaultOrderDirection={'desc'}
+                rowComparator={rowComparator}
+                getHeaderCell={getHeaderCell}
+                getCell={getCell}
+                onRowEnter={onRowEnter}
+                onRowLeave={onRowLeave}
+                checkboxesChecked={checkboxesChecked}
+                onCheckboxChange={onCheckboxChange}
+                checkboxRelativeWidth={checkboxRelativeWidth}
+              />
+            )}
           </AccordionDetails>
         </Accordion>
       </Box>

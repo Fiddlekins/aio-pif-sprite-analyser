@@ -1365,6 +1365,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-dropzone: ^14.2.3
+    react-virtuoso: ^4.7.11
     tinycolor2: ^1.6.0
     typescript: ^5.2.2
     vite: ^5.2.0
@@ -3238,6 +3239,16 @@ __metadata:
     react: ">=16.6.0"
     react-dom: ">=16.6.0"
   checksum: 75602840106aa9c6545149d6d7ae1502fb7b7abadcce70a6954c4b64a438ff1cd16fc77a0a1e5197cdd72da398f39eb929ea06f9005c45b132ed34e056ebdeb1
+  languageName: node
+  linkType: hard
+
+"react-virtuoso@npm:^4.7.11":
+  version: 4.7.11
+  resolution: "react-virtuoso@npm:4.7.11"
+  peerDependencies:
+    react: ">=16 || >=17 || >= 18"
+    react-dom: ">=16 || >=17 || >= 18"
+  checksum: 3e9b56e8bd2ae88b04563ff3ce221c95db493741ff89667475e390a8abfb202a9b0692cbe9edd822316a27c902c835ce0e287b036df6644909317c7a6c1462fc
   languageName: node
   linkType: hard
 
