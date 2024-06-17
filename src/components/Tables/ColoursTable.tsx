@@ -15,6 +15,7 @@ import {MouseEvent, useCallback, useContext, useMemo, useState} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {getFormattedPercent} from "../../utils/getFormattedPercent.ts";
 import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
+import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColourKey.ts";
 import {getPixelFromColourKey} from "../../utils/image/conversion/getPixelFromColourKey.ts";
 import {retrieveTyped} from "../../utils/localStorage/retrieveTyped.ts";
 import {storeString} from "../../utils/localStorage/storeString.ts";
@@ -217,7 +218,7 @@ export function ColoursTable() {
             alignItems={'center'}
             gap={1}
           >
-            <ColourSwatch colour={`#${row.colourKey.toString(16)}`}/>
+            <ColourSwatch colour={`#${getHex8FromColourKey(row.colourKey)}`}/>
             <Typography fontFamily={'monospace'}>
               {getHex6FromColourKey(row.colourKey).toUpperCase()}
             </Typography>
