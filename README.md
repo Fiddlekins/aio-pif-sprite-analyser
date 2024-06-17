@@ -135,6 +135,6 @@ In recent years a new colour space called [Oklab](https://bottosson.github.io/po
 I'm a simple creature and so my verdict lies with the [circle diagrams](https://bottosson.github.io/posts/oklab/#munsell-data) definitely looking more circular for Oklab than for CIELAB.
 There is also [this](https://raphlinus.github.io/color/2021/01/18/oklab-critique.html) analysis with a fun interactive widget that displays how the different colour spaces handle gradient transitions, but that's not quite relevant to the distance measures. 
 
-## Conclusion
+### Conclusion
 
 To summarise, for APSA I use the same overall algorithm of counting up how many colour pairs are similar, but instead of the three distance measurements fusion bot uses I will use just one, and it will be using Oklab instead of CIELAB.
