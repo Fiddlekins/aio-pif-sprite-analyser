@@ -1,4 +1,4 @@
-import {Pixel} from "./types.ts";
+import {Pixel} from "../types.ts";
 
 function getChannelHexString(channel: number) {
   return channel.toString(16).padStart(2, '0');

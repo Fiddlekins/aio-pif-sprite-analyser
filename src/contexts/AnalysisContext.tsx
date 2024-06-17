@@ -25,22 +25,22 @@ export interface SpriteInput {
 }
 
 interface HighlightedColourState {
-  checked: Set<string>;
+  checked: Set<number>;
   hovered: {
     lastUpdateTimestamp: number;
-    colourKey: string | null;
+    colourKey: number | null;
   };
   render: boolean;
-  highlightedColours: string[];
+  highlightedColours: number[];
 }
 
 interface HighlightedColourOperation {
   operation: 'check' | 'uncheck' | 'hoverStart' | 'hoverEnd' | 'reset' | 'renderOn' | 'renderOff',
-  colourKey?: string;
+  colourKey?: number;
 }
 
 const initialHighlightedColourState: HighlightedColourState = {
-  checked: new Set<string>(),
+  checked: new Set<number>(),
   hovered: {lastUpdateTimestamp: 0, colourKey: null},
   render: false,
   highlightedColours: [],
@@ -69,7 +69,7 @@ function highlightedColourStateReducer(
       stateNew.render = false;
       break;
     case "check": {
-      if (action.colourKey) {
+      if (typeof action.colourKey === 'number') {
         // Update ref now that we're mutating the content
         stateNew.checked = new Set(state.checked);
         stateNew.checked.add(action.colourKey)
@@ -77,7 +77,7 @@ function highlightedColourStateReducer(
       break;
     }
     case "uncheck": {
-      if (action.colourKey) {
+      if (typeof action.colourKey === 'number') {
         // Update ref now that we're mutating the content
         stateNew.checked = new Set(state.checked);
         stateNew.checked.delete(action.colourKey)
@@ -85,7 +85,7 @@ function highlightedColourStateReducer(
       break;
     }
     case "hoverStart": {
-      if (action.colourKey) {
+      if (typeof action.colourKey === 'number') {
         // Update ref now that we're mutating the content
         stateNew.hovered = {...state.hovered};
         // Always override other hover operations in the same frame
@@ -108,7 +108,7 @@ function highlightedColourStateReducer(
   }
   // Merge and dedupe
   stateNew.highlightedColours = [...stateNew.checked];
-  if (stateNew.hovered.colourKey && !stateNew.highlightedColours.includes(stateNew.hovered.colourKey)) {
+  if (typeof stateNew.hovered.colourKey === 'number' && !stateNew.highlightedColours.includes(stateNew.hovered.colourKey)) {
     stateNew.highlightedColours.push(stateNew.hovered.colourKey);
   }
   return stateNew;
@@ -197,7 +197,7 @@ export function AnalysisProvider(
   const [highlightedColourState, dispatchHighlightedColourState] = useReducer(highlightedColourStateReducer, initialHighlightedColourState);
 
   const setSpriteInput = useCallback(
-    (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null, info:PngInfo) => {
+    (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null, info: PngInfo) => {
       setSpriteInputInternal({
         imageData: imageDataNew,
         name: nameNew,

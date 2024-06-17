@@ -1,4 +1,4 @@
-import {Pixel} from "./types.ts";
+import {Pixel} from "../types.ts";
 
 export function getPixelFromHex8(hex8: string): Pixel {
   const r = parseInt(hex8.slice(0, 2), 16);

@@ -4,7 +4,7 @@ import {ReactNode} from "react";
 export type OrderDirection = 'asc' | 'desc';
 
 export interface RowDataBase {
-  id: string;
+  id: string | number;
 }
 
 export interface Column {

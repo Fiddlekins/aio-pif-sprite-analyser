@@ -1156,13 +1156,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/tinycolor2@npm:^1.4.6":
-  version: 1.4.6
-  resolution: "@types/tinycolor2@npm:1.4.6"
-  checksum: 50179851b32dcf78e0b4b691350a61043d8a00c3a8176d8155a257b34bb937136ff5d7950c814dca3c832673c7b6dc835f89dd154e85ccec3a4d4eac3993ed84
-  languageName: node
-  linkType: hard
-
 "@typescript-eslint/eslint-plugin@npm:^7.2.0":
   version: 7.12.0
   resolution: "@typescript-eslint/eslint-plugin@npm:7.12.0"
@@ -1353,10 +1346,10 @@ __metadata:
     "@mui/material": ^5.15.19
     "@types/react": ^18.2.66
     "@types/react-dom": ^18.2.22
-    "@types/tinycolor2": ^1.4.6
     "@typescript-eslint/eslint-plugin": ^7.2.0
     "@typescript-eslint/parser": ^7.2.0
     "@vitejs/plugin-react-swc": ^3.5.0
+    colorjs.io: ^0.5.0
     eslint: ^8.57.0
     eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-react-refresh: ^0.4.6
@@ -1366,7 +1359,6 @@ __metadata:
     react-dom: ^18.2.0
     react-dropzone: ^14.2.3
     react-virtuoso: ^4.7.11
-    tinycolor2: ^1.6.0
     typescript: ^5.2.2
     vite: ^5.2.0
   languageName: unknown
@@ -1611,6 +1603,13 @@ __metadata:
   version: 1.1.4
   resolution: "color-name@npm:1.1.4"
   checksum: b0445859521eb4021cd0fb0cc1a75cecf67fceecae89b63f62b201cca8d345baf8b952c966862a9d9a2632987d4f6581f0ec8d957dfacece86f0a7919316f610
+  languageName: node
+  linkType: hard
+
+"colorjs.io@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "colorjs.io@npm:0.5.0"
+  checksum: 8f1395a4b18a1a883292a84674ab9249253787a269e9d12fca40bb6e76a4f31f8ddae7d39407dbcc5477d2a8e7e4ec58a011464a777f9171f3cc18bce35db593
   languageName: node
   linkType: hard
 
@@ -3626,13 +3625,6 @@ __metadata:
   version: 0.2.0
   resolution: "text-table@npm:0.2.0"
   checksum: b6937a38c80c7f84d9c11dd75e49d5c44f71d95e810a3250bd1f1797fc7117c57698204adf676b71497acc205d769d65c16ae8fa10afad832ae1322630aef10a
-  languageName: node
-  linkType: hard
-
-"tinycolor2@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "tinycolor2@npm:1.6.0"
-  checksum: 6df4d07fceeedc0a878d7bac47e2cd47c1ceeb1078340a9eb8a295bc0651e17c750f73d47b3028d829f30b85c15e0572c0fd4142083e4c21a30a597e47f47230
   languageName: node
   linkType: hard
 

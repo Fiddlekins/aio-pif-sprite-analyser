@@ -1,7 +1,8 @@
-import tinycolor from "tinycolor2";
-import {getHex8FromPixel} from "./getHex8FromPixel.ts";
-import {scan} from "./scan.ts";
-import {Pixel} from "./types.ts";
+import {ColorObject} from 'colorjs.io/fn';
+import {getColorObjectFromPixel} from "./conversion/getColorObjectFromPixel.ts";
+import {getPixelFromColourKey} from "./conversion/getPixelFromColourKey.ts";
+import {getColourCounts} from "./getColourCounts.ts";
+import {getRankedColourCounts} from "./getRankedColourCounts.ts";
 
 const Severity = {
   success: 1,
@@ -12,54 +13,38 @@ const Severity = {
 export class ColourAnalysis {
   pixelCount: number;
   coloursCount: number;
-  colourCounts: Record<string, number>;
-  colours: Record<string, tinycolor.Instance>;
+  colourCounts: Map<number, number>;
+  colours: Map<number, ColorObject>;
 
-  static from(
+  constructor(
     imageData: ImageData,
     startX: number,
     startY: number,
     width: number,
     height: number,
   ) {
-    const analysis = new ColourAnalysis();
-    scan(imageData, startX, startY, width, height, (pixel) => {
-      analysis.addPixel(pixel);
-    });
-    return analysis;
-  }
-
-  constructor() {
-    this.pixelCount = 0;
-    this.coloursCount = 0;
-    this.colourCounts = {};
-    this.colours = {};
-  }
-
-  addPixel(pixel: Pixel) {
-    this.pixelCount += 1;
-    const colourKey = getHex8FromPixel(pixel);
-    const colour = tinycolor(colourKey);
-    if (!this.colourCounts[colourKey]) {
-      this.colourCounts[colourKey] = 0;
-      this.coloursCount += 1;
-    }
-    this.colourCounts[colourKey]++;
-    if (!this.colours[colourKey]) {
-      this.colours[colourKey] = colour;
+    this.colourCounts = getColourCounts(imageData, startX, startY, width, height);
+    this.coloursCount = this.colourCounts.size;
+    this.pixelCount = width * height;
+    this.colours = new Map();
+    for (const colourKey of this.colourCounts.keys()) {
+      const colour = getColorObjectFromPixel(getPixelFromColourKey(colourKey));
+      this.colours.set(colourKey, colour);
     }
   }
 
   getAsArray() {
-    return Object.keys(this.colours).map((colourKey) => {
-      const colour = this.colours[colourKey];
-      const count = this.colourCounts[colourKey];
+    return [...this.colourCounts.entries()].map(([colourKey, count]) => {
+      const colour = this.colours.get(colourKey)!;
       return {colourKey, colour, count};
-    })
+    });
   }
 
   rankedByFrequency() {
-    return this.getAsArray().sort((a, b) => b.count - a.count);
+    return getRankedColourCounts(this.colourCounts).map(({colourKey, count}) => {
+      const colour = this.colours.get(colourKey)!;
+      return {colourKey, colour, count};
+    });
   }
 
   getVerdict() {

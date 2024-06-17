@@ -3,7 +3,7 @@ import {useContext, useEffect, useRef} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {getPngInfoSummary} from "../../utils/getPngInfoSummary.ts";
 import {applyHighlightColours} from "../../utils/image/applyHighlightColours.ts";
-import {getPixelFromHex8} from "../../utils/image/getPixelFromHex8.ts";
+import {getPixelFromColourKey} from "../../utils/image/conversion/getPixelFromColourKey.ts";
 import {Pixel} from "../../utils/image/types.ts";
 import {CanvasWithBackground} from "../CanvasWithBackground.tsx";
 import {PngInfoTooltip} from "../PngInfoTooltip.tsx";
@@ -31,7 +31,7 @@ export function OverviewPane() {
       if (ctx) {
         let imageData = spriteInput.imageData;
         if (highlightedColourState.render && highlightedColourState.highlightedColours.length) {
-          const coloursToHighlight = highlightedColourState.highlightedColours.map((colourKey) => getPixelFromHex8(colourKey));
+          const coloursToHighlight = highlightedColourState.highlightedColours.map((colourKey) => getPixelFromColourKey(colourKey));
           imageData = applyHighlightColours(imageData, coloursToHighlight, highlightColour, highlightMode);
         }
         ctx.putImageData(imageData, 0, 0);

@@ -1,6 +1,7 @@
-import tinycolor from "tinycolor2";
 import {cloneImageData} from "./cloneImageData.ts";
-import {ColourAnalysis} from "./ColourAnalysis.ts";
+import {getColourKeyFromPixel} from "./conversion/getColourKeyFromPixel.ts";
+import {getColourCounts} from "./getColourCounts.ts";
+import {getRankedColourCounts} from "./getRankedColourCounts.ts";
 import {scan} from "./scan.ts";
 import {PartialPixelAnalysis, Pixel} from "./types.ts";
 
@@ -21,14 +22,13 @@ export function analysePartialPixels(imageData: ImageData, macroPixelSize: numbe
       analysis.totalPixelCount++;
       const rawX = macroX * macroPixelSize;
       const rawY = macroY * macroPixelSize;
-      const colourAnalysis = ColourAnalysis.from(analysis.imageData, rawX, rawY, macroPixelSize, macroPixelSize);
-      if (colourAnalysis.coloursCount > 1) {
+      const colourCounts = getColourCounts(analysis.imageData, rawX, rawY, macroPixelSize, macroPixelSize);
+      if (colourCounts.size > 1) {
         analysis.partialPixelCount++;
-        const rankedColours = colourAnalysis.rankedByFrequency();
+        const rankedColours = getRankedColourCounts(colourCounts);
         const [majority] = rankedColours;
-        scan(analysis.imageData, rawX, rawY, macroPixelSize, macroPixelSize, ([r, g, b, a]) => {
-          const colour = tinycolor({r, g, b, a});
-          const colourKey = colour.toHex8();
+        scan(analysis.imageData, rawX, rawY, macroPixelSize, macroPixelSize, (pixel) => {
+          const colourKey = getColourKeyFromPixel(pixel);
           if (outputMode === 'full') {
             return colourCorruption;
           } else if (outputMode === 'mixed') {

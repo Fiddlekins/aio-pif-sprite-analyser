@@ -8,7 +8,7 @@ export interface ColourReport extends Report {
 export function getColourReport(
   imageData: ImageData,
 ): ColourReport {
-  const colourAnalysis = ColourAnalysis.from(imageData, 0, 0, imageData.width, imageData.height);
+  const colourAnalysis = new ColourAnalysis(imageData, 0, 0, imageData.width, imageData.height);
   return {
     verdict: colourAnalysis.getVerdict(),
     analysis: colourAnalysis,

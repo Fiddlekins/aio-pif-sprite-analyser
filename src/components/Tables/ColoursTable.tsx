@@ -10,10 +10,12 @@ import {
   ToggleButtonGroup,
   Typography
 } from "@mui/material";
+import {ColorObject, HSL, HSV, to as convert} from "colorjs.io/fn";
 import {MouseEvent, useCallback, useContext, useMemo, useState} from "react";
-import tinycolor from "tinycolor2";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {getFormattedPercent} from "../../utils/getFormattedPercent.ts";
+import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
+import {getPixelFromColourKey} from "../../utils/image/conversion/getPixelFromColourKey.ts";
 import {retrieveTyped} from "../../utils/localStorage/retrieveTyped.ts";
 import {storeString} from "../../utils/localStorage/storeString.ts";
 import {ColourSwatch} from "../ColourSwatch.tsx";
@@ -70,11 +72,11 @@ const columns: Column[] = [
 ];
 
 interface RowData extends RowDataBase {
-  colour: tinycolor.Instance;
-  colourKey: string;
-  rgba: tinycolor.ColorFormats.RGBA;
-  hsva: tinycolor.ColorFormats.HSVA;
-  hsla: tinycolor.ColorFormats.HSLA;
+  colour: ColorObject;
+  colourKey: number;
+  rgba: { r: number, g: number, b: number, a: number };
+  hsva: ColorObject;
+  hsla: ColorObject;
   isBackground: boolean;
   usage: number;
 }
@@ -90,7 +92,16 @@ function getHeaderName(colourSpace: ColourSpace, channel: number) {
   }
 }
 
-function numberComparator(a: number, b: number) {
+function numberComparator(a: number | undefined, b: number | undefined) {
+  if (a === undefined && b === undefined) {
+    return 0;
+  }
+  if (a === undefined) {
+    return -1;
+  }
+  if (b === undefined) {
+    return 1;
+  }
   if (a === b) {
     return 0
   }
@@ -130,7 +141,7 @@ export function ColoursTable() {
       : [];
 
     const backgroundPixelCountNew = colourAnalysisArrayNew.reduce((acc, curr) => {
-      if (curr.colour.getAlpha() === 0) {
+      if (curr.colour.alpha === 0) {
         return acc + curr.count;
       }
       return acc;
@@ -140,10 +151,11 @@ export function ColoursTable() {
     const rowBackgroundDataUnsortedNew: RowData[] = [];
     const rowNonBackgroundDataUnsortedNew: RowData[] = [];
     colourReport?.analysis.getAsArray().forEach(({colour, colourKey, count}) => {
-      const rgba = colour.toRgb();
-      const hsva = colour.toHsv();
-      const hsla = colour.toHsl();
-      const isBackground = rgba.a === 0;
+      const [r, g, b, a] = getPixelFromColourKey(colourKey);
+      const rgba = {r, g, b, a};
+      const hsva = convert(colour, HSV);
+      const hsla = convert(colour, HSL);
+      const isBackground = colour.alpha === 0;
       const usage = count / (isBackground ? backgroundPixelCountNew : nonBackgroundPixelCountNew);
 
       const row: RowData = {
@@ -205,9 +217,9 @@ export function ColoursTable() {
             alignItems={'center'}
             gap={1}
           >
-            <ColourSwatch colour={`#${row.colourKey}`}/>
+            <ColourSwatch colour={`#${row.colourKey.toString(16)}`}/>
             <Typography fontFamily={'monospace'}>
-              {row.colour.toHexString().toUpperCase()}
+              {getHex6FromColourKey(row.colourKey).toUpperCase()}
             </Typography>
           </Box>
         );
@@ -218,9 +230,9 @@ export function ColoursTable() {
           case 'RGB':
             return row.rgba.r;
           case 'HSV':
-            return Math.round(row.hsva.h);
+            return Math.round(row.hsva.coords[0] || 0);
           case 'HSL':
-            return Math.round(row.hsla.h);
+            return Math.round(row.hsla.coords[0] || 0);
           default:
             return '-'
         }
@@ -230,9 +242,9 @@ export function ColoursTable() {
           case 'RGB':
             return row.rgba.g;
           case 'HSV':
-            return getFormattedPercent(row.hsva.s);
+            return getFormattedPercent(row.hsva.coords[1] / 100);
           case 'HSL':
-            return getFormattedPercent(row.hsla.s);
+            return getFormattedPercent(row.hsla.coords[1] / 100);
           default:
             return '-'
         }
@@ -242,9 +254,9 @@ export function ColoursTable() {
           case 'RGB':
             return row.rgba.b;
           case 'HSV':
-            return getFormattedPercent(row.hsva.v);
+            return getFormattedPercent(row.hsva.coords[2] / 100);
           case 'HSL':
-            return getFormattedPercent(row.hsla.l);
+            return getFormattedPercent(row.hsla.coords[2] / 100);
           default:
             return '-'
         }
@@ -252,11 +264,11 @@ export function ColoursTable() {
       case 'channel3': {
         switch (colourSpace) {
           case 'RGB':
-            return getFormattedPercent(row.rgba.a);
+            return getFormattedPercent(row.rgba.a / 255);
           case 'HSV':
-            return getFormattedPercent(row.hsva.a);
+            return getFormattedPercent(row.hsva.alpha);
           case 'HSL':
-            return getFormattedPercent(row.hsla.a);
+            return getFormattedPercent(row.hsla.alpha);
           default:
             return '-'
         }
@@ -276,10 +288,10 @@ export function ColoursTable() {
             result = numberComparator(a.rgba.r, b.rgba.r);
             break;
           case 'HSV':
-            result = numberComparator(a.hsva.h, b.hsva.h);
+            result = numberComparator(a.hsva.coords[0], b.hsva.coords[0]);
             break;
           case 'HSL':
-            result = numberComparator(a.hsla.h, b.hsla.h);
+            result = numberComparator(a.hsla.coords[0], b.hsla.coords[0]);
             break;
         }
         break;
@@ -290,10 +302,10 @@ export function ColoursTable() {
             result = numberComparator(a.rgba.g, b.rgba.g);
             break;
           case 'HSV':
-            result = numberComparator(a.hsva.s, b.hsva.s);
+            result = numberComparator(a.hsva.coords[1], b.hsva.coords[1]);
             break;
           case 'HSL':
-            result = numberComparator(a.hsla.s, b.hsla.s);
+            result = numberComparator(a.hsla.coords[1], b.hsla.coords[1]);
             break;
         }
         break;
@@ -304,10 +316,10 @@ export function ColoursTable() {
             result = numberComparator(a.rgba.b, b.rgba.b);
             break;
           case 'HSV':
-            result = numberComparator(a.hsva.v, b.hsva.v);
+            result = numberComparator(a.hsva.coords[2], b.hsva.coords[2]);
             break;
           case 'HSL':
-            result = numberComparator(a.hsla.l, b.hsla.l);
+            result = numberComparator(a.hsla.coords[2], b.hsla.coords[2]);
             break;
         }
         break;
@@ -318,10 +330,10 @@ export function ColoursTable() {
             result = numberComparator(a.rgba.a, b.rgba.a);
             break;
           case 'HSV':
-            result = numberComparator(a.hsva.a, b.hsva.a);
+            result = numberComparator(a.hsva.alpha, b.hsva.alpha);
             break;
           case 'HSL':
-            result = numberComparator(a.hsla.a, b.hsla.a);
+            result = numberComparator(a.hsla.alpha, b.hsla.alpha);
             break;
         }
         break;
