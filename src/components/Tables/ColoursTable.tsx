@@ -289,10 +289,10 @@ export function ColoursTable() {
             result = numberComparator(a.rgba.r, b.rgba.r);
             break;
           case 'HSV':
-            result = numberComparator(a.hsva.coords[0], b.hsva.coords[0]);
+            result = numberComparator(a.hsva.coords[0] || 0, b.hsva.coords[0] || 0);
             break;
           case 'HSL':
-            result = numberComparator(a.hsla.coords[0], b.hsla.coords[0]);
+            result = numberComparator(a.hsla.coords[0] || 0, b.hsla.coords[0] || 0);
             break;
         }
         break;
@@ -303,10 +303,10 @@ export function ColoursTable() {
             result = numberComparator(a.rgba.g, b.rgba.g);
             break;
           case 'HSV':
-            result = numberComparator(a.hsva.coords[1], b.hsva.coords[1]);
+            result = numberComparator(a.hsva.coords[1] || 0, b.hsva.coords[1] || 0);
             break;
           case 'HSL':
-            result = numberComparator(a.hsla.coords[1], b.hsla.coords[1]);
+            result = numberComparator(a.hsla.coords[1] || 0, b.hsla.coords[1] || 0);
             break;
         }
         break;
@@ -317,10 +317,10 @@ export function ColoursTable() {
             result = numberComparator(a.rgba.b, b.rgba.b);
             break;
           case 'HSV':
-            result = numberComparator(a.hsva.coords[2], b.hsva.coords[2]);
+            result = numberComparator(a.hsva.coords[2] || 0, b.hsva.coords[2] || 0);
             break;
           case 'HSL':
-            result = numberComparator(a.hsla.coords[2], b.hsla.coords[2]);
+            result = numberComparator(a.hsla.coords[2] || 0, b.hsla.coords[2] || 0);
             break;
         }
         break;
