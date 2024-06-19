@@ -143,7 +143,7 @@ export function SimilarityTable() {
         return toXDecimals(row.similarity, 3);
     }
     throw new Error(`Unhandled columnId ${columnId}`);
-  }, []);
+  }, [dispatchHighlightedColourState]);
 
   const rowComparator: RowComparator<RowData> = useCallback((a, b, orderBy: string, orderDirection: OrderDirection) => {
     let result = 0;
