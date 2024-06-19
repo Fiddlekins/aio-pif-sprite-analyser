@@ -1,3 +1,5 @@
+import {pokemonIdToDataMap} from "../data/pokemonIdToDataMap.ts";
+
 export function parseName(name: string | null) {
   let headId: number | null = null;
   let bodyId: number | null = null;
@@ -15,6 +17,12 @@ export function parseName(name: string | null) {
         bodyId = parseInt(bodyIdString, 10) || null;
       }
     }
+  }
+  if (headId !== null && !pokemonIdToDataMap[headId]) {
+    headId = null;
+  }
+  if (bodyId !== null && !pokemonIdToDataMap[bodyId]) {
+    bodyId = null;
   }
   return {
     headId,
