@@ -138,3 +138,6 @@ There is also [this](https://raphlinus.github.io/color/2021/01/18/oklab-critique
 ### Conclusion
 
 To summarise, for APSA I use the same overall algorithm of counting up how many colour pairs are similar, but instead of the three distance measurements fusion bot uses I will use just one, and it will be using Oklab instead of CIELAB.
+
+**EDIT: after implementing it I did not get the results I was hoping for, and for now have fallen back to replicating the fusion bot implementation.
+I plan to revisit this to see if I can fine tune it some other way.**

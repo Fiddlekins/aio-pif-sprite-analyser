@@ -19,6 +19,7 @@ import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColo
 import {getPixelFromColourKey} from "../../utils/image/conversion/getPixelFromColourKey.ts";
 import {retrieveTyped} from "../../utils/localStorage/retrieveTyped.ts";
 import {storeString} from "../../utils/localStorage/storeString.ts";
+import {numberComparator} from "../../utils/numberComparator.ts";
 import {ColourSwatch} from "../ColourSwatch.tsx";
 import {VerdictIcon} from "../VerdictIcon.tsx";
 import {LongRichTable} from "./RichTable/LongRichTable.tsx";
@@ -91,22 +92,6 @@ function getHeaderName(colourSpace: ColourSpace, channel: number) {
     case 'HSL':
       return ['H', 'S', 'L', 'A'][channel];
   }
-}
-
-function numberComparator(a: number | undefined, b: number | undefined) {
-  if (a === undefined && b === undefined) {
-    return 0;
-  }
-  if (a === undefined) {
-    return -1;
-  }
-  if (b === undefined) {
-    return 1;
-  }
-  if (a === b) {
-    return 0
-  }
-  return a > b ? 1 : -1;
 }
 
 function getStoredColourSpace() {
@@ -482,7 +467,7 @@ export function ColoursTable() {
             expandIcon={<ExpandMoreSharp/>}
           >
             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
-              <VerdictIcon verdict={colourReport?.verdict || null}/>
+              <VerdictIcon verdict={colourReport?.analysis.getColourCountVerdict() || 'error'}/>
               <Typography>Sprite Colours</Typography>
             </Box>
           </AccordionSummary>

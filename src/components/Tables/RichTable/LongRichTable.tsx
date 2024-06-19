@@ -1,29 +1,9 @@
 import {Table, TableBody, TableContainer, TableHead, TableRow} from "@mui/material";
-import {forwardRef, ReactNode, useCallback, useMemo, useState} from "react";
+import {forwardRef, useCallback, useMemo, useState} from "react";
 import {TableComponents, TableVirtuoso} from "react-virtuoso";
 import {RichTableHeadRow} from "./RichTableHeadRow.tsx";
 import {RichTableRowContent} from "./RichTableRowContent.tsx";
 import {OrderDirection, RichTableProps, RowDataBase} from "./types.ts";
-
-const VirtuosoTableComponents: TableComponents<ReactNode> = {
-  Scroller: forwardRef<HTMLDivElement>((props, ref) => (
-    <TableContainer {...props} ref={ref}/>
-  )),
-  Table: (props) => (
-    <Table size="small" {...props} sx={{borderCollapse: 'separate', tableLayout: 'fixed'}}/>
-  ),
-  TableHead: forwardRef<HTMLTableSectionElement>((props, ref) => (
-    <TableHead {...props} ref={ref}/>
-  )),
-  TableRow: ({item: _item, ...props}) => <TableRow {...props} />,
-  TableBody: forwardRef<HTMLTableSectionElement>((props, ref) => (
-    <TableBody {...props} ref={ref}/>
-  )),
-};
-
-function rowContent(_index: number, row: ReactNode) {
-  return row;
-}
 
 export interface LongRichTableProps<Data extends RowDataBase> extends RichTableProps<Data> {
 }
@@ -46,6 +26,24 @@ export function LongRichTable<Data extends RowDataBase>(
 ) {
   const [orderBy, setOrderBy] = useState<string>(defaultOrderBy);
   const [orderDirection, setOrderDirection] = useState<OrderDirection>(defaultOrderDirection);
+
+  const VirtuosoTableComponents: TableComponents<Data> = useMemo(() => {
+    return {
+      Scroller: forwardRef<HTMLDivElement>((props, ref) => (
+        <TableContainer {...props} ref={ref}/>
+      )),
+      Table: (props) => (
+        <Table size="small" {...props} sx={{borderCollapse: 'separate', tableLayout: 'fixed'}}/>
+      ),
+      TableHead: forwardRef<HTMLTableSectionElement>((props, ref) => (
+        <TableHead {...props} ref={ref}/>
+      )),
+      TableRow: ({item: _item, ...props}) => <TableRow {...props} />,
+      TableBody: forwardRef<HTMLTableSectionElement>((props, ref) => (
+        <TableBody {...props} ref={ref}/>
+      )),
+    };
+  }, []);
 
   const onSortChange = useCallback((orderByNew: string, orderDirectionNew: OrderDirection) => {
     setOrderBy(orderByNew);
@@ -77,40 +75,31 @@ export function LongRichTable<Data extends RowDataBase>(
     onSortChange,
   ]);
 
-  const rowElementsAndMetaData = useMemo(() => {
-    return rows.map((row) => {
-      const element = (
-        <RichTableRowContent
-          key={row.id}
-          columns={columnsProcessed}
-          row={row}
-          onRowEnter={onRowEnter}
-          onRowLeave={onRowLeave}
-          getCell={getCell}
-          checkboxChecked={checkboxesChecked?.[row.id] || false}
-          onCheckboxChange={onCheckboxChange}
-        />
-      );
-      return {
-        row,
-        element,
-      }
-    });
-  }, [columnsProcessed, rows, onRowEnter, onRowLeave, getCell, checkboxesChecked, onCheckboxChange]);
+  const rowContent = useCallback((_index: number, row: Data) => {
+    return (
+      <RichTableRowContent
+        key={row.id}
+        columns={columnsProcessed}
+        row={row}
+        onRowEnter={onRowEnter}
+        onRowLeave={onRowLeave}
+        getCell={getCell}
+        checkboxChecked={checkboxesChecked?.[row.id] || false}
+        onCheckboxChange={onCheckboxChange}
+      />
+    );
+  }, [columnsProcessed, onRowEnter, onRowLeave, getCell, checkboxesChecked, onCheckboxChange])
 
-  const sortedRowElements = useMemo(() => {
-    return rowElementsAndMetaData
+  const sortedRows = useMemo(() => {
+    return rows
       .sort((a, b) => {
-        return rowComparator?.(a.row, b.row, orderBy, orderDirection) || 0;
-      })
-      .map(({element}) => {
-        return element;
+        return rowComparator?.(a, b, orderBy, orderDirection) || 0;
       });
-  }, [rowElementsAndMetaData, rowComparator, orderBy, orderDirection]);
+  }, [rows, rowComparator, orderBy, orderDirection]);
 
   return (
     <TableVirtuoso
-      data={sortedRowElements}
+      data={sortedRows}
       components={VirtuosoTableComponents}
       fixedHeaderContent={fixedHeaderContent}
       itemContent={rowContent}
