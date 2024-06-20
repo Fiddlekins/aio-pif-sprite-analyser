@@ -1,7 +1,7 @@
-import {Box, BoxProps, Modal, styled, Typography} from "@mui/material";
+import {Box, Modal, Paper, PaperProps, styled, Typography} from "@mui/material";
 import {ReactNode} from "react";
 
-const ModalBox = styled(Box)<BoxProps>(({theme}) => ({
+const ModalBox = styled(Paper)<PaperProps>(({theme}) => ({
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -43,7 +43,7 @@ export function StyledModal(
       onClose={handleClose}
     >
       <Box m={4} width={'100%'}>
-        <ModalBox boxShadow={24}>
+        <ModalBox elevation={4}>
           <Typography variant={'h5'}>
             {title}
           </Typography>

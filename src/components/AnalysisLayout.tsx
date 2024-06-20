@@ -1,6 +1,7 @@
-import {Box, BoxProps, styled} from "@mui/material";
+import {Box, BoxProps, Paper, PaperProps, styled} from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
 import {BackgroundModal} from "./Modals/BackgroundModal.tsx";
+import {SettingsModal} from "./Modals/SettingsModal.tsx";
 import {SpriteImportModal} from "./Modals/SpriteImportModal.tsx";
 import {DetailsPane} from "./Panes/DetailsPane.tsx";
 import {OverviewPane} from "./Panes/OverviewPane.tsx";
@@ -14,7 +15,7 @@ const Container = styled(Box)<BoxProps>(() => ({
   alignItems: 'center',
 }));
 
-const GutteredBox = styled(Box)<BoxProps>(({theme}) => ({
+const GutteredBox = styled(Paper)<PaperProps>(({theme}) => ({
   width: '100%',
   maxWidth: theme.breakpoints.values.lg,
   height: '100%',
@@ -53,6 +54,7 @@ export function AnalysisLayout() {
       </Container>
       <SpriteImportModal/>
       <BackgroundModal/>
+      <SettingsModal/>
     </>
   );
 }

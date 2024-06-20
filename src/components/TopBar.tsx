@@ -1,8 +1,11 @@
+import {SettingsSharp} from "@mui/icons-material";
 import {AppBar, AppBarProps, Box, Button, Link, styled, Toolbar, ToolbarProps, Typography} from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
 import {useCallback, useContext} from "react";
 import logoUrl from '../assets/logo.svg';
 import {AnalysisContext} from "../contexts/AnalysisContext.tsx";
+import {SettingsContext} from "../contexts/SettingsContext.tsx";
+import {StyledIconButton} from "./StyledIconButton.tsx";
 
 const StyledAppBar = styled(AppBar)<AppBarProps>(() => ({
   display: 'flex',
@@ -17,10 +20,15 @@ const StyledToolbar = styled(Toolbar)<ToolbarProps>(({theme}) => ({
 
 export function TopBar() {
   const {setIsImportModalOpen, spriteInput} = useContext(AnalysisContext);
+  const {setIsSettingsModalOpen} = useContext(SettingsContext);
 
   const openImportModal = useCallback(() => {
     setIsImportModalOpen(true);
   }, [setIsImportModalOpen]);
+
+  const openSettingsModal = useCallback(() => {
+    setIsSettingsModalOpen(true);
+  }, [setIsSettingsModalOpen]);
 
   return (
     <StyledAppBar position={'sticky'}>
@@ -33,7 +41,7 @@ export function TopBar() {
               alignItems={'center'}
               gap={2}
             >
-              <img src={logoUrl} alt={'logo'} style={{height: '3rem', width: '3rem', border:'2px solid white'}}/>
+              <img src={logoUrl} alt={'logo'} style={{height: '3rem', width: '3rem', border: '2px solid white'}}/>
               <Typography variant={'h3'}>
                 APSA
               </Typography>
@@ -47,7 +55,7 @@ export function TopBar() {
             >
               <Box flexGrow={1}/>
               {spriteInput?.sourceUrl ? (
-                <Typography >
+                <Typography>
                   <Link href={spriteInput.sourceUrl} color={'primary.contrastText'} target="_blank" rel="noreferrer">
                     {spriteInput?.name}
                   </Link>
@@ -65,6 +73,7 @@ export function TopBar() {
               display={'flex'}
               height={'100%'}
               alignItems={'center'}
+              gap={2}
             >
               <Box flexGrow={1}/>
               <Button
@@ -74,6 +83,14 @@ export function TopBar() {
               >
                 Import
               </Button>
+              <StyledIconButton
+                variant={'outlined'}
+                color="inherit"
+                onClick={openSettingsModal}
+                sx={{width: '36.5px', height: '36.5px'}}
+              >
+                <SettingsSharp/>
+              </StyledIconButton>
             </Box>
           </Grid>
         </Grid>

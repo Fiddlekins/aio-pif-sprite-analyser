@@ -176,7 +176,7 @@ export function SimilarityTable() {
             expandIcon={<ExpandMoreSharp/>}
           >
             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
-              <VerdictIcon verdict={colourReport?.analysis.getColourSimilarityVerdict() || 'error'}/>
+              <VerdictIcon verdict={colourReport?.analysis.getColourSimilarityVerdict() || null}/>
               <Typography>Similar Colour Pairs</Typography>
             </Box>
           </AccordionSummary>

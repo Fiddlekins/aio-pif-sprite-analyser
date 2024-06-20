@@ -27,13 +27,13 @@ export function ColoursPane() {
           p={2}
         >
           <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
-            <VerdictIcon verdict={colourReport?.analysis.getColourCountVerdict() || 'error'}/>
+            <VerdictIcon verdict={colourReport?.analysis.getColourCountVerdict() || null}/>
             <Typography variant={'h5'}>
               {`Colour Count: ${colourReport?.analysis.coloursCount || 0}`}
             </Typography>
           </Box>
           <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
-            <VerdictIcon verdict={colourReport?.analysis.getColourSimilarityVerdict() || 'error'}/>
+            <VerdictIcon verdict={colourReport?.analysis.getColourSimilarityVerdict() || null}/>
             <Typography variant={'h5'}>
               {colourReport?.analysis.similaritySkipped !== true
                 ? `Pairs of similar colours: ${colourReport?.analysis.similarColourPairMap.size || 0}`

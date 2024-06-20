@@ -418,11 +418,9 @@ export function ColoursTable() {
             expandIcon={<ExpandMoreSharp/>}
           >
             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
-              {rowBackgroundDataUnsorted.length > 1 ? (
-                <VerdictIcon verdict={'error'}/>
-              ) : (
-                <VerdictIcon verdict={'success'}/>
-              )}
+              {rowBackgroundDataUnsorted.length == 0 && (<VerdictIcon verdict={null}/>)}
+              {rowBackgroundDataUnsorted.length == 1 && (<VerdictIcon verdict={'success'}/>)}
+              {rowBackgroundDataUnsorted.length > 1 && (<VerdictIcon verdict={'error'}/>)}
               <Typography>Background Colours</Typography>
             </Box>
           </AccordionSummary>
@@ -467,7 +465,7 @@ export function ColoursTable() {
             expandIcon={<ExpandMoreSharp/>}
           >
             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
-              <VerdictIcon verdict={colourReport?.analysis.getColourCountVerdict() || 'error'}/>
+              <VerdictIcon verdict={colourReport?.analysis.getColourCountVerdict() || null}/>
               <Typography>Sprite Colours</Typography>
             </Box>
           </AccordionSummary>

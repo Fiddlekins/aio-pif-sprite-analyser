@@ -1,9 +1,12 @@
-import {Box, BoxProps, CssBaseline, styled} from "@mui/material";
-import {ColorSpace, OKLCH, sRGB, HSL} from "colorjs.io/fn";
+import {Box, BoxProps, CssBaseline, styled, ThemeProvider} from "@mui/material";
+import {darken} from '@mui/material/styles';
+import {ColorSpace, HSL, OKLCH, sRGB} from "colorjs.io/fn";
+import {useContext} from "react";
 import './App.css'
 import {AnalysisLayout} from "./components/AnalysisLayout.tsx";
 import {AnalysisProvider} from "./contexts/AnalysisContext.tsx";
 import {BackgroundProvider} from "./contexts/BackgroundContext.tsx";
+import {SettingsContext, SettingsProvider} from "./contexts/SettingsContext.tsx";
 
 ColorSpace.register(OKLCH);
 ColorSpace.register(sRGB);
@@ -24,13 +27,15 @@ const Background = styled(Box)<BoxProps>(({theme}) => ({
   bottom: 0,
   left: 0,
   zIndex: -1,
-  backgroundColor: theme.palette.action.disabledBackground,
+  backgroundColor: theme.palette.mode == 'light'
+    ? darken(theme.palette.background.default, 0.1)
+    : darken(theme.palette.background.default, 0.3),
 }));
 
-function App() {
+function SubApp() {
+  const {theme} = useContext(SettingsContext);
   return (
-    <>
-      <CssBaseline/>
+    <ThemeProvider theme={theme}>
       <AnalysisProvider>
         <BackgroundProvider>
           <Background/>
@@ -39,6 +44,17 @@ function App() {
           </AppBox>
         </BackgroundProvider>
       </AnalysisProvider>
+    </ThemeProvider>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <CssBaseline/>
+      <SettingsProvider>
+        <SubApp/>
+      </SettingsProvider>
     </>
   )
 }
