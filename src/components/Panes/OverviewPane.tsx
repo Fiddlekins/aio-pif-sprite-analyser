@@ -27,7 +27,7 @@ export function OverviewPane() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (canvas && spriteInput?.imageData) {
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext('2d', {colorSpace: 'srgb'});
       if (ctx) {
         let imageData = spriteInput.imageData;
         if (highlightedColourState.render && highlightedColourState.highlightedColours.length) {

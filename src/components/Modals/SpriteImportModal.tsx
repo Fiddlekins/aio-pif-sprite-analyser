@@ -4,6 +4,7 @@ import {ChannelOrder, PngDecoder, TypedArray} from "image-in-browser";
 import {useCallback, useContext, useEffect, useState} from "react";
 import {useDropzone} from 'react-dropzone';
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
+import {getId} from "../../utils/getId.ts";
 import {upscaleImageData} from "../../utils/image/upscaleImageData.ts";
 import {parseName} from "../../utils/parseName.ts";
 import {StyledModal} from "./StyledModal.tsx";
@@ -31,7 +32,7 @@ const ProgressContainer = styled(Box)<BoxProps>(() => ({
 const canvas = document.createElement('canvas');
 canvas.width = 288;
 canvas.height = 288;
-const context = canvas.getContext('2d', {willReadFrequently: true});
+const context = canvas.getContext('2d', {willReadFrequently: true, colorSpace: 'srgb'});
 const acceptedDimensions = [
   {width: 96, height: 96, upscale: 3},
   {width: 288, height: 288, upscale: 1},
@@ -65,7 +66,7 @@ export function SpriteImportModal() {
       for (const {width, height, upscale} of acceptedDimensions) {
         if (image.width === width && image.height === height) {
           if (context) {
-            let imageData = context.createImageData(image.width, image.height);
+            let imageData = context.createImageData(image.width, image.height, {colorSpace: 'srgb'});
             const rawBytes = image.getBytes({
               order: ChannelOrder.rgba,
             });
@@ -84,12 +85,7 @@ export function SpriteImportModal() {
             if (upscale > 1) {
               imageData = upscaleImageData(imageData, upscale);
             }
-            const hashBuffer = await window.crypto.subtle.digest("SHA-256", imageData.data);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const id = hashArray
-              .map((b) => b.toString(16).padStart(2, "0"))
-              .join("")
-              .toUpperCase();
+            const id = await getId(imageData);
             setIsImportModalOpen(false);
             setSpriteInput(imageData, name, sourceUrl, pngInfo, id);
             const {headId, bodyId} = parseName(name);

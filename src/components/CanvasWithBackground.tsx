@@ -25,7 +25,7 @@ export function CanvasWithBackground(
   useEffect(() => {
     const backgroundCanvas = backgroundCanvasRef.current;
     if (backgroundCanvas && backgroundImageData) {
-      const ctx = backgroundCanvas.getContext('2d');
+      const ctx = backgroundCanvas.getContext('2d', {colorSpace: 'srgb'});
       if (ctx) {
         ctx.putImageData(backgroundImageData, 0, 0);
       }
