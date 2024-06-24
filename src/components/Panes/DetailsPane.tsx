@@ -47,7 +47,7 @@ export function DetailsPane() {
     dispatchHighlightedColourState,
   } = useContext(AnalysisContext);
 
-  const lastHandledSpriteId = useRef(-1);
+  const lastHandledSpriteId = useRef('');
   const [tabIndex, setTabIndex] = useState(0);
 
   const updateTabIndex = useCallback((tabIndexNew: number) => {

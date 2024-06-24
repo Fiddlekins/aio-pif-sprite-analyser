@@ -47,7 +47,7 @@ export function SpriteImportModal() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const importImage = useCallback((data: TypedArray, name: string | null, sourceUrl: string | null) => {
+  const importImage = useCallback(async (data: TypedArray, name: string | null, sourceUrl: string | null) => {
     const dataUint8 = new Uint8Array(data);
     const decoder = new PngDecoder();
     const image = decoder.decode({
@@ -84,8 +84,14 @@ export function SpriteImportModal() {
             if (upscale > 1) {
               imageData = upscaleImageData(imageData, upscale);
             }
+            const hashBuffer = await window.crypto.subtle.digest("SHA-256", imageData.data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const id = hashArray
+              .map((b) => b.toString(16).padStart(2, "0"))
+              .join("")
+              .toUpperCase();
             setIsImportModalOpen(false);
-            setSpriteInput(imageData, name, sourceUrl, pngInfo);
+            setSpriteInput(imageData, name, sourceUrl, pngInfo, id);
             const {headId, bodyId} = parseName(name);
             // If image name has no pokemon IDs then don't update, to allow users to pick pokemon and then iteratively post raw image data into the app
             if (headId || bodyId) {
@@ -152,7 +158,11 @@ export function SpriteImportModal() {
     if (blob) {
       blob.arrayBuffer()
         .then((data) => {
-          importImage(new Uint8Array(data), name, url);
+          return importImage(new Uint8Array(data), name, url);
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setError(err);
         });
     } else {
       setIsLoading(false);
@@ -180,8 +190,12 @@ export function SpriteImportModal() {
         const name = file.name;
         file.arrayBuffer()
           .then((data) => {
-            importImage(new Uint8Array(data), name, null);
+            return importImage(new Uint8Array(data), name, null);
           })
+          .catch((err) => {
+            setIsLoading(false);
+            setError(err);
+          });
       } else {
         setIsLoading(false);
         setError('File not recognised as an image');

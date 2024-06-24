@@ -20,7 +20,7 @@ export interface SpriteInput {
   imageData: ImageData;
   name: string | null;
   sourceUrl: string | null;
-  id: number;
+  id: string;
   info: PngInfo;
 }
 
@@ -118,7 +118,7 @@ export interface AnalysisContextInterface {
   isImportModalOpen: boolean;
   setIsImportModalOpen: (isImportModalOpenNew: boolean) => void;
   spriteInput: SpriteInput | null;
-  setSpriteInput: (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null, pngInfo: PngInfo) => void;
+  setSpriteInput: (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null, pngInfo: PngInfo, id: string) => void;
   headId: number | null;
   setHeadId: (headIdNew: number | null) => void;
   bodyId: number | null;
@@ -197,12 +197,12 @@ export function AnalysisProvider(
   const [highlightedColourState, dispatchHighlightedColourState] = useReducer(highlightedColourStateReducer, initialHighlightedColourState);
 
   const setSpriteInput = useCallback(
-    (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null, info: PngInfo) => {
+    (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null, info: PngInfo, id: string) => {
       setSpriteInputInternal({
         imageData: imageDataNew,
         name: nameNew,
         sourceUrl: sourceUrlNew,
-        id: Math.random(),
+        id,
         info,
       });
       dispatchHighlightedColourState({operation: 'reset'});
