@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import {MouseEvent, useCallback, useContext, useMemo, useState} from "react";
 import {ColorResult, SketchPicker} from 'react-color';
+import {PresetColor} from "react-color/lib/components/sketch/Sketch";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {getCssFromPixel} from "../../utils/image/conversion/getCssFromPixel.ts";
 import {getHex8FromPixel} from "../../utils/image/conversion/getHex8FromPixel.ts";
@@ -42,6 +43,17 @@ const StyledButton = styled(Button)<StyledButtonProps>(({theme, colour}) => ({
     backgroundColor: colour ? alpha(getCssFromPixel(colour), (colour[3] / 255) * 0.8) : undefined,
   }
 }));
+
+const pickerPresetColours: PresetColor[] = [
+  {color: '#FF0000', title: 'red'},
+  {color: '#ff7300', title: 'orange'},
+  {color: '#ffea00', title: 'yellow'},
+  {color: '#00FF00', title: 'green'},
+  {color: '#0000FF', title: 'blue'},
+  {color: '#5e00ff', title: 'indigo'},
+  {color: '#ff00ff', title: 'magenta'},
+  {color: '#00000000', title: 'transparent'},
+];
 
 function getStoredColourSpace() {
   return retrieveTyped<ColourSpace>('ColoursTable.colourSpace', (value: string | null) => {
@@ -208,6 +220,7 @@ export function ColoursPane() {
                 >
                   <SketchPicker
                     color={highlightColourForPicker}
+                    presetColors={pickerPresetColours}
                     onChange={onHighlightColourChanged}
                   />
                 </Popover>
