@@ -1,32 +1,19 @@
 import {ExpandMoreSharp} from "@mui/icons-material";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Button,
-  Paper,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography
-} from "@mui/material";
+import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@mui/material";
 import {ColorObject, HSL, HSV, to as convert} from "colorjs.io/fn";
-import {MouseEvent, useCallback, useContext, useMemo, useState} from "react";
+import {useCallback, useContext, useMemo} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {getFormattedPercent} from "../../utils/getFormattedPercent.ts";
 import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
 import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColourKey.ts";
 import {getPixelFromColourKey} from "../../utils/image/conversion/getPixelFromColourKey.ts";
-import {retrieveTyped} from "../../utils/localStorage/retrieveTyped.ts";
-import {storeString} from "../../utils/localStorage/storeString.ts";
 import {numberComparator} from "../../utils/numberComparator.ts";
 import {ColourSwatch} from "../ColourSwatch.tsx";
+import {ColourSpace} from "../Panes/types.ts";
 import {VerdictIcon} from "../VerdictIcon.tsx";
 import {LongRichTable} from "./RichTable/LongRichTable.tsx";
 import {RichTable} from "./RichTable/RichTable.tsx";
 import {Column, OrderDirection, RowComparator, RowDataBase} from "./RichTable/types.ts";
-
-type ColourSpace = 'RGB' | 'HSV' | 'HSL';
 
 const checkboxRelativeWidth = 2;
 
@@ -94,29 +81,20 @@ function getHeaderName(colourSpace: ColourSpace, channel: number) {
   }
 }
 
-function getStoredColourSpace() {
-  return retrieveTyped<ColourSpace>('ColoursTable.colourSpace', (value: string | null) => {
-    switch (value) {
-      case 'RGB':
-      case 'HSV':
-      case 'HSL':
-        return value;
-      default:
-        return 'RGB';
-    }
-  });
+export interface ColoursTableProps {
+  colourSpace: ColourSpace;
 }
 
-export function ColoursTable() {
+export function ColoursTable(
+  {
+    colourSpace
+  }: ColoursTableProps
+) {
   const {
     colourReport,
     highlightedColourState,
     dispatchHighlightedColourState,
-    highlightMode,
-    setHighlightMode,
   } = useContext(AnalysisContext);
-
-  const [colourSpace, setColourSpace] = useState<ColourSpace>(getStoredColourSpace());
 
   const {
     rowBackgroundDataUnsorted,
@@ -328,29 +306,6 @@ export function ColoursTable() {
     return orderDirection === 'asc' ? result : -result;
   }, [colourSpace]);
 
-  const handleColourSpaceChange = useCallback((
-    _event: MouseEvent<HTMLElement>,
-    colourSpaceNew: ColourSpace | null,
-  ) => {
-    if (colourSpaceNew) {
-      storeString('ColoursTable.colourSpace', colourSpaceNew);
-      setColourSpace(colourSpaceNew);
-    }
-  }, [setColourSpace])
-
-  const handleHighlightStyleChange = useCallback((
-    _event: MouseEvent<HTMLElement>,
-    highlightModeNew: string | null,
-  ) => {
-    if (highlightModeNew) {
-      setHighlightMode(highlightModeNew);
-    }
-  }, [setHighlightMode])
-
-  const onClearHighlights = useCallback(() => {
-    dispatchHighlightedColourState({operation: 'reset'});
-  }, [dispatchHighlightedColourState]);
-
   const onRowEnter = useCallback((rowData: RowData) => {
     dispatchHighlightedColourState({operation: 'hoverStart', colourKey: rowData.colourKey});
   }, [dispatchHighlightedColourState]);
@@ -365,53 +320,6 @@ export function ColoursTable() {
       flexDirection={'column'}
       gap={2}
     >
-      <Paper>
-        <Box
-          display={'flex'}
-          flexDirection={'row'}
-          gap={2}
-          p={2}
-        >
-          <ToggleButtonGroup
-            value={colourSpace}
-            exclusive
-            color="primary"
-            onChange={handleColourSpaceChange}
-          >
-            <ToggleButton value="RGB">
-              RGB
-            </ToggleButton>
-            <ToggleButton value="HSV">
-              HSV
-            </ToggleButton>
-            <ToggleButton value="HSL">
-              HSL
-            </ToggleButton>
-          </ToggleButtonGroup>
-          <ToggleButtonGroup
-            value={highlightMode}
-            exclusive
-            color="primary"
-            onChange={handleHighlightStyleChange}
-          >
-            <ToggleButton value="monotone">
-              Monotone
-            </ToggleButton>
-            <ToggleButton value="negative">
-              Negative
-            </ToggleButton>
-            <ToggleButton value="rotate">
-              Rotate
-            </ToggleButton>
-          </ToggleButtonGroup>
-          <Button
-            variant={'outlined'}
-            onClick={onClearHighlights}
-          >
-            Clear Highlights
-          </Button>
-        </Box>
-      </Paper>
       <Box>
         <Accordion>
           <AccordionSummary

@@ -1,8 +1,8 @@
 import {Box} from "@mui/material";
 import {useCallback, useContext, useState} from "react";
 import {AnalysisContext} from "../contexts/AnalysisContext.tsx";
-import {PokemonDisplay} from "./PokemonDisplay.tsx";
 import {PokemonSelectModal} from "./Modals/PokemonSelectModal.tsx";
+import {PokemonDisplay} from "./PokemonDisplay.tsx";
 
 export function PokemonSummary() {
   const {headId, bodyId, setHeadId, setBodyId} = useContext(AnalysisContext);

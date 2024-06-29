@@ -27,7 +27,9 @@ export function applyHighlightColours(
           let computedHighlightColour = computedHighlightColourMap.get(colourKey);
           if (!computedHighlightColour) {
             const colour = getColorObjectFromPixel(pixel);
-            set(colour, [ColorSpace.get("hsl"), "h"], (h) => h + 180);
+            set(colour, [ColorSpace.get("hsv"), "h"], (h) => h + 180);
+            set(colour, [ColorSpace.get("hsv"), "s"], 100);
+            set(colour, [ColorSpace.get("hsv"), "v"], 100);
             computedHighlightColour = getPixelFromColorObject(colour);
             computedHighlightColourMap.set(colourKey, computedHighlightColour);
           }

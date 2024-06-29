@@ -16,8 +16,6 @@ export function TransparencyPane() {
   const semiTransparentCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const colouredTransparencyCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  // console.log(transparencyReport);
-
   useEffect(() => {
     if (transparencyReport) {
       const semiTransparentCanvas = semiTransparentCanvasRef.current;

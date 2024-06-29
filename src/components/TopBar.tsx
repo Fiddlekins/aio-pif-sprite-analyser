@@ -30,6 +30,44 @@ const StyledToolbar = styled(Toolbar)<ToolbarProps>(({theme}) => ({
   maxWidth: theme.breakpoints.values.lg,
 }));
 
+const StyledLogo = styled('img')(() => ({
+  height: '3rem',
+  width: '3rem',
+  border: '2px solid white',
+}));
+
+const styledIconButtonSx = {width: '36.5px', height: '36.5px'};
+
+interface IdTooltipContentProps {
+  id: string;
+}
+
+function IdTooltipContent(
+  {
+    id,
+  }: IdTooltipContentProps
+) {
+  return (
+    <Fragment>
+      <Typography variant={'h6'}>
+        Sprite ID
+      </Typography>
+      <Box
+        display={'flex'}
+        flexDirection={'column'}
+        gap={2}
+      >
+        <Typography variant={'body2'}>
+          {'This is an ID generated from the raw pixel data of the sprite after it has been decoded and, if necessary, scaled to 288x288.'}
+        </Typography>
+        <Typography variant={'body2'}>
+          {`The full ID is:\n ${id}`}
+        </Typography>
+      </Box>
+    </Fragment>
+  );
+}
+
 export function TopBar() {
   const {setIsImportModalOpen, spriteInput} = useContext(AnalysisContext);
   const {setIsSettingsModalOpen} = useContext(SettingsContext);
@@ -53,7 +91,7 @@ export function TopBar() {
               alignItems={'center'}
               gap={2}
             >
-              <img src={logoUrl} alt={'logo'} style={{height: '3rem', width: '3rem', border: '2px solid white'}}/>
+              <StyledLogo src={logoUrl} alt={'logo'}/>
               <Typography variant={'h3'}>
                 APSA
               </Typography>
@@ -97,23 +135,7 @@ export function TopBar() {
                     </Typography>
                     <Tooltip
                       title={(
-                        <Fragment>
-                          <Typography variant={'h6'}>
-                            Sprite ID
-                          </Typography>
-                          <Box
-                            display={'flex'}
-                            flexDirection={'column'}
-                            gap={2}
-                          >
-                            <Typography variant={'body2'}>
-                              {'This is an ID generated from the raw pixel data of the sprite after it has been decoded and, if necessary, scaled to 288x288.'}
-                            </Typography>
-                            <Typography variant={'body2'}>
-                              {`The full ID is:\n ${spriteInput.id}`}
-                            </Typography>
-                          </Box>
-                        </Fragment>
+                        <IdTooltipContent id={spriteInput.id}/>
                       )}
                       placement={'bottom'}
                       arrow
@@ -145,7 +167,7 @@ export function TopBar() {
                 variant={'outlined'}
                 color="inherit"
                 onClick={openSettingsModal}
-                sx={{width: '36.5px', height: '36.5px'}}
+                sx={styledIconButtonSx}
               >
                 <SettingsSharp/>
               </StyledIconButton>

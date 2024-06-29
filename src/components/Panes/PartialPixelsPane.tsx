@@ -13,8 +13,6 @@ export function PartialPixelsPane() {
   } = useContext(AnalysisContext);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  // console.log(partialPixelReport);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     if (canvas && partialPixelReport) {

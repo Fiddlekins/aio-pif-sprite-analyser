@@ -1,6 +1,6 @@
 import {Box, BoxProps, CssBaseline, styled, ThemeProvider} from "@mui/material";
 import {darken} from '@mui/material/styles';
-import {ColorSpace, HSL, OKLCH, sRGB} from "colorjs.io/fn";
+import {ColorSpace, HSL, HSV, OKLCH, sRGB} from "colorjs.io/fn";
 import {useContext} from "react";
 import './App.css'
 import {AnalysisLayout} from "./components/AnalysisLayout.tsx";
@@ -11,6 +11,7 @@ import {SettingsContext, SettingsProvider} from "./contexts/SettingsContext.tsx"
 ColorSpace.register(OKLCH);
 ColorSpace.register(sRGB);
 ColorSpace.register(HSL);
+ColorSpace.register(HSV);
 
 const AppBox = styled(Box)<BoxProps>(() => ({
   position: 'fixed',

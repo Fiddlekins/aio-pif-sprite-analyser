@@ -3,6 +3,10 @@ import {useMemo} from "react";
 import {pokemonIdToDataMap} from "../data/pokemonIdToDataMap.ts";
 import {PokemonImage} from "./PokemonImage.tsx";
 
+const UnselectableSpan = styled('span')(() => ({
+  userSelect: 'none',
+}));
+
 const NonInteractiveImageBox = styled(Box)<BoxProps>(({theme}) => ({
   width: '96px',
   height: '96px',
@@ -76,7 +80,8 @@ export function PokemonDisplay(
     isFusion,
     pokemonId,
     headPokemonId,
-    bodyPokemonId]);
+    bodyPokemonId,
+  ]);
   let id: string | null = null;
   let name: string;
   let dexHref: string | null;
@@ -130,7 +135,7 @@ export function PokemonDisplay(
         </InteractiveImageBox>
       )}
       <Typography alignSelf={'start'}>
-        {name ? name : <span style={{userSelect: 'none'}}>&nbsp;</span>}
+        {name ? name : <UnselectableSpan>&nbsp;</UnselectableSpan>}
       </Typography>
     </StyledBox>
   );

@@ -1,4 +1,5 @@
 import {createContext, Dispatch, ReactNode, useCallback, useMemo, useReducer, useState} from 'react';
+import {getHex8FromPixel} from "../utils/image/conversion/getHex8FromPixel.ts";
 import {ColourReport, getColourReport} from "../utils/image/getColourReport.ts";
 import {getPartialPixelReport, PartialPixelReport} from "../utils/image/getPartialPixelReport.ts";
 import {getTransparencyReport, TransparencyReport} from "../utils/image/getTransparencyReport.ts";
@@ -6,6 +7,8 @@ import {retrieveString} from "../utils/localStorage/retrieveString.ts";
 import {storeString} from "../utils/localStorage/storeString.ts";
 
 const macroPixelSize = 3;
+
+const defaultHighlightColour = getHex8FromPixel([255, 0, 0, 255]);
 
 export interface PngInfo {
   colourType: number;
@@ -136,6 +139,8 @@ export interface AnalysisContextInterface {
   setColouredTransparencyOutputMode: (colouredTransparencyOutputModeNew: string) => void;
   highlightMode: string;
   setHighlightMode: (highlightModeNew: string) => void;
+  highlightColour: string;
+  setHighlightColour: (highlightColourNew: string) => void;
 }
 
 const defaultHandler = () => {
@@ -164,6 +169,8 @@ export const AnalysisContext = createContext<AnalysisContextInterface>({
   setColouredTransparencyOutputMode: defaultHandler,
   highlightMode: '',
   setHighlightMode: defaultHandler,
+  highlightColour: '',
+  setHighlightColour: defaultHandler,
 });
 
 export interface AnalysisProviderProps {
@@ -194,6 +201,10 @@ export function AnalysisProvider(
   const [highlightMode, setHighlightModeInternal] = useState<string>(
     retrieveString('AnalysisContext.highlightMode', 'monotone')
   );
+  const [highlightColour, setHighlightColourInternal] = useState<string>(
+    retrieveString('AnalysisContext.highlightColour', defaultHighlightColour)
+  );
+
   const [highlightedColourState, dispatchHighlightedColourState] = useReducer(highlightedColourStateReducer, initialHighlightedColourState);
 
   const setSpriteInput = useCallback(
@@ -263,6 +274,11 @@ export function AnalysisProvider(
     setHighlightModeInternal(highlightModeNew);
   }, [setHighlightModeInternal]);
 
+  const setHighlightColour = useCallback((highlightColourNew: string) => {
+    storeString('AnalysisContext.highlightColour', highlightColourNew);
+    setHighlightColourInternal(highlightColourNew);
+  }, [setHighlightColourInternal]);
+
   const value = useMemo(
     () => ({
       isImportModalOpen,
@@ -286,6 +302,8 @@ export function AnalysisProvider(
       setColouredTransparencyOutputMode,
       highlightMode,
       setHighlightMode,
+      highlightColour,
+      setHighlightColour,
     }),
     [
       isImportModalOpen,
@@ -309,6 +327,8 @@ export function AnalysisProvider(
       setColouredTransparencyOutputMode,
       highlightMode,
       setHighlightMode,
+      highlightColour,
+      setHighlightColour,
     ],
   );
 

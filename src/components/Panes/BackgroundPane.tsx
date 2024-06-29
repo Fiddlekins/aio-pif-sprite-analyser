@@ -2,6 +2,7 @@ import {TuneSharp} from "@mui/icons-material";
 import {alpha, Box, Button, ButtonProps, styled, Typography} from "@mui/material";
 import {ReactNode, useCallback, useContext, useEffect, useMemo, useRef} from "react";
 import {BackgroundContext, battlerBackgroundId} from "../../contexts/BackgroundContext.tsx";
+import {getCssFromPixel} from "../../utils/image/conversion/getCssFromPixel.ts";
 import {Pixel} from "../../utils/image/types.ts";
 import {StyledIconButton} from "../StyledIconButton.tsx";
 
@@ -13,13 +14,13 @@ interface StyledButtonProps extends ButtonProps {
 const StyledButton = styled(Button)<StyledButtonProps>(({theme, selected, colour}) => ({
   minWidth: 0,
   aspectRatio: 1,
-  backgroundColor: colour ? `rgba(${colour[0]},${colour[1]},${colour[2]},${colour[3]})` : undefined,
+  backgroundColor: colour ? getCssFromPixel(colour) : undefined,
   outlineColor: alpha(theme.palette.primary.main, 0.54),
   outlineStyle: 'solid',
   outlineWidth: selected ? '2px' : '0px',
   ['&:hover']: {
     outlineColor: alpha(theme.palette.primary.dark, 0.54),
-    backgroundColor: colour ? alpha(`rgba(${colour[0]},${colour[1]},${colour[2]},${colour[3]})`, 0.8) : undefined,
+    backgroundColor: colour ? alpha(getCssFromPixel(colour), (colour[3] / 255) * 0.8) : undefined,
   }
 }));
 
