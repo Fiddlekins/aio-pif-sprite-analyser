@@ -91,7 +91,9 @@ export function TopBar() {
               alignItems={'center'}
               gap={2}
             >
-              <StyledLogo src={logoUrl} alt={'logo'}/>
+              <Link href={'/'} sx={{lineHeight: 0}}>
+                <StyledLogo src={logoUrl} alt={'logo'}/>
+              </Link>
               <Typography variant={'h3'}>
                 APSA
               </Typography>
