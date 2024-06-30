@@ -35,6 +35,7 @@ const StyledButton = styled(Button, {
   minWidth: 0,
   aspectRatio: 1,
   backgroundColor: colour ? getCssFromRgbaColor(colour) : undefined,
+  outlineWidth: '1px',
   outlineColor: alpha(theme.palette.primary.main, 0.54),
   outlineStyle: 'solid',
   ['&:hover']: {
