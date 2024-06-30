@@ -1,14 +1,19 @@
 import {createContext, Dispatch, ReactNode, useCallback, useMemo, useReducer, useState} from 'react';
-import {getHex8FromPixel} from "../utils/image/conversion/getHex8FromPixel.ts";
+import {RgbaColor} from "react-colorful";
+import {getColourKeyFromPixel} from "../utils/image/conversion/getColourKeyFromPixel.ts";
+import {getPixelFromColourKey} from "../utils/image/conversion/getPixelFromColourKey.ts";
+import {getPixelFromRgbaColor} from "../utils/image/conversion/getPixelFromRgbaColor.ts";
+import {getRgbaColorFromPixel} from "../utils/image/conversion/getRgbaColorFromPixel.ts";
 import {ColourReport, getColourReport} from "../utils/image/getColourReport.ts";
 import {getPartialPixelReport, PartialPixelReport} from "../utils/image/getPartialPixelReport.ts";
 import {getTransparencyReport, TransparencyReport} from "../utils/image/getTransparencyReport.ts";
 import {retrieveString} from "../utils/localStorage/retrieveString.ts";
+import {retrieveTyped} from "../utils/localStorage/retrieveTyped.ts";
 import {storeString} from "../utils/localStorage/storeString.ts";
 
 const macroPixelSize = 3;
 
-const defaultHighlightColour = getHex8FromPixel([255, 0, 0, 255]);
+const defaultHighlightColour: RgbaColor = {r: 255, g: 0, b: 0, a: 1};
 
 export interface PngInfo {
   colourType: number;
@@ -38,7 +43,7 @@ interface HighlightedColourState {
 }
 
 interface HighlightedColourOperation {
-  operation: 'check' | 'uncheck' | 'hoverStart' | 'hoverEnd' | 'reset' | 'renderOn' | 'renderOff',
+  operation: 'check' | 'uncheck' | 'hoverStart' | 'hoverEnd' | 'reset' | 'renderOn' | 'renderOff';
   colourKey?: number;
 }
 
@@ -139,8 +144,8 @@ export interface AnalysisContextInterface {
   setColouredTransparencyOutputMode: (colouredTransparencyOutputModeNew: string) => void;
   highlightMode: string;
   setHighlightMode: (highlightModeNew: string) => void;
-  highlightColour: string;
-  setHighlightColour: (highlightColourNew: string) => void;
+  highlightColour: RgbaColor;
+  setHighlightColour: (highlightColourNew: RgbaColor) => void;
 }
 
 const defaultHandler = () => {
@@ -169,7 +174,7 @@ export const AnalysisContext = createContext<AnalysisContextInterface>({
   setColouredTransparencyOutputMode: defaultHandler,
   highlightMode: '',
   setHighlightMode: defaultHandler,
-  highlightColour: '',
+  highlightColour: defaultHighlightColour,
   setHighlightColour: defaultHandler,
 });
 
@@ -201,8 +206,15 @@ export function AnalysisProvider(
   const [highlightMode, setHighlightModeInternal] = useState<string>(
     retrieveString('AnalysisContext.highlightMode', 'monotone')
   );
-  const [highlightColour, setHighlightColourInternal] = useState<string>(
-    retrieveString('AnalysisContext.highlightColour', defaultHighlightColour)
+  const [highlightColour, setHighlightColourInternal] = useState<RgbaColor>(
+    retrieveTyped<RgbaColor>('AnalysisContext.highlightColour', (value) => {
+        const colourKey = parseInt(value || '');
+        if (!Number.isNaN(colourKey)) {
+          return getRgbaColorFromPixel(getPixelFromColourKey(colourKey));
+        }
+        return defaultHighlightColour;
+      }
+    )
   );
 
   const [highlightedColourState, dispatchHighlightedColourState] = useReducer(highlightedColourStateReducer, initialHighlightedColourState);
@@ -274,8 +286,8 @@ export function AnalysisProvider(
     setHighlightModeInternal(highlightModeNew);
   }, [setHighlightModeInternal]);
 
-  const setHighlightColour = useCallback((highlightColourNew: string) => {
-    storeString('AnalysisContext.highlightColour', highlightColourNew);
+  const setHighlightColour = useCallback((highlightColourNew: RgbaColor) => {
+    storeString('AnalysisContext.highlightColour', getColourKeyFromPixel(getPixelFromRgbaColor(highlightColourNew)).toString());
     setHighlightColourInternal(highlightColourNew);
   }, [setHighlightColourInternal]);
 

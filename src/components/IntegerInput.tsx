@@ -1,5 +1,6 @@
 import {ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
 import {
+  alpha,
   Box,
   Button,
   buttonClasses,
@@ -12,33 +13,39 @@ import {
 } from "@mui/material";
 import {ChangeEvent, useCallback} from "react";
 
-export const StyledTextField = styled(TextField)<TextFieldProps>(() => ({
+export const StyledTextField = styled(TextField)<TextFieldProps>(({theme}) => ({
   [`& .${inputBaseClasses.root}`]: {
     borderTopRightRadius: 0,
     borderBottomRightRadius: 0,
   },
-}));
-
-export const StyledButton = styled(Button)<ButtonProps>(({theme}) => ({
-  padding: 0,
-  minWidth: 0,
-  height: theme.spacing(2),
-  flexGrow: 1,
-  borderTopLeftRadius: 0,
-  borderBottomLeftRadius: 0,
-  borderLeftColor: 'transparent',
-  marginLeft: -1,
-  [`&.${buttonClasses.disabled}`]: {
-    borderRight: '1px solid rgba(0, 0, 0, 0.26)',
-    borderLeft: '1px solid transparent',
-    [`&:first-of-type`]: {
-      borderTop: '1px solid rgba(0, 0, 0, 0.26)',
-    },
-    [`&:last-of-type`]: {
-      borderBottom: '1px solid rgba(0, 0, 0, 0.26)',
-    },
+  [`& .Mui-disabled .MuiOutlinedInput-notchedOutline`]: {
+    borderColor: alpha(theme.palette.text.primary, 0.3),
   },
 }));
+
+export const StyledButton = styled(Button)<ButtonProps>(({theme}) => {
+  const disabledBorderColour = alpha(theme.palette.text.primary, 0.3);
+  return {
+    padding: 0,
+    minWidth: 0,
+    height: theme.spacing(2),
+    flexGrow: 1,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    borderLeftColor: 'transparent',
+    marginLeft: -1,
+    [`&.${buttonClasses.disabled}`]: {
+      borderRight: `1px solid ${disabledBorderColour}`,
+      borderLeft: '1px solid transparent',
+      [`&:first-of-type`]: {
+        borderTop: `1px solid ${disabledBorderColour}`,
+      },
+      [`&:last-of-type`]: {
+        borderBottom: `1px solid ${disabledBorderColour}`,
+      },
+    },
+  };
+});
 
 export interface NumberInputProps {
   label: string;

@@ -4,7 +4,7 @@ import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {getPngInfoSummary} from "../../utils/getPngInfoSummary.ts";
 import {applyHighlightColours} from "../../utils/image/applyHighlightColours.ts";
 import {getPixelFromColourKey} from "../../utils/image/conversion/getPixelFromColourKey.ts";
-import {getPixelFromHex8} from "../../utils/image/conversion/getPixelFromHex8.ts";
+import {getPixelFromRgbaColor} from "../../utils/image/conversion/getPixelFromRgbaColor.ts";
 import {CanvasWithBackground} from "../CanvasWithBackground.tsx";
 import {PngInfoTooltip} from "../PngInfoTooltip.tsx";
 import {PokemonSummary} from "../PokemonSummary.tsx";
@@ -30,7 +30,7 @@ export function OverviewPane() {
         let imageData = spriteInput.imageData;
         if (highlightedColourState.render && highlightedColourState.highlightedColours.length) {
           const coloursToHighlight = highlightedColourState.highlightedColours.map((colourKey) => getPixelFromColourKey(colourKey));
-          imageData = applyHighlightColours(imageData, coloursToHighlight, getPixelFromHex8(highlightColour), highlightMode);
+          imageData = applyHighlightColours(imageData, coloursToHighlight, getPixelFromRgbaColor(highlightColour), highlightMode);
         }
         ctx.putImageData(imageData, 0, 0);
       }

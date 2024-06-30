@@ -11,48 +11,45 @@ import {
   ToggleButtonGroup,
   Typography
 } from "@mui/material";
-import {MouseEvent, useCallback, useContext, useMemo, useState} from "react";
-import {ColorResult, SketchPicker} from 'react-color';
-import {PresetColor} from "react-color/lib/components/sketch/Sketch";
+import {MouseEvent, useCallback, useContext, useState} from "react";
+import {RgbaColor} from "react-colorful";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
-import {getCssFromPixel} from "../../utils/image/conversion/getCssFromPixel.ts";
-import {getHex8FromPixel} from "../../utils/image/conversion/getHex8FromPixel.ts";
-import {getPixelFromHex8} from "../../utils/image/conversion/getPixelFromHex8.ts";
-import {Pixel} from "../../utils/image/types.ts";
+import {getCssFromRgbaColor} from "../../utils/image/conversion/getCssFromRgbaColor.ts";
 import {retrieveTyped} from "../../utils/localStorage/retrieveTyped.ts";
 import {storeString} from "../../utils/localStorage/storeString.ts";
+import {ColourPicker} from "../ColourPicker/ColourPicker.tsx";
 import {ColoursTable} from "../Tables/ColoursTable.tsx";
 import {SimilarityTable} from "../Tables/SimilarityTable.tsx";
 import {VerdictIcon} from "../VerdictIcon.tsx";
 import {ColourSpace} from "./types.ts";
 
 interface StyledButtonProps extends ButtonProps {
-  colour: Pixel | null;
+  colour: RgbaColor | null;
 }
 
 const StyledButton = styled(Button)<StyledButtonProps>(({theme, colour}) => ({
   minWidth: '24px',
   width: '24px',
   height: '24px',
-  backgroundColor: colour ? getCssFromPixel(colour) : undefined,
+  backgroundColor: colour ? getCssFromRgbaColor(colour) : undefined,
   outlineColor: alpha(theme.palette.primary.main, 0.54),
   outlineStyle: 'solid',
   outlineWidth: '1px',
   ['&:hover']: {
     outlineColor: alpha(theme.palette.primary.dark, 0.54),
-    backgroundColor: colour ? alpha(getCssFromPixel(colour), (colour[3] / 255) * 0.8) : undefined,
+    backgroundColor: colour ? alpha(getCssFromRgbaColor(colour), colour.a * 0.8) : undefined,
   }
 }));
 
-const pickerPresetColours: PresetColor[] = [
-  {color: '#FF0000', title: 'red'},
-  {color: '#ff7300', title: 'orange'},
-  {color: '#ffea00', title: 'yellow'},
-  {color: '#00FF00', title: 'green'},
-  {color: '#0000FF', title: 'blue'},
-  {color: '#5e00ff', title: 'indigo'},
-  {color: '#ff00ff', title: 'magenta'},
-  {color: '#00000000', title: 'transparent'},
+const pickerPresetColours: RgbaColor[] = [
+  {r: 255, g: 0, b: 0, a: 1},
+  {r: 255, g: 115, b: 0, a: 1},
+  {r: 255, g: 234, b: 0, a: 1},
+  {r: 0, g: 255, b: 0, a: 1},
+  {r: 0, g: 0, b: 255, a: 1},
+  {r: 94, g: 0, b: 255, a: 1},
+  {r: 255, g: 0, b: 255, a: 1},
+  {r: 0, g: 0, b: 0, a: 0},
 ];
 
 function getStoredColourSpace() {
@@ -80,24 +77,6 @@ export function ColoursPane() {
 
   const [colourSpace, setColourSpace] = useState<ColourSpace>(getStoredColourSpace());
   const [colourPickerAnchorEl, setColourPickerAnchorEl] = useState<HTMLButtonElement | null>(null);
-
-  const {
-    highlightColourPixel,
-    highlightColourForPicker,
-  } = useMemo(() => {
-    const highlightColourPixelNew = getPixelFromHex8(highlightColour);
-    const [r, g, b, a] = highlightColourPixelNew;
-    const highlightColourForPickerNew = {
-      r,
-      g,
-      b,
-      a: a / 255,
-    };
-    return {
-      highlightColourPixel: highlightColourPixelNew,
-      highlightColourForPicker: highlightColourForPickerNew,
-    }
-  }, [highlightColour]);
 
   const handleColourSpaceChange = useCallback((
     _event: MouseEvent<HTMLElement>,
@@ -129,11 +108,6 @@ export function ColoursPane() {
   const onHighlightColourSelectorClose = useCallback(() => {
     setColourPickerAnchorEl(null);
   }, [setColourPickerAnchorEl]);
-
-  const onHighlightColourChanged = useCallback((colour: ColorResult) => {
-    const {r, g, b, a} = colour.rgb;
-    setHighlightColour(getHex8FromPixel([r, g, b, (a ?? 1) * 255]));
-  }, [setHighlightColour]);
 
   return (
     <Box
@@ -203,7 +177,7 @@ export function ColoursPane() {
               >
                 Monotone
                 <StyledButton
-                  colour={highlightColourPixel}
+                  colour={highlightColour}
                   component={'div'}
                   onClick={onHighlightColourButtonClick}
                 >
@@ -218,11 +192,15 @@ export function ColoursPane() {
                     horizontal: 'left',
                   }}
                 >
-                  <SketchPicker
-                    color={highlightColourForPicker}
-                    presetColors={pickerPresetColours}
-                    onChange={onHighlightColourChanged}
-                  />
+                  <Box
+                    p={1}
+                  >
+                    <ColourPicker
+                      colour={highlightColour}
+                      onColourChange={setHighlightColour}
+                      presetColours={pickerPresetColours}
+                    />
+                  </Box>
                 </Popover>
               </Box>
             </ToggleButton>

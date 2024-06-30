@@ -1,6 +1,21 @@
-import {createContext, ReactNode, useCallback, useContext, useEffect, useMemo, useState} from 'react';
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+  useState
+} from 'react';
+import {RgbaColor} from "react-colorful";
 import {BattlerTime, defaultBattlerMap} from "../data/battleAssetManifest.ts";
 import {pokemonIdToDataMap} from "../data/pokemonIdToDataMap.ts";
+import {getColourKeyFromPixel} from "../utils/image/conversion/getColourKeyFromPixel.ts";
+import {getPixelFromColourKey} from "../utils/image/conversion/getPixelFromColourKey.ts";
+import {getPixelFromRgbaColor} from "../utils/image/conversion/getPixelFromRgbaColor.ts";
+import {getRgbaColorFromPixel} from "../utils/image/conversion/getRgbaColorFromPixel.ts";
 import {generateBackgroundFillImageData} from "../utils/image/generateBackgroundFillImageData.ts";
 import {generateBattlerImageData} from "../utils/image/generateBattlerImageData.ts";
 import {BackgroundSolidFill, BattlerConfig} from "../utils/image/types.ts";
@@ -12,11 +27,11 @@ import {AnalysisContext} from "./AnalysisContext.tsx";
 export const battlerBackgroundId = 'battler';
 
 const defaultBackgroundSolidFills: BackgroundSolidFill[] = [
-  {id: 'white', fill: [255, 255, 255, 255]},
-  {id: 'lightgrey', fill: [196, 196, 196, 255]},
-  {id: 'discord', fill: [49, 51, 56, 255]},
-  {id: 'black', fill: [0, 0, 0, 255]},
-  {id: 'magenta', fill: [255, 0, 255, 255]},
+  {id: 'white', fill: {r: 255, g: 255, b: 255, a: 1}},
+  {id: 'lightgrey', fill: {r: 196, g: 196, b: 196, a: 1}},
+  {id: 'discord', fill: {r: 49, g: 51, b: 56, a: 1}},
+  {id: 'black', fill: {r: 0, g: 0, b: 0, a: 1}},
+  {id: 'magenta', fill: {r: 255, g: 0, b: 255, a: 1}},
 ];
 
 const defaultBattlerConfig: BattlerConfig = {
@@ -28,6 +43,67 @@ const defaultBattlerConfig: BattlerConfig = {
   shadowSize: 3,
   altitude: 0,
 };
+
+const initialCustomBackgroundFills = retrieveTyped<RgbaColor[]>('BackgroundContext.customBackgroundFills', (value) => {
+  const customBackgroundFillsNew: RgbaColor[] = [];
+  const match = value?.match(/\d+/g);
+  if (match) {
+    match.forEach((colourKeyString) => {
+      const colourKey = parseInt(colourKeyString);
+      if (!Number.isNaN(colourKey)) {
+        customBackgroundFillsNew.push(getRgbaColorFromPixel(getPixelFromColourKey(colourKey)));
+      }
+    })
+  }
+  return customBackgroundFillsNew;
+});
+
+interface CustomBackgroundFillsOperation {
+  operation: 'add' | 'remove' | 'update';
+  backgroundId?: string;
+  colour?: RgbaColor;
+}
+
+function customBackgroundFillsReducer(
+  state: RgbaColor[],
+  action: CustomBackgroundFillsOperation,
+) {
+  let stateNew: RgbaColor[] = state;
+  switch (action.operation) {
+    case "add": {
+      if (action.colour) {
+        stateNew = [...state, action.colour];
+      }
+      break;
+    }
+    case "remove": {
+      if (action.backgroundId) {
+        const [, indexString] = action.backgroundId.split('_');
+        const index = parseInt(indexString, 10);
+        stateNew = state.filter((_, backgroundIndex) => {
+          return backgroundIndex !== index;
+        });
+      }
+      break;
+    }
+    case "update": {
+      if (action.backgroundId && typeof action.colour) {
+        const [, indexString] = action.backgroundId.split('_');
+        const index = parseInt(indexString, 10);
+        stateNew = state.map((colour, backgroundIndex) => {
+          return backgroundIndex === index ? action.colour ?? colour : colour;
+        });
+      }
+      break;
+    }
+    default:
+      throw new Error(`Invalid operation`);
+  }
+  storeString('BackgroundContext.customBackgroundFills', stateNew.map(colour => {
+    return getColourKeyFromPixel(getPixelFromRgbaColor(colour));
+  }).join(','));
+  return stateNew;
+}
 
 function loadBattlerConfig() {
   return retrieveTyped<BattlerConfig>('BackgroundContext.overrideConfig', (value) => {
@@ -78,6 +154,7 @@ export interface BackgroundContextInterface {
   setBattlerMap: (battlerMapNew: string) => void;
   battlerTime: BattlerTime;
   setBattlerTime: (battlerTimeNew: BattlerTime) => void;
+  dispatchCustomBackgroundFills: Dispatch<CustomBackgroundFillsOperation>;
 }
 
 const defaultHandler = () => {
@@ -101,6 +178,7 @@ export const BackgroundContext = createContext<BackgroundContextInterface>({
   setBattlerMap: defaultHandler,
   battlerTime: 'day',
   setBattlerTime: defaultHandler,
+  dispatchCustomBackgroundFills: defaultHandler,
 });
 
 export interface BackgroundProviderProps {
@@ -117,7 +195,6 @@ export function BackgroundProvider(
 ) {
   const {bodyId, spriteInput} = useContext(AnalysisContext);
   const [isBackgroundModalOpen, setIsBackgroundModalOpen] = useState<boolean>(false);
-  const [backgroundSolidFills] = useState<BackgroundSolidFill[]>(defaultBackgroundSolidFills);
   const [backgroundId, setBackgroundIdInternal] = useState<string>(
     retrieveString('BackgroundContext.backgroundId', 'discord')
   );
@@ -143,6 +220,20 @@ export function BackgroundProvider(
   );
   const [battlerSceneBackgroundImageData, setbattlerSceneBackgroundImageData] = useState<ImageData | null>(null);
   const [battlerSceneImageData, setbattlerSceneImageData] = useState<ImageData | null>(null);
+  const [customBackgroundFills, dispatchCustomBackgroundFills] = useReducer(customBackgroundFillsReducer, initialCustomBackgroundFills);
+
+  const backgroundSolidFills = useMemo(() => {
+    return [
+      ...defaultBackgroundSolidFills,
+      ...customBackgroundFills.map((colour, index) => {
+        return {
+          id: `custom_${index}`,
+          fill: colour,
+          custom: true,
+        };
+      }),
+    ];
+  }, [customBackgroundFills]);
 
   useEffect(() => {
     let config: BattlerConfig;
@@ -194,12 +285,12 @@ export function BackgroundProvider(
       return null;
     } else {
       const fill = backgroundSolidFills.find((fill) => {
-        return fill.id === backgroundId
+        return fill.id === backgroundId;
       })
       if (!fill) {
         return null;
       }
-      return generateBackgroundFillImageData(fill.fill);
+      return generateBackgroundFillImageData(getPixelFromRgbaColor(fill.fill));
     }
   }, [backgroundSolidFills, backgroundId]);
 
@@ -269,6 +360,7 @@ export function BackgroundProvider(
     setBattlerTimeInternal(battlerTimeNew);
   }, [setBattlerTimeInternal]);
 
+
   const value = useMemo(
     () => ({
       isBackgroundModalOpen,
@@ -287,6 +379,7 @@ export function BackgroundProvider(
       setBattlerMap,
       battlerTime,
       setBattlerTime,
+      dispatchCustomBackgroundFills,
     }),
     [
       isBackgroundModalOpen,
@@ -305,6 +398,7 @@ export function BackgroundProvider(
       setBattlerMap,
       battlerTime,
       setBattlerTime,
+      dispatchCustomBackgroundFills,
     ],
   );
 

@@ -1,0 +1,29 @@
+.colour-picker {
+    .react-colorful {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .react-colorful__pointer {
+        height: 10px;
+        width: 10px;
+    }
+    .react-colorful__saturation {
+        border-radius: 0;
+    }
+    .react-colorful__hue {
+        height: 10px;
+        width: 172px;
+    }
+    .react-colorful__alpha {
+        height: 10px;
+        width: 172px;
+        background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill-opacity=".05"><path d="M5 0h5v5H5zM0 5h5v5H0z"/></svg>');
+    }
+    .react-colorful__first-control {
+        border-radius: 0;
+    }
+    .react-colorful__last-control {
+        border-radius: 0;
+    }
+}

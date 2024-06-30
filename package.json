@@ -17,12 +17,11 @@
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.19",
     "@mui/material": "^5.15.19",
-    "@types/react-color": "^3.0.12",
     "colorjs.io": "^0.5.0",
     "gh-pages": "^6.1.1",
     "image-in-browser": "^2.7.1",
     "react": "^18.2.0",
-    "react-color": "^2.19.3",
+    "react-colorful": "^5.6.1",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-virtuoso": "^4.7.11"

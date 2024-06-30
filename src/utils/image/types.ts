@@ -1,3 +1,5 @@
+import {RgbaColor} from "react-colorful";
+
 export type Pixel = [r: number, g: number, b: number, a: number];
 
 export type Verdict = 'success' | 'warning' | 'error';
@@ -26,7 +28,8 @@ export interface TransparencyAnalysis {
 
 export interface BackgroundSolidFill {
   id: string;
-  fill: Pixel;
+  fill: RgbaColor;
+  custom?: boolean;
 }
 
 export interface BattlerConfig {
