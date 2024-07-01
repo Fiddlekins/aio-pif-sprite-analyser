@@ -91,7 +91,7 @@ export function TopBar() {
               alignItems={'center'}
               gap={2}
             >
-              <Link href={'/'} sx={{lineHeight: 0}}>
+              <Link href={`${window.location.origin}${window.location.pathname}`} sx={{lineHeight: 0}}>
                 <StyledLogo src={logoUrl} alt={'logo'}/>
               </Link>
               <Typography variant={'h3'}>
