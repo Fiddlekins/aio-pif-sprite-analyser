@@ -1,9 +1,9 @@
 import {ColorSpace, set} from "colorjs.io/fn";
-import {cloneImageData} from "./cloneImageData.ts";
+import {cloneImageData} from "./manipulation/cloneImageData.ts";
 import {getColorObjectFromPixel} from "./conversion/getColorObjectFromPixel.ts";
 import {getColourKeyFromPixel} from "./conversion/getColourKeyFromPixel.ts";
 import {getPixelFromColorObject} from "./conversion/getPixelFromColorObject.ts";
-import {scan} from "./scan.ts";
+import {scan} from "./manipulation/scan.ts";
 import {Pixel} from "./types.ts";
 
 export function applyHighlightColours(

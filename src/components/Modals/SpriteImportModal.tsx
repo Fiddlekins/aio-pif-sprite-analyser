@@ -1,11 +1,12 @@
 import {ContentPasteGoSharp} from "@mui/icons-material";
 import {Alert, Box, BoxProps, Button, CircularProgress, styled, Typography} from "@mui/material";
-import {ChannelOrder, PngDecoder, TypedArray} from "image-in-browser";
+import {TypedArray} from "image-in-browser";
 import {useCallback, useContext, useEffect, useState} from "react";
 import {useDropzone} from 'react-dropzone';
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {getId} from "../../utils/getId.ts";
-import {upscaleImageData} from "../../utils/image/upscaleImageData.ts";
+import {getDecodedPng} from "../../utils/image/getDecodedPng.ts";
+import {upscaleImageData} from "../../utils/image/manipulation/upscaleImageData.ts";
 import {parseName} from "../../utils/parseName.ts";
 import {StyledModal} from "./StyledModal.tsx";
 
@@ -29,10 +30,6 @@ const ProgressContainer = styled(Box)<BoxProps>(() => ({
   justifyContent: 'center',
 }));
 
-const canvas = document.createElement('canvas');
-canvas.width = 288;
-canvas.height = 288;
-const context = canvas.getContext('2d', {willReadFrequently: true, colorSpace: 'srgb'});
 const acceptedDimensions = [
   {width: 96, height: 96, upscale: 3},
   {width: 288, height: 288, upscale: 1},
@@ -49,63 +46,47 @@ export function SpriteImportModal() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const importImage = useCallback(async (data: TypedArray, name: string | null, sourceUrl: string | null) => {
-    const dataUint8 = new Uint8Array(data);
-    const decoder = new PngDecoder();
-    const image = decoder.decode({
-      bytes: dataUint8,
-    });
-    if (image) {
-      const pngInfo = {
-        colourType: decoder.info.colorType || 0,
-        bitsPerChannel: decoder.info.bits,
-        channelCount: image.numChannels,
-        fileSize: data.length,
-        width: image.width,
-        height: image.height,
-      };
-      for (const {width, height, upscale} of acceptedDimensions) {
-        if (image.width === width && image.height === height) {
-          if (context) {
-            let imageData = context.createImageData(image.width, image.height, {colorSpace: 'srgb'});
-            const rawBytes = image.getBytes({
-              order: ChannelOrder.rgba,
-            });
-            if (image.palette) {
-              for (let pixelIndex = 0; pixelIndex < rawBytes.length; pixelIndex++) {
-                const paletteIndex = rawBytes[pixelIndex];
-                const offset = pixelIndex * 4;
-                imageData.data[offset] = image.palette.get(paletteIndex, 0);
-                imageData.data[offset + 1] = image.palette.get(paletteIndex, 1);
-                imageData.data[offset + 2] = image.palette.get(paletteIndex, 2);
-                imageData.data[offset + 3] = image.palette.get(paletteIndex, 3);
-              }
-            } else {
-              imageData.data.set(rawBytes);
-            }
-            if (upscale > 1) {
-              imageData = upscaleImageData(imageData, upscale);
-            }
-            const id = await getId(imageData);
-            setIsImportModalOpen(false);
-            setSpriteInput(imageData, name, sourceUrl, pngInfo, id);
-            const {headId, bodyId} = parseName(name);
-            // If image name has no pokemon IDs then don't update, to allow users to pick pokemon and then iteratively post raw image data into the app
-            if (headId || bodyId) {
-              setHeadId(headId);
-              setBodyId(bodyId);
-            }
-            setError(null);
-            setIsLoading(false);
-            return;
-          }
-        }
-      }
-      setError(`File is invalid size: ${image.width}x${image.height}`);
+    let decodedPngResult;
+    try {
+      decodedPngResult = getDecodedPng(data);
+    } catch (err: unknown) {
+      console.log(err);
+      const error = err as Error;
+      setError(error.message);
       setIsLoading(false);
-    } else {
-      setError(`File is invalid`);
-      setIsLoading(false);
+      return;
     }
+    const {decoder, numChannels} = decodedPngResult;
+    let {imageData} = decodedPngResult;
+    const pngInfo = {
+      colourType: decoder.info.colorType || 0,
+      bitsPerChannel: decoder.info.bits,
+      channelCount: numChannels,
+      fileSize: data.length,
+      width: imageData.width,
+      height: imageData.height,
+    };
+    for (const {width, height, upscale} of acceptedDimensions) {
+      if (imageData.width === width && imageData.height === height) {
+        if (upscale > 1) {
+          imageData = upscaleImageData(imageData, upscale);
+        }
+        const id = await getId(imageData);
+        setIsImportModalOpen(false);
+        setSpriteInput(imageData, name, sourceUrl, pngInfo, id);
+        const {headId, bodyId} = parseName(name);
+        // If image name has no pokemon IDs then don't update, to allow users to pick pokemon and then iteratively post raw image data into the app
+        if (headId || bodyId) {
+          setHeadId(headId);
+          setBodyId(bodyId);
+        }
+        setError(null);
+        setIsLoading(false);
+        return;
+      }
+    }
+    setError(`File is invalid size: ${imageData.width}x${imageData.height}`);
+    setIsLoading(false);
   }, [setError, setBodyId, setHeadId, setIsImportModalOpen, setSpriteInput]);
 
   const executePaste = useCallback(async () => {

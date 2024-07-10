@@ -23,6 +23,7 @@ import {retrieveString} from "../utils/localStorage/retrieveString.ts";
 import {retrieveTyped} from "../utils/localStorage/retrieveTyped.ts";
 import {storeString} from "../utils/localStorage/storeString.ts";
 import {AnalysisContext} from "./AnalysisContext.tsx";
+import {SettingsContext} from "./SettingsContext.tsx";
 
 export const battlerBackgroundId = 'battler';
 
@@ -193,6 +194,7 @@ export function BackgroundProvider(
     children,
   }: BackgroundProviderProps
 ) {
+  const {canvasAccelerationEnabled} = useContext(SettingsContext);
   const {bodyId, spriteInput} = useContext(AnalysisContext);
   const [isBackgroundModalOpen, setIsBackgroundModalOpen] = useState<boolean>(false);
   const [backgroundId, setBackgroundIdInternal] = useState<string>(
@@ -264,7 +266,7 @@ export function BackgroundProvider(
       }
     }
 
-    generateBattlerImageData(config, battlerMap, battlerTime, spriteInput?.imageData || null)
+    generateBattlerImageData(config, battlerMap, battlerTime, spriteInput?.imageData || null, canvasAccelerationEnabled)
       .then((battlerImageData) => {
         setbattlerSceneBackgroundImageData(battlerImageData.backgroundImageData);
         setbattlerSceneImageData(battlerImageData.battlerSceneImageData);
@@ -278,6 +280,7 @@ export function BackgroundProvider(
     battlerMap,
     battlerTime,
     spriteInput?.imageData,
+    canvasAccelerationEnabled,
   ]);
 
   const fillBackgroundImageData = useMemo(() => {

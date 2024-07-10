@@ -1,4 +1,4 @@
-import {Pixel} from "./types.ts";
+import {Pixel} from "../types.ts";
 
 export function scan(
   imageData: ImageData,

@@ -1,4 +1,4 @@
-import {Pixel} from "./types.ts";
+import {Pixel} from "../types.ts";
 
 export function setPixel(imageData: ImageData, pixel: Pixel, x: number, y: number) {
   const pixelIndex = (y * imageData.width) + x;

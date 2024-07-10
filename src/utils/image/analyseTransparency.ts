@@ -1,6 +1,6 @@
-import {cloneImageData} from "./cloneImageData.ts";
-import {scan} from "./scan.ts";
-import {setPixel} from "./setPixel.ts";
+import {cloneImageData} from "./manipulation/cloneImageData.ts";
+import {scan} from "./manipulation/scan.ts";
+import {setPixel} from "./manipulation/setPixel.ts";
 import {Pixel, TransparencyAnalysis} from "./types.ts";
 
 const colourGreen: Pixel = [0, 255, 0, 255];

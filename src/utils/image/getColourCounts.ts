@@ -1,5 +1,5 @@
 import {getColourKeyFromPixel} from "./conversion/getColourKeyFromPixel.ts";
-import {scan} from "./scan.ts";
+import {scan} from "./manipulation/scan.ts";
 
 export function getColourCounts(imageData: ImageData, x: number, y: number, width: number, height: number) {
   const colourCounts = new Map<number, number>();

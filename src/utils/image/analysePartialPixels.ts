@@ -1,8 +1,8 @@
-import {cloneImageData} from "./cloneImageData.ts";
+import {cloneImageData} from "./manipulation/cloneImageData.ts";
 import {getColourKeyFromPixel} from "./conversion/getColourKeyFromPixel.ts";
 import {getColourCounts} from "./getColourCounts.ts";
 import {getRankedColourCounts} from "./getRankedColourCounts.ts";
-import {scan} from "./scan.ts";
+import {scan} from "./manipulation/scan.ts";
 import {PartialPixelAnalysis, Pixel} from "./types.ts";
 
 const colourPure: Pixel = [0, 255, 0, 255];

@@ -189,7 +189,7 @@ export function BackgroundModal() {
           display={'flex'}
           flexDirection={'row'}
           alignItems={'center'}
-          gap={1}
+          gap={0.5}
         >
           <Typography variant={'h6'}>
             Sprite Position
