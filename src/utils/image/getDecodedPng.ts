@@ -1,10 +1,18 @@
 import {ChannelOrder, PngDecoder, TypedArray} from "image-in-browser";
 import {createImageData} from "./manipulation/createImageData.ts";
 
-interface DecodedPngResult {
-  decoder: PngDecoder;
+export interface PngInfo {
+  colourType: number;
+  bitsPerChannel: number;
+  channelCount: number;
+  fileSize: number;
+  width: number;
+  height: number;
+}
+
+export interface DecodedPngResult {
   imageData: ImageData;
-  numChannels: number;
+  info: PngInfo;
 }
 
 export function getDecodedPng(data: TypedArray): DecodedPngResult {
@@ -44,9 +52,16 @@ export function getDecodedPng(data: TypedArray): DecodedPngResult {
   } else {
     imageData.data.set(rawBytes);
   }
+  const info: PngInfo = {
+    colourType: decoder.info.colorType || 0,
+    bitsPerChannel: decoder.info.bits,
+    channelCount: image.numChannels,
+    fileSize: data.length,
+    width: imageData.width,
+    height: imageData.height,
+  };
   return {
-    decoder,
     imageData,
-    numChannels: image.numChannels,
+    info,
   };
 }

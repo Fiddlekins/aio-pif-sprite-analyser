@@ -56,16 +56,8 @@ export function SpriteImportModal() {
       setIsLoading(false);
       return;
     }
-    const {decoder, numChannels} = decodedPngResult;
+    const {info: pngInfo} = decodedPngResult;
     let {imageData} = decodedPngResult;
-    const pngInfo = {
-      colourType: decoder.info.colorType || 0,
-      bitsPerChannel: decoder.info.bits,
-      channelCount: numChannels,
-      fileSize: data.length,
-      width: imageData.width,
-      height: imageData.height,
-    };
     for (const {width, height, upscale} of acceptedDimensions) {
       if (imageData.width === width && imageData.height === height) {
         if (upscale > 1) {
@@ -89,7 +81,7 @@ export function SpriteImportModal() {
     setIsLoading(false);
   }, [setError, setBodyId, setHeadId, setIsImportModalOpen, setSpriteInput]);
 
-  const executePaste = useCallback(async () => {
+  const executePaste = useCallback(async (files: File[] | null) => {
     const clipboardContents = await navigator.clipboard.read();
     let blob: Blob | null = null;
     let name: string | null = null;
@@ -142,15 +134,33 @@ export function SpriteImportModal() {
           setError(err);
         });
     } else {
+      // clipboardData can handle copied system files whereas the ClipboardAPI approach cannot
+      if (files) {
+        for (const file of files) {
+          if (file.type.startsWith('image')) {
+            const name = file.name;
+            file.arrayBuffer()
+              .then((data) => {
+                return importImage(new Uint8Array(data), name, null);
+              })
+              .catch((err) => {
+                setIsLoading(false);
+                setError(err);
+              });
+            return;
+          }
+        }
+      }
       setIsLoading(false);
       setError('No suitable data found on clipboard');
     }
   }, [importImage, setIsLoading]);
 
   useEffect(() => {
-    const pasteHandler = () => {
+    const pasteHandler = (e: ClipboardEvent) => {
       if (isImportModalOpen) {
-        executePaste().catch(console.error);
+        const files = e.clipboardData ? Array.from(e.clipboardData.files) : null;
+        executePaste(files).catch(console.error);
       }
     }
     window.addEventListener('paste', pasteHandler)
@@ -204,7 +214,9 @@ export function SpriteImportModal() {
         </DropBox>
         <Button
           variant={'outlined'}
-          onClick={executePaste}
+          onClick={() => {
+            executePaste(null)
+          }}
           sx={{minWidth: '60px', width: '60px'}}
         >
           {isLoading ? (

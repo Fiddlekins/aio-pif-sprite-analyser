@@ -69,12 +69,16 @@ function IdTooltipContent(
 }
 
 export function TopBar() {
-  const {setIsImportModalOpen, spriteInput} = useContext(AnalysisContext);
+  const {setIsImportModalOpen, setIsExportModalOpen, spriteInput} = useContext(AnalysisContext);
   const {setIsSettingsModalOpen} = useContext(SettingsContext);
 
   const openImportModal = useCallback(() => {
     setIsImportModalOpen(true);
   }, [setIsImportModalOpen]);
+
+  const openExportModal = useCallback(() => {
+    setIsExportModalOpen(true);
+  }, [setIsExportModalOpen]);
 
   const openSettingsModal = useCallback(() => {
     setIsSettingsModalOpen(true);
@@ -164,6 +168,13 @@ export function TopBar() {
                 onClick={openImportModal}
               >
                 Import
+              </Button>
+              <Button
+                color="inherit"
+                variant={'outlined'}
+                onClick={openExportModal}
+              >
+                Export
               </Button>
               <StyledIconButton
                 variant={'outlined'}

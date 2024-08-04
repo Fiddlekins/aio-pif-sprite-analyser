@@ -20,6 +20,7 @@ const OverviewBox = styled(Box)<BoxProps>(({theme}) => ({
 
 export function OverviewPane() {
   const {spriteInput, highlightedColourState, highlightMode, highlightColour} = useContext(AnalysisContext);
+  const canCopyCanvas = Boolean(highlightedColourState.render && highlightedColourState.highlightedColours.length);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -54,7 +55,7 @@ export function OverviewPane() {
         <PokemonSummary/>
       </Box>
       <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
-        <CanvasWithBackground canvasRef={canvasRef}/>
+        <CanvasWithBackground canvasRef={canvasRef} canCopy={canCopyCanvas}/>
       </Box>
       <BackgroundPane/>
     </OverviewBox>

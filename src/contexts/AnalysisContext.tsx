@@ -5,6 +5,7 @@ import {getPixelFromColourKey} from "../utils/image/conversion/getPixelFromColou
 import {getPixelFromRgbaColor} from "../utils/image/conversion/getPixelFromRgbaColor.ts";
 import {getRgbaColorFromPixel} from "../utils/image/conversion/getRgbaColorFromPixel.ts";
 import {ColourReport, getColourReport} from "../utils/image/getColourReport.ts";
+import {PngInfo} from "../utils/image/getDecodedPng.ts";
 import {getPartialPixelReport, PartialPixelReport} from "../utils/image/getPartialPixelReport.ts";
 import {getTransparencyReport, TransparencyReport} from "../utils/image/getTransparencyReport.ts";
 import {retrieveString} from "../utils/localStorage/retrieveString.ts";
@@ -14,15 +15,6 @@ import {storeString} from "../utils/localStorage/storeString.ts";
 const macroPixelSize = 3;
 
 const defaultHighlightColour: RgbaColor = {r: 255, g: 0, b: 0, a: 1};
-
-export interface PngInfo {
-  colourType: number;
-  bitsPerChannel: number;
-  channelCount: number;
-  fileSize: number;
-  width: number;
-  height: number;
-}
 
 export interface SpriteInput {
   imageData: ImageData;
@@ -125,6 +117,8 @@ function highlightedColourStateReducer(
 export interface AnalysisContextInterface {
   isImportModalOpen: boolean;
   setIsImportModalOpen: (isImportModalOpenNew: boolean) => void;
+  isExportModalOpen: boolean;
+  setIsExportModalOpen: (isExportModalOpenNew: boolean) => void;
   spriteInput: SpriteInput | null;
   setSpriteInput: (imageDataNew: ImageData, nameNew: string | null, sourceUrlNew: string | null, pngInfo: PngInfo, id: string) => void;
   headId: number | null;
@@ -155,6 +149,8 @@ const defaultHandler = () => {
 export const AnalysisContext = createContext<AnalysisContextInterface>({
   isImportModalOpen: true,
   setIsImportModalOpen: defaultHandler,
+  isExportModalOpen: false,
+  setIsExportModalOpen: defaultHandler,
   spriteInput: null,
   setSpriteInput: defaultHandler,
   headId: null,
@@ -191,6 +187,7 @@ export function AnalysisProvider(
   }: AnalysisProviderProps
 ) {
   const [isImportModalOpen, setIsImportModalOpen] = useState<boolean>(true);
+  const [isExportModalOpen, setIsExportModalOpen] = useState<boolean>(false);
   const [spriteInput, setSpriteInputInternal] = useState<SpriteInput | null>(null);
   const [headId, setHeadId] = useState<number | null>(null);
   const [bodyId, setBodyId] = useState<number | null>(null);
@@ -295,6 +292,8 @@ export function AnalysisProvider(
     () => ({
       isImportModalOpen,
       setIsImportModalOpen,
+      isExportModalOpen,
+      setIsExportModalOpen,
       spriteInput,
       setSpriteInput,
       headId,
@@ -320,6 +319,8 @@ export function AnalysisProvider(
     [
       isImportModalOpen,
       setIsImportModalOpen,
+      isExportModalOpen,
+      setIsExportModalOpen,
       spriteInput,
       setSpriteInput,
       headId,
