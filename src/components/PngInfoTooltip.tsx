@@ -1,7 +1,6 @@
 import {HelpOutlineSharp} from "@mui/icons-material";
 import {Box, Tooltip, Typography} from "@mui/material";
 import {Fragment} from "react";
-import {PngInfo} from "../contexts/AnalysisContext.tsx";
 import {
   getBitsPerChannel,
   getChannelCount,
@@ -9,6 +8,7 @@ import {
   getDimensions,
   getFileSize
 } from "../utils/getPngInfoSummary.ts";
+import {PngInfo} from "../utils/image/getDecodedPng.ts";
 
 export interface PngInfoTooltipProps {
   info: PngInfo;

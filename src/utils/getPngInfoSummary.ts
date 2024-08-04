@@ -1,4 +1,4 @@
-import {PngInfo} from "../contexts/AnalysisContext.tsx";
+import {PngInfo} from "./image/getDecodedPng.ts";
 
 export function getDimensions(width: number, height: number) {
   return `${width}x${height}`;
