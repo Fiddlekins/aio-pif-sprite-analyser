@@ -2,7 +2,7 @@ import {Box, BoxProps, Paper, PaperProps, styled} from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
 import {BackgroundModal} from "./Modals/BackgroundModal.tsx";
 import {SettingsModal} from "./Modals/SettingsModal.tsx";
-import {SpriteExportModal} from "./Modals/SpriteExportModal.tsx";
+import {SpriteExportModal} from "./Modals/SpriteExportModal/SpriteExportModal.tsx";
 import {SpriteImportModal} from "./Modals/SpriteImportModal.tsx";
 import {DetailsPane} from "./Panes/DetailsPane.tsx";
 import {OverviewPane} from "./Panes/OverviewPane.tsx";
