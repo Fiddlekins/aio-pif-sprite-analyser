@@ -172,8 +172,14 @@ export function SpriteExportModal() {
 
   const images: Image[] = useMemo(() => {
     if (spriteInput && backgroundImageData) {
-      const spriteName = headId === null || bodyId === null ? spriteInput.name || 'sprite' : `${headId}.${bodyId}`;
-      const backgroundName = bodyId === null ? spriteInput.name || 'background' : `${bodyId}`;
+      const spriteInputNameWithoutExtension = spriteInput.name?.replace(/\.png$/i, '') || null;
+      const spriteName = headId === null || bodyId === null ? spriteInputNameWithoutExtension || 'sprite' : `${headId}.${bodyId}`;
+      let backgroundName = 'background';
+      if (bodyId !== null) {
+        backgroundName = `${bodyId}_background`;
+      } else if (spriteInputNameWithoutExtension) {
+        backgroundName = `${spriteInputNameWithoutExtension}_background`;
+      }
       let spriteConfigs;
       if (isSize96) {
         const spriteImageData96 = scaleImageData(spriteInput.imageData, 1 / 3, 1 / 3);
