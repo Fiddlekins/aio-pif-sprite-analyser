@@ -22,6 +22,7 @@ export function LongRichTable<Data extends RowDataBase>(
     checkboxesChecked,
     onCheckboxChange,
     checkboxRelativeWidth,
+    minWidth,
   }: LongRichTableProps<Data>,
 ) {
   const [orderBy, setOrderBy] = useState<string>(defaultOrderBy);
@@ -33,7 +34,7 @@ export function LongRichTable<Data extends RowDataBase>(
         <TableContainer {...props} ref={ref}/>
       )),
       Table: (props) => (
-        <Table size="small" {...props} sx={{borderCollapse: 'separate', tableLayout: 'fixed'}}/>
+        <Table size="small" {...props} sx={{borderCollapse: 'separate', tableLayout: 'fixed', minWidth}}/>
       ),
       TableHead: forwardRef<HTMLTableSectionElement>((props, ref) => (
         <TableHead {...props} ref={ref}/>
@@ -43,7 +44,7 @@ export function LongRichTable<Data extends RowDataBase>(
         <TableBody {...props} ref={ref}/>
       )),
     };
-  }, []);
+  }, [minWidth]);
 
   const onSortChange = useCallback((orderByNew: string, orderDirectionNew: OrderDirection) => {
     setOrderBy(orderByNew);

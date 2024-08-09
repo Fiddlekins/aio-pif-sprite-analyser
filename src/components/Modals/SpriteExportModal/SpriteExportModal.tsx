@@ -7,7 +7,6 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   ToggleButtonProps,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import {ChangeEvent, Fragment, MouseEvent, useCallback, useContext, useMemo, useState} from "react";
@@ -19,6 +18,7 @@ import {normaliseTransparency} from "../../../utils/image/manipulation/normalise
 import {scaleImageData} from "../../../utils/image/manipulation/scaleImageData.ts";
 import {retrieveBoolean} from "../../../utils/localStorage/retrieveBoolean.ts";
 import {storeBoolean} from "../../../utils/localStorage/storeBoolean.ts";
+import {StyledTooltip} from "../../StyledTooltip.tsx";
 import {StyledModal} from "../StyledModal.tsx";
 import {Image, ImageItem} from './ImageItem.tsx';
 
@@ -210,7 +210,7 @@ export function SpriteExportModal() {
               <Typography>
                 Normalise Transparency
               </Typography>
-              <Tooltip
+              <StyledTooltip
                 title={(
                   <Fragment>
                     <Box
@@ -238,7 +238,7 @@ export function SpriteExportModal() {
                 arrow
               >
                 <HelpOutlineSharp fontSize={'small'}/>
-              </Tooltip>
+              </StyledTooltip>
             </Box>
             <Switch
               checked={normaliseTransparencyEnabled}
@@ -250,7 +250,8 @@ export function SpriteExportModal() {
       <Box
         display={'flex'}
         flexDirection={'row'}
-        justifyContent={'space-between'}
+        flexWrap={'wrap'}
+        justifyContent={'space-evenly'}
         gap={2}
       >
         {images.map((image) => {

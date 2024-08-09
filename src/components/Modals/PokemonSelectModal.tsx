@@ -1,6 +1,7 @@
 import {DoneSharp} from "@mui/icons-material";
 import {Autocomplete, Box, BoxProps, Button, styled, TextField} from "@mui/material";
-import {SyntheticEvent, useCallback} from "react";
+import {SyntheticEvent, useCallback, useContext} from "react";
+import {SettingsContext} from "../../contexts/SettingsContext.tsx";
 import {pokemonIdToDataMap} from "../../data/pokemonIdToDataMap.ts";
 import {pokemonNameToIdMap} from "../../data/pokemonNameToIdMap.ts";
 import {PokemonImage} from "../PokemonImage.tsx";
@@ -50,6 +51,8 @@ export function PokemonSelectModal(
     title,
   }: PokemonSelectModalProps
 ) {
+  const {isMobile} = useContext(SettingsContext);
+
   const onChange = useCallback((_event: SyntheticEvent, newValue: string | null) => {
     if (newValue) {
       setPokemonId(pokemonNameToIdMap[newValue] || null)
@@ -64,32 +67,68 @@ export function PokemonSelectModal(
       open={open}
       handleClose={handleClose}
     >
-      <Box
-        display={'flex'}
-        flexDirection={'row'}
-        gap={2}
-      >
-        <ImageBox>
-          <PokemonImage
-            isFusion={false}
-            pokemonId={pokemonId}
-          />
-        </ImageBox>
-        <Autocomplete
-          value={pokemonId ? pokemonIdToDataMap[pokemonId].Name : 'None'}
-          onChange={onChange}
-          renderInput={(params) => <TextField {...params} label="Pokemon"/>}
-          options={basePokemonList}
-          sx={{flexGrow: 2}}
-        />
-        <Button
-          variant={'outlined'}
-          onClick={handleClose}
-          sx={{minWidth: '56px'}}
+      {isMobile ? (
+        <Box
+          display={'flex'}
+          flexDirection={'column'}
+          gap={2}
         >
-          <DoneSharp/>
-        </Button>
-      </Box>
+          <Autocomplete
+            value={pokemonId ? pokemonIdToDataMap[pokemonId].Name : 'None'}
+            onChange={onChange}
+            renderInput={(params) => <TextField {...params} label="Pokemon"/>}
+            options={basePokemonList}
+            sx={{flexGrow: 2}}
+          />
+          <Box
+            display={'flex'}
+            flexDirection={'row'}
+            justifyContent={'space-between'}
+            gap={2}
+          >
+            <ImageBox>
+              <PokemonImage
+                isFusion={false}
+                pokemonId={pokemonId}
+              />
+            </ImageBox>
+            <Button
+              variant={'outlined'}
+              onClick={handleClose}
+              sx={{minWidth: '56px'}}
+            >
+              <DoneSharp/>
+            </Button>
+          </Box>
+        </Box>
+      ) : (
+        <Box
+          display={'flex'}
+          flexDirection={'row'}
+          gap={2}
+        >
+          <ImageBox>
+            <PokemonImage
+              isFusion={false}
+              pokemonId={pokemonId}
+            />
+          </ImageBox>
+          <Autocomplete
+            value={pokemonId ? pokemonIdToDataMap[pokemonId].Name : 'None'}
+            onChange={onChange}
+            renderInput={(params) => <TextField {...params} label="Pokemon"/>}
+            options={basePokemonList}
+            sx={{flexGrow: 2}}
+          />
+          <Button
+            variant={'outlined'}
+            onClick={handleClose}
+            sx={{minWidth: '56px'}}
+          >
+            <DoneSharp/>
+          </Button>
+        </Box>
+      )}
     </StyledModal>
   )
 }

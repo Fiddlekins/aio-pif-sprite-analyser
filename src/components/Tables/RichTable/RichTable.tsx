@@ -18,6 +18,7 @@ export function RichTable<Data extends RowDataBase>(
     checkboxesChecked,
     onCheckboxChange,
     checkboxRelativeWidth,
+    minWidth,
   }: RichTableProps<Data>,
 ) {
   const [orderBy, setOrderBy] = useState<string>(defaultOrderBy);
@@ -70,7 +71,7 @@ export function RichTable<Data extends RowDataBase>(
     <TableContainer>
       <Table
         size="small"
-        sx={{borderCollapse: 'separate', tableLayout: 'fixed'}}
+        sx={{borderCollapse: 'separate', tableLayout: 'fixed', minWidth}}
       >
         <TableHead>
           <RichTableHeadRow

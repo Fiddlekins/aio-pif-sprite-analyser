@@ -1,7 +1,8 @@
 import {DarkModeSharp, HelpOutlineSharp, WbSunnySharp} from "@mui/icons-material";
-import {Box, Switch, ToggleButton, ToggleButtonGroup, Tooltip, Typography} from "@mui/material";
+import {Box, Switch, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
 import {ChangeEvent, Fragment, MouseEvent, useCallback, useContext} from "react";
 import {SettingsContext} from "../../contexts/SettingsContext.tsx";
+import {StyledTooltip} from "../StyledTooltip.tsx";
 import {StyledModal} from "./StyledModal.tsx";
 
 export function SettingsModal() {
@@ -84,7 +85,7 @@ export function SettingsModal() {
             <Typography>
               Canvas Acceleration
             </Typography>
-            <Tooltip
+            <StyledTooltip
               title={(
                 <Fragment>
                   <Box
@@ -106,7 +107,7 @@ export function SettingsModal() {
               arrow
             >
               <HelpOutlineSharp fontSize={'small'}/>
-            </Tooltip>
+            </StyledTooltip>
           </Box>
           <Switch
             checked={canvasAccelerationEnabled}

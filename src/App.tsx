@@ -4,6 +4,7 @@ import {ColorSpace, HSL, HSV, OKLCH, sRGB} from "colorjs.io/fn";
 import {useContext} from "react";
 import './App.css'
 import {AnalysisLayout} from "./components/AnalysisLayout.tsx";
+import {AnalysisLayoutMobile} from "./components/Mobile/AnalysisLayoutMobile.tsx";
 import {AnalysisProvider} from "./contexts/AnalysisContext.tsx";
 import {BackgroundProvider} from "./contexts/BackgroundContext.tsx";
 import {SettingsContext, SettingsProvider} from "./contexts/SettingsContext.tsx";
@@ -34,14 +35,14 @@ const Background = styled(Box)<BoxProps>(({theme}) => ({
 }));
 
 function SubApp() {
-  const {theme} = useContext(SettingsContext);
+  const {theme, isMobile} = useContext(SettingsContext);
   return (
     <ThemeProvider theme={theme}>
       <AnalysisProvider>
         <BackgroundProvider>
           <Background/>
           <AppBox>
-            <AnalysisLayout/>
+            {isMobile ? (<AnalysisLayoutMobile/>) : (<AnalysisLayout/>)}
           </AppBox>
         </BackgroundProvider>
       </AnalysisProvider>

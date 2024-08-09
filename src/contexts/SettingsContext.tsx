@@ -26,6 +26,7 @@ export interface SettingsContextInterface {
   canvasAccelerationEnabled: boolean;
   setCanvasAccelerationEnabled: (canvasAccelerationEnabledNew: boolean) => void;
   theme: Theme;
+  isMobile: boolean;
 }
 
 const defaultHandler = () => {
@@ -40,6 +41,7 @@ export const SettingsContext = createContext<SettingsContextInterface>({
   canvasAccelerationEnabled: true,
   setCanvasAccelerationEnabled: defaultHandler,
   theme: lightTheme,
+  isMobile: false,
 });
 
 export interface SettingsProviderProps {
@@ -75,6 +77,8 @@ export function SettingsProvider(
 
   const theme = getTheme(themeId);
 
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   const value = useMemo(
     () => ({
       isSettingsModalOpen,
@@ -84,6 +88,7 @@ export function SettingsProvider(
       canvasAccelerationEnabled,
       setCanvasAccelerationEnabled,
       theme,
+      isMobile,
     }),
     [
       isSettingsModalOpen,
@@ -93,6 +98,7 @@ export function SettingsProvider(
       canvasAccelerationEnabled,
       setCanvasAccelerationEnabled,
       theme,
+      isMobile,
     ],
   );
 

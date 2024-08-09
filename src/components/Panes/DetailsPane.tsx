@@ -2,9 +2,9 @@ import {Box, styled, Tab, tabClasses, TabProps, Tabs} from "@mui/material";
 import {ReactNode, SyntheticEvent, useCallback, useContext, useEffect, useRef, useState} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {VerdictIcon} from "../VerdictIcon.tsx";
-import {ColoursPane} from "./ColoursPane.tsx";
-import {PartialPixelsPane} from "./PartialPixelsPane.tsx";
-import {TransparencyPane} from "./TransparencyPane.tsx";
+import {ColoursPane} from "./ColoursPane/ColoursPane.tsx";
+import {PartialPixelsPane} from "./PartialPixelsPane/PartialPixelsPane.tsx";
+import {TransparencyPane} from "./TransparencyPane/TransparencyPane.tsx";
 
 interface TabPanelProps {
   index: number;

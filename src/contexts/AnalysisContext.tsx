@@ -1,5 +1,6 @@
 import {createContext, Dispatch, ReactNode, useCallback, useMemo, useReducer, useState} from 'react';
 import {RgbaColor} from "react-colorful";
+import {ColourSpace} from "../components/Panes/types.ts";
 import {getColourKeyFromPixel} from "../utils/image/conversion/getColourKeyFromPixel.ts";
 import {getPixelFromColourKey} from "../utils/image/conversion/getPixelFromColourKey.ts";
 import {getPixelFromRgbaColor} from "../utils/image/conversion/getPixelFromRgbaColor.ts";
@@ -114,6 +115,19 @@ function highlightedColourStateReducer(
   return stateNew;
 }
 
+function getStoredColourSpace() {
+  return retrieveTyped<ColourSpace>('AnalysisContext.colourSpace', (value: string | null) => {
+    switch (value) {
+      case 'RGB':
+      case 'HSV':
+      case 'HSL':
+        return value;
+      default:
+        return 'RGB';
+    }
+  });
+}
+
 export interface AnalysisContextInterface {
   isImportModalOpen: boolean;
   setIsImportModalOpen: (isImportModalOpenNew: boolean) => void;
@@ -140,6 +154,8 @@ export interface AnalysisContextInterface {
   setHighlightMode: (highlightModeNew: string) => void;
   highlightColour: RgbaColor;
   setHighlightColour: (highlightColourNew: RgbaColor) => void;
+  colourSpace: ColourSpace;
+  setColourSpace: (colourSpaceNew: ColourSpace) => void;
 }
 
 const defaultHandler = () => {
@@ -172,6 +188,8 @@ export const AnalysisContext = createContext<AnalysisContextInterface>({
   setHighlightMode: defaultHandler,
   highlightColour: defaultHighlightColour,
   setHighlightColour: defaultHandler,
+  colourSpace: 'RGB',
+  setColourSpace: defaultHandler,
 });
 
 export interface AnalysisProviderProps {
@@ -213,6 +231,7 @@ export function AnalysisProvider(
       }
     )
   );
+  const [colourSpace, setColourSpaceInternal] = useState<ColourSpace>(getStoredColourSpace());
 
   const [highlightedColourState, dispatchHighlightedColourState] = useReducer(highlightedColourStateReducer, initialHighlightedColourState);
 
@@ -288,6 +307,11 @@ export function AnalysisProvider(
     setHighlightColourInternal(highlightColourNew);
   }, [setHighlightColourInternal]);
 
+  const setColourSpace = useCallback((colourSpaceNew: ColourSpace) => {
+    storeString('AnalysisContext.colourSpace', colourSpaceNew);
+    setColourSpaceInternal(colourSpaceNew);
+  }, [setColourSpaceInternal]);
+
   const value = useMemo(
     () => ({
       isImportModalOpen,
@@ -315,6 +339,8 @@ export function AnalysisProvider(
       setHighlightMode,
       highlightColour,
       setHighlightColour,
+      colourSpace,
+      setColourSpace,
     }),
     [
       isImportModalOpen,
@@ -342,6 +368,8 @@ export function AnalysisProvider(
       setHighlightMode,
       highlightColour,
       setHighlightColour,
+      colourSpace,
+      setColourSpace,
     ],
   );
 

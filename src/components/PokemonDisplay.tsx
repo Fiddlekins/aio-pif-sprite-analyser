@@ -39,11 +39,11 @@ const InteractiveImageBox = styled(NonInteractiveImageBox)<BoxProps>(({theme}) =
 }));
 
 function getUnfusedDexHref(pokemonId: number) {
-  return `https://if.daena.me/${pokemonId}`;
+  return `https://www.fusiondex.org/${pokemonId}`;
 }
 
 function getFusedDexHref(headPokemonId: number, bodyPokemonId: number) {
-  return `https://if.daena.me/${headPokemonId}.${bodyPokemonId}`;
+  return `https://www.fusiondex.org/${headPokemonId}.${bodyPokemonId}`;
 }
 
 export interface BasePokemonDisplayProps {
@@ -114,7 +114,11 @@ export function PokemonDisplay(
           {label}
         </Typography>
         {!isDisabled && dexHref ? (
-          <Link href={dexHref}>
+          <Link
+            href={dexHref}
+            target="_blank"
+            rel="noreferrer"
+          >
             #{id}
           </Link>
         ) : (

@@ -1,23 +1,12 @@
-import {HelpOutlineSharp, SettingsSharp} from "@mui/icons-material";
-import {
-  AppBar,
-  AppBarProps,
-  Box,
-  Button,
-  Link,
-  styled,
-  Toolbar,
-  ToolbarProps,
-  Tooltip,
-  Typography
-} from "@mui/material";
+import {SettingsSharp} from "@mui/icons-material";
+import {AppBar, AppBarProps, Box, Button, Link, styled, Toolbar, ToolbarProps, Typography} from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
-import {Fragment, useCallback, useContext} from "react";
+import {useCallback, useContext} from "react";
 import logoUrl from '../assets/logo.svg';
 import {AnalysisContext} from "../contexts/AnalysisContext.tsx";
 import {SettingsContext} from "../contexts/SettingsContext.tsx";
-import {getShortId} from "../utils/getShortId.ts";
 import {StyledIconButton} from "./StyledIconButton.tsx";
+import {TopBarTitle} from "./TopBarTitle.tsx";
 
 const StyledAppBar = styled(AppBar)<AppBarProps>(() => ({
   display: 'flex',
@@ -37,36 +26,6 @@ const StyledLogo = styled('img')(() => ({
 }));
 
 const styledIconButtonSx = {width: '36.5px', height: '36.5px'};
-
-interface IdTooltipContentProps {
-  id: string;
-}
-
-function IdTooltipContent(
-  {
-    id,
-  }: IdTooltipContentProps
-) {
-  return (
-    <Fragment>
-      <Typography variant={'h6'}>
-        Sprite ID
-      </Typography>
-      <Box
-        display={'flex'}
-        flexDirection={'column'}
-        gap={2}
-      >
-        <Typography variant={'body2'}>
-          {'This is an ID generated from the raw pixel data of the sprite after it has been decoded and, if necessary, scaled to 288x288.'}
-        </Typography>
-        <Typography variant={'body2'}>
-          {`The full ID is:\n ${id}`}
-        </Typography>
-      </Box>
-    </Fragment>
-  );
-}
 
 export function TopBar() {
   const {setIsImportModalOpen, setIsExportModalOpen, spriteInput} = useContext(AnalysisContext);
@@ -104,55 +63,7 @@ export function TopBar() {
             </Box>
           </Grid>
           <Grid xs={6}>
-            <Box
-              display={'flex'}
-              height={'100%'}
-              alignItems={'center'}
-              gap={2}
-            >
-              <Box flexGrow={1}/>
-              {spriteInput && (
-                <>
-                  {spriteInput.sourceUrl ? (
-                    <Typography>
-                      <Link
-                        href={spriteInput.sourceUrl}
-                        color={'primary.contrastText'}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {spriteInput.name}
-                      </Link>
-                    </Typography>
-                  ) : (
-                    <Typography>
-                      {spriteInput.name}
-                    </Typography>
-                  )}
-                  {'•︎'}
-                  <Box
-                    display={'flex'}
-                    flexDirection={'row'}
-                    alignItems={'center'}
-                    gap={0.5}
-                  >
-                    <Typography>
-                      {getShortId(spriteInput.id)}
-                    </Typography>
-                    <Tooltip
-                      title={(
-                        <IdTooltipContent id={spriteInput.id}/>
-                      )}
-                      placement={'bottom'}
-                      arrow
-                    >
-                      <HelpOutlineSharp fontSize={'small'}/>
-                    </Tooltip>
-                  </Box>
-                </>
-              )}
-              <Box flexGrow={1}/>
-            </Box>
+            <TopBarTitle spriteInput={spriteInput}/>
           </Grid>
           <Grid xs={3}>
             <Box
@@ -189,6 +100,5 @@ export function TopBar() {
         </Grid>
       </StyledToolbar>
     </StyledAppBar>
-  )
-    ;
+  );
 }

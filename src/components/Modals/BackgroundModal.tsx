@@ -1,5 +1,6 @@
 import {
   DarkModeSharp,
+  ExpandMoreSharp,
   HelpOutlineSharp,
   RestartAltSharp,
   ShuffleSharp,
@@ -7,6 +8,9 @@ import {
   WbTwilightSharp
 } from "@mui/icons-material";
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Autocomplete,
   Box,
   Button,
@@ -14,20 +18,22 @@ import {
   TextField,
   ToggleButton,
   ToggleButtonGroup,
-  Tooltip,
   Typography
 } from "@mui/material";
 import {ChangeEvent, Fragment, MouseEvent, SyntheticEvent, useCallback, useContext, useEffect, useState} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
 import {BackgroundContext} from "../../contexts/BackgroundContext.tsx";
+import {SettingsContext} from "../../contexts/SettingsContext.tsx";
 import {battleAssetManifest, battlerMaps, BattlerTime, battlerTimes} from "../../data/battleAssetManifest.ts";
 import {getValidTimeForMap} from "../../utils/image/getValidTimeForMap.ts";
 import {IntegerInput} from "../IntegerInput.tsx";
 import {PokemonDisplay} from "../PokemonDisplay.tsx";
 import {StyledIconButton} from "../StyledIconButton.tsx";
+import {StyledTooltip} from "../StyledTooltip.tsx";
 import {StyledModal} from "./StyledModal.tsx";
 
 export function BackgroundModal() {
+  const {isMobile} = useContext(SettingsContext);
   const {bodyId} = useContext(AnalysisContext);
   const {
     isBackgroundModalOpen,
@@ -134,179 +140,262 @@ export function BackgroundModal() {
           width={1536}
           height={864}
         />
-        <Box
-          display={'flex'}
-          flexDirection={'row'}
-          gap={2}
-        >
+        {isMobile ? (
           <Box
-            flexGrow={1}
-            display={'grid'}
-            gridTemplateColumns={'1fr auto'}
+            display={'flex'}
+            flexDirection={'column'}
             gap={2}
           >
-            <Autocomplete
-              value={battlerMap}
-              onChange={onBattlerMapChange}
-              renderInput={(params) => <TextField {...params} label="Map"/>}
-              options={battlerMaps}
-              sx={{flexGrow: 2}}
-            />
-            <ToggleButtonGroup
-              value={getValidTimeForMap(battlerMap, battlerTime)}
-              exclusive
-              color="primary"
-              onChange={handleBattlerTimeChange}
+            <Box
+              display={'flex'}
+              flexDirection={'column'}
             >
-              <ToggleButton
-                value="day"
-                disabled={!battleAssetManifest[battlerMap].day}
-                sx={{width: '56px'}}
+              <Autocomplete
+                value={battlerMap}
+                onChange={onBattlerMapChange}
+                renderInput={(params) => <TextField {...params} label="Map"/>}
+                options={battlerMaps}
+              />
+            </Box>
+            <Box
+              display={'flex'}
+              flexDirection={'row'}
+              justifyContent={'space-between'}
+            >
+              <ToggleButtonGroup
+                value={getValidTimeForMap(battlerMap, battlerTime)}
+                exclusive
+                color="primary"
+                onChange={handleBattlerTimeChange}
               >
-                <WbSunnySharp/>
-              </ToggleButton>
-              <ToggleButton
-                value="eve"
-                disabled={!battleAssetManifest[battlerMap].eve}
-                sx={{width: '56px'}}
-              >
-                <WbTwilightSharp/>
-              </ToggleButton>
-              <ToggleButton
-                value="night"
-                disabled={!battleAssetManifest[battlerMap].night}
-                sx={{width: '56px'}}
-              >
-                <DarkModeSharp/>
-              </ToggleButton>
-            </ToggleButtonGroup>
+                <ToggleButton
+                  value="day"
+                  disabled={!battleAssetManifest[battlerMap].day}
+                  sx={{width: '56px'}}
+                >
+                  <WbSunnySharp/>
+                </ToggleButton>
+                <ToggleButton
+                  value="eve"
+                  disabled={!battleAssetManifest[battlerMap].eve}
+                  sx={{width: '56px'}}
+                >
+                  <WbTwilightSharp/>
+                </ToggleButton>
+                <ToggleButton
+                  value="night"
+                  disabled={!battleAssetManifest[battlerMap].night}
+                  sx={{width: '56px'}}
+                >
+                  <DarkModeSharp/>
+                </ToggleButton>
+              </ToggleButtonGroup>
+              <StyledIconButton variant={'outlined'} onClick={onShuffleClick} sx={{width: '56px'}}>
+                <ShuffleSharp/>
+              </StyledIconButton>
+            </Box>
           </Box>
-          <StyledIconButton variant={'outlined'} onClick={onShuffleClick} sx={{width: '56px'}}>
-            <ShuffleSharp/>
-          </StyledIconButton>
-        </Box>
-        <Box
-          display={'flex'}
-          flexDirection={'row'}
-          alignItems={'center'}
-          gap={0.5}
-        >
-          <Typography variant={'h6'}>
-            Sprite Position
-          </Typography>
-          <Tooltip
-            title={(
-              <Fragment>
+        ) : (
+          <Box
+            display={'flex'}
+            flexDirection={'row'}
+            gap={2}
+          >
+            <Box
+              flexGrow={1}
+              display={'grid'}
+              gridTemplateColumns={'1fr auto'}
+              gap={2}
+            >
+              <Autocomplete
+                value={battlerMap}
+                onChange={onBattlerMapChange}
+                renderInput={(params) => <TextField {...params} label="Map"/>}
+                options={battlerMaps}
+                sx={{flexGrow: 2}}
+              />
+              <ToggleButtonGroup
+                value={getValidTimeForMap(battlerMap, battlerTime)}
+                exclusive
+                color="primary"
+                onChange={handleBattlerTimeChange}
+              >
+                <ToggleButton
+                  value="day"
+                  disabled={!battleAssetManifest[battlerMap].day}
+                  sx={{width: '56px'}}
+                >
+                  <WbSunnySharp/>
+                </ToggleButton>
+                <ToggleButton
+                  value="eve"
+                  disabled={!battleAssetManifest[battlerMap].eve}
+                  sx={{width: '56px'}}
+                >
+                  <WbTwilightSharp/>
+                </ToggleButton>
+                <ToggleButton
+                  value="night"
+                  disabled={!battleAssetManifest[battlerMap].night}
+                  sx={{width: '56px'}}
+                >
+                  <DarkModeSharp/>
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </Box>
+            <StyledIconButton variant={'outlined'} onClick={onShuffleClick} sx={{width: '56px'}}>
+              <ShuffleSharp/>
+            </StyledIconButton>
+          </Box>
+        )}
+        <Box>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreSharp/>}
+            >
+              <Box
+                display={'flex'}
+                flexDirection={'row'}
+                alignItems={'center'}
+                gap={0.5}
+              >
+                <Typography variant={'h6'}>
+                  Sprite Position Override
+                </Typography>
+              </Box>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Box
+                display={'flex'}
+                flexDirection={'column'}
+                gap={2}
+              >
                 <Box
                   display={'flex'}
-                  flexDirection={'column'}
-                  alignItems={'left'}
-                  gap={0.5}
+                  flexDirection={'row'}
+                  gap={1}
                 >
-                  <Typography variant={'h6'}>
-                    Position Override
-                  </Typography>
+                  <StyledTooltip
+                    title={(
+                      <Fragment>
+                        <Box
+                          display={'flex'}
+                          flexDirection={'column'}
+                          alignItems={'left'}
+                          gap={0.5}
+                        >
+                          <Typography variant={'h6'}>
+                            Position Override
+                          </Typography>
+                          <Typography variant={'body2'}>
+                            {`Pokemon Infinite Fusion uses the sprite position offsets configured for the body pokemon of the fusion when determining where to draw it.`}
+                          </Typography>
+                          <Typography variant={'body2'}>
+                            {`This can be overridden using the settings below, but these changes will not transfer into the game.`}
+                          </Typography>
+                          <Typography variant={'body2'} fontWeight={'bold'}>
+                            {`Be sure to use the body pokemon configuration when fine-tuning sprite placement.`}
+                          </Typography>
+                        </Box>
+                      </Fragment>
+                    )}
+                    placement={'top'}
+                    arrow
+                  >
+                    <HelpOutlineSharp fontSize={'small'}/>
+                  </StyledTooltip>
                   <Typography variant={'body2'}>
-                    {`Pokemon Infinite Fusion uses the sprite position offsets configured for the body pokemon of the fusion when determining where to draw it.`}
-                  </Typography>
-                  <Typography variant={'body2'}>
-                    {`This can be overridden using the settings below, but these changes will not transfer into the game.`}
-                  </Typography>
-                  <Typography variant={'body2'} fontWeight={'bold'}>
-                    {`Be sure to use the body pokemon configuration when fine-tuning sprite placement.`}
+                    The sprite position derived from the body pokemon can be overridden
                   </Typography>
                 </Box>
-              </Fragment>
-            )}
-            placement={'top'}
-            arrow
-          >
-            <HelpOutlineSharp fontSize={'small'}/>
-          </Tooltip>
-        </Box>
-        <Box
-          display={'flex'}
-          flexDirection={'row'}
-          gap={2}
-        >
-          <Box>
-            <PokemonDisplay
-              label={'Body'}
-              isFusion={false}
-              pokemonId={bodyId}
-              isDisabled={overrideBody}
-            />
-          </Box>
-          <Switch
-            checked={overrideBody}
-            onChange={handleOverrideBodyChange}
-            sx={{alignSelf: 'center'}}
-          />
-          <Box
-            display={'grid'}
-            gridTemplateColumns={'auto auto'}
-            gap={1}
-          >
-            <IntegerInput
-              label={'enemyX'}
-              value={overrideConfig.enemyX}
-              isDisabled={!overrideBody}
-              onValueChange={onEnemyXChange}
-              showArrowControls={true}
-            />
-            <IntegerInput
-              label={'enemyY'}
-              value={overrideConfig.enemyY}
-              isDisabled={!overrideBody}
-              onValueChange={onEnemyYChange}
-              showArrowControls={true}
-            />
-            <IntegerInput
-              label={'playerX'}
-              value={overrideConfig.playerX}
-              isDisabled={!overrideBody}
-              onValueChange={onPlayerXChange}
-              showArrowControls={true}
-            />
-            <IntegerInput
-              label={'playerY'}
-              value={overrideConfig.playerY}
-              isDisabled={!overrideBody}
-              onValueChange={onPlayerYChange}
-              showArrowControls={true}
-            />
-            <IntegerInput
-              label={'shadowX'}
-              value={overrideConfig.shadowX}
-              isDisabled={!overrideBody}
-              onValueChange={onShadowXChange}
-              showArrowControls={true}
-            />
-            <IntegerInput
-              label={'shadowSize'}
-              value={overrideConfig.shadowSize}
-              min={0}
-              max={5}
-              isDisabled={!overrideBody}
-              onValueChange={onShadowSizeChange}
-              showArrowControls={true}
-            />
-            <IntegerInput
-              label={'altitude'}
-              value={overrideConfig.altitude}
-              isDisabled={!overrideBody}
-              onValueChange={onAltitudeChange}
-              showArrowControls={true}
-            />
-            <Button
-              variant={'outlined'}
-              disabled={!overrideBody}
-              onClick={onOverrideReset}
-            >
-              <RestartAltSharp/>
-              Reset
-            </Button>
-          </Box>
+                <Box
+                  display={'flex'}
+                  flexDirection={isMobile ? 'column' : 'row'}
+                  alignItems={'center'}
+                  gap={2}
+                >
+                  <Box>
+                    <PokemonDisplay
+                      label={'Body'}
+                      isFusion={false}
+                      pokemonId={bodyId}
+                      isDisabled={overrideBody}
+                    />
+                  </Box>
+                  <Switch
+                    checked={overrideBody}
+                    onChange={handleOverrideBodyChange}
+                    sx={{alignSelf: 'center'}}
+                  />
+                  <Box
+                    display={'grid'}
+                    gridTemplateColumns={'auto auto'}
+                    gap={1}
+                  >
+                    <IntegerInput
+                      label={'enemyX'}
+                      value={overrideConfig.enemyX}
+                      isDisabled={!overrideBody}
+                      onValueChange={onEnemyXChange}
+                      showArrowControls={true}
+                    />
+                    <IntegerInput
+                      label={'enemyY'}
+                      value={overrideConfig.enemyY}
+                      isDisabled={!overrideBody}
+                      onValueChange={onEnemyYChange}
+                      showArrowControls={true}
+                    />
+                    <IntegerInput
+                      label={'playerX'}
+                      value={overrideConfig.playerX}
+                      isDisabled={!overrideBody}
+                      onValueChange={onPlayerXChange}
+                      showArrowControls={true}
+                    />
+                    <IntegerInput
+                      label={'playerY'}
+                      value={overrideConfig.playerY}
+                      isDisabled={!overrideBody}
+                      onValueChange={onPlayerYChange}
+                      showArrowControls={true}
+                    />
+                    <IntegerInput
+                      label={'shadowX'}
+                      value={overrideConfig.shadowX}
+                      isDisabled={!overrideBody}
+                      onValueChange={onShadowXChange}
+                      showArrowControls={true}
+                    />
+                    <IntegerInput
+                      label={'shadowSize'}
+                      value={overrideConfig.shadowSize}
+                      min={0}
+                      max={5}
+                      isDisabled={!overrideBody}
+                      onValueChange={onShadowSizeChange}
+                      showArrowControls={true}
+                    />
+                    <IntegerInput
+                      label={'altitude'}
+                      value={overrideConfig.altitude}
+                      isDisabled={!overrideBody}
+                      onValueChange={onAltitudeChange}
+                      showArrowControls={true}
+                    />
+                    <Button
+                      variant={'outlined'}
+                      disabled={!overrideBody}
+                      onClick={onOverrideReset}
+                    >
+                      <RestartAltSharp/>
+                      Reset
+                    </Button>
+                  </Box>
+                </Box>
+              </Box>
+            </AccordionDetails>
+          </Accordion>
         </Box>
       </Box>
     </StyledModal>

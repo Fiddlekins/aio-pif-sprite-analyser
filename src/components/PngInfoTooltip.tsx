@@ -1,5 +1,5 @@
 import {HelpOutlineSharp} from "@mui/icons-material";
-import {Box, Tooltip, Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import {Fragment} from "react";
 import {
   getBitsPerChannel,
@@ -9,6 +9,7 @@ import {
   getFileSize
 } from "../utils/getPngInfoSummary.ts";
 import {PngInfo} from "../utils/image/getDecodedPng.ts";
+import {StyledTooltip} from "./StyledTooltip.tsx";
 
 export interface PngInfoTooltipProps {
   info: PngInfo;
@@ -28,7 +29,7 @@ export function PngInfoTooltip(
     fileSize,
   } = info;
   return (
-    <Tooltip
+    <StyledTooltip
       title={(
         <Fragment>
           <Typography variant={'h6'}>
@@ -94,6 +95,6 @@ export function PngInfoTooltip(
       arrow
     >
       <HelpOutlineSharp fontSize={'small'}/>
-    </Tooltip>
+    </StyledTooltip>
   );
 }

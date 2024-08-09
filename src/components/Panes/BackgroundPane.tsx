@@ -3,6 +3,7 @@ import {alpha, Box, BoxProps, Button, ButtonProps, Popover, styled, Typography} 
 import {ReactNode, useCallback, useContext, useEffect, useMemo, useRef, useState} from "react";
 import {RgbaColor} from "react-colorful";
 import {BackgroundContext, battlerBackgroundId} from "../../contexts/BackgroundContext.tsx";
+import {SettingsContext} from "../../contexts/SettingsContext.tsx";
 import {getCssFromRgbaColor} from "../../utils/image/conversion/getCssFromRgbaColor.ts";
 import {ColourPicker} from "../ColourPicker/ColourPicker.tsx";
 import {StyledIconButton} from "../StyledIconButton.tsx";
@@ -59,6 +60,7 @@ function BackgroundOption(
 ) {
   const anchorRef = useRef(null);
   const [colourPickerAnchorEl, setColourPickerAnchorEl] = useState<HTMLButtonElement | null>(null);
+
 
   const onSettingsButtonClick = useCallback(() => {
     setColourPickerAnchorEl(anchorRef.current);
@@ -132,6 +134,7 @@ function BackgroundOption(
 }
 
 export function BackgroundPane() {
+  const {isMobile} = useContext(SettingsContext);
   const {
     backgroundId,
     backgroundSolidFills,
@@ -177,7 +180,7 @@ export function BackgroundPane() {
       flexDirection={'column'}
       alignItems={'stretch'}
       gap={1}
-      sx={{overflowY: 'auto'}}
+      sx={{overflowY: isMobile ? 'visible' : 'auto'}}
     >
       <StyledBox
         position={'sticky'}
@@ -187,7 +190,7 @@ export function BackgroundPane() {
         justifyContent={'space-between'}
         alignItems={'center'}
         gap={2}
-        px={4}
+        px={isMobile ? 0 : 4}
         pb={1}
       >
         <Typography variant={'h5'} align={'left'}>
@@ -201,11 +204,11 @@ export function BackgroundPane() {
         display={'grid'}
         gridTemplateColumns={'1fr 1fr 1fr 1fr'}
         gap={2}
-        px={4}
+        px={isMobile ? 0 : 4}
         pb={'2px'}
       >
         {
-          backgroundSolidFills.map(({id, fill, custom}) => {
+          backgroundSolidFills.slice(0, isMobile ? 7 : undefined).map(({id, fill, custom}) => {
             return (
               <BackgroundOption
                 key={id}
@@ -224,18 +227,20 @@ export function BackgroundPane() {
             );
           })
         }
-        <StyledButton
-          selected={false}
-          colour={{r: 0, g: 0, b: 0, a: 0}}
-          variant={'outlined'}
-          onClick={() => {
-            dispatchCustomBackgroundFills({operation: 'add', colour: {r: 0, g: 0, b: 0, a: 1}})
-          }}
-        >
-          <Typography variant={'h5'}>
-            +
-          </Typography>
-        </StyledButton>
+        {!(isMobile && backgroundSolidFills.length >= 7) && (
+          <StyledButton
+            selected={false}
+            colour={{r: 0, g: 0, b: 0, a: 0}}
+            variant={'outlined'}
+            onClick={() => {
+              dispatchCustomBackgroundFills({operation: 'add', colour: {r: 0, g: 0, b: 0, a: 1}})
+            }}
+          >
+            <Typography variant={'h5'}>
+              +
+            </Typography>
+          </StyledButton>
+        )}
         <BackgroundOption
           key={battlerBackgroundId}
           selected={backgroundId === battlerBackgroundId}

@@ -81,19 +81,12 @@ function getHeaderName(colourSpace: ColourSpace, channel: number) {
   }
 }
 
-export interface ColoursTableProps {
-  colourSpace: ColourSpace;
-}
-
-export function ColoursTable(
-  {
-    colourSpace
-  }: ColoursTableProps
-) {
+export function ColoursTable() {
   const {
     colourReport,
     highlightedColourState,
     dispatchHighlightedColourState,
+    colourSpace,
   } = useContext(AnalysisContext);
 
   const {
@@ -347,6 +340,7 @@ export function ColoursTable(
                 checkboxesChecked={checkboxesChecked}
                 onCheckboxChange={onCheckboxChange}
                 checkboxRelativeWidth={checkboxRelativeWidth}
+                minWidth={500}
               />
             ) : (
               <RichTable
@@ -362,6 +356,7 @@ export function ColoursTable(
                 checkboxesChecked={checkboxesChecked}
                 onCheckboxChange={onCheckboxChange}
                 checkboxRelativeWidth={checkboxRelativeWidth}
+                minWidth={500}
               />
             )}
           </AccordionDetails>
@@ -392,6 +387,7 @@ export function ColoursTable(
                 checkboxesChecked={checkboxesChecked}
                 onCheckboxChange={onCheckboxChange}
                 checkboxRelativeWidth={checkboxRelativeWidth}
+                minWidth={500}
               />
             ) : (
               <RichTable
@@ -407,6 +403,7 @@ export function ColoursTable(
                 checkboxesChecked={checkboxesChecked}
                 onCheckboxChange={onCheckboxChange}
                 checkboxRelativeWidth={checkboxRelativeWidth}
+                minWidth={500}
               />
             )}
           </AccordionDetails>

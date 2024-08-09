@@ -190,6 +190,7 @@ export function SimilarityTable() {
                 rowComparator={rowComparator}
                 getCell={getCell}
                 checkboxRelativeWidth={checkboxRelativeWidth}
+                minWidth={300}
               />
             ) : (
               <RichTable
@@ -200,6 +201,7 @@ export function SimilarityTable() {
                 rowComparator={rowComparator}
                 getCell={getCell}
                 checkboxRelativeWidth={checkboxRelativeWidth}
+                minWidth={300}
               />
             )}
           </AccordionDetails>

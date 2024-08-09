@@ -45,4 +45,5 @@ export interface RichTableProps<Data extends RowDataBase> {
   checkboxesChecked?: Record<string, boolean>;
   onCheckboxChange?: CheckboxChangeHandler<Data>;
   checkboxRelativeWidth?: number;
+  minWidth?: number;
 }

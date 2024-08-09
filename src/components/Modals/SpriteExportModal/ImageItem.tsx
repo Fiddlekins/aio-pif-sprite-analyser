@@ -1,9 +1,10 @@
 import {ContentCopySharp, DownloadSharp} from "@mui/icons-material";
-import {Alert, Box, Button, Tooltip, Typography} from "@mui/material";
+import {Alert, Box, Button, Typography} from "@mui/material";
 import {Fragment, useCallback, useEffect, useRef} from "react";
 import {getPngInfoSummary} from "../../../utils/getPngInfoSummary.ts";
 import {PngInfo} from "../../../utils/image/getDecodedPng.ts";
 import {PngInfoTooltip} from "../../PngInfoTooltip.tsx";
+import {StyledTooltip} from "../../StyledTooltip.tsx";
 
 export interface Image {
   imageData: ImageData;
@@ -71,7 +72,7 @@ export function ImageItem(
         ref={canvasRef}
         width={imageData.width}
         height={imageData.height}
-        style={{width: 250, height: 250, pointerEvents: canCopy ? 'initial' : 'none'}}
+        style={{width: 260, height: 260, pointerEvents: canCopy ? 'initial' : 'none'}}
       />
       <Box
         display={'flex'}
@@ -92,7 +93,7 @@ export function ImageItem(
             <ContentCopySharp/>
           </Button>
         ) : (
-          <Tooltip
+          <StyledTooltip
             title={(
               <Fragment>
                 <Box
@@ -124,7 +125,7 @@ export function ImageItem(
                 <ContentCopySharp/>
               </Button>
             </Box>
-          </Tooltip>
+          </StyledTooltip>
         )}
         <Button onClick={onDownload}>
           <DownloadSharp/>

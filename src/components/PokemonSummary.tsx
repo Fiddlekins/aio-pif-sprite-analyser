@@ -1,10 +1,12 @@
 import {Box} from "@mui/material";
 import {useCallback, useContext, useState} from "react";
 import {AnalysisContext} from "../contexts/AnalysisContext.tsx";
+import {SettingsContext} from "../contexts/SettingsContext.tsx";
 import {PokemonSelectModal} from "./Modals/PokemonSelectModal.tsx";
 import {PokemonDisplay} from "./PokemonDisplay.tsx";
 
 export function PokemonSummary() {
+  const {isMobile} = useContext(SettingsContext);
   const {headId, bodyId, setHeadId, setBodyId} = useContext(AnalysisContext);
 
   const [isHeadModalOpen, setIsHeadModalOpen] = useState(false);
@@ -29,7 +31,7 @@ export function PokemonSummary() {
   return (
     <Box
       display={'flex'}
-      flexDirection={'row'}
+      flexDirection={isMobile ? 'column' : 'row'}
       gap={2}
     >
       <PokemonDisplay

@@ -1,5 +1,7 @@
+import {CloseSharp} from "@mui/icons-material";
 import {Box, Modal, Paper, PaperProps, styled, Typography} from "@mui/material";
 import {ReactNode} from "react";
+import {StyledIconButton} from "../StyledIconButton.tsx";
 
 const ModalBox = styled(Paper)<PaperProps>(({theme}) => ({
   position: 'absolute',
@@ -18,6 +20,8 @@ const ModalBox = styled(Paper)<PaperProps>(({theme}) => ({
     width: theme.breakpoints.values.sm,
   }
 }));
+
+const styledIconButtonSx = {width: '36.5px', height: '36.5px'};
 
 export interface StyledModalProps {
   title: string;
@@ -44,9 +48,23 @@ export function StyledModal(
     >
       <Box m={4} width={'100%'}>
         <ModalBox elevation={4}>
-          <Typography variant={'h5'}>
-            {title}
-          </Typography>
+          <Box
+            display={'flex'}
+            flexDirection={'row'}
+            justifyContent={'space-between'}
+          >
+            <Typography variant={'h5'}>
+              {title}
+            </Typography>
+            <StyledIconButton
+              variant={'outlined'}
+              color="inherit"
+              onClick={handleClose}
+              sx={styledIconButtonSx}
+            >
+              <CloseSharp/>
+            </StyledIconButton>
+          </Box>
           {children}
         </ModalBox>
       </Box>

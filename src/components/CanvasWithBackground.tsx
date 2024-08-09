@@ -17,17 +17,21 @@ export const TopCanvas = styled("canvas", {
   outlineStyle: 'solid',
   outlineColor: theme.palette.action.disabled,
   pointerEvents: canCopy === false ? 'none' : 'initial',
+  width: '100%',
+  maxWidth: '288px',
 }));
 
 export interface CanvasWithBackgroundProps {
   canvasRef: MutableRefObject<HTMLCanvasElement | null>;
   canCopy?: boolean;
+  minSize?: number;
 }
 
 export function CanvasWithBackground(
   {
     canvasRef,
     canCopy,
+    minSize,
   }: CanvasWithBackgroundProps
 ) {
   const {backgroundImageData} = useContext(BackgroundContext);
@@ -44,8 +48,17 @@ export function CanvasWithBackground(
   }, [backgroundCanvasRef, backgroundImageData]);
 
   return (
-    <Box position={'relative'}>
-      <canvas ref={backgroundCanvasRef} width={288} height={288} style={{pointerEvents: 'none'}}/>
+    <Box display={'inline-flex'} position={'relative'} minHeight={0} sx={{aspectRatio: 1}}>
+      <canvas
+        ref={backgroundCanvasRef}
+        width={288}
+        height={288}
+        style={{
+          pointerEvents: 'none',
+          width: '100%',
+          minWidth: `${minSize}px`,
+          maxWidth: '288px',
+        }}/>
       <TopCanvas ref={canvasRef} width={288} height={288} canCopy={canCopy}/>
     </Box>
   );
