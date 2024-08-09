@@ -3,6 +3,7 @@ import {alpha, Box, Button, ButtonProps, Popover, styled, ToggleButton, ToggleBu
 import {MouseEvent, useCallback, useContext, useState} from "react";
 import {RgbaColor} from "react-colorful";
 import {AnalysisContext} from "../../../contexts/AnalysisContext.tsx";
+import {SettingsContext} from "../../../contexts/SettingsContext.tsx";
 import {getCssFromRgbaColor} from "../../../utils/image/conversion/getCssFromRgbaColor.ts";
 import {ColourPicker} from "../../ColourPicker/ColourPicker.tsx";
 import {ColourSpace} from "../types.ts";
@@ -37,6 +38,7 @@ const pickerPresetColours: RgbaColor[] = [
 ];
 
 export function ColourDisplayControls() {
+  const {isMobile} = useContext(SettingsContext);
   const {
     dispatchHighlightedColourState,
     highlightMode,
@@ -83,28 +85,13 @@ export function ColourDisplayControls() {
       display={'flex'}
       flexDirection={'row'}
       flexWrap={'wrap'}
-      gap={2}
+      gap={isMobile ? 1 : 2}
     >
-      <ToggleButtonGroup
-        value={colourSpace}
-        exclusive
-        color="primary"
-        onChange={handleColourSpaceChange}
-      >
-        <ToggleButton value="RGB">
-          RGB
-        </ToggleButton>
-        <ToggleButton value="HSV">
-          HSV
-        </ToggleButton>
-        <ToggleButton value="HSL">
-          HSL
-        </ToggleButton>
-      </ToggleButtonGroup>
       <ToggleButtonGroup
         value={highlightMode}
         exclusive
         color="primary"
+        size={isMobile ? 'small' : 'medium'}
         onChange={handleHighlightStyleChange}
       >
         <ToggleButton value="monotone">
@@ -146,6 +133,23 @@ export function ColourDisplayControls() {
         </ToggleButton>
         <ToggleButton value="rotate">
           Rotate
+        </ToggleButton>
+      </ToggleButtonGroup>
+      <ToggleButtonGroup
+        value={colourSpace}
+        exclusive
+        color="primary"
+        size={isMobile ? 'small' : 'medium'}
+        onChange={handleColourSpaceChange}
+      >
+        <ToggleButton value="RGB">
+          RGB
+        </ToggleButton>
+        <ToggleButton value="HSV">
+          HSV
+        </ToggleButton>
+        <ToggleButton value="HSL">
+          HSL
         </ToggleButton>
       </ToggleButtonGroup>
       <Button
