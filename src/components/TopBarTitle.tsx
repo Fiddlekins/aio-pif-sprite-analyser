@@ -39,7 +39,7 @@ export function TopBarTitle(
             <CollapsibleTypography variant={isMobile ? 'body2' : 'body1'} width={isMobile ? '100%' : undefined}>
               <Link
                 href={spriteInput.sourceUrl}
-                color={'primary.contrastText'}
+                color={'inherit'}
                 target="_blank"
                 rel="noreferrer"
               >
