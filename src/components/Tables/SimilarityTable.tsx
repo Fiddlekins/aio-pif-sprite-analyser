@@ -64,7 +64,8 @@ interface RowData extends RowDataBase {
   colourAKey: number;
   colourBKey: number;
   deltaE2000: number;
-  deltaECMC: number;
+  deltaECMCAB: number;
+  deltaECMCBA: number;
   deltaFusionBot: number;
   similarity: number;
 }
@@ -135,8 +136,10 @@ export function SimilarityTable() {
         );
       case 'deltaE2000':
         return toXDecimals(row.deltaE2000, 3);
-      case 'deltaECMC':
-        return toXDecimals(row.deltaECMC, 3);
+      case 'deltaECMCAB':
+        return toXDecimals(row.deltaECMCAB, 3);
+      case 'deltaECMCBA':
+        return toXDecimals(row.deltaECMCBA, 3);
       case 'deltaFusionBot':
         return toXDecimals(row.deltaFusionBot, 3);
       case 'similarity':
@@ -151,8 +154,11 @@ export function SimilarityTable() {
       case 'deltaE2000':
         result = numberComparator(a.deltaE2000, b.deltaE2000);
         break;
-      case 'deltaECMC':
-        result = numberComparator(a.deltaECMC, b.deltaECMC);
+      case 'deltaECMCAB':
+        result = numberComparator(a.deltaECMCAB, b.deltaECMCAB);
+        break;
+      case 'deltaECMCBA':
+        result = numberComparator(a.deltaECMCBA, b.deltaECMCBA);
         break;
       case 'deltaFusionBot':
         result = numberComparator(a.deltaFusionBot, b.deltaFusionBot);
