@@ -35,16 +35,17 @@ interface SimilarityData {
   colourAKey: number;
   colourBKey: number;
   deltaE2000: number;
-  deltaECMC: number;
+  deltaECMCAB: number;
+  deltaECMCBA: number;
   deltaFusionBot: number;
   similarity: number;
 }
 
-function isSimilar({deltaE2000, deltaECMC, deltaFusionBot}: SimilarityData) {
+function isSimilar({deltaE2000, deltaECMCAB, deltaECMCBA, deltaFusionBot}: SimilarityData) {
   if (deltaE2000 > thresholds.deltaE2000) {
     return false;
   }
-  if (deltaECMC > thresholds.deltaECMC) {
+  if (deltaECMCAB > thresholds.deltaECMC && deltaECMCBA > thresholds.deltaECMC) {
     return false;
   }
   if (deltaFusionBot > thresholds.deltaFusionBot) {
@@ -53,10 +54,11 @@ function isSimilar({deltaE2000, deltaECMC, deltaFusionBot}: SimilarityData) {
   return true;
 }
 
-function getMaxThresholdRatio({deltaE2000, deltaECMC, deltaFusionBot}: SimilarityData) {
+function getMaxThresholdRatio({deltaE2000, deltaECMCAB, deltaECMCBA, deltaFusionBot}: SimilarityData) {
   return Math.max(
     deltaE2000 / thresholds.deltaE2000,
-    deltaECMC / thresholds.deltaECMC,
+    deltaECMCAB / thresholds.deltaECMC,
+    deltaECMCBA / thresholds.deltaECMC,
     deltaFusionBot / thresholds.deltaFusionBot,
   );
 }
@@ -118,7 +120,9 @@ export class ColourAnalysis {
                 colourBKey,
                 // distanceOklab: distance(oklabColourA, oklabColourB, OKLab),
                 deltaE2000: deltaE2000(colourCielabA, colourCielabB),
-                deltaECMC: deltaECMC(colourCielabA, colourCielabB),
+                // deltaECMC produces different results based on operand order, so do it both ways
+                deltaECMCAB: deltaECMC(colourCielabA, colourCielabB),
+                deltaECMCBA: deltaECMC(colourCielabB, colourCielabA),
                 deltaFusionBot: deltaFusionBot(coloursRgbA, coloursRgbB),
                 similarity: 0,
               };
