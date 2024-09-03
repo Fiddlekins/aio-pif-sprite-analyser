@@ -162,9 +162,6 @@ export class ColourAnalysis {
 
   getColourSimilarityVerdict() {
     let verdict: Verdict = 'success';
-    if (this.coloursCount > 32) {
-      verdict = getMaxSeverity(verdict, 'error');
-    }
     if (this.similaritySkipped) {
       verdict = getMaxSeverity(verdict, 'error');
     } else if (this.similarColourPairMap.size > 20 || (this.similarColourPairMap.size / this.coloursCount) > 0.5) {
