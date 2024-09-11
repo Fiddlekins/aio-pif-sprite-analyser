@@ -91,7 +91,7 @@ export function PokemonDisplay(
     dexHref = getFusedDexHref(headPokemonId, bodyPokemonId);
   } else if (!isFusion && pokemonId) {
     id = `${pokemonId}`;
-    name = pokemonIdToDataMap[pokemonId].Name;
+    name = pokemonIdToDataMap[pokemonId].displayName || pokemonIdToDataMap[pokemonId].Name;
     dexHref = getUnfusedDexHref(pokemonId);
   } else {
     name = '';

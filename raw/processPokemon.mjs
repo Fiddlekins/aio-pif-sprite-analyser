@@ -3,16 +3,28 @@ import path from 'node:path'
 import {dirname} from 'path';
 import {fileURLToPath} from 'url';
 
-// Raw data taken from https://raw.githubusercontent.com/greystorm101/spritebot/main/src/smeargle-data/pokemon.txt
-// (https://github.com/greystorm101/spritebot/blob/main/src/smeargle-data/pokemon.txt)
+// Raw data taken from https://github.com/greystorm101/spritebot
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const projectRoot = path.join(__dirname, '..')
-const pokemonRawPath = path.join(projectRoot, 'raw', 'pokemon.txt')
-const pokemonDataPath = path.join(projectRoot, 'src', 'data', 'pokemonIdToDataMap.ts')
+const projectRoot = path.join(__dirname, '..');
+const pokemonRawPath = path.join(projectRoot, 'raw', 'pokemon.txt');
+const namesToNumbersRawPath = path.join(projectRoot, 'raw', 'namesToNumbers.json');
+const pokemonDataPath = path.join(projectRoot, 'src', 'data', 'pokemonIdToDataMap.ts');
+
+async function download(src, dest) {
+  const res = await fetch(src);
+  const text = await res.text();
+  await fs.writeFile(dest, text, 'utf8');
+}
+
+async function updateRawData() {
+  await download('https://raw.githubusercontent.com/greystorm101/spritebot/main/src/smeargle-data/pokemon.txt', pokemonRawPath);
+  await download('https://raw.githubusercontent.com/greystorm101/spritebot/main/src/data/NamesToNumbers.json', namesToNumbersRawPath);
+}
 
 const keptStringKeys = [
   'Name',
+  'FormName',
 ];
 const keptNumericalKeys = [
   'BattlerPlayerX',
@@ -24,7 +36,7 @@ const keptNumericalKeys = [
   'BattlerAltitude',
 ];
 
-function processPokemonText(pokemonText) {
+function processPokemonText(pokemonText, namesToNumbersText) {
   const pokemonJson = {};
   const lines = pokemonText.split(/\r\n|\n\r|\n/);
   let currentPokemonId = null;
@@ -41,12 +53,14 @@ function processPokemonText(pokemonText) {
       const key = rawKeyString.trim();
       if (keptStringKeys.includes(key)) {
         const value = rawValueString.trim();
-        let pokemon = pokemonJson[currentPokemonId];
-        if (!pokemon) {
-          pokemon = {};
-          pokemonJson[currentPokemonId] = pokemon;
+        if (value.length) {
+          let pokemon = pokemonJson[currentPokemonId];
+          if (!pokemon) {
+            pokemon = {};
+            pokemonJson[currentPokemonId] = pokemon;
+          }
+          pokemon[key] = value;
         }
-        pokemon[key] = value;
         continue;
       }
       if (keptNumericalKeys.includes(key)) {
@@ -61,12 +75,18 @@ function processPokemonText(pokemonText) {
       }
     }
   }
+  const namesToNumbersJson = JSON.parse(namesToNumbersText);
+  for (const {id, display_name} of namesToNumbersJson.pokemon) {
+    pokemonJson[id].displayName = display_name;
+  }
   return pokemonJson;
 }
 
 function getDataFile(data) {
   return `export interface PokemonData {
+    displayName?: string;
     Name: string;
+    FormName?: string;
     BattlerPlayerX: number;
     BattlerPlayerY: number;
     BattlerEnemyX: number;
@@ -80,8 +100,10 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = ${JSON.stringify(d
 }
 
 async function main() {
+  await updateRawData();
   const pokemonText = await fs.readFile(pokemonRawPath, 'utf8');
-  const pokemonJson = processPokemonText(pokemonText);
+  const namesToNumbersText = await fs.readFile(namesToNumbersRawPath, 'utf8');
+  const pokemonJson = processPokemonText(pokemonText, namesToNumbersText);
   await fs.writeFile(pokemonDataPath, getDataFile(pokemonJson), 'utf8');
 }
 

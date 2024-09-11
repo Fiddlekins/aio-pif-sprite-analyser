@@ -1,5 +1,7 @@
 export interface PokemonData {
+    displayName?: string;
     Name: string;
+    FormName?: string;
     BattlerPlayerX: number;
     BattlerPlayerY: number;
     BattlerEnemyX: number;
@@ -16,7 +18,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 25,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Bulbasaur"
   },
   "2": {
     "Name": "Ivysaur",
@@ -25,7 +28,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Ivysaur"
   },
   "3": {
     "Name": "Venusaur",
@@ -34,7 +38,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Venusaur"
   },
   "4": {
     "Name": "Charmander",
@@ -43,7 +48,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Charmander"
   },
   "5": {
     "Name": "Charmeleon",
@@ -52,7 +58,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 12,
     "BattlerShadowX": -3,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Charmeleon"
   },
   "6": {
     "Name": "Charizard",
@@ -61,7 +68,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Charizard"
   },
   "7": {
     "Name": "Squirtle",
@@ -70,7 +78,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 18,
     "BattlerShadowX": -1,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Squirtle"
   },
   "8": {
     "Name": "Wartortle",
@@ -79,7 +88,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Wartortle"
   },
   "9": {
     "Name": "Blastoise",
@@ -88,7 +98,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Blastoise"
   },
   "10": {
     "Name": "Caterpie",
@@ -97,7 +108,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Caterpie"
   },
   "11": {
     "Name": "Metapod",
@@ -107,7 +119,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 33,
     "BattlerAltitude": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Metapod"
   },
   "12": {
     "Name": "Butterfree",
@@ -117,7 +130,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 13,
     "BattlerAltitude": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Butterfree"
   },
   "13": {
     "Name": "Weedle",
@@ -126,7 +140,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 20,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Weedle"
   },
   "14": {
     "Name": "Kakuna",
@@ -136,7 +151,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 30,
     "BattlerAltitude": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Kakuna"
   },
   "15": {
     "Name": "Beedrill",
@@ -146,7 +162,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 8,
     "BattlerAltitude": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Beedrill"
   },
   "16": {
     "Name": "Pidgey",
@@ -155,7 +172,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 20,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Pidgey"
   },
   "17": {
     "Name": "Pidgeotto",
@@ -165,7 +183,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 21,
     "BattlerAltitude": 30,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Pidgeotto"
   },
   "18": {
     "Name": "Pidgeot",
@@ -174,7 +193,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 7,
     "BattlerEnemyY": 8,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Pidgeot"
   },
   "19": {
     "Name": "Rattata",
@@ -183,7 +203,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 27,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Rattata"
   },
   "20": {
     "Name": "Raticate",
@@ -192,7 +213,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Raticate"
   },
   "21": {
     "Name": "Spearow",
@@ -201,7 +223,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 22,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Spearow"
   },
   "22": {
     "Name": "Fearow",
@@ -211,7 +234,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": -2,
     "BattlerAltitude": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Fearow"
   },
   "23": {
     "Name": "Ekans",
@@ -220,7 +244,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 20,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Ekans"
   },
   "24": {
     "Name": "Arbok",
@@ -229,7 +254,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Arbok"
   },
   "25": {
     "Name": "Pikachu",
@@ -238,7 +264,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 5,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Pikachu"
   },
   "26": {
     "Name": "Raichu",
@@ -247,7 +274,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Raichu"
   },
   "27": {
     "Name": "Sandshrew",
@@ -256,7 +284,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 23,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Sandshrew"
   },
   "28": {
     "Name": "Sandslash",
@@ -265,7 +294,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Sandslash"
   },
   "29": {
     "Name": "Nidoran",
@@ -274,7 +304,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Nidoran♀"
   },
   "30": {
     "Name": "Nidorina",
@@ -283,7 +314,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Nidorina"
   },
   "31": {
     "Name": "Nidoqueen",
@@ -292,7 +324,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Nidoqueen"
   },
   "32": {
     "Name": "Nidoran",
@@ -301,7 +334,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Nidoran♂"
   },
   "33": {
     "Name": "Nidorino",
@@ -310,7 +344,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Nidorino"
   },
   "34": {
     "Name": "Nidoking",
@@ -319,7 +354,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Nidoking"
   },
   "35": {
     "Name": "Clefairy",
@@ -328,7 +364,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Clefairy"
   },
   "36": {
     "Name": "Clefable",
@@ -337,7 +374,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Clefable"
   },
   "37": {
     "Name": "Vulpix",
@@ -346,7 +384,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Vulpix"
   },
   "38": {
     "Name": "Ninetales",
@@ -355,7 +394,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Ninetales"
   },
   "39": {
     "Name": "Jigglypuff",
@@ -364,7 +404,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 23,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Jigglypuff"
   },
   "40": {
     "Name": "Wigglytuff",
@@ -373,7 +414,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Wigglytuff"
   },
   "41": {
     "Name": "Zubat",
@@ -383,7 +425,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 21,
     "BattlerAltitude": 30,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Zubat"
   },
   "42": {
     "Name": "Golbat",
@@ -393,7 +436,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 4,
     "BattlerAltitude": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Golbat"
   },
   "43": {
     "Name": "Oddish",
@@ -402,7 +446,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Oddish"
   },
   "44": {
     "Name": "Gloom",
@@ -411,7 +456,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Gloom"
   },
   "45": {
     "Name": "Vileplume",
@@ -420,7 +466,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Vileplume"
   },
   "46": {
     "Name": "Paras",
@@ -429,7 +476,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 29,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Paras"
   },
   "47": {
     "Name": "Parasect",
@@ -438,7 +486,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Parasect"
   },
   "48": {
     "Name": "Venonat",
@@ -447,7 +496,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Venonat"
   },
   "49": {
     "Name": "Venomoth",
@@ -457,7 +507,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 13,
     "BattlerAltitude": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Venomoth"
   },
   "50": {
     "Name": "Diglett",
@@ -466,7 +517,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 30,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Diglett"
   },
   "51": {
     "Name": "Dugtrio",
@@ -475,7 +527,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 22,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Dugtrio"
   },
   "52": {
     "Name": "Meowth",
@@ -484,7 +537,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Meowth"
   },
   "53": {
     "Name": "Persian",
@@ -493,7 +547,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Persian"
   },
   "54": {
     "Name": "Psyduck",
@@ -502,7 +557,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Psyduck"
   },
   "55": {
     "Name": "Golduck",
@@ -511,7 +567,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Golduck"
   },
   "56": {
     "Name": "Mankey",
@@ -520,7 +577,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Mankey"
   },
   "57": {
     "Name": "Primeape",
@@ -529,7 +587,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Primeape"
   },
   "58": {
     "Name": "Growlithe",
@@ -538,7 +597,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Growlithe"
   },
   "59": {
     "Name": "Arcanine",
@@ -547,7 +607,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 7,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Arcanine"
   },
   "60": {
     "Name": "Poliwag",
@@ -556,7 +617,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 17,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Poliwag"
   },
   "61": {
     "Name": "Poliwhirl",
@@ -565,7 +627,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Poliwhirl"
   },
   "62": {
     "Name": "Poliwrath",
@@ -574,7 +637,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Poliwrath"
   },
   "63": {
     "Name": "Abra",
@@ -583,7 +647,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 22,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Abra"
   },
   "64": {
     "Name": "Kadabra",
@@ -592,7 +657,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Kadabra"
   },
   "65": {
     "Name": "Alakazam",
@@ -601,7 +667,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Alakazam"
   },
   "66": {
     "Name": "Machop",
@@ -610,7 +677,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Machop"
   },
   "67": {
     "Name": "Machoke",
@@ -619,7 +687,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 6,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Machoke"
   },
   "68": {
     "Name": "Machamp",
@@ -628,7 +697,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 6,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Machamp"
   },
   "69": {
     "Name": "Bellsprout",
@@ -637,7 +707,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 23,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Bellsprout"
   },
   "70": {
     "Name": "Weepinbell",
@@ -647,7 +718,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 20,
     "BattlerAltitude": 10,
     "BattlerShadowX": -4,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Weepinbell"
   },
   "71": {
     "Name": "Victreebel",
@@ -657,7 +729,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 13,
     "BattlerAltitude": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Victreebel"
   },
   "72": {
     "Name": "Tentacool",
@@ -667,7 +740,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 7,
     "BattlerAltitude": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Tentacool"
   },
   "73": {
     "Name": "Tentacruel",
@@ -677,7 +751,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 5,
     "BattlerAltitude": 7,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Tentacruel"
   },
   "74": {
     "Name": "Geodude",
@@ -687,7 +762,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 26,
     "BattlerAltitude": 16,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Geodude"
   },
   "75": {
     "Name": "Graveler",
@@ -696,7 +772,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Graveler"
   },
   "76": {
     "Name": "Golem",
@@ -705,7 +782,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 10,
     "BattlerShadowX": -1,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Golem"
   },
   "77": {
     "Name": "Ponyta",
@@ -714,7 +792,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Ponyta"
   },
   "78": {
     "Name": "Rapidash",
@@ -723,7 +802,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 3,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Rapidash"
   },
   "79": {
     "Name": "Slowpoke",
@@ -732,7 +812,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Slowpoke"
   },
   "80": {
     "Name": "Slowbro",
@@ -741,7 +822,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 8,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Slowbro"
   },
   "81": {
     "Name": "Magnemite",
@@ -751,7 +833,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 17,
     "BattlerAltitude": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Magnemite"
   },
   "82": {
     "Name": "Magneton",
@@ -761,7 +844,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 14,
     "BattlerAltitude": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Magneton"
   },
   "83": {
     "Name": "Farfetch'd",
@@ -770,7 +854,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 15,
     "BattlerShadowX": -1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Farfetch'd"
   },
   "84": {
     "Name": "Doduo",
@@ -779,7 +864,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Doduo"
   },
   "85": {
     "Name": "Dodrio",
@@ -788,7 +874,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 7,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Dodrio"
   },
   "86": {
     "Name": "Seel",
@@ -797,7 +884,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Seel"
   },
   "87": {
     "Name": "Dewgong",
@@ -806,7 +894,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 9,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Dewgong"
   },
   "88": {
     "Name": "Grimer",
@@ -815,7 +904,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 24,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Grimer"
   },
   "89": {
     "Name": "Muk",
@@ -824,7 +914,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Muk"
   },
   "90": {
     "Name": "Shellder",
@@ -833,7 +924,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 25,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Shellder"
   },
   "91": {
     "Name": "Cloyster",
@@ -842,7 +934,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": -4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Cloyster"
   },
   "92": {
     "Name": "Gastly",
@@ -852,7 +945,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 5,
     "BattlerAltitude": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Gastly"
   },
   "93": {
     "Name": "Haunter",
@@ -862,7 +956,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 12,
     "BattlerAltitude": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Haunter"
   },
   "94": {
     "Name": "Gengar",
@@ -871,7 +966,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Gengar"
   },
   "95": {
     "Name": "Onix",
@@ -880,7 +976,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -3,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Onix"
   },
   "96": {
     "Name": "Drowzee",
@@ -889,7 +986,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -3,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Drowzee"
   },
   "97": {
     "Name": "Hypno",
@@ -898,7 +996,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Hypno"
   },
   "98": {
     "Name": "Krabby",
@@ -907,7 +1006,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 23,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Krabby"
   },
   "99": {
     "Name": "Kingler",
@@ -916,7 +1016,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Kingler"
   },
   "100": {
     "Name": "Voltorb",
@@ -925,7 +1026,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Voltorb"
   },
   "101": {
     "Name": "Electrode",
@@ -934,7 +1036,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Electrode"
   },
   "102": {
     "Name": "Exeggcute",
@@ -943,7 +1046,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 23,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Exeggcute"
   },
   "103": {
     "Name": "Exeggutor",
@@ -952,7 +1056,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 3,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Exeggutor"
   },
   "104": {
     "Name": "Cubone",
@@ -961,7 +1066,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 22,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Cubone"
   },
   "105": {
     "Name": "Marowak",
@@ -970,7 +1076,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 5,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Marowak"
   },
   "106": {
     "Name": "Hitmonlee",
@@ -979,7 +1086,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Hitmonlee"
   },
   "107": {
     "Name": "Hitmonchan",
@@ -988,7 +1096,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Hitmonchan"
   },
   "108": {
     "Name": "Lickitung",
@@ -997,7 +1106,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Lickitung"
   },
   "109": {
     "Name": "Koffing",
@@ -1007,7 +1117,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 14,
     "BattlerAltitude": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Koffing"
   },
   "110": {
     "Name": "Weezing",
@@ -1017,7 +1128,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 0,
     "BattlerAltitude": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Weezing"
   },
   "111": {
     "Name": "Rhyhorn",
@@ -1026,7 +1138,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Rhyhorn"
   },
   "112": {
     "Name": "Rhydon",
@@ -1035,7 +1148,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Rhydon"
   },
   "113": {
     "Name": "Chansey",
@@ -1044,7 +1158,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Chansey"
   },
   "114": {
     "Name": "Tangela",
@@ -1053,7 +1168,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Tangela"
   },
   "115": {
     "Name": "Kangaskhan",
@@ -1062,7 +1178,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Kangaskhan"
   },
   "116": {
     "Name": "Horsea",
@@ -1072,7 +1189,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 24,
     "BattlerAltitude": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Horsea"
   },
   "117": {
     "Name": "Seadra",
@@ -1082,7 +1200,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 9,
     "BattlerAltitude": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Seadra"
   },
   "118": {
     "Name": "Goldeen",
@@ -1092,7 +1211,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 17,
     "BattlerAltitude": 11,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Goldeen"
   },
   "119": {
     "Name": "Seaking",
@@ -1102,7 +1222,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 15,
     "BattlerAltitude": 10,
     "BattlerShadowX": -1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Seaking"
   },
   "120": {
     "Name": "Staryu",
@@ -1112,7 +1233,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 11,
     "BattlerAltitude": 7,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Staryu"
   },
   "121": {
     "Name": "Starmie",
@@ -1122,7 +1244,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 17,
     "BattlerAltitude": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Starmie"
   },
   "122": {
     "Name": "Mr. Mime",
@@ -1131,7 +1254,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Mr. Mime"
   },
   "123": {
     "Name": "Scyther",
@@ -1140,7 +1264,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Scyther"
   },
   "124": {
     "Name": "Jynx",
@@ -1149,7 +1274,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Jynx"
   },
   "125": {
     "Name": "Electabuzz",
@@ -1158,7 +1284,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Electabuzz"
   },
   "126": {
     "Name": "Magmar",
@@ -1167,7 +1294,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Magmar"
   },
   "127": {
     "Name": "Pinsir",
@@ -1176,7 +1304,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 13,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Pinsir"
   },
   "128": {
     "Name": "Tauros",
@@ -1185,7 +1314,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -7,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 4,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Tauros"
   },
   "129": {
     "Name": "Magikarp",
@@ -1195,7 +1325,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 12,
     "BattlerAltitude": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Magikarp"
   },
   "130": {
     "Name": "Gyarados",
@@ -1205,7 +1336,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 2,
     "BattlerAltitude": 2,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Gyarados"
   },
   "131": {
     "Name": "Lapras",
@@ -1214,7 +1346,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Lapras"
   },
   "132": {
     "Name": "Ditto",
@@ -1223,7 +1356,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 28,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Ditto"
   },
   "133": {
     "Name": "Eevee",
@@ -1232,7 +1366,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 20,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Eevee"
   },
   "134": {
     "Name": "Vaporeon",
@@ -1241,7 +1376,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 16,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Vaporeon"
   },
   "135": {
     "Name": "Jolteon",
@@ -1250,7 +1386,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Jolteon"
   },
   "136": {
     "Name": "Flareon",
@@ -1259,7 +1396,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 15,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Flareon"
   },
   "137": {
     "Name": "Porygon",
@@ -1269,7 +1407,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 20,
     "BattlerAltitude": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Porygon"
   },
   "138": {
     "Name": "Omanyte",
@@ -1278,7 +1417,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 23,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Omanyte"
   },
   "139": {
     "Name": "Omastar",
@@ -1287,7 +1427,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Omastar"
   },
   "140": {
     "Name": "Kabuto",
@@ -1296,7 +1437,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Kabuto"
   },
   "141": {
     "Name": "Kabutops",
@@ -1305,7 +1447,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -5,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Kabutops"
   },
   "142": {
     "Name": "Aerodactyl",
@@ -1315,7 +1458,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 6,
     "BattlerAltitude": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Aerodactyl"
   },
   "143": {
     "Name": "Snorlax",
@@ -1324,7 +1468,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -4,
     "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Snorlax"
   },
   "144": {
     "Name": "Articuno",
@@ -1333,7 +1478,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 9,
     "BattlerEnemyY": 2,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Articuno"
   },
   "145": {
     "Name": "Zapdos",
@@ -1343,7 +1489,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 1,
     "BattlerAltitude": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Zapdos"
   },
   "146": {
     "Name": "Moltres",
@@ -1352,7 +1499,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": -8,
     "BattlerShadowX": -4,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Moltres"
   },
   "147": {
     "Name": "Dratini",
@@ -1361,7 +1509,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Dratini"
   },
   "148": {
     "Name": "Dragonair",
@@ -1370,7 +1519,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Dragonair"
   },
   "149": {
     "Name": "Dragonite",
@@ -1379,7 +1529,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 3,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Dragonite"
   },
   "150": {
     "Name": "Mewtwo",
@@ -1388,7 +1539,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Mewtwo"
   },
   "151": {
     "Name": "Mew",
@@ -1398,7 +1550,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 8,
     "BattlerAltitude": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Mew"
   },
   "152": {
     "Name": "Chikorita",
@@ -1407,7 +1560,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Chikorita"
   },
   "153": {
     "Name": "Bayleef",
@@ -1416,7 +1570,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Bayleef"
   },
   "154": {
     "Name": "Meganium",
@@ -1425,7 +1580,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 1,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Meganium"
   },
   "155": {
     "Name": "Cyndaquil",
@@ -1434,7 +1590,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 22,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Cyndaquil"
   },
   "156": {
     "Name": "Quilava",
@@ -1443,7 +1600,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 20,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Quilava"
   },
   "157": {
     "Name": "Typhlosion",
@@ -1452,7 +1610,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Typhlosion"
   },
   "158": {
     "Name": "Totodile",
@@ -1461,7 +1620,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Totodile"
   },
   "159": {
     "Name": "Croconaw",
@@ -1470,7 +1630,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 12,
     "BattlerShadowX": -1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Croconaw"
   },
   "160": {
     "Name": "Feraligatr",
@@ -1479,7 +1640,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 6,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Feraligatr"
   },
   "161": {
     "Name": "Sentret",
@@ -1488,7 +1650,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Sentret"
   },
   "162": {
     "Name": "Furret",
@@ -1497,7 +1660,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Furret"
   },
   "163": {
     "Name": "Hoothoot",
@@ -1506,7 +1670,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 18,
     "BattlerShadowX": -1,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Hoothoot"
   },
   "164": {
     "Name": "Noctowl",
@@ -1515,7 +1680,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 11,
     "BattlerShadowX": -1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Noctowl"
   },
   "165": {
     "Name": "Ledyba",
@@ -1524,7 +1690,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": -1,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Ledyba"
   },
   "166": {
     "Name": "Ledian",
@@ -1533,7 +1700,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": -2,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Ledian"
   },
   "167": {
     "Name": "Spinarak",
@@ -1542,7 +1710,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 32,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Spinarak"
   },
   "168": {
     "Name": "Ariados",
@@ -1551,7 +1720,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 23,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Ariados"
   },
   "169": {
     "Name": "Crobat",
@@ -1561,7 +1731,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 8,
     "BattlerAltitude": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Crobat"
   },
   "170": {
     "Name": "Chinchou",
@@ -1571,7 +1742,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 11,
     "BattlerAltitude": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Chinchou"
   },
   "171": {
     "Name": "Lanturn",
@@ -1581,7 +1753,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 10,
     "BattlerAltitude": 11,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Lanturn"
   },
   "172": {
     "Name": "Pichu",
@@ -1590,7 +1763,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Pichu"
   },
   "173": {
     "Name": "Cleffa",
@@ -1599,7 +1773,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Cleffa"
   },
   "174": {
     "Name": "Igglybuff",
@@ -1608,7 +1783,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 22,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Igglybuff"
   },
   "175": {
     "Name": "Togepi",
@@ -1617,7 +1793,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 26,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Togepi"
   },
   "176": {
     "Name": "Togetic",
@@ -1627,7 +1804,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 11,
     "BattlerAltitude": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Togetic"
   },
   "177": {
     "Name": "Natu",
@@ -1636,7 +1814,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 25,
     "BattlerShadowX": -3,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Natu"
   },
   "178": {
     "Name": "Xatu",
@@ -1645,7 +1824,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 13,
     "BattlerShadowX": -1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Xatu"
   },
   "179": {
     "Name": "Mareep",
@@ -1654,7 +1834,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Mareep"
   },
   "180": {
     "Name": "Flaaffy",
@@ -1663,7 +1844,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 15,
     "BattlerShadowX": -1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Flaaffy"
   },
   "181": {
     "Name": "Ampharos",
@@ -1672,7 +1854,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Ampharos"
   },
   "182": {
     "Name": "Bellossom",
@@ -1681,7 +1864,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Bellossom"
   },
   "183": {
     "Name": "Marill",
@@ -1690,7 +1874,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 22,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Marill"
   },
   "184": {
     "Name": "Azumarill",
@@ -1699,7 +1884,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 13,
     "BattlerShadowX": -1,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Azumarill"
   },
   "185": {
     "Name": "Sudowoodo",
@@ -1708,7 +1894,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Sudowoodo"
   },
   "186": {
     "Name": "Politoed",
@@ -1718,7 +1905,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 20,
     "BattlerAltitude": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Politoed"
   },
   "187": {
     "Name": "Hoppip",
@@ -1727,7 +1915,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": -2,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Hoppip"
   },
   "188": {
     "Name": "Skiploom",
@@ -1736,7 +1925,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Skiploom"
   },
   "189": {
     "Name": "Jumpluff",
@@ -1746,7 +1936,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 15,
     "BattlerAltitude": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Jumpluff"
   },
   "190": {
     "Name": "Aipom",
@@ -1755,7 +1946,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Aipom"
   },
   "191": {
     "Name": "Sunkern",
@@ -1764,7 +1956,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Sunkern"
   },
   "192": {
     "Name": "Sunflora",
@@ -1773,7 +1966,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Sunflora"
   },
   "193": {
     "Name": "Yanma",
@@ -1783,7 +1977,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 13,
     "BattlerAltitude": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Yanma"
   },
   "194": {
     "Name": "Wooper",
@@ -1792,7 +1987,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Wooper"
   },
   "195": {
     "Name": "Quagsire",
@@ -1801,7 +1997,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Quagsire"
   },
   "196": {
     "Name": "Espeon",
@@ -1810,7 +2007,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Espeon"
   },
   "197": {
     "Name": "Umbreon",
@@ -1819,7 +2017,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Umbreon"
   },
   "198": {
     "Name": "Murkrow",
@@ -1829,7 +2028,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 40,
     "BattlerAltitude": 21,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Murkrow"
   },
   "199": {
     "Name": "Slowking",
@@ -1838,7 +2038,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 7,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Slowking"
   },
   "200": {
     "Name": "Misdreavus",
@@ -1848,7 +2049,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 20,
     "BattlerAltitude": 27,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Misdreavus"
   },
   "201": {
     "Name": "Unown",
@@ -1858,7 +2060,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 25,
     "BattlerAltitude": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Unown"
   },
   "202": {
     "Name": "Wobbuffet",
@@ -1867,7 +2070,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Wobbuffet"
   },
   "203": {
     "Name": "Girafarig",
@@ -1876,7 +2080,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 7,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Girafarig"
   },
   "204": {
     "Name": "Pineco",
@@ -1886,7 +2091,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 22,
     "BattlerAltitude": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Pineco"
   },
   "205": {
     "Name": "Forretress",
@@ -1896,7 +2102,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 9,
     "BattlerAltitude": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Forretress"
   },
   "206": {
     "Name": "Dunsparce",
@@ -1905,7 +2112,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Dunsparce"
   },
   "207": {
     "Name": "Gligar",
@@ -1915,7 +2123,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 9,
     "BattlerAltitude": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Gligar"
   },
   "208": {
     "Name": "Steelix",
@@ -1924,7 +2133,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Steelix"
   },
   "209": {
     "Name": "Snubbull",
@@ -1933,7 +2143,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 20,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Snubbull"
   },
   "210": {
     "Name": "Granbull",
@@ -1942,7 +2153,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Granbull"
   },
   "211": {
     "Name": "Qwilfish",
@@ -1952,7 +2164,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 20,
     "BattlerAltitude": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Qwilfish"
   },
   "212": {
     "Name": "Scizor",
@@ -1961,7 +2174,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 3,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Scizor"
   },
   "213": {
     "Name": "Shuckle",
@@ -1970,7 +2184,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 20,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Shuckle"
   },
   "214": {
     "Name": "Heracross",
@@ -1979,7 +2194,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Heracross"
   },
   "215": {
     "Name": "Sneasel",
@@ -1988,7 +2204,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 16,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Sneasel"
   },
   "216": {
     "Name": "Teddiursa",
@@ -1997,7 +2214,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Teddiursa"
   },
   "217": {
     "Name": "Ursaring",
@@ -2006,7 +2224,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 5,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Ursaring"
   },
   "218": {
     "Name": "Slugma",
@@ -2015,7 +2234,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 4,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Slugma"
   },
   "219": {
     "Name": "Magcargo",
@@ -2024,7 +2244,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Magcargo"
   },
   "220": {
     "Name": "Swinub",
@@ -2033,7 +2254,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 27,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Swinub"
   },
   "221": {
     "Name": "Piloswine",
@@ -2042,7 +2264,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Piloswine"
   },
   "222": {
     "Name": "Corsola",
@@ -2051,7 +2274,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 22,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Corsola"
   },
   "223": {
     "Name": "Remoraid",
@@ -2061,7 +2285,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 24,
     "BattlerAltitude": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Remoraid"
   },
   "224": {
     "Name": "Octillery",
@@ -2070,7 +2295,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Octillery"
   },
   "225": {
     "Name": "Delibird",
@@ -2079,7 +2305,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 14,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Delibird"
   },
   "226": {
     "Name": "Mantine",
@@ -2089,7 +2316,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 13,
     "BattlerAltitude": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Mantine"
   },
   "227": {
     "Name": "Skarmory",
@@ -2098,7 +2326,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Skarmory"
   },
   "228": {
     "Name": "Houndour",
@@ -2107,7 +2336,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 20,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Houndour"
   },
   "229": {
     "Name": "Houndoom",
@@ -2116,7 +2346,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 10,
     "BattlerShadowX": -3,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Houndoom"
   },
   "230": {
     "Name": "Kingdra",
@@ -2126,7 +2357,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 10,
     "BattlerAltitude": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Kingdra"
   },
   "231": {
     "Name": "Phanpy",
@@ -2135,7 +2367,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 23,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Phanpy"
   },
   "232": {
     "Name": "Donphan",
@@ -2144,7 +2377,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -4,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Donphan"
   },
   "233": {
     "Name": "Porygon2",
@@ -2154,7 +2388,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 19,
     "BattlerAltitude": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Porygon2"
   },
   "234": {
     "Name": "Stantler",
@@ -2163,7 +2398,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Stantler"
   },
   "235": {
     "Name": "Smeargle",
@@ -2172,7 +2408,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Smeargle"
   },
   "236": {
     "Name": "Tyrogue",
@@ -2181,7 +2418,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -3,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Tyrogue"
   },
   "237": {
     "Name": "Hitmontop",
@@ -2190,7 +2428,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Hitmontop"
   },
   "238": {
     "Name": "Smoochum",
@@ -2199,7 +2438,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 22,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Smoochum"
   },
   "239": {
     "Name": "Elekid",
@@ -2208,7 +2448,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Elekid"
   },
   "240": {
     "Name": "Magby",
@@ -2217,7 +2458,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Magby"
   },
   "241": {
     "Name": "Miltank",
@@ -2226,7 +2468,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 17,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Miltank"
   },
   "242": {
     "Name": "Blissey",
@@ -2235,7 +2478,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Blissey"
   },
   "243": {
     "Name": "Raikou",
@@ -2244,7 +2488,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 6,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Raikou"
   },
   "244": {
     "Name": "Entei",
@@ -2253,7 +2498,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -3,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Entei"
   },
   "245": {
     "Name": "Suicune",
@@ -2262,7 +2508,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Suicune"
   },
   "246": {
     "Name": "Larvitar",
@@ -2271,7 +2518,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Larvitar"
   },
   "247": {
     "Name": "Pupitar",
@@ -2281,7 +2529,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 24,
     "BattlerAltitude": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Pupitar"
   },
   "248": {
     "Name": "Tyranitar",
@@ -2290,7 +2539,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 8,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Tyranitar"
   },
   "249": {
     "Name": "Lugia",
@@ -2300,7 +2550,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 16,
     "BattlerAltitude": 26,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Lugia"
   },
   "250": {
     "Name": "Ho-Oh",
@@ -2310,7 +2561,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 6,
     "BattlerAltitude": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Ho-oh"
   },
   "251": {
     "Name": "Celebi",
@@ -2320,7 +2572,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 18,
     "BattlerAltitude": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Celebi"
   },
   "252": {
     "Name": "Azurill",
@@ -2329,7 +2582,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Azurill"
   },
   "253": {
     "Name": "Wynaut",
@@ -2338,7 +2592,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Wynaut"
   },
   "254": {
     "Name": "Ambipom",
@@ -2348,7 +2603,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 20,
     "BattlerAltitude": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Ambipom"
   },
   "255": {
     "Name": "Mismagius",
@@ -2358,7 +2614,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 26,
     "BattlerAltitude": 28,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Mismagius"
   },
   "256": {
     "Name": "Honchkrow",
@@ -2367,7 +2624,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 14,
     "BattlerShadowX": -1,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Honchkrow"
   },
   "257": {
     "Name": "Bonsly",
@@ -2376,7 +2634,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Bonsly"
   },
   "258": {
     "Name": "Mime Jr.",
@@ -2385,7 +2644,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 7,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Mime Jr."
   },
   "259": {
     "Name": "Happiny",
@@ -2394,7 +2654,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Happiny"
   },
   "260": {
     "Name": "Munchlax",
@@ -2403,7 +2664,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Munchlax"
   },
   "261": {
     "Name": "Mantyke",
@@ -2413,7 +2675,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 16,
     "BattlerAltitude": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Mantyke"
   },
   "262": {
     "Name": "Weavile",
@@ -2422,7 +2685,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Weavile"
   },
   "263": {
     "Name": "Magnezone",
@@ -2432,7 +2696,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 40,
     "BattlerAltitude": 45,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Magnezone"
   },
   "264": {
     "Name": "Lickilicky",
@@ -2441,7 +2706,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 7,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Lickilicky"
   },
   "265": {
     "Name": "Rhyperior",
@@ -2451,7 +2717,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 23,
     "BattlerAltitude": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Rhyperior"
   },
   "266": {
     "Name": "Tangrowth",
@@ -2460,7 +2727,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Tangrowth"
   },
   "267": {
     "Name": "Electivire",
@@ -2469,7 +2737,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Electivire"
   },
   "268": {
     "Name": "Magmortar",
@@ -2478,7 +2747,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 7,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Magmortar"
   },
   "269": {
     "Name": "Togekiss",
@@ -2488,7 +2758,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 16,
     "BattlerAltitude": 24,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Togekiss"
   },
   "270": {
     "Name": "Yanmega",
@@ -2498,7 +2769,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 21,
     "BattlerAltitude": 30,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Yanmega"
   },
   "271": {
     "Name": "Leafeon",
@@ -2507,7 +2779,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Leafeon"
   },
   "272": {
     "Name": "Glaceon",
@@ -2517,7 +2790,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 26,
     "BattlerAltitude": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Glaceon"
   },
   "273": {
     "Name": "Gliscor",
@@ -2527,7 +2801,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 8,
     "BattlerAltitude": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Gliscor"
   },
   "274": {
     "Name": "Mamoswine",
@@ -2536,7 +2811,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -5,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 5,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Mamoswine"
   },
   "275": {
     "Name": "Porygon-Z",
@@ -2546,7 +2822,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 11,
     "BattlerAltitude": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Porygon-Z"
   },
   "276": {
     "Name": "Treecko",
@@ -2555,7 +2832,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Treecko"
   },
   "277": {
     "Name": "Grovyle",
@@ -2565,7 +2843,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 18,
     "BattlerAltitude": 6,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Grovyle"
   },
   "278": {
     "Name": "Sceptile",
@@ -2574,7 +2853,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Sceptile"
   },
   "279": {
     "Name": "Torchic",
@@ -2583,7 +2863,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Torchic"
   },
   "280": {
     "Name": "Combusken",
@@ -2592,7 +2873,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Combusken"
   },
   "281": {
     "Name": "Blaziken",
@@ -2601,7 +2883,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -4,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Blaziken"
   },
   "282": {
     "Name": "Mudkip",
@@ -2610,7 +2893,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Mudkip"
   },
   "283": {
     "Name": "Marshtomp",
@@ -2619,7 +2903,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Marshtomp"
   },
   "284": {
     "Name": "Swampert",
@@ -2628,7 +2913,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Swampert"
   },
   "285": {
     "Name": "Ralts",
@@ -2637,7 +2923,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Ralts"
   },
   "286": {
     "Name": "Kirlia",
@@ -2646,7 +2933,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Kirlia"
   },
   "287": {
     "Name": "Gardevoir",
@@ -2655,7 +2943,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Gardevoir"
   },
   "288": {
     "Name": "Gallade",
@@ -2664,7 +2953,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -3,
     "BattlerEnemyY": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Gallade"
   },
   "289": {
     "Name": "Shedinja",
@@ -2674,7 +2964,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 20,
     "BattlerAltitude": 23,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Shedinja"
   },
   "290": {
     "Name": "Kecleon",
@@ -2683,7 +2974,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Kecleon"
   },
   "291": {
     "Name": "Beldum",
@@ -2693,7 +2985,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 17,
     "BattlerAltitude": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Beldum"
   },
   "292": {
     "Name": "Metang",
@@ -2703,7 +2996,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 23,
     "BattlerAltitude": 3,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Metang"
   },
   "293": {
     "Name": "Metagross",
@@ -2712,7 +3006,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 22,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Metagross"
   },
   "294": {
     "Name": "Bidoof",
@@ -2721,7 +3016,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 22,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Bidoof"
   },
   "295": {
     "Name": "Spiritomb",
@@ -2731,7 +3027,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 28,
     "BattlerAltitude": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Spiritomb"
   },
   "296": {
     "Name": "Lucario",
@@ -2740,7 +3037,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Lucario"
   },
   "297": {
     "Name": "Gible",
@@ -2749,7 +3047,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Gible"
   },
   "298": {
     "Name": "Gabite",
@@ -2758,7 +3057,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Gabite"
   },
   "299": {
     "Name": "Garchomp",
@@ -2767,7 +3067,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Garchomp"
   },
   "300": {
     "Name": "Mawile",
@@ -2776,7 +3077,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Mawile"
   },
   "301": {
     "Name": "Lileep",
@@ -2785,7 +3087,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Lileep"
   },
   "302": {
     "Name": "Cradily",
@@ -2794,7 +3097,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -5,
     "BattlerEnemyY": 3,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Cradily"
   },
   "303": {
     "Name": "Anorith",
@@ -2803,7 +3107,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Anorith"
   },
   "304": {
     "Name": "Armaldo",
@@ -2812,7 +3117,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Armaldo"
   },
   "305": {
     "Name": "Cranidos",
@@ -2821,7 +3127,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Cranidos"
   },
   "306": {
     "Name": "Rampardos",
@@ -2830,7 +3137,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 3,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Rampardos"
   },
   "307": {
     "Name": "Shieldon",
@@ -2839,7 +3147,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 22,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Shieldon"
   },
   "308": {
     "Name": "Bastiodon",
@@ -2848,7 +3157,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Bastiodon"
   },
   "309": {
     "Name": "Slaking",
@@ -2857,7 +3167,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Slaking"
   },
   "310": {
     "Name": "Absol",
@@ -2866,7 +3177,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Absol"
   },
   "311": {
     "Name": "Duskull",
@@ -2876,7 +3188,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 0,
     "BattlerAltitude": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Duskull"
   },
   "312": {
     "Name": "Dusclops",
@@ -2885,7 +3198,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 5,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Dusclops"
   },
   "313": {
     "Name": "Dusknoir",
@@ -2894,7 +3208,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -4,
     "BattlerEnemyY": -7,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Dusknoir"
   },
   "314": {
     "Name": "Wailord",
@@ -2903,7 +3218,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": -2,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Wailord"
   },
   "315": {
     "Name": "Arceus",
@@ -2912,7 +3228,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 3,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Arceus"
   },
   "316": {
     "Name": "Turtwig",
@@ -2921,7 +3238,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Turtwig"
   },
   "317": {
     "Name": "Grotle",
@@ -2930,7 +3248,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Grotle"
   },
   "318": {
     "Name": "Torterra",
@@ -2939,7 +3258,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Torterra"
   },
   "319": {
     "Name": "Chimchar",
@@ -2948,7 +3268,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Chimchar"
   },
   "320": {
     "Name": "Monferno",
@@ -2957,7 +3278,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Monferno"
   },
   "321": {
     "Name": "Infernape",
@@ -2966,7 +3288,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Infernape"
   },
   "322": {
     "Name": "Piplup",
@@ -2975,7 +3298,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 25,
     "BattlerShadowX": -2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Piplup"
   },
   "323": {
     "Name": "Prinplup",
@@ -2984,7 +3308,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Prinplup"
   },
   "324": {
     "Name": "Empoleon",
@@ -2993,7 +3318,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Empoleon"
   },
   "325": {
     "Name": "Nosepass",
@@ -3002,7 +3328,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Nosepass"
   },
   "326": {
     "Name": "Probopass",
@@ -3011,7 +3338,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Probopass"
   },
   "327": {
     "Name": "Honedge",
@@ -3021,7 +3349,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 9,
     "BattlerAltitude": 5,
     "BattlerShadowX": -6,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Honedge"
   },
   "328": {
     "Name": "Doublade",
@@ -3031,7 +3360,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 4,
     "BattlerAltitude": 1,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Doublade"
   },
   "329": {
     "Name": "Aegislash",
@@ -3041,7 +3371,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 8,
     "BattlerAltitude": 10,
     "BattlerShadowX": -3,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Aegislash"
   },
   "330": {
     "Name": "Pawniard",
@@ -3050,7 +3381,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Pawniard"
   },
   "331": {
     "Name": "Bisharp",
@@ -3059,7 +3391,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Bisharp"
   },
   "332": {
     "Name": "Luxray",
@@ -3068,7 +3401,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 9,
     "BattlerShadowX": -4,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Luxray"
   },
   "333": {
     "Name": "Aggron",
@@ -3077,7 +3411,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -6,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Aggron"
   },
   "334": {
     "Name": "Flygon",
@@ -3087,7 +3422,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 6,
     "BattlerAltitude": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Flygon"
   },
   "335": {
     "Name": "Milotic",
@@ -3097,7 +3433,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 9,
     "BattlerAltitude": 3,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Milotic"
   },
   "336": {
     "Name": "Salamence",
@@ -3106,7 +3443,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -4,
     "BattlerEnemyY": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Salamence"
   },
   "337": {
     "Name": "Klinklang",
@@ -3116,7 +3454,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 6,
     "BattlerAltitude": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Klinklang"
   },
   "338": {
     "Name": "Zoroark",
@@ -3125,7 +3464,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Zoroark"
   },
   "339": {
     "Name": "Sylveon",
@@ -3134,7 +3474,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Sylveon"
   },
   "340": {
     "Name": "Kyogre",
@@ -3144,7 +3485,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 1,
     "BattlerAltitude": 3,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Kyogre"
   },
   "341": {
     "Name": "Groudon",
@@ -3153,7 +3495,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 6,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Groudon"
   },
   "342": {
     "Name": "Rayquaza",
@@ -3163,7 +3506,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 2,
     "BattlerAltitude": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Rayquaza"
   },
   "343": {
     "Name": "Dialga",
@@ -3172,7 +3516,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 7,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Dialga"
   },
   "344": {
     "Name": "Palkia",
@@ -3181,7 +3526,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Palkia"
   },
   "345": {
     "Name": "Giratina",
@@ -3190,7 +3536,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Giratina"
   },
   "346": {
     "Name": "Regigigas",
@@ -3199,7 +3546,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -4,
     "BattlerEnemyY": 7,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Regigigas"
   },
   "347": {
     "Name": "Darkrai",
@@ -3209,7 +3557,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 7,
     "BattlerAltitude": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Darkrai"
   },
   "348": {
     "Name": "Genesect",
@@ -3218,7 +3567,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -5,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Genesect"
   },
   "349": {
     "Name": "Reshiram",
@@ -3227,7 +3577,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 1,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Reshiram"
   },
   "350": {
     "Name": "Zekrom",
@@ -3236,7 +3587,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 5,
     "BattlerEnemyY": -4,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Zekrom"
   },
   "351": {
     "Name": "Kyurem",
@@ -3245,7 +3597,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 6,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Kyurem"
   },
   "352": {
     "Name": "Roserade",
@@ -3254,7 +3607,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Roserade"
   },
   "353": {
     "Name": "Drifblim",
@@ -3264,7 +3618,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 18,
     "BattlerAltitude": 25,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Drifblim"
   },
   "354": {
     "Name": "Lopunny",
@@ -3273,7 +3628,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Lopunny"
   },
   "355": {
     "Name": "Breloom",
@@ -3282,7 +3638,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 5,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Breloom"
   },
   "356": {
     "Name": "Ninjask",
@@ -3292,7 +3649,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 14,
     "BattlerAltitude": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Ninjask"
   },
   "357": {
     "Name": "Banette",
@@ -3301,7 +3659,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Banette"
   },
   "358": {
     "Name": "Rotom",
@@ -3311,7 +3670,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 27,
     "BattlerAltitude": 25,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Rotom"
   },
   "359": {
     "Name": "Reuniclus",
@@ -3321,7 +3681,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 23,
     "BattlerAltitude": 25,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Reuniclus"
   },
   "360": {
     "Name": "Whimsicott",
@@ -3330,7 +3691,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Whimsicott"
   },
   "361": {
     "Name": "Krookodile",
@@ -3339,7 +3701,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 3,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Krookodile"
   },
   "362": {
     "Name": "Cofagrigus",
@@ -3348,7 +3711,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -5,
     "BattlerEnemyY": -10,
     "BattlerShadowX": 4,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Cofagrigus"
   },
   "363": {
     "Name": "Galvantula",
@@ -3357,7 +3721,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Galvantula"
   },
   "364": {
     "Name": "Ferrothorn",
@@ -3366,7 +3731,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Ferrothorn"
   },
   "365": {
     "Name": "Litwick",
@@ -3375,7 +3741,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 22,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Litwick"
   },
   "366": {
     "Name": "Lampent",
@@ -3384,7 +3751,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 2,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Lampent"
   },
   "367": {
     "Name": "Chandelure",
@@ -3394,7 +3762,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 23,
     "BattlerAltitude": 33,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Chandelure"
   },
   "368": {
     "Name": "Haxorus",
@@ -3403,7 +3772,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Haxorus"
   },
   "369": {
     "Name": "Golurk",
@@ -3412,7 +3782,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Golurk"
   },
   "370": {
     "Name": "Pyukumuku",
@@ -3421,7 +3792,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 28,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Pyukumuku"
   },
   "371": {
     "Name": "Klefki",
@@ -3431,7 +3803,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 10,
     "BattlerAltitude": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Klefki"
   },
   "372": {
     "Name": "Talonflame",
@@ -3441,7 +3814,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 2,
     "BattlerAltitude": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Talonflame"
   },
   "373": {
     "Name": "Mimikyu",
@@ -3450,7 +3824,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 7,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Mimikyu"
   },
   "374": {
     "Name": "Volcarona",
@@ -3460,7 +3835,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 18,
     "BattlerAltitude": 27,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Volcarona"
   },
   "375": {
     "Name": "Deino",
@@ -3469,7 +3845,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Deino"
   },
   "376": {
     "Name": "Zweilous",
@@ -3478,7 +3855,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Zweilous"
   },
   "377": {
     "Name": "Hydreigon",
@@ -3488,7 +3866,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 15,
     "BattlerAltitude": 20,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Hydreigon"
   },
   "378": {
     "Name": "Latias",
@@ -3498,7 +3877,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 39,
     "BattlerAltitude": 41,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Latias"
   },
   "379": {
     "Name": "Latios",
@@ -3508,7 +3888,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 28,
     "BattlerAltitude": 30,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Latios"
   },
   "380": {
     "Name": "Deoxys",
@@ -3517,7 +3898,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Deoxys"
   },
   "381": {
     "Name": "Jirachi",
@@ -3527,7 +3909,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 31,
     "BattlerAltitude": 34,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Jirachi"
   },
   "382": {
     "Name": "Nincada",
@@ -3536,7 +3919,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 27,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Nincada"
   },
   "383": {
     "Name": "Bibarel",
@@ -3545,7 +3929,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 12,
     "BattlerShadowX": -3,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Bibarel"
   },
   "384": {
     "Name": "Riolu",
@@ -3554,7 +3939,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Riolu"
   },
   "385": {
     "Name": "Slakoth",
@@ -3563,7 +3949,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 32,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Slakoth"
   },
   "386": {
     "Name": "Vigoroth",
@@ -3572,7 +3959,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Vigoroth"
   },
   "387": {
     "Name": "Wailmer",
@@ -3581,7 +3969,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Wailmer"
   },
   "388": {
     "Name": "Shinx",
@@ -3590,7 +3979,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Shinx"
   },
   "389": {
     "Name": "Luxio",
@@ -3599,7 +3989,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Luxio"
   },
   "390": {
     "Name": "Aron",
@@ -3608,7 +3999,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 26,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Aron"
   },
   "391": {
     "Name": "Lairon",
@@ -3617,7 +4009,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 20,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Lairon"
   },
   "392": {
     "Name": "Trapinch",
@@ -3626,7 +4019,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 5,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Trapinch"
   },
   "393": {
     "Name": "Vibrava",
@@ -3635,7 +4029,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": 19,
     "BattlerShadowX": -3,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Vibrava"
   },
   "394": {
     "Name": "Feebas",
@@ -3645,7 +4040,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 17,
     "BattlerAltitude": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Feebas"
   },
   "395": {
     "Name": "Bagon",
@@ -3654,7 +4050,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Bagon"
   },
   "396": {
     "Name": "Shelgon",
@@ -3663,7 +4060,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Shelgon"
   },
   "397": {
     "Name": "Klink",
@@ -3673,7 +4071,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 18,
     "BattlerAltitude": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Klink"
   },
   "398": {
     "Name": "Klang",
@@ -3683,7 +4082,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 17,
     "BattlerAltitude": 11,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Klang"
   },
   "399": {
     "Name": "Zorua",
@@ -3692,7 +4092,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Zorua"
   },
   "400": {
     "Name": "Budew",
@@ -3701,7 +4102,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Budew"
   },
   "401": {
     "Name": "Roselia",
@@ -3710,7 +4112,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Roselia"
   },
   "402": {
     "Name": "Drifloon",
@@ -3720,7 +4123,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 9,
     "BattlerAltitude": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Drifloon"
   },
   "403": {
     "Name": "Buneary",
@@ -3729,7 +4133,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Buneary"
   },
   "404": {
     "Name": "Shroomish",
@@ -3738,7 +4143,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 23,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Shroomish"
   },
   "405": {
     "Name": "Shuppet",
@@ -3748,7 +4154,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 20,
     "BattlerAltitude": 17,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Shuppet"
   },
   "406": {
     "Name": "Solosis",
@@ -3758,7 +4165,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 14,
     "BattlerAltitude": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Solosis"
   },
   "407": {
     "Name": "Duosion",
@@ -3768,7 +4176,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 12,
     "BattlerAltitude": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Duosion"
   },
   "408": {
     "Name": "Cottonee",
@@ -3778,7 +4187,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 16,
     "BattlerAltitude": 16,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Cottonee"
   },
   "409": {
     "Name": "Sandile",
@@ -3787,7 +4197,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 27,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Sandile"
   },
   "410": {
     "Name": "Krokorok",
@@ -3796,7 +4207,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Krokorok"
   },
   "411": {
     "Name": "Yamask",
@@ -3806,7 +4218,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 21,
     "BattlerAltitude": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Yamask"
   },
   "412": {
     "Name": "Joltik",
@@ -3815,7 +4228,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 5,
     "BattlerEnemyY": 27,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Joltik"
   },
   "413": {
     "Name": "Ferroseed",
@@ -3825,7 +4239,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 29,
     "BattlerAltitude": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Ferroseed"
   },
   "414": {
     "Name": "Axew",
@@ -3834,7 +4249,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Axew"
   },
   "415": {
     "Name": "Fraxure",
@@ -3843,7 +4259,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Fraxure"
   },
   "416": {
     "Name": "Golett",
@@ -3852,7 +4269,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Golett"
   },
   "417": {
     "Name": "Fletchling",
@@ -3861,7 +4279,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 20,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Fletchling"
   },
   "418": {
     "Name": "Fletchinder",
@@ -3870,7 +4289,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": -2,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Fletchinder"
   },
   "419": {
     "Name": "Larvesta",
@@ -3879,7 +4299,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Larvesta"
   },
   "420": {
     "Name": "Stunfisk",
@@ -3888,7 +4309,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 22,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Stunfisk"
   },
   "421": {
     "Name": "Sableye",
@@ -3897,7 +4319,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -3,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Sableye"
   },
   "422": {
     "Name": "Venipede",
@@ -3906,7 +4329,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 25,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Venipede"
   },
   "423": {
     "Name": "Whirlipede",
@@ -3915,7 +4339,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Whirlipede"
   },
   "424": {
     "Name": "Scolipede",
@@ -3924,7 +4349,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -3,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 2,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Scolipede"
   },
   "425": {
     "Name": "Tyrunt",
@@ -3933,7 +4359,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -7,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Tyrunt"
   },
   "426": {
     "Name": "Tyrantrum",
@@ -3942,7 +4369,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 7,
     "BattlerEnemyY": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Tyrantrum"
   },
   "427": {
     "Name": "Snorunt",
@@ -3951,7 +4379,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 20,
     "BattlerShadowX": 1,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Snorunt"
   },
   "428": {
     "Name": "Glalie",
@@ -3960,7 +4389,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": -2,
     "BattlerShadowX": 3,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Glalie"
   },
   "429": {
     "Name": "Froslass",
@@ -3969,43 +4399,52 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 2,
     "BattlerShadowX": 6,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Froslass"
   },
   "430": {
     "Name": "Oricorio",
+    "FormName": "Baile Style",
     "BattlerPlayerX": 4,
     "BattlerPlayerY": 12,
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Oricorio Baile"
   },
   "431": {
     "Name": "Oricorio",
+    "FormName": "Pom-Pom Style",
     "BattlerPlayerX": 4,
     "BattlerPlayerY": 12,
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Oricorio Pom-Pom"
   },
   "432": {
     "Name": "Oricorio",
+    "FormName": "Pa'u Style",
     "BattlerPlayerX": 4,
     "BattlerPlayerY": 12,
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Oricorio Pa'u"
   },
   "433": {
     "Name": "Oricorio",
+    "FormName": "Sensu Style",
     "BattlerPlayerX": 4,
     "BattlerPlayerY": 12,
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Oricorio Sensu"
   },
   "434": {
     "Name": "Trubbish",
@@ -4014,7 +4453,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Trubbish"
   },
   "435": {
     "Name": "Garbodor",
@@ -4023,7 +4463,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Garbodor"
   },
   "436": {
     "Name": "Carvanha",
@@ -4032,7 +4473,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 7,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Carvanha"
   },
   "437": {
     "Name": "Sharpedo",
@@ -4041,7 +4483,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 3,
     "BattlerEnemyY": -4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Sharpedo"
   },
   "438": {
     "Name": "Phantump",
@@ -4050,7 +4493,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Phantump"
   },
   "439": {
     "Name": "Trevenant",
@@ -4059,7 +4503,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": -1,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Trevenant"
   },
   "440": {
     "Name": "Noibat",
@@ -4068,7 +4513,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Noibat"
   },
   "441": {
     "Name": "Noivern",
@@ -4077,7 +4523,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 4,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 8,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Noivern"
   },
   "442": {
     "Name": "Swablu",
@@ -4086,7 +4533,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Swablu"
   },
   "443": {
     "Name": "Altaria",
@@ -4095,7 +4543,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": -5,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Altaria"
   },
   "444": {
     "Name": "Goomy",
@@ -4104,7 +4553,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Goomy"
   },
   "445": {
     "Name": "Sliggoo",
@@ -4113,7 +4563,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Sliggoo"
   },
   "446": {
     "Name": "Goodra",
@@ -4122,7 +4573,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 8,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Goodra"
   },
   "447": {
     "Name": "Regirock",
@@ -4131,7 +4583,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 6,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Regirock"
   },
   "448": {
     "Name": "Regice",
@@ -4140,7 +4593,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 7,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Regice"
   },
   "449": {
     "Name": "Registeel",
@@ -4149,7 +4603,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": -5,
     "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Registeel"
   },
   "450": {
     "Name": "Necrozma",
@@ -4158,25 +4613,28 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": -1,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Necrozma"
   },
   "451": {
     "Name": "Stufful",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 19,
     "BattlerEnemyX": 0,
-    "BattlerEnemyY": 20,
+    "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Stufful"
   },
   "452": {
     "Name": "Bewear",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 2,
     "BattlerEnemyX": 0,
-    "BattlerEnemyY": 7,
+    "BattlerEnemyY": -1,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Bewear"
   },
   "453": {
     "Name": "Dhelmise",
@@ -4185,34 +4643,38 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": -2,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Dhelmise"
   },
   "454": {
     "Name": "Mareanie",
-    "BattlerPlayerX": -6,
-    "BattlerPlayerY": 11,
-    "BattlerEnemyX": 5,
-    "BattlerEnemyY": 17,
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 7,
+    "BattlerEnemyX": 3,
+    "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 2,
+    "displayName": "Mareanie"
   },
   "455": {
     "Name": "Toxapex",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 1,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 10,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 4,
+    "displayName": "Toxapex"
   },
   "456": {
     "Name": "Hawlucha",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 2,
-    "BattlerEnemyX": -3,
-    "BattlerEnemyY": 9,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 22,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 2,
+    "displayName": "Hawlucha"
   },
   "457": {
     "Name": "Cacnea",
@@ -4221,7 +4683,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Cacnea"
   },
   "458": {
     "Name": "Cacturne",
@@ -4230,7 +4693,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Cacturne"
   },
   "459": {
     "Name": "Sandygast",
@@ -4239,7 +4703,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 20,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Sandygast"
   },
   "460": {
     "Name": "Palossand",
@@ -4248,79 +4713,90 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 5
+    "BattlerShadowSize": 5,
+    "displayName": "Palossand"
   },
   "461": {
     "Name": "Amaura",
-    "BattlerPlayerX": 3,
-    "BattlerPlayerY": 5,
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Amaura"
   },
   "462": {
     "Name": "Aurorus",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": -2,
-    "BattlerEnemyX": 3,
-    "BattlerEnemyY": -2,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 2,
+    "displayName": "Aurorus"
   },
   "463": {
     "Name": "Rockruff",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 12,
-    "BattlerEnemyX": 1,
-    "BattlerEnemyY": 16,
+    "BattlerPlayerY": 10,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Rockruff"
   },
   "464": {
     "Name": "Lycanroc",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 4,
-    "BattlerEnemyX": 1,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Lycanroc Midday"
   },
   "465": {
     "Name": "Lycanroc",
-    "BattlerPlayerX": 1,
-    "BattlerPlayerY": -5,
-    "BattlerEnemyX": -6,
-    "BattlerEnemyY": 5,
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 4,
+    "BattlerEnemyY": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 3,
+    "displayName": "Lycanroc Midnight"
   },
   "466": {
     "Name": "Meloetta",
+    "FormName": "Aria Forme",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": -1,
+    "BattlerPlayerY": 0,
     "BattlerEnemyX": 5,
-    "BattlerEnemyY": 10,
+    "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Meloetta Aria"
   },
   "467": {
     "Name": "Meloetta",
-    "BattlerPlayerX": 3,
-    "BattlerPlayerY": -4,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 6,
+    "FormName": "Aria Forme",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 7,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1
+    "BattlerShadowSize": 1,
+    "displayName": "Meloetta Pirouette"
   },
   "468": {
     "Name": "Cresselia",
     "BattlerPlayerX": -5,
-    "BattlerPlayerY": 0,
-    "BattlerEnemyX": 3,
-    "BattlerEnemyY": -5,
+    "BattlerPlayerY": 10,
+    "BattlerEnemyX": -2,
+    "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 3
+    "BattlerShadowSize": 2,
+    "displayName": "Cresselia"
   },
   "469": {
     "Name": "Bruxish",
@@ -4329,7 +4805,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2
+    "BattlerShadowSize": 2,
+    "displayName": "Bruxish"
   },
   "470": {
     "Name": "Necrozma",
@@ -4338,7 +4815,308 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyX": 0,
     "BattlerEnemyY": -1,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 4
+    "BattlerShadowSize": 4,
+    "displayName": "Ultra Necrozma"
+  },
+  "471": {
+    "Name": "Jangmo-o",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 10,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 14,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Jangmo-o"
+  },
+  "472": {
+    "Name": "Hakamo-o",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 8,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Hakamo-o"
+  },
+  "473": {
+    "Name": "Kommo-o",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 5,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Kommo-o"
+  },
+  "474": {
+    "Name": "Unknown1",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 21,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 25,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon1"
+  },
+  "475": {
+    "Name": "Unknown2",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 0,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 4,
+    "displayName": "MysteryMon2"
+  },
+  "476": {
+    "Name": "Fomantis",
+    "BattlerPlayerX": 2,
+    "BattlerPlayerY": 13,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 16,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Fomantis"
+  },
+  "477": {
+    "Name": "Lurantis",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 1,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 7,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Lurantis"
+  },
+  "478": {
+    "Name": "Carbink",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 12,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 4,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Carbink"
+  },
+  "479": {
+    "Name": "Chespin",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 11,
+    "BattlerEnemyX": 2,
+    "BattlerEnemyY": 16,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Chespin"
+  },
+  "480": {
+    "Name": "Quilladin",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 11,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 15,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Quilladin"
+  },
+  "481": {
+    "Name": "Chesnaught",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": -2,
+    "BattlerEnemyY": 5,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Chesnaught"
+  },
+  "482": {
+    "Name": "Fennekin",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 14,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 17,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Fennekin"
+  },
+  "483": {
+    "Name": "Braixen",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 8,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Braixen"
+  },
+  "484": {
+    "Name": "Delphox",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 0,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Delphox"
+  },
+  "485": {
+    "Name": "Froakie",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 21,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 23,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Froakie"
+  },
+  "486": {
+    "Name": "Frogadier",
+    "BattlerPlayerX": -1,
+    "BattlerPlayerY": 17,
+    "BattlerEnemyX": 4,
+    "BattlerEnemyY": 18,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Frogadier"
+  },
+  "487": {
+    "Name": "Greninja",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 6,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 12,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Greninja"
+  },
+  "488": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMonx"
+  },
+  "489": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon3"
+  },
+  "490": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon4"
+  },
+  "491": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon5"
+  },
+  "492": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon6"
+  },
+  "493": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon7"
+  },
+  "494": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon8"
+  },
+  "495": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon9"
+  },
+  "496": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon10"
+  },
+  "497": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon11"
+  },
+  "498": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon12"
+  },
+  "499": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon13"
+  },
+  "500": {
+    "Name": "Mystery",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 30,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 28,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "MysteryMon14"
   },
   "999999": {
     "Name": "Zapmolcuno",

@@ -3,20 +3,28 @@ import {Autocomplete, Box, BoxProps, Button, styled, TextField} from "@mui/mater
 import {SyntheticEvent, useCallback, useContext} from "react";
 import {SettingsContext} from "../../contexts/SettingsContext.tsx";
 import {pokemonIdToDataMap} from "../../data/pokemonIdToDataMap.ts";
-import {pokemonNameToIdMap} from "../../data/pokemonNameToIdMap.ts";
 import {PokemonImage} from "../PokemonImage.tsx";
 import {StyledModal} from "./StyledModal.tsx";
 
-const basePokemonList = Object.keys(pokemonNameToIdMap)
-  .map(name => {
-    const id = pokemonNameToIdMap[name]
+const pokemonNameToIdMap: Record<string, number> = {};
+const pokemonIdToNameMap: Record<string, string> = {};
+const basePokemonList = Object.keys(pokemonIdToDataMap)
+  .map(idString => {
+    const id = parseInt(idString, 10);
+    const {displayName, Name} = pokemonIdToDataMap[idString];
+    const name = displayName || Name;
+    pokemonNameToIdMap[name] = id;
+    pokemonIdToNameMap[id] = name;
     return {
       name,
       id,
     }
   })
-  .filter(({id}) => {
-    return id < 9999
+  .filter(({id, name}) => {
+    return id < 9999 && !/MysteryMon/.test(name) && !/Unknown\d+/.test(name);
+  })
+  .sort((a, b) => {
+    return a.id - b.id;
   })
   .map(({name}) => {
     return name;
@@ -114,7 +122,7 @@ export function PokemonSelectModal(
             />
           </ImageBox>
           <Autocomplete
-            value={pokemonId ? pokemonIdToDataMap[pokemonId].Name : 'None'}
+            value={pokemonId ? pokemonIdToNameMap[pokemonId] : 'None'}
             onChange={onChange}
             renderInput={(params) => <TextField {...params} label="Pokemon"/>}
             options={basePokemonList}
