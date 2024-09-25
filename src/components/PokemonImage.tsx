@@ -1,11 +1,11 @@
 import {QuestionMarkSharp} from "@mui/icons-material";
 
 function getUnfusedSrc(pokemonId: number) {
-  return `https://gitlab.com/pokemoninfinitefusion/autogen-fusion-sprites/-/raw/master/Battlers/${pokemonId}/${pokemonId}.png`;
+  return `https://gitlab.com/infinitefusion2/autogen-fusion-sprites/-/raw/main/Battlers/${pokemonId}/${pokemonId}.png`;
 }
 
 function getFusedSrc(headPokemonId: number, bodyPokemonId: number) {
-  return `https://gitlab.com/pokemoninfinitefusion/autogen-fusion-sprites/-/raw/master/Battlers/${headPokemonId}/${headPokemonId}.${bodyPokemonId}.png`;
+  return `https://gitlab.com/infinitefusion2/autogen-fusion-sprites/-/raw/main/Battlers/${headPokemonId}/${headPokemonId}.${bodyPokemonId}.png`;
 }
 
 export interface PokemonImageProps {
