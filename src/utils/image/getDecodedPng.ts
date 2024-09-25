@@ -33,9 +33,32 @@ export function getDecodedPng(data: TypedArray): DecodedPngResult {
     // As such, we check the raw byte length to determine if it has already applied the palette
     if (rawBytes.length === image.width * image.height * 4) {
       imageData.data.set(rawBytes);
-    } else if (rawBytes.length === image.width * image.height) {
-      for (let pixelIndex = 0; pixelIndex < rawBytes.length; pixelIndex++) {
-        const paletteIndex = rawBytes[pixelIndex];
+    } else if (rawBytes.length === image.width * image.height * decoder.info.bits / 8) {
+      let indexes = new Uint8Array(image.width * image.height);
+      switch (decoder.info.bits) {
+        case 1:
+        case 2:
+        case 4: {
+          const subValueCount = 8 / decoder.info.bits;
+          const subValueSize = 2 ** decoder.info.bits;
+          for (let byteIndex = 0; byteIndex < rawBytes.length; byteIndex++) {
+            let value = rawBytes[byteIndex];
+            const targetOffset = byteIndex * subValueCount;
+            for (let subValueIndex = 0; subValueIndex < subValueCount; subValueIndex++) {
+              indexes[targetOffset + (subValueCount - 1 - subValueIndex)] = value % subValueSize;
+              value = Math.floor(value / subValueSize);
+            }
+          }
+          break;
+        }
+        case 8:
+          indexes = rawBytes;
+          break;
+        default:
+          throw new Error(`Unexpected bit depth during PNG decoding`);
+      }
+      for (let pixelIndex = 0; pixelIndex < indexes.length; pixelIndex++) {
+        const paletteIndex = indexes[pixelIndex];
         const offset = pixelIndex * 4;
         imageData.data[offset] = image.palette.get(paletteIndex, 0);
         imageData.data[offset + 1] = image.palette.get(paletteIndex, 1);
