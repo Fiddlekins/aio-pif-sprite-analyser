@@ -132,7 +132,7 @@ export function NavigationMenuMobile(
   const onViewChange = useCallback((viewNew: string) => {
     setView(viewNew);
     close();
-  }, [setView]);
+  }, [close, setView]);
 
   if (!isOpen) {
     return null;

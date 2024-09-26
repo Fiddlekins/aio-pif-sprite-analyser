@@ -42,7 +42,7 @@ export function NavigationMenuContentMobile(
         ctx.putImageData(imageData, 0, 0);
       }
     }
-  }, [canvasRef, spriteInput, highlightedColourState, highlightMode, highlightColour]);
+  }, [canvasRef, spriteInput, highlightedColourState, highlightMode, highlightColour, renderHighlight]);
 
   return (
     <Box

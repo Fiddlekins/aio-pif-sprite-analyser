@@ -111,7 +111,7 @@ export function SpriteExportModal() {
       });
     }
     return [];
-  }, [spriteInput, backgroundImageData, isSize96, isIndexed, normaliseTransparencyEnabled]);
+  }, [spriteInput, backgroundImageData, headId, bodyId, normaliseTransparencyEnabled, isSize96, isIndexed]);
 
   const handleClose = useCallback(() => {
     setIsExportModalOpen(false);

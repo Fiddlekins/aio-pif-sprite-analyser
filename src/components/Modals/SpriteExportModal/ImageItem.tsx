@@ -60,7 +60,7 @@ export function ImageItem(
     a.download = filename;
     a.click();
     window.URL.revokeObjectURL(url);
-  }, [pngBlob]);
+  }, [filename, pngBlob]);
 
   return (
     <Box

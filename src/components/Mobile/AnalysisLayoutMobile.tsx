@@ -67,7 +67,7 @@ export function AnalysisLayoutMobile() {
         setView('colourSimilarity');
       }
     }
-  }, [spriteInput, partialPixelReport, transparencyReport, setView]);
+  }, [spriteInput, partialPixelReport, transparencyReport, setView, colourReport]);
 
   const closeNavigationMenu = useCallback(() => {
     setIsNavigationMenuOpen(false);
