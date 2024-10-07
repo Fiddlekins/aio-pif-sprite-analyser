@@ -78,6 +78,9 @@ function processPokemonText(pokemonText, namesToNumbersText) {
   const namesToNumbersJson = JSON.parse(namesToNumbersText);
   for (const {id, display_name} of namesToNumbersJson.pokemon) {
     pokemonJson[id].displayName = display_name;
+    if (!pokemonJson[id].Name) {
+      pokemonJson[id].Name = display_name;
+    }
   }
   return pokemonJson;
 }

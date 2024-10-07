@@ -4669,9 +4669,9 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
   "456": {
     "Name": "Hawlucha",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 0,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 22,
+    "BattlerPlayerY": 5,
+    "BattlerEnemyX": -4,
+    "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
     "displayName": "Hawlucha"
@@ -4856,7 +4856,7 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 25,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "MysteryMon1"
+    "displayName": "Wimpod"
   },
   "475": {
     "Name": "Unknown2",
@@ -4866,7 +4866,7 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 4,
-    "displayName": "MysteryMon2"
+    "displayName": "Golisopod"
   },
   "476": {
     "Name": "Fomantis",
@@ -4989,134 +4989,134 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "displayName": "Greninja"
   },
   "488": {
-    "Name": "Mystery",
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerPlayerX": -1,
+    "BattlerPlayerY": 5,
+    "BattlerEnemyX": -3,
+    "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "MysteryMonx"
+    "BattlerShadowSize": 4,
+    "displayName": "Torkoal",
+    "Name": "Torkoal"
   },
   "489": {
-    "Name": "Mystery",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerPlayerY": 20,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "MysteryMon3"
+    "BattlerShadowSize": 1,
+    "displayName": "Pumpkaboo",
+    "Name": "Pumpkaboo"
   },
   "490": {
-    "Name": "Mystery",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "MysteryMon4"
+    "displayName": "Gourgeist",
+    "Name": "Gourgeist"
   },
   "491": {
-    "Name": "Mystery",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerPlayerY": 20,
+    "BattlerEnemyX": 2,
+    "BattlerEnemyY": 21,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "MysteryMon5"
+    "BattlerShadowSize": 1,
+    "displayName": "Swirlix",
+    "Name": "Swirlix"
   },
   "492": {
-    "Name": "Mystery",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
+    "BattlerPlayerY": 10,
     "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "MysteryMon6"
+    "displayName": "Slurpuff",
+    "Name": "Slurpuff"
   },
   "493": {
-    "Name": "Mystery",
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerPlayerX": -7,
+    "BattlerPlayerY": 17,
+    "BattlerEnemyX": 6,
+    "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "MysteryMon7"
+    "BattlerShadowSize": 1,
+    "displayName": "MysteryMon7",
+    "Name": "MysteryMon7"
   },
   "494": {
-    "Name": "Mystery",
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerPlayerX": -4,
+    "BattlerPlayerY": 4,
+    "BattlerEnemyX": 7,
+    "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "MysteryMon8"
+    "displayName": "MysteryMon8",
+    "Name": "MysteryMon8"
   },
   "495": {
-    "Name": "Mystery",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
+    "BattlerPlayerY": 27,
     "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "MysteryMon9"
+    "BattlerShadowSize": 1,
+    "displayName": "MysteryMon9",
+    "Name": "MysteryMon9"
   },
   "496": {
-    "Name": "Mystery",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerPlayerY": 17,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "MysteryMon10"
+    "BattlerShadowSize": 1,
+    "displayName": "MysteryMon10",
+    "Name": "MysteryMon10"
   },
   "497": {
-    "Name": "Mystery",
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerPlayerX": 4,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": -2,
+    "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "MysteryMon11"
+    "BattlerShadowSize": 3,
+    "displayName": "MysteryMon11",
+    "Name": "MysteryMon11"
   },
   "498": {
-    "Name": "Mystery",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
+    "BattlerPlayerY": 0,
     "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "MysteryMon12"
+    "displayName": "MysteryMon12",
+    "Name": "MysteryMon12"
   },
   "499": {
-    "Name": "Mystery",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
+    "BattlerPlayerY": 0,
     "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "MysteryMon13"
+    "displayName": "MysteryMon13",
+    "Name": "MysteryMon13"
   },
   "500": {
-    "Name": "Mystery",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
+    "BattlerPlayerY": 0,
     "BattlerEnemyX": 0,
-    "BattlerEnemyY": 28,
+    "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "MysteryMon14"
+    "displayName": "MysteryMon14",
+    "Name": "MysteryMon14"
   },
   "999999": {
     "Name": "Zapmolcuno",
