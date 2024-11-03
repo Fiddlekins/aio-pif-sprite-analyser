@@ -5045,8 +5045,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "MysteryMon7",
-    "Name": "MysteryMon7"
+    "displayName": "Scraggy",
+    "Name": "Scraggy"
   },
   "494": {
     "BattlerPlayerX": -4,
@@ -5055,8 +5055,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "MysteryMon8",
-    "Name": "MysteryMon8"
+    "displayName": "Scrafty",
+    "Name": "Scrafty"
   },
   "495": {
     "BattlerPlayerX": 0,
@@ -5065,8 +5065,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "MysteryMon9",
-    "Name": "MysteryMon9"
+    "displayName": "Lotad",
+    "Name": "Lotad"
   },
   "496": {
     "BattlerPlayerX": 0,
@@ -5075,8 +5075,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "MysteryMon10",
-    "Name": "MysteryMon10"
+    "displayName": "Lombre",
+    "Name": "Lombre"
   },
   "497": {
     "BattlerPlayerX": 4,
@@ -5085,8 +5085,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 3,
-    "displayName": "MysteryMon11",
-    "Name": "MysteryMon11"
+    "displayName": "Ludicolo",
+    "Name": "Ludicolo"
   },
   "498": {
     "BattlerPlayerX": 0,
@@ -5095,8 +5095,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "MysteryMon12",
-    "Name": "MysteryMon12"
+    "displayName": "Minior Meteor",
+    "Name": "Minior Meteor"
   },
   "499": {
     "BattlerPlayerX": 0,
@@ -5105,8 +5105,8 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "MysteryMon13",
-    "Name": "MysteryMon13"
+    "displayName": "Minior Core",
+    "Name": "Minior Core"
   },
   "500": {
     "BattlerPlayerX": 0,
@@ -5115,8 +5115,18 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "MysteryMon14",
-    "Name": "MysteryMon14"
+    "displayName": "Diancie",
+    "Name": "Diancie"
+  },
+  "501": {
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 0,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Luvdisc",
+    "Name": "Luvdisc"
   },
   "999999": {
     "Name": "Zapmolcuno",

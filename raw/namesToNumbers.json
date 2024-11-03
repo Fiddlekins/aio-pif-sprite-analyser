@@ -2955,51 +2955,57 @@
     },
     {
         "id": "493",
-        "name": "mysterymon7",
+        "name": "scraggy",
         "typos": [],
-        "display_name": "MysteryMon7"
+        "display_name": "Scraggy"
     },
     {
         "id": "494",
-        "name": "mysterymon8",
+        "name": "scrafty",
         "typos": [],
-        "display_name": "MysteryMon8"
+        "display_name": "Scrafty"
     },
     {
         "id": "495",
-        "name": "mysterymon9",
+        "name": "lotad",
         "typos": [],
-        "display_name": "MysteryMon9"
+        "display_name": "Lotad"
     },
     {
         "id": "496",
-        "name": "mysterymon10",
-        "typos": [],
-        "display_name": "MysteryMon10"
+        "name": "lombre",
+        "typos": ["lober"],
+        "display_name": "Lombre"
     },
     {
         "id": "497",
-        "name": "mysterymon11",
+        "name": "ludicolo",
         "typos": [],
-        "display_name": "MysteryMon11"
+        "display_name": "Ludicolo"
     },
     {
         "id": "498",
-        "name": "mysterymon12",
-        "typos": [],
-        "display_name": "MysteryMon12"
+        "name": "miniormeteor",
+        "typos": ["miniorm", "meteor", "minior"],
+        "display_name": "Minior Meteor"
     },
     {
         "id": "499",
-        "name": "mysterymon13",
-        "typos": [],
-        "display_name": "MysteryMon13"
+        "name": "miniorcore",
+        "typos": ["miniorc", "core"],
+        "display_name": "Minior Core"
     },
     {
         "id": "500",
-        "name": "mysterymon14",
-        "typos": [],
-        "display_name": "MysteryMon14"
+        "name": "diancie",
+        "typos": ["diance"],
+        "display_name": "Diancie"
+    },
+    {
+        "id": "501",
+        "name": "luvdisc",
+        "typos": ["luvdisk"],
+        "display_name": "Luvdisc"
     }
     
     ]
