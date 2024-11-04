@@ -13,6 +13,8 @@ export function SettingsModal() {
     setThemeId,
     canvasAccelerationEnabled,
     setCanvasAccelerationEnabled,
+    ignoreColouredTransparencyEnabled,
+    setIgnoreColouredTransparencyEnabled,
   } = useContext(SettingsContext);
 
   const handleClose = useCallback(() => {
@@ -28,6 +30,10 @@ export function SettingsModal() {
   const handleCanvasAccelerationEnabledChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setCanvasAccelerationEnabled(event.target.checked);
   }, [setCanvasAccelerationEnabled]);
+
+  const handleIgnoreColouredTransparencyEnabledChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    setIgnoreColouredTransparencyEnabled(event.target.checked);
+  }, [setIgnoreColouredTransparencyEnabled]);
 
   return (
     <StyledModal
@@ -112,6 +118,50 @@ export function SettingsModal() {
           <Switch
             checked={canvasAccelerationEnabled}
             onChange={handleCanvasAccelerationEnabledChange}
+          />
+        </Box>
+        <Box
+          display={'flex'}
+          flexDirection={'row'}
+          alignItems={'center'}
+          gap={2}
+        >
+          <Box
+            display={'flex'}
+            flexDirection={'row'}
+            alignItems={'center'}
+            gap={0.5}
+          >
+            <Typography>
+              Ignore Coloured Transparency
+            </Typography>
+            <StyledTooltip
+              title={(
+                <Fragment>
+                  <Box
+                    display={'flex'}
+                    flexDirection={'column'}
+                    alignItems={'left'}
+                    gap={0.5}
+                  >
+                    <Typography variant={'h6'}>
+                      Ignore Coloured Transparency
+                    </Typography>
+                    <Typography variant={'body2'}>
+                      {`The application will skip over the coloured transparency analysis when determining which view the app should automatically navigate to after importing a sprite. This makes the experience smoother for users who prefer to ignore this non-critical aspect.`}
+                    </Typography>
+                  </Box>
+                </Fragment>
+              )}
+              placement={'top'}
+              arrow
+            >
+              <HelpOutlineSharp fontSize={'small'}/>
+            </StyledTooltip>
+          </Box>
+          <Switch
+            checked={ignoreColouredTransparencyEnabled}
+            onChange={handleIgnoreColouredTransparencyEnabledChange}
           />
         </Box>
       </Box>

@@ -1,8 +1,11 @@
+import {getMaxSeverity} from "../getMaxSeverity.ts";
 import {analyseTransparency} from "./analyseTransparency.ts";
 import {Report, TransparencyAnalysis, Verdict} from "./types.ts";
 
 export interface TransparencyReport extends Report {
   analysis: TransparencyAnalysis;
+  semiTransparentVerdict: Verdict;
+  colouredTransparentVerdict: Verdict;
 }
 
 export function getTransparencyReport(
@@ -11,15 +14,13 @@ export function getTransparencyReport(
   colouredTransparencyOutputMode: string,
 ): TransparencyReport {
   const transparencyAnalysis = analyseTransparency(imageData, semiTransparentOutputMode, colouredTransparencyOutputMode);
-  let transparencyVerdict: Verdict = 'success';
-  if (transparencyAnalysis.semiTransparent.semiTransparentPixelCount > 0) {
-    transparencyVerdict = 'warning';
-  }
-  if (transparencyAnalysis.colouredTransparency.colouredTransparentPixelCount > 0) {
-    transparencyVerdict = 'error';
-  }
+  const semiTransparentVerdict = transparencyAnalysis.semiTransparent.semiTransparentPixelCount > 0 ? 'warning' : 'success';
+  const colouredTransparentVerdict = transparencyAnalysis.colouredTransparency.colouredTransparentPixelCount > 0 ? 'warning' : 'success';
+  const transparencyVerdict: Verdict = getMaxSeverity([semiTransparentVerdict, colouredTransparentVerdict]);
   return {
     verdict: transparencyVerdict,
+    semiTransparentVerdict,
+    colouredTransparentVerdict,
     analysis: transparencyAnalysis,
   }
 }

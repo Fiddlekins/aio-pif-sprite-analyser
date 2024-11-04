@@ -5,11 +5,12 @@ import {applyHighlightColours} from "../../utils/image/applyHighlightColours.ts"
 import {getPixelFromColourKey} from "../../utils/image/conversion/getPixelFromColourKey.ts";
 import {getPixelFromRgbaColor} from "../../utils/image/conversion/getPixelFromRgbaColor.ts";
 import {CanvasWithBackground} from "../CanvasWithBackground.tsx";
-import {ColourCountVerdict} from "../Panes/ColoursPane/ColourCountVerdict.tsx";
+import {ColouredTransparencyVerdict} from "../Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx";
+import {ColouredTransparencyWarning} from "../Panes/ColouredTransparencyPane/ColouredTransparencyWarning.tsx";
 import {ColourDisplayControls} from "../Panes/ColoursPane/ColourDisplayControls.tsx";
-import {SpriteColoursTable} from "../Tables/SpriteColoursTable.tsx";
+import {BackgroundColoursTable} from "../Tables/BackgroundColoursTable.tsx";
 
-export function ColourCountBox() {
+export function ColouredTransparencyBox() {
   const {
     spriteInput,
     highlightedColourState,
@@ -20,6 +21,7 @@ export function ColourCountBox() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
+    console.log('boop', highlightedColourState, highlightMode, highlightColour);
     const canvas = canvasRef.current;
     if (canvas && spriteInput?.imageData) {
       const ctx = canvas.getContext('2d', {colorSpace: 'srgb'});
@@ -41,17 +43,11 @@ export function ColourCountBox() {
       gap={2}
       pt={2}
     >
+      <ColouredTransparencyWarning/>
       <Paper>
-        <Box
-          display={'flex'}
-          flexDirection={'column'}
-          gap={2}
-          p={2}
-        >
-          <ColourCountVerdict/>
-          <ColourDisplayControls/>
-        </Box>
+        <ColouredTransparencyVerdict/>
       </Paper>
+      <ColourDisplayControls/>
       <Box
         display={'flex'}
         flexDirection={'column'}
@@ -66,7 +62,7 @@ export function ColourCountBox() {
           </Box>
         </Paper>
       </Box>
-      <SpriteColoursTable/>
+      <BackgroundColoursTable/>
     </Box>
   );
 }

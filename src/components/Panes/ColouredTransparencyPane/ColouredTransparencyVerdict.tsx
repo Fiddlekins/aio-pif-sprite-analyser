@@ -6,7 +6,7 @@ import {getFormattedPercent} from "../../../utils/getFormattedPercent.ts";
 import {CanvasWithBackground} from "../../CanvasWithBackground.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
-export function ColouredTransparencyBox() {
+export function ColouredTransparencyVerdict() {
   const {isMobile} = useContext(SettingsContext);
   const {
     transparencyReport,
@@ -52,7 +52,7 @@ export function ColouredTransparencyBox() {
         p={2}
       >
         <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
-          <VerdictIcon verdict={colouredTransparencyPixelCount > 0 ? 'error' : 'success'}/>
+          <VerdictIcon verdict={transparencyReport?.colouredTransparentVerdict || null}/>
           <Typography variant={'h5'} align={'left'}>
             {`Coloured Transparent Pixel Count: ${colouredTransparencyPixelCount} (${colouredTransparencyPixelPercent})`}
           </Typography>

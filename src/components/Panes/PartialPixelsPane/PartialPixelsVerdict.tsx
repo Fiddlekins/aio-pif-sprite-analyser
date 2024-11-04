@@ -6,7 +6,7 @@ import {getFormattedPercent} from "../../../utils/getFormattedPercent.ts";
 import {CanvasWithBackground} from "../../CanvasWithBackground.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
-export function PartialPixelsBox() {
+export function PartialPixelsVerdict() {
   const {isMobile} = useContext(SettingsContext);
   const {
     partialPixelReport,

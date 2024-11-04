@@ -39,6 +39,7 @@ export function ColourSimilarityBox() {
       display={'flex'}
       flexDirection={'column'}
       gap={2}
+      pt={2}
     >
       <Paper>
         <Box
@@ -56,7 +57,7 @@ export function ColourSimilarityBox() {
         flexDirection={'column'}
         alignItems={'stretch'}
         position={'sticky'}
-        top={-20}
+        top={0}
         zIndex={1}
       >
         <Paper>

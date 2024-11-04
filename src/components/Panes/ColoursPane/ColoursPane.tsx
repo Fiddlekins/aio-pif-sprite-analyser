@@ -1,5 +1,5 @@
 import {Box, Paper} from "@mui/material";
-import {ColoursTable} from "../../Tables/ColoursTable.tsx";
+import {SpriteColoursTable} from "../../Tables/SpriteColoursTable.tsx";
 import {SimilarityTable} from "../../Tables/SimilarityTable.tsx";
 import {ColourCountVerdict} from "./ColourCountVerdict.tsx";
 import {ColourDisplayControls} from "./ColourDisplayControls.tsx";
@@ -32,7 +32,7 @@ export function ColoursPane() {
           <ColourDisplayControls/>
         </Box>
       </Paper>
-      <ColoursTable/>
+      <SpriteColoursTable/>
       <SimilarityTable/>
     </Box>
   )

@@ -1,16 +1,15 @@
 import {Box} from "@mui/material";
-import {SemiTransparencyVerdict} from "./SemiTransparencyVerdict.tsx";
+import {SemiTransparencyVerdict} from "../Panes/TransparencyPane/SemiTransparencyVerdict.tsx";
 
-export function TransparencyPane() {
+export function SemiTransparencyBox() {
   return (
     <Box
       display={'flex'}
       flexDirection={'column'}
       gap={2}
-      sx={{overflowY: 'auto'}}
-      p={4}
+      pt={2}
     >
       <SemiTransparencyVerdict/>
     </Box>
-  )
+  );
 }

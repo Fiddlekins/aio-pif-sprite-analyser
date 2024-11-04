@@ -58,6 +58,7 @@ interface NavigationOptionsProps {
   id: string;
   title: string;
   active: boolean;
+  dimmed?: boolean;
   onViewChange: (viewNew: string) => void;
 }
 
@@ -67,6 +68,7 @@ function NavigationOptions(
     id,
     title,
     active,
+    dimmed,
     onViewChange,
   }: NavigationOptionsProps
 ) {
@@ -76,6 +78,7 @@ function NavigationOptions(
       onClick={() => {
         onViewChange(id)
       }}
+      sx={{opacity: dimmed ? 0.5 : 1}}
     >
       <Box
         display={'flex'}
@@ -115,7 +118,10 @@ export function NavigationMenuMobile(
     transparencyReport,
     colourReport,
   } = useContext(AnalysisContext);
-  const {setIsSettingsModalOpen} = useContext(SettingsContext);
+  const {
+    setIsSettingsModalOpen,
+    ignoreColouredTransparencyEnabled,
+  } = useContext(SettingsContext);
 
   const openImportModal = useCallback(() => {
     setIsImportModalOpen(true);
@@ -244,28 +250,29 @@ export function NavigationMenuMobile(
               <NavigationOptions
                 id={'semiTransparent'}
                 title={'Semi-Transparency'}
-                verdict={transparencyReport ? (transparencyReport.analysis.semiTransparent.semiTransparentPixelCount > 0 ? 'warning' : 'success') : null}
+                verdict={transparencyReport?.semiTransparentVerdict || null}
                 active={view === 'semiTransparent'}
                 onViewChange={onViewChange}
               />
               <NavigationOptions
                 id={'colouredTransparency'}
                 title={'Coloured Transparency'}
-                verdict={transparencyReport ? (transparencyReport.analysis.colouredTransparency.colouredTransparentPixelCount > 0 ? 'error' : 'success') : null}
+                verdict={transparencyReport?.colouredTransparentVerdict || null}
                 active={view === 'colouredTransparency'}
+                dimmed={ignoreColouredTransparencyEnabled}
                 onViewChange={onViewChange}
               />
               <NavigationOptions
                 id={'colourCount'}
                 title={'Colour Count'}
-                verdict={colourReport?.analysis.getColourCountVerdict() || null}
+                verdict={colourReport?.spriteColourCountVerdict || null}
                 active={view === 'colourCount'}
                 onViewChange={onViewChange}
               />
               <NavigationOptions
                 id={'colourSimilarity'}
                 title={'Colour Similarity'}
-                verdict={colourReport?.analysis.getColourSimilarityVerdict() || null}
+                verdict={colourReport?.colourSimilarityVerdict || null}
                 active={view === 'colourSimilarity'}
                 onViewChange={onViewChange}
               />

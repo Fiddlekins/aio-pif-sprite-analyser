@@ -25,6 +25,8 @@ export interface SettingsContextInterface {
   setThemeId: (themeIdNew: string) => void;
   canvasAccelerationEnabled: boolean;
   setCanvasAccelerationEnabled: (canvasAccelerationEnabledNew: boolean) => void;
+  ignoreColouredTransparencyEnabled: boolean;
+  setIgnoreColouredTransparencyEnabled: (ignoreColouredTransparencyEnabledNew: boolean) => void;
   theme: Theme;
   isMobile: boolean;
 }
@@ -40,6 +42,8 @@ export const SettingsContext = createContext<SettingsContextInterface>({
   setThemeId: defaultHandler,
   canvasAccelerationEnabled: true,
   setCanvasAccelerationEnabled: defaultHandler,
+  ignoreColouredTransparencyEnabled: true,
+  setIgnoreColouredTransparencyEnabled: defaultHandler,
   theme: lightTheme,
   isMobile: false,
 });
@@ -64,6 +68,9 @@ export function SettingsProvider(
   const [canvasAccelerationEnabled, setCanvasAccelerationEnabledInternal] = useState<boolean>(
     retrieveBoolean('SettingsContext.canvasAccelerationEnabled', true)
   );
+  const [ignoreColouredTransparencyEnabled, setIgnoreColouredTransparencyEnabledInternal] = useState<boolean>(
+    retrieveBoolean('SettingsContext.ignoreColouredTransparencyEnabled', false)
+  );
 
   const setThemeId = useCallback((themeIdNew: string) => {
     storeString('SettingsContext.themeId', themeIdNew);
@@ -74,6 +81,11 @@ export function SettingsProvider(
     storeBoolean('SettingsContext.canvasAccelerationEnabled', canvasAccelerationEnabledNew);
     setCanvasAccelerationEnabledInternal(canvasAccelerationEnabledNew);
   }, [setCanvasAccelerationEnabledInternal]);
+
+  const setIgnoreColouredTransparencyEnabled = useCallback((ignoreColouredTransparencyEnabledNew: boolean) => {
+    storeBoolean('SettingsContext.ignoreColouredTransparencyEnabled', ignoreColouredTransparencyEnabledNew);
+    setIgnoreColouredTransparencyEnabledInternal(ignoreColouredTransparencyEnabledNew);
+  }, [setIgnoreColouredTransparencyEnabledInternal]);
 
   const theme = getTheme(themeId);
 
@@ -87,6 +99,8 @@ export function SettingsProvider(
       setThemeId,
       canvasAccelerationEnabled,
       setCanvasAccelerationEnabled,
+      ignoreColouredTransparencyEnabled,
+      setIgnoreColouredTransparencyEnabled,
       theme,
       isMobile,
     }),
@@ -97,6 +111,8 @@ export function SettingsProvider(
       setThemeId,
       canvasAccelerationEnabled,
       setCanvasAccelerationEnabled,
+      ignoreColouredTransparencyEnabled,
+      setIgnoreColouredTransparencyEnabled,
       theme,
       isMobile,
     ],

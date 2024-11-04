@@ -1,16 +1,14 @@
-import {ExpandMoreSharp} from "@mui/icons-material";
-import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@mui/material";
-import {ColorObject, HSL, HSV, to as convert} from "colorjs.io/fn";
+import {Box, Typography} from "@mui/material";
+import {ColorObject} from "colorjs.io/fn";
 import {useCallback, useContext, useMemo} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
+import {SettingsContext} from "../../contexts/SettingsContext.tsx";
 import {getFormattedPercent} from "../../utils/getFormattedPercent.ts";
 import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
 import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColourKey.ts";
-import {getPixelFromColourKey} from "../../utils/image/conversion/getPixelFromColourKey.ts";
 import {numberComparator} from "../../utils/numberComparator.ts";
 import {ColourSwatch} from "../ColourSwatch.tsx";
 import {ColourSpace} from "../Panes/types.ts";
-import {VerdictIcon} from "../VerdictIcon.tsx";
 import {LongRichTable} from "./RichTable/LongRichTable.tsx";
 import {RichTable} from "./RichTable/RichTable.tsx";
 import {Column, OrderDirection, RowComparator, RowDataBase} from "./RichTable/types.ts";
@@ -81,60 +79,21 @@ function getHeaderName(colourSpace: ColourSpace, channel: number) {
   }
 }
 
-export function ColoursTable() {
+export interface ColoursTableProps {
+  rowDataUnsorted: RowData[];
+}
+
+export function ColoursTable(
+  {
+    rowDataUnsorted,
+  }: ColoursTableProps
+) {
   const {
-    colourReport,
     highlightedColourState,
     dispatchHighlightedColourState,
     colourSpace,
   } = useContext(AnalysisContext);
-
-  const {
-    rowBackgroundDataUnsorted,
-    rowNonBackgroundDataUnsorted,
-  } = useMemo(() => {
-    const colourAnalysisArrayNew = colourReport
-      ? colourReport.analysis.getAsArray()
-      : [];
-
-    const backgroundPixelCountNew = colourAnalysisArrayNew.reduce((acc, curr) => {
-      if (curr.colour.alpha === 0) {
-        return acc + curr.count;
-      }
-      return acc;
-    }, 0);
-    const nonBackgroundPixelCountNew = colourReport ? colourReport.analysis.pixelCount - backgroundPixelCountNew : 1;
-
-    const rowBackgroundDataUnsortedNew: RowData[] = [];
-    const rowNonBackgroundDataUnsortedNew: RowData[] = [];
-    colourReport?.analysis.getAsArray().forEach(({colour, colourKey, count}) => {
-      const [r, g, b, a] = getPixelFromColourKey(colourKey);
-      const rgba = {r, g, b, a};
-      const hsva = convert(colour, HSV);
-      const hsla = convert(colour, HSL);
-      const isBackground = colour.alpha === 0;
-      const usage = count / (isBackground ? backgroundPixelCountNew : nonBackgroundPixelCountNew);
-
-      const row: RowData = {
-        id: colourKey,
-        colour,
-        colourKey,
-        rgba,
-        hsva,
-        hsla,
-        isBackground,
-        usage,
-      };
-      (isBackground ? rowBackgroundDataUnsortedNew : rowNonBackgroundDataUnsortedNew).push(row);
-    })
-
-    return {
-      backgroundPixelCount: backgroundPixelCountNew,
-      nonBackgroundPixelCount: nonBackgroundPixelCountNew,
-      rowBackgroundDataUnsorted: rowBackgroundDataUnsortedNew,
-      rowNonBackgroundDataUnsorted: rowNonBackgroundDataUnsortedNew,
-    }
-  }, [colourReport]);
+  const {isMobile} = useContext(SettingsContext);
 
   const onCheckboxChange = useCallback(({colourKey}: RowData, isCheckedNew: boolean) => {
     if (isCheckedNew) {
@@ -300,115 +259,51 @@ export function ColoursTable() {
   }, [colourSpace]);
 
   const onRowEnter = useCallback((rowData: RowData) => {
-    dispatchHighlightedColourState({operation: 'hoverStart', colourKey: rowData.colourKey});
-  }, [dispatchHighlightedColourState]);
+    if (!isMobile) {
+      dispatchHighlightedColourState({operation: 'hoverStart', colourKey: rowData.colourKey});
+    }
+  }, [dispatchHighlightedColourState, isMobile]);
 
   const onRowLeave = useCallback((rowData: RowData) => {
-    dispatchHighlightedColourState({operation: 'hoverEnd', colourKey: rowData.colourKey});
-  }, [dispatchHighlightedColourState]);
+    if (!isMobile) {
+      dispatchHighlightedColourState({operation: 'hoverEnd', colourKey: rowData.colourKey});
+    }
+  }, [dispatchHighlightedColourState, isMobile]);
 
+  if (rowDataUnsorted.length > 32) {
+    return (
+      <LongRichTable
+        columns={columns}
+        rows={rowDataUnsorted}
+        defaultOrderBy={'usage'}
+        defaultOrderDirection={'desc'}
+        rowComparator={rowComparator}
+        getHeaderCell={getHeaderCell}
+        getCell={getCell}
+        onRowEnter={onRowEnter}
+        onRowLeave={onRowLeave}
+        checkboxesChecked={checkboxesChecked}
+        onCheckboxChange={onCheckboxChange}
+        checkboxRelativeWidth={checkboxRelativeWidth}
+        minWidth={500}
+      />
+    )
+  }
   return (
-    <Box
-      display={'flex'}
-      flexDirection={'column'}
-      gap={2}
-    >
-      <Box>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreSharp/>}
-          >
-            <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
-              {rowBackgroundDataUnsorted.length == 0 && (<VerdictIcon verdict={null}/>)}
-              {rowBackgroundDataUnsorted.length == 1 && (<VerdictIcon verdict={'success'}/>)}
-              {rowBackgroundDataUnsorted.length > 1 && (<VerdictIcon verdict={'error'}/>)}
-              <Typography>Background Colours</Typography>
-            </Box>
-          </AccordionSummary>
-          <AccordionDetails>
-            {rowBackgroundDataUnsorted.length > 32 ? (
-              <LongRichTable
-                columns={columns}
-                rows={rowBackgroundDataUnsorted}
-                defaultOrderBy={'usage'}
-                defaultOrderDirection={'desc'}
-                rowComparator={rowComparator}
-                getHeaderCell={getHeaderCell}
-                getCell={getCell}
-                onRowEnter={onRowEnter}
-                onRowLeave={onRowLeave}
-                checkboxesChecked={checkboxesChecked}
-                onCheckboxChange={onCheckboxChange}
-                checkboxRelativeWidth={checkboxRelativeWidth}
-                minWidth={500}
-              />
-            ) : (
-              <RichTable
-                columns={columns}
-                rows={rowBackgroundDataUnsorted}
-                defaultOrderBy={'usage'}
-                defaultOrderDirection={'desc'}
-                rowComparator={rowComparator}
-                getHeaderCell={getHeaderCell}
-                getCell={getCell}
-                onRowEnter={onRowEnter}
-                onRowLeave={onRowLeave}
-                checkboxesChecked={checkboxesChecked}
-                onCheckboxChange={onCheckboxChange}
-                checkboxRelativeWidth={checkboxRelativeWidth}
-                minWidth={500}
-              />
-            )}
-          </AccordionDetails>
-        </Accordion>
-        <Accordion
-          defaultExpanded
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreSharp/>}
-          >
-            <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
-              <VerdictIcon verdict={colourReport?.analysis.getColourCountVerdict() || null}/>
-              <Typography>Sprite Colours</Typography>
-            </Box>
-          </AccordionSummary>
-          <AccordionDetails>
-            {rowNonBackgroundDataUnsorted.length > 32 ? (
-              <LongRichTable
-                columns={columns}
-                rows={rowNonBackgroundDataUnsorted}
-                defaultOrderBy={'usage'}
-                defaultOrderDirection={'desc'}
-                rowComparator={rowComparator}
-                getHeaderCell={getHeaderCell}
-                getCell={getCell}
-                onRowEnter={onRowEnter}
-                onRowLeave={onRowLeave}
-                checkboxesChecked={checkboxesChecked}
-                onCheckboxChange={onCheckboxChange}
-                checkboxRelativeWidth={checkboxRelativeWidth}
-                minWidth={500}
-              />
-            ) : (
-              <RichTable
-                columns={columns}
-                rows={rowNonBackgroundDataUnsorted}
-                defaultOrderBy={'usage'}
-                defaultOrderDirection={'desc'}
-                rowComparator={rowComparator}
-                getHeaderCell={getHeaderCell}
-                getCell={getCell}
-                onRowEnter={onRowEnter}
-                onRowLeave={onRowLeave}
-                checkboxesChecked={checkboxesChecked}
-                onCheckboxChange={onCheckboxChange}
-                checkboxRelativeWidth={checkboxRelativeWidth}
-                minWidth={500}
-              />
-            )}
-          </AccordionDetails>
-        </Accordion>
-      </Box>
-    </Box>
+    <RichTable
+      columns={columns}
+      rows={rowDataUnsorted}
+      defaultOrderBy={'usage'}
+      defaultOrderDirection={'desc'}
+      rowComparator={rowComparator}
+      getHeaderCell={getHeaderCell}
+      getCell={getCell}
+      onRowEnter={onRowEnter}
+      onRowLeave={onRowLeave}
+      checkboxesChecked={checkboxesChecked}
+      onCheckboxChange={onCheckboxChange}
+      checkboxRelativeWidth={checkboxRelativeWidth}
+      minWidth={500}
+    />
   );
 }

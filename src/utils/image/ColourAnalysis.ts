@@ -6,6 +6,8 @@ import {getColourCounts} from "./getColourCounts.ts";
 import {getRankedColourCounts} from "./getRankedColourCounts.ts";
 import {Verdict} from "./types.ts";
 
+export const spriteColourCountLimit = 32;
+
 const thresholds = {
   deltaE2000: 10,
   deltaECMC: 10,
@@ -66,6 +68,8 @@ function getMaxThresholdRatio({deltaE2000, deltaECMCAB, deltaECMCBA, deltaFusion
 export class ColourAnalysis {
   pixelCount: number;
   coloursCount: number;
+  backgroundColourCount: number = 0;
+  spriteColourCount: number = 0;
   colourCounts: Map<number, number>;
   colours: Map<number, ColorObject>;
   similarColourPairMap: Map<string, SimilarityData>;
@@ -90,6 +94,11 @@ export class ColourAnalysis {
     const coloursCielab = new Map<number, ColorObject>();
     for (const colourKey of this.colourCounts.keys()) {
       const pixel = getPixelFromColourKey(colourKey);
+      if (pixel[3] === 0) {
+        this.backgroundColourCount++;
+      } else {
+        this.spriteColourCount++;
+      }
       const colour = getColorObjectFromPixel(pixel);
       this.colours.set(colourKey, colour);
       if (!this.similaritySkipped) {
@@ -152,10 +161,23 @@ export class ColourAnalysis {
     });
   }
 
-  getColourCountVerdict() {
+  getBackgroundColourCountVerdict() {
     let verdict: Verdict = 'success';
-    if (this.coloursCount > 32) {
-      verdict = getMaxSeverity(verdict, 'error');
+    if (this.backgroundColourCount > 1) {
+      verdict = getMaxSeverity([verdict, 'warning']);
+    }
+    return verdict;
+  }
+
+  getSpriteColourCountVerdict() {
+    let verdict: Verdict = 'success';
+    // The style guidelines hve 32 as the limit
+    // From a filesize optimisation perspective, it would be reasonable to think that this should in practise be a limit
+    //   of 31 sprite colours +1 background colour, allowing a reduced bit depth for indexed encoding
+    // In actuality, testing has shown that bit depth of 8 produces smaller files than reduced bit depths, which means
+    //   that the actual technical limit is 256, allowing 32 sprite colours without compromising optimisation
+    if (this.spriteColourCount > spriteColourCountLimit) {
+      verdict = getMaxSeverity([verdict, 'error']);
     }
     return verdict;
   }
@@ -163,16 +185,17 @@ export class ColourAnalysis {
   getColourSimilarityVerdict() {
     let verdict: Verdict = 'success';
     if (this.similaritySkipped) {
-      verdict = getMaxSeverity(verdict, 'error');
-    } else if (this.similarColourPairMap.size > 20 || (this.similarColourPairMap.size / this.coloursCount) > 0.5) {
-      verdict = getMaxSeverity(verdict, 'error');
-    } else if (this.similarColourPairMap.size > 0 || (this.similarColourPairMap.size / this.coloursCount) > 0.2) {
-      verdict = getMaxSeverity(verdict, 'warning');
+      verdict = getMaxSeverity([verdict, 'error']);
+    } else if (this.similarColourPairMap.size > 20 || (this.similarColourPairMap.size / this.spriteColourCount) > 0.5) {
+      verdict = getMaxSeverity([verdict, 'error']);
+    } else if (this.similarColourPairMap.size > 0 || (this.similarColourPairMap.size / this.spriteColourCount) > 0.2) {
+      verdict = getMaxSeverity([verdict, 'warning']);
     }
     return verdict;
   }
 
   getVerdict() {
-    return getMaxSeverity(this.getColourCountVerdict(), this.getColourSimilarityVerdict());
+    // Ignore background colour count when calculating overall verdict
+    return getMaxSeverity([this.getSpriteColourCountVerdict(), this.getColourSimilarityVerdict()]);
   }
 }

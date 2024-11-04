@@ -1,16 +1,17 @@
 import {Box, BoxProps, Paper, PaperProps, styled} from "@mui/material";
 import {useCallback, useContext, useEffect, useRef, useState} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
+import {SettingsContext} from "../../contexts/SettingsContext.tsx";
 import {BackgroundModal} from "../Modals/BackgroundModal.tsx";
 import {SettingsModal} from "../Modals/SettingsModal.tsx";
 import {SpriteExportModal} from "../Modals/SpriteExportModal/SpriteExportModal.tsx";
 import {SpriteImportModal} from "../Modals/SpriteImportModal.tsx";
-import {PartialPixelsBox} from "../Panes/PartialPixelsPane/PartialPixelsBox.tsx";
-import {ColouredTransparencyBox} from "../Panes/TransparencyPane/ColouredTransparencyBox.tsx";
-import {SemiTransparencyBox} from "../Panes/TransparencyPane/SemiTransparencyBox.tsx";
 import {ColourCountBox} from "./ColourCountBox.tsx";
+import {ColouredTransparencyBox} from "./ColouredTransparencyBox.tsx";
 import {ColourSimilarityBox} from "./ColourSimilarityBox.tsx";
 import {NavigationMenuMobile} from "./NavigationMenuMobile.tsx";
+import {PartialPixelsBox} from "./PartialPixelsBox.tsx";
+import {SemiTransparencyBox} from "./SemiTransparencyBox.tsx";
 import {TopBarMobile} from "./TopBarMobile.tsx";
 
 const Container = styled(Box)<BoxProps>(() => ({
@@ -34,7 +35,10 @@ const ContentBox = styled(Box)<BoxProps>(({theme}) => ({
   flexGrow: 1,
   height: '100%',
   minHeight: 0,
-  padding: theme.spacing(4),
+  paddingTop: theme.spacing(0),
+  paddingLeft: theme.spacing(2),
+  paddingRight: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
   overflowY: 'auto',
 }));
 
@@ -45,6 +49,9 @@ export function AnalysisLayoutMobile() {
     transparencyReport,
     colourReport,
   } = useContext(AnalysisContext);
+  const {
+    ignoreColouredTransparencyEnabled,
+  } = useContext(SettingsContext);
 
   const lastHandledSpriteId = useRef('');
   const [isNavigationMenuOpen, setIsNavigationMenuOpen] = useState(true);
@@ -57,17 +64,17 @@ export function AnalysisLayoutMobile() {
       lastHandledSpriteId.current = spriteInput.id;
       if (partialPixelReport.verdict !== 'success') {
         setView('partialPixels');
-      } else if (transparencyReport.analysis.semiTransparent.semiTransparentPixelCount > 0) {
+      } else if (transparencyReport.semiTransparentVerdict !== 'success') {
         setView('semiTransparent');
-      } else if (transparencyReport.analysis.colouredTransparency.colouredTransparentPixelCount > 0) {
+      } else if (!ignoreColouredTransparencyEnabled && transparencyReport.colouredTransparentVerdict !== 'success') {
         setView('colouredTransparency');
-      } else if (colourReport.analysis.getColourCountVerdict() !== 'success') {
+      } else if (colourReport.spriteColourCountVerdict !== 'success') {
         setView('colourCount');
       } else {
         setView('colourSimilarity');
       }
     }
-  }, [spriteInput, partialPixelReport, transparencyReport, setView, colourReport]);
+  }, [spriteInput, partialPixelReport, transparencyReport, setView, colourReport, ignoreColouredTransparencyEnabled]);
 
   const closeNavigationMenu = useCallback(() => {
     setIsNavigationMenuOpen(false);

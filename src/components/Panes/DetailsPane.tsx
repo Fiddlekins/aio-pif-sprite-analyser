@@ -1,7 +1,9 @@
 import {Box, styled, Tab, tabClasses, TabProps, Tabs} from "@mui/material";
 import {ReactNode, SyntheticEvent, useCallback, useContext, useEffect, useRef, useState} from "react";
 import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
+import {SettingsContext} from "../../contexts/SettingsContext.tsx";
 import {VerdictIcon} from "../VerdictIcon.tsx";
+import {ColouredTransparencyPane} from "./ColouredTransparencyPane/ColouredTransparencyPane.tsx";
 import {ColoursPane} from "./ColoursPane/ColoursPane.tsx";
 import {PartialPixelsPane} from "./PartialPixelsPane/PartialPixelsPane.tsx";
 import {TransparencyPane} from "./TransparencyPane/TransparencyPane.tsx";
@@ -34,8 +36,9 @@ const StyledTab = styled(Tab)<TabProps>(() => ({
 
 const TabIndexes = {
   PartialPixels: 0,
-  Transparency: 1,
-  Colours: 2,
+  SemiTransparency: 1,
+  ColouredTransparency: 2,
+  Colours: 3,
 }
 
 export function DetailsPane() {
@@ -46,13 +49,16 @@ export function DetailsPane() {
     colourReport,
     dispatchHighlightedColourState,
   } = useContext(AnalysisContext);
+  const {
+    ignoreColouredTransparencyEnabled,
+  } = useContext(SettingsContext);
 
   const lastHandledSpriteId = useRef('');
   const [tabIndex, setTabIndex] = useState(0);
 
   const updateTabIndex = useCallback((tabIndexNew: number) => {
     setTabIndex(tabIndexNew);
-    if (tabIndexNew == TabIndexes.Colours) {
+    if ([TabIndexes.ColouredTransparency, TabIndexes.Colours].includes(tabIndexNew)) {
       dispatchHighlightedColourState({operation: 'renderOn'});
     } else {
       dispatchHighlightedColourState({operation: 'renderOff'});
@@ -70,13 +76,15 @@ export function DetailsPane() {
       lastHandledSpriteId.current = spriteInput.id;
       if (partialPixelReport?.verdict !== 'success') {
         updateTabIndex(TabIndexes.PartialPixels);
-      } else if (transparencyReport?.verdict !== 'success') {
-        updateTabIndex(TabIndexes.Transparency);
+      } else if (transparencyReport?.semiTransparentVerdict !== 'success') {
+        updateTabIndex(TabIndexes.SemiTransparency);
+      } else if (!ignoreColouredTransparencyEnabled && transparencyReport?.colouredTransparentVerdict !== 'success') {
+        updateTabIndex(TabIndexes.ColouredTransparency);
       } else {
         updateTabIndex(TabIndexes.Colours);
       }
     }
-  }, [spriteInput, partialPixelReport, transparencyReport, updateTabIndex]);
+  }, [spriteInput, partialPixelReport, transparencyReport, updateTabIndex, ignoreColouredTransparencyEnabled]);
 
   return (
     <Box
@@ -97,8 +105,14 @@ export function DetailsPane() {
         />
         <StyledTab
           label="Transparency"
-          icon={(<VerdictIcon verdict={transparencyReport?.verdict || null}/>)}
+          icon={(<VerdictIcon verdict={transparencyReport?.semiTransparentVerdict || null}/>)}
           iconPosition={'start'}
+        />
+        <StyledTab
+          label="Background"
+          icon={(<VerdictIcon verdict={transparencyReport?.colouredTransparentVerdict || null}/>)}
+          iconPosition={'start'}
+          sx={{opacity: ignoreColouredTransparencyEnabled ? 0.5 : 1}}
         />
         <StyledTab
           label="Colours"
@@ -110,8 +124,11 @@ export function DetailsPane() {
         <TabPanel value={tabIndex} index={TabIndexes.PartialPixels}>
           <PartialPixelsPane/>
         </TabPanel>
-        <TabPanel value={tabIndex} index={TabIndexes.Transparency}>
+        <TabPanel value={tabIndex} index={TabIndexes.SemiTransparency}>
           <TransparencyPane/>
+        </TabPanel>
+        <TabPanel value={tabIndex} index={TabIndexes.ColouredTransparency}>
+          <ColouredTransparencyPane/>
         </TabPanel>
         <TabPanel value={tabIndex} index={TabIndexes.Colours}>
           <ColoursPane/>
