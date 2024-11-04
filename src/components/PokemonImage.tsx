@@ -1,12 +1,12 @@
 import {QuestionMarkSharp} from "@mui/icons-material";
 
-function getUnfusedSrc(pokemonId: number) {
-  return `https://gitlab.com/infinitefusion2/autogen-fusion-sprites/-/raw/main/Battlers/${pokemonId}/${pokemonId}.png`;
-}
-
-function getFusedSrc(headPokemonId: number, bodyPokemonId: number) {
-  return `https://gitlab.com/infinitefusion2/autogen-fusion-sprites/-/raw/main/Battlers/${headPokemonId}/${headPokemonId}.${bodyPokemonId}.png`;
-}
+// function getUnfusedSrc(pokemonId: number) {
+//   return `https://gitlab.com/infinitefusion2/autogen-fusion-sprites/-/raw/main/Battlers/${pokemonId}/${pokemonId}.png`;
+// }
+//
+// function getFusedSrc(headPokemonId: number, bodyPokemonId: number) {
+//   return `https://gitlab.com/infinitefusion2/autogen-fusion-sprites/-/raw/main/Battlers/${headPokemonId}/${headPokemonId}.${bodyPokemonId}.png`;
+// }
 
 export interface PokemonImageProps {
   isFusion: boolean;
@@ -25,20 +25,26 @@ export function PokemonImage(
 ) {
   if (isFusion && headPokemonId && bodyPokemonId) {
     return (
-      <img
-        width={'100%'}
-        height={'100%'}
-        src={getFusedSrc(headPokemonId, bodyPokemonId)}
-      />
+      <span>pending</span>
     );
+    // return (
+    //   <img
+    //     width={'100%'}
+    //     height={'100%'}
+    //     src={getFusedSrc(headPokemonId, bodyPokemonId)}
+    //   />
+    // );
   } else if (!isFusion && pokemonId) {
     return (
-      <img
-        width={'100%'}
-        height={'100%'}
-        src={getUnfusedSrc(pokemonId)}
-      />
+      <span>pending</span>
     );
+    // return (
+    //   <img
+    //     width={'100%'}
+    //     height={'100%'}
+    //     src={getUnfusedSrc(pokemonId)}
+    //   />
+    // );
   } else {
     return (
       <QuestionMarkSharp/>
