@@ -21,7 +21,6 @@ export function ColouredTransparencyBox() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    console.log('boop', highlightedColourState, highlightMode, highlightColour);
     const canvas = canvasRef.current;
     if (canvas && spriteInput?.imageData) {
       const ctx = canvas.getContext('2d', {colorSpace: 'srgb'});
