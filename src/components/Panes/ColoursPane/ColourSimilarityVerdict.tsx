@@ -1,12 +1,13 @@
+import {observer} from "@legendapp/state/react";
 import {HelpOutlineSharp} from "@mui/icons-material";
 import {Box, Typography} from "@mui/material";
-import {Fragment, useContext} from "react";
-import {AnalysisContext} from "../../../contexts/AnalysisContext.tsx";
+import {Fragment} from "react";
+import {analysis$} from "../../../state/analysis.ts";
 import {StyledTooltip} from "../../StyledTooltip.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
-export function ColourSimilarityVerdict() {
-  const {colourReport} = useContext(AnalysisContext);
+export const ColourSimilarityVerdict = observer(function ColourSimilarityVerdict() {
+  const colourReport = analysis$.colourReport.get();
   return (
     <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
       <VerdictIcon verdict={colourReport?.analysis.getColourSimilarityVerdict() || null}/>
@@ -47,4 +48,4 @@ export function ColourSimilarityVerdict() {
       </StyledTooltip>
     </Box>
   );
-}
+});

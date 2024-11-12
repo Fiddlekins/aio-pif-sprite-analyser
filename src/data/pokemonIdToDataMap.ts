@@ -5119,14 +5119,14 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "Name": "Diancie"
   },
   "501": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 0,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 0,
+    "Name": "Luvdisc",
+    "BattlerPlayerX": 1,
+    "BattlerPlayerY": 19,
+    "BattlerEnemyX": -4,
+    "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "Luvdisc",
-    "Name": "Luvdisc"
+    "BattlerShadowSize": 1,
+    "displayName": "Luvdisc"
   },
   "999999": {
     "Name": "Zapmolcuno",

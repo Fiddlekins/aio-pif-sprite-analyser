@@ -1,14 +1,13 @@
+import {observer} from "@legendapp/state/react";
 import {Box, Typography} from "@mui/material";
 import {ColorObject} from "colorjs.io/fn";
-import {useCallback, useContext, useMemo} from "react";
-import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
-import {SettingsContext} from "../../contexts/SettingsContext.tsx";
+import {useCallback} from "react";
+import {ui$, uiSettings$} from "../../state/ui.ts";
 import {getFormattedPercent} from "../../utils/getFormattedPercent.ts";
 import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
 import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColourKey.ts";
 import {numberComparator} from "../../utils/numberComparator.ts";
 import {ColourSwatch} from "../ColourSwatch.tsx";
-import {ColourSpace} from "../Panes/types.ts";
 import {LongRichTable} from "./RichTable/LongRichTable.tsx";
 import {RichTable} from "./RichTable/RichTable.tsx";
 import {Column, OrderDirection, RowComparator, RowDataBase} from "./RichTable/types.ts";
@@ -68,7 +67,7 @@ interface RowData extends RowDataBase {
   usage: number;
 }
 
-function getHeaderName(colourSpace: ColourSpace, channel: number) {
+function getHeaderName(colourSpace: string, channel: number) {
   switch (colourSpace) {
     case 'RGB':
       return ['R', 'G', 'B', 'A'][channel];
@@ -83,33 +82,35 @@ export interface ColoursTableProps {
   rowDataUnsorted: RowData[];
 }
 
-export function ColoursTable(
+export const ColoursTable = observer(function ColoursTable(
   {
     rowDataUnsorted,
   }: ColoursTableProps
 ) {
-  const {
-    highlightedColourState,
-    dispatchHighlightedColourState,
-    colourSpace,
-  } = useContext(AnalysisContext);
-  const {isMobile} = useContext(SettingsContext);
+  const isMobile = ui$.isMobile.get();
+  const currentCheckedColours = ui$.highlight.currentCheckedColours.get();
+  const colourSpace = uiSettings$.colourSpace.get();
 
   const onCheckboxChange = useCallback(({colourKey}: RowData, isCheckedNew: boolean) => {
     if (isCheckedNew) {
-      dispatchHighlightedColourState({operation: 'check', colourKey});
+      ui$.highlight.addCheckedColourToCurrent(colourKey);
     } else {
-      dispatchHighlightedColourState({operation: 'uncheck', colourKey});
+      ui$.highlight.removeCheckedColourFromCurrent(colourKey);
     }
-  }, [dispatchHighlightedColourState]);
+  }, []);
 
-  const checkboxesChecked = useMemo(() => {
-    const checkboxesCheckedNew: Record<string, boolean> = {};
-    [...highlightedColourState.checked].forEach((colourKey) => {
-      checkboxesCheckedNew[colourKey] = true;
-    })
-    return checkboxesCheckedNew;
-  }, [highlightedColourState]);
+  // const checkboxesChecked = useMemo(() => {
+  //   const checkboxesCheckedNew: Record<string, boolean> = {};
+  //   currentCheckedColours.forEach((colourKey) => {
+  //     checkboxesCheckedNew[colourKey] = true;
+  //   })
+  //   return checkboxesCheckedNew;
+  // }, [currentCheckedColours]);
+
+  const checkboxesChecked: Record<string, boolean> = {};
+  currentCheckedColours.forEach((colourKey) => {
+    checkboxesChecked[colourKey] = true;
+  });
 
   const getHeaderCell = useCallback((column: Column) => {
     switch (column.id) {
@@ -260,15 +261,15 @@ export function ColoursTable(
 
   const onRowEnter = useCallback((rowData: RowData) => {
     if (!isMobile) {
-      dispatchHighlightedColourState({operation: 'hoverStart', colourKey: rowData.colourKey});
+      ui$.highlight.addHoveredColourToCurrent(rowData.colourKey);
     }
-  }, [dispatchHighlightedColourState, isMobile]);
+  }, [isMobile]);
 
   const onRowLeave = useCallback((rowData: RowData) => {
     if (!isMobile) {
-      dispatchHighlightedColourState({operation: 'hoverEnd', colourKey: rowData.colourKey});
+      ui$.highlight.removeHoveredColourFromCurrent(rowData.colourKey);
     }
-  }, [dispatchHighlightedColourState, isMobile]);
+  }, [isMobile]);
 
   if (rowDataUnsorted.length > 32) {
     return (
@@ -306,4 +307,4 @@ export function ColoursTable(
       minWidth={500}
     />
   );
-}
+});

@@ -1,9 +1,11 @@
+import {observer} from "@legendapp/state/react";
 import {ContentPasteGoSharp} from "@mui/icons-material";
 import {Alert, Box, BoxProps, Button, CircularProgress, styled, Typography} from "@mui/material";
 import {TypedArray} from "image-in-browser";
-import {useCallback, useContext, useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {useDropzone} from 'react-dropzone';
-import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
+import {analysis$} from "../../state/analysis.ts";
+import {ui$} from "../../state/ui.ts";
 import {getId} from "../../utils/getId.ts";
 import {getDecodedPng} from "../../utils/image/getDecodedPng.ts";
 import {upscaleImageData} from "../../utils/image/manipulation/upscaleImageData.ts";
@@ -39,8 +41,8 @@ const acceptedDimensionsStrings = acceptedDimensions.map(({width, height}) => {
 });
 const acceptedDimensionsText = `${acceptedDimensionsStrings.slice(0, -1).join(', ')} or ${acceptedDimensionsStrings[acceptedDimensionsStrings.length - 1]}`;
 
-export function SpriteImportModal() {
-  const {isImportModalOpen, setIsImportModalOpen, setSpriteInput, setHeadId, setBodyId} = useContext(AnalysisContext);
+export const SpriteImportModal = observer(function SpriteImportModal() {
+  const isImportModalOpen = ui$.isImportModalOpen.get();
   const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -64,13 +66,13 @@ export function SpriteImportModal() {
           imageData = upscaleImageData(imageData, upscale);
         }
         const id = await getId(imageData);
-        setIsImportModalOpen(false);
-        setSpriteInput(imageData, name, sourceUrl, pngInfo, id);
+        ui$.isImportModalOpen.set(false);
+        analysis$.setSpriteInput(imageData, name || undefined, sourceUrl || undefined, pngInfo, id);
         const {headId, bodyId} = parseName(name);
         // If image name has no pokemon IDs then don't update, to allow users to pick pokemon and then iteratively post raw image data into the app
         if (headId || bodyId) {
-          setHeadId(headId);
-          setBodyId(bodyId);
+          analysis$.headId.set(headId || undefined);
+          analysis$.bodyId.set(bodyId || undefined);
         }
         setError(null);
         setIsLoading(false);
@@ -79,7 +81,7 @@ export function SpriteImportModal() {
     }
     setError(`File is invalid size: ${imageData.width}x${imageData.height}`);
     setIsLoading(false);
-  }, [setError, setBodyId, setHeadId, setIsImportModalOpen, setSpriteInput]);
+  }, [setError]);
 
   const executePaste = useCallback(async (files: File[] | null) => {
     const clipboardContents = await navigator.clipboard.read();
@@ -191,8 +193,8 @@ export function SpriteImportModal() {
   }, [acceptedFiles, setError, importImage, setIsLoading]);
 
   const handleClose = useCallback(() => {
-    setIsImportModalOpen(false);
-  }, [setIsImportModalOpen]);
+    ui$.isImportModalOpen.set(false);
+  }, []);
 
   return (
     <StyledModal
@@ -235,4 +237,4 @@ export function SpriteImportModal() {
       )}
     </StyledModal>
   );
-}
+});

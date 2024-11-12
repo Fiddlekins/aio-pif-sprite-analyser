@@ -16,11 +16,9 @@ function getDataFile(data) {
     night: boolean;
 }
 
-export type BattlerTime = 'day' | 'eve' | 'night';
-
 export const battleAssetManifest: Record<string,ManifestEntry> = ${JSON.stringify(data, null, 2)};
 
-export const battlerTimes: BattlerTime[] = ['day', 'eve', 'night'];
+export const battlerTimes: string[] = ['day', 'eve', 'night'];
 
 export const battlerMaps = Object.keys(battleAssetManifest);
 

@@ -1,7 +1,9 @@
+import {observer} from "@legendapp/state/react";
 import {ExpandMoreSharp} from "@mui/icons-material";
 import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@mui/material";
-import {useCallback, useContext, useMemo} from "react";
-import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
+import {useCallback, useMemo} from "react";
+import {analysis$} from "../../state/analysis.ts";
+import {ui$} from "../../state/ui.ts";
 import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
 import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColourKey.ts";
 import {numberComparator} from "../../utils/numberComparator.ts";
@@ -70,11 +72,8 @@ interface RowData extends RowDataBase {
   similarity: number;
 }
 
-export function SimilarityTable() {
-  const {
-    colourReport,
-    dispatchHighlightedColourState,
-  } = useContext(AnalysisContext);
+export const SimilarityTable = observer(function SimilarityTable() {
+  const colourReport = analysis$.colourReport.get();
 
   const rowDataUnsorted = useMemo(() => {
     if (!colourReport) {
@@ -102,10 +101,10 @@ export function SimilarityTable() {
             alignItems={'center'}
             gap={1}
             onMouseEnter={() => {
-              dispatchHighlightedColourState({operation: 'hoverStart', colourKey: row.colourAKey});
+              ui$.highlight.addHoveredColourToCurrent(row.colourAKey);
             }}
             onMouseLeave={() => {
-              dispatchHighlightedColourState({operation: 'hoverEnd', colourKey: row.colourAKey});
+              ui$.highlight.removeHoveredColourFromCurrent(row.colourAKey);
             }}
           >
             <ColourSwatch colour={`#${getHex8FromColourKey(row.colourAKey)}`}/>
@@ -122,10 +121,10 @@ export function SimilarityTable() {
             alignItems={'center'}
             gap={1}
             onMouseEnter={() => {
-              dispatchHighlightedColourState({operation: 'hoverStart', colourKey: row.colourBKey});
+              ui$.highlight.addHoveredColourToCurrent(row.colourBKey);
             }}
             onMouseLeave={() => {
-              dispatchHighlightedColourState({operation: 'hoverEnd', colourKey: row.colourBKey});
+              ui$.highlight.removeHoveredColourFromCurrent(row.colourBKey);
             }}
           >
             <ColourSwatch colour={`#${getHex8FromColourKey(row.colourBKey)}`}/>
@@ -146,7 +145,7 @@ export function SimilarityTable() {
         return toXDecimals(row.similarity, 3);
     }
     throw new Error(`Unhandled columnId ${columnId}`);
-  }, [dispatchHighlightedColourState]);
+  }, []);
 
   const rowComparator: RowComparator<RowData> = useCallback((a, b, orderBy: string, orderDirection: OrderDirection) => {
     let result = 0;
@@ -215,4 +214,4 @@ export function SimilarityTable() {
       </Box>
     </Box>
   );
-}
+});

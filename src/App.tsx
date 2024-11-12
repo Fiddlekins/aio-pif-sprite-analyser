@@ -1,13 +1,13 @@
+import {observer, Show} from "@legendapp/state/react";
 import {Box, BoxProps, CssBaseline, styled, ThemeProvider} from "@mui/material";
 import {darken} from '@mui/material/styles';
 import {ColorSpace, HSL, HSV, OKLCH, sRGB} from "colorjs.io/fn";
-import {useContext} from "react";
 import './App.css'
 import {AnalysisLayout} from "./components/AnalysisLayout.tsx";
 import {AnalysisLayoutMobile} from "./components/Mobile/AnalysisLayoutMobile.tsx";
-import {AnalysisProvider} from "./contexts/AnalysisContext.tsx";
-import {BackgroundProvider} from "./contexts/BackgroundContext.tsx";
-import {SettingsContext, SettingsProvider} from "./contexts/SettingsContext.tsx";
+import {settings$} from "./state/settings.ts";
+import {ui$} from "./state/ui.ts";
+import {getTheme} from "./themes/getTheme.ts";
 
 ColorSpace.register(OKLCH);
 ColorSpace.register(sRGB);
@@ -34,29 +34,29 @@ const Background = styled(Box)<BoxProps>(({theme}) => ({
     : darken(theme.palette.background.default, 0.3),
 }));
 
-function SubApp() {
-  const {theme, isMobile} = useContext(SettingsContext);
+const SubApp = observer(function SubApp() {
+  const themeId = settings$.themeId.get();
+  const theme = getTheme(themeId);
   return (
     <ThemeProvider theme={theme}>
-      <AnalysisProvider>
-        <BackgroundProvider>
-          <Background/>
-          <AppBox>
-            {isMobile ? (<AnalysisLayoutMobile/>) : (<AnalysisLayout/>)}
-          </AppBox>
-        </BackgroundProvider>
-      </AnalysisProvider>
+      <Background/>
+      <AppBox>
+        <Show
+          if={ui$.isMobile}
+          else={<AnalysisLayout/>}
+        >
+          <AnalysisLayoutMobile/>
+        </Show>
+      </AppBox>
     </ThemeProvider>
   );
-}
+})
 
 function App() {
   return (
     <>
       <CssBaseline/>
-      <SettingsProvider>
-        <SubApp/>
-      </SettingsProvider>
+      <SubApp/>
     </>
   )
 }

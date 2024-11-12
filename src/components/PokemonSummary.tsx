@@ -1,13 +1,15 @@
+import {observer} from "@legendapp/state/react";
 import {Box} from "@mui/material";
-import {useCallback, useContext, useState} from "react";
-import {AnalysisContext} from "../contexts/AnalysisContext.tsx";
-import {SettingsContext} from "../contexts/SettingsContext.tsx";
+import {useCallback, useState} from "react";
+import {analysis$} from "../state/analysis.ts";
+import {ui$} from "../state/ui.ts";
 import {PokemonSelectModal} from "./Modals/PokemonSelectModal.tsx";
 import {PokemonDisplay} from "./PokemonDisplay.tsx";
 
-export function PokemonSummary() {
-  const {isMobile} = useContext(SettingsContext);
-  const {headId, bodyId, setHeadId, setBodyId} = useContext(AnalysisContext);
+export const PokemonSummary = observer(function PokemonSummary() {
+  const isMobile = ui$.isMobile.get();
+  const headId = analysis$.headId.get();
+  const bodyId = analysis$.bodyId.get();
 
   const [isHeadModalOpen, setIsHeadModalOpen] = useState(false);
   const [isBodyModalOpen, setIsBodyModalOpen] = useState(false);
@@ -55,17 +57,17 @@ export function PokemonSummary() {
       <PokemonSelectModal
         open={isHeadModalOpen}
         pokemonId={headId}
-        setPokemonId={setHeadId}
+        setPokemonId={(headIdNew) => analysis$.headId.set(headIdNew)}
         handleClose={handleHeadModalClose}
         title={'Select Head Pokemon'}
       />
       <PokemonSelectModal
         open={isBodyModalOpen}
         pokemonId={bodyId}
-        setPokemonId={setBodyId}
+        setPokemonId={(bodyIdNew) => analysis$.bodyId.set(bodyIdNew)}
         handleClose={handleBodyModalClose}
         title={'Select Body Pokemon'}
       />
     </Box>
   );
-}
+});

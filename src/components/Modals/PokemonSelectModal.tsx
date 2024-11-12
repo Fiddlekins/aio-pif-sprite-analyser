@@ -1,8 +1,9 @@
+import {observer} from "@legendapp/state/react";
 import {DoneSharp} from "@mui/icons-material";
 import {Autocomplete, Box, BoxProps, Button, styled, TextField} from "@mui/material";
-import {SyntheticEvent, useCallback, useContext} from "react";
-import {SettingsContext} from "../../contexts/SettingsContext.tsx";
+import {SyntheticEvent, useCallback} from "react";
 import {pokemonIdToDataMap} from "../../data/pokemonIdToDataMap.ts";
+import {ui$} from "../../state/ui.ts";
 import {PokemonImage} from "../PokemonImage.tsx";
 import {StyledModal} from "./StyledModal.tsx";
 
@@ -44,13 +45,13 @@ const ImageBox = styled(Box)<BoxProps>(({theme}) => ({
 
 export interface PokemonSelectModalProps {
   open: boolean;
-  pokemonId: number | null;
-  setPokemonId: (pokemonIdNew: number | null) => void;
+  pokemonId?: number;
+  setPokemonId: (pokemonIdNew: number|undefined) => void;
   handleClose: () => void;
   title?: string;
 }
 
-export function PokemonSelectModal(
+export const PokemonSelectModal = observer(function PokemonSelectModal(
   {
     open,
     pokemonId,
@@ -59,13 +60,13 @@ export function PokemonSelectModal(
     title,
   }: PokemonSelectModalProps
 ) {
-  const {isMobile} = useContext(SettingsContext);
+  const isMobile = ui$.isMobile.get();
 
   const onChange = useCallback((_event: SyntheticEvent, newValue: string | null) => {
     if (newValue) {
-      setPokemonId(pokemonNameToIdMap[newValue] || null)
+      setPokemonId(pokemonNameToIdMap[newValue] || undefined);
     } else {
-      setPokemonId(null);
+      setPokemonId(undefined);
     }
   }, [setPokemonId]);
 
@@ -139,4 +140,4 @@ export function PokemonSelectModal(
       )}
     </StyledModal>
   )
-}
+});

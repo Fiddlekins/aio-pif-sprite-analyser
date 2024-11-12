@@ -10,9 +10,9 @@ import {QuestionMarkSharp} from "@mui/icons-material";
 
 export interface PokemonImageProps {
   isFusion: boolean;
-  pokemonId?: number | null;
-  headPokemonId?: number | null;
-  bodyPokemonId?: number | null;
+  pokemonId?: number;
+  headPokemonId?: number;
+  bodyPokemonId?: number;
 }
 
 export function PokemonImage(

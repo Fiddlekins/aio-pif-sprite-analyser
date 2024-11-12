@@ -1,8 +1,8 @@
+import {observer} from "@legendapp/state/react";
 import {HelpOutlineSharp} from "@mui/icons-material";
 import {Box, Link, styled, Typography, TypographyProps} from "@mui/material";
-import {useContext} from "react";
 import {SpriteInput} from "../contexts/AnalysisContext.tsx";
-import {SettingsContext} from "../contexts/SettingsContext.tsx";
+import {ui$} from "../state/ui.ts";
 import {getShortId} from "../utils/getShortId.ts";
 import {IdTooltipContent} from "./IdTooltipContent.tsx";
 import {StyledTooltip} from "./StyledTooltip.tsx";
@@ -14,15 +14,15 @@ const CollapsibleTypography = styled(Typography)<TypographyProps>(() => ({
 }));
 
 export interface TopBarTitleProps {
-  spriteInput: SpriteInput | null;
+  spriteInput?: SpriteInput;
 }
 
-export function TopBarTitle(
+export const TopBarTitle = observer(function TopBarTitle(
   {
     spriteInput
   }: TopBarTitleProps
 ) {
-  const {isMobile} = useContext(SettingsContext);
+  const isMobile = ui$.isMobile.get();
   return (
     <Box
       display={'flex'}
@@ -76,4 +76,4 @@ export function TopBarTitle(
       <Box flexGrow={1}/>
     </Box>
   );
-}
+});

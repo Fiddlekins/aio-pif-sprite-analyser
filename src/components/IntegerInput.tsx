@@ -1,3 +1,5 @@
+import {Observable} from "@legendapp/state";
+import {observer, Show} from "@legendapp/state/react";
 import {ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
 import {
   alpha,
@@ -49,26 +51,26 @@ export const StyledButton = styled(Button)<ButtonProps>(({theme}) => {
 
 export interface NumberInputProps {
   label: string;
-  value: number;
+  value$: Observable<number>;
   min?: number;
   max?: number;
   isDisabled?: boolean;
-  onValueChange: (valueNew: number) => void;
   showArrowControls?: boolean;
 }
 
-export function IntegerInput(
+export const IntegerInput = observer(function IntegerInput(
   {
     label,
-    value,
+    value$,
     min,
     max,
     isDisabled,
-    onValueChange,
     showArrowControls,
   }: NumberInputProps
 ) {
-  const validateAndSetValue = useCallback((unvalidatedValue: number) => {
+  const value = value$.get();
+
+  const validateValue = useCallback((unvalidatedValue: number) => {
     let valueNew = unvalidatedValue;
     if (typeof min === 'number') {
       valueNew = Math.max(valueNew, min);
@@ -76,8 +78,16 @@ export function IntegerInput(
     if (typeof max === 'number') {
       valueNew = Math.min(valueNew, max);
     }
-    onValueChange(valueNew);
-  }, [min, max, onValueChange]);
+    return valueNew;
+  }, [min, max]);
+
+  const onIncrease = useCallback(() => {
+    value$.set((valuePrev) => validateValue(valuePrev + 1));
+  }, [value$, validateValue]);
+
+  const onDecrease = useCallback(() => {
+    value$.set((valuePrev) => validateValue(valuePrev - 1));
+  }, [value$, validateValue]);
 
   const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const trimmedValue = event.target.value.trim();
@@ -88,19 +98,9 @@ export function IntegerInput(
       if (/\d/.test(trimmedValue)) {
         valueNew = parseInt(trimmedValue, 10);
       }
-      validateAndSetValue(valueNew);
+      value$.set(validateValue(valueNew));
     }
-  }, [validateAndSetValue]);
-
-  const onIncrease = () => {
-    const valueNew = value + 1;
-    validateAndSetValue(valueNew);
-  }
-
-  const onDecrease = () => {
-    const valueNew = value - 1;
-    validateAndSetValue(valueNew);
-  }
+  }, [value$, validateValue]);
 
   return (
     <Box
@@ -115,30 +115,28 @@ export function IntegerInput(
         disabled={isDisabled}
         onChange={onChange}
       />
-      {
-        showArrowControls && (
-          <ButtonGroup
-            orientation="vertical"
+      <Show if={showArrowControls}>
+        <ButtonGroup
+          orientation="vertical"
+        >
+          <StyledButton
+            key="increase"
+            variant={'outlined'}
+            disabled={isDisabled || value === max}
+            onClick={onIncrease}
           >
-            <StyledButton
-              key="increase"
-              variant={'outlined'}
-              disabled={isDisabled || value === max}
-              onClick={onIncrease}
-            >
-              <ArrowDropUp/>
-            </StyledButton>
-            <StyledButton
-              key="decrease"
-              variant={'outlined'}
-              disabled={isDisabled || value === min}
-              onClick={onDecrease}
-            >
-              <ArrowDropDown/>
-            </StyledButton>
-          </ButtonGroup>
-        )
-      }
+            <ArrowDropUp/>
+          </StyledButton>
+          <StyledButton
+            key="decrease"
+            variant={'outlined'}
+            disabled={isDisabled || value === min}
+            onClick={onDecrease}
+          >
+            <ArrowDropDown/>
+          </StyledButton>
+        </ButtonGroup>
+      </Show>
     </Box>
   );
-}
+});

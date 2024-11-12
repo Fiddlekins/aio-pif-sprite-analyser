@@ -1,6 +1,6 @@
-import {battleAssetManifest, BattlerTime} from "../../data/battleAssetManifest.ts";
+import {battleAssetManifest} from "../../data/battleAssetManifest.ts";
 
-export function getValidTimeForMap(battlerMap: string, battlerTime: BattlerTime): BattlerTime {
+export function getValidTimeForMap(battlerMap: string, battlerTime: string): string {
   const {day, eve, night} = battleAssetManifest[battlerMap];
   // Try requested time
   switch (battlerTime) {

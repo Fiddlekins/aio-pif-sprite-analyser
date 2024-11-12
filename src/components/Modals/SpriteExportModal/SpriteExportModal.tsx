@@ -1,3 +1,4 @@
+import {observer} from "@legendapp/state/react";
 import {HelpOutlineSharp} from "@mui/icons-material";
 import {
   Box,
@@ -9,15 +10,15 @@ import {
   ToggleButtonProps,
   Typography,
 } from "@mui/material";
-import {ChangeEvent, Fragment, MouseEvent, useCallback, useContext, useMemo, useState} from "react";
-import {AnalysisContext} from "../../../contexts/AnalysisContext.tsx";
-import {BackgroundContext} from "../../../contexts/BackgroundContext.tsx";
+import {ChangeEvent, Fragment, MouseEvent, useCallback, useMemo} from "react";
+import {analysis$} from "../../../state/analysis.ts";
+import {background$} from "../../../state/background.ts";
+import {exportSettings$} from "../../../state/export.ts";
+import {ui$} from "../../../state/ui.ts";
 import {getDecodedPng} from "../../../utils/image/getDecodedPng.ts";
 import {getEncodedPng} from "../../../utils/image/getEncodedPng.ts";
 import {normaliseTransparency} from "../../../utils/image/manipulation/normaliseTransparency.ts";
 import {scaleImageData} from "../../../utils/image/manipulation/scaleImageData.ts";
-import {retrieveBoolean} from "../../../utils/localStorage/retrieveBoolean.ts";
-import {storeBoolean} from "../../../utils/localStorage/storeBoolean.ts";
 import {StyledTooltip} from "../../StyledTooltip.tsx";
 import {StyledModal} from "../StyledModal.tsx";
 import {Image, ImageItem} from './ImageItem.tsx';
@@ -26,20 +27,20 @@ const StyledToggleButton = styled(ToggleButton)<ToggleButtonProps>(() => ({
   textTransform: 'none',
 }));
 
-export function SpriteExportModal() {
-  const {isExportModalOpen, setIsExportModalOpen, spriteInput, headId, bodyId} = useContext(AnalysisContext);
-  const {backgroundImageData} = useContext(BackgroundContext);
-  const [isSize96, setIsSize96] = useState<boolean>(
-    retrieveBoolean('SpriteExportModal.isSize96', false)
-  );
-  const [isIndexed, setIsIndexed] = useState<boolean>(
-    retrieveBoolean('SpriteExportModal.isIndexed', false)
-  );
-  const [normaliseTransparencyEnabled, setNormaliseTransparencyEnabled] = useState<boolean>(
-    retrieveBoolean('SpriteExportModal.normaliseTransparencyEnabled', true)
-  );
+export const SpriteExportModal = observer(function SpriteExportModal() {
+  const isExportModalOpen = ui$.isExportModalOpen.get();
+  const spriteInput = analysis$.spriteInput.get();
+  const headId = analysis$.headId.get();
+  const bodyId = analysis$.bodyId.get();
+  const backgroundImageData = background$.backgroundImageData.get();
+  const isSize96 = exportSettings$.isSize96.get();
+  const isIndexed = exportSettings$.isIndexed.get();
+  const isNormaliseTransparencyEnabled = exportSettings$.isNormaliseTransparencyEnabled.get();
 
   const images: Image[] = useMemo(() => {
+    if (!isExportModalOpen){
+      return [];
+    }
     if (spriteInput && backgroundImageData) {
       const spriteInputNameWithoutExtension = spriteInput.name?.replace(/\.png$/i, '') || null;
       const spriteName = headId === null || bodyId === null ? spriteInputNameWithoutExtension || 'sprite' : `${headId}.${bodyId}`;
@@ -50,9 +51,9 @@ export function SpriteExportModal() {
         backgroundName = `${spriteInputNameWithoutExtension}_background`;
       }
       let spriteConfigs;
-      let spriteImageData288 = spriteInput.imageData;
+      let spriteImageData288 = spriteInput.imageData as ImageData;
       const backgroundImageData288 = backgroundImageData;
-      if (normaliseTransparencyEnabled) {
+      if (isNormaliseTransparencyEnabled) {
         spriteImageData288 = normaliseTransparency(spriteImageData288);
         // backgroundImageData288 = normaliseTransparency(backgroundImageData288);
       }
@@ -111,11 +112,11 @@ export function SpriteExportModal() {
       });
     }
     return [];
-  }, [spriteInput, backgroundImageData, headId, bodyId, normaliseTransparencyEnabled, isSize96, isIndexed]);
+  }, [isExportModalOpen,spriteInput, backgroundImageData, headId, bodyId, isNormaliseTransparencyEnabled, isSize96, isIndexed]);
 
   const handleClose = useCallback(() => {
-    setIsExportModalOpen(false);
-  }, [setIsExportModalOpen]);
+    ui$.isExportModalOpen.set(false);
+  }, []);
 
   const handleSizeModeChange = useCallback((
     _event: MouseEvent<HTMLElement>,
@@ -123,10 +124,9 @@ export function SpriteExportModal() {
   ) => {
     if (sizeModeNew) {
       const isSize96New = sizeModeNew === '96';
-      setIsSize96(isSize96New);
-      storeBoolean('SpriteExportModal.isSize96', isSize96New);
+      exportSettings$.isSize96.set(isSize96New);
     }
-  }, [setIsSize96]);
+  }, []);
 
   const handleIndexedModeChange = useCallback((
     _event: MouseEvent<HTMLElement>,
@@ -134,16 +134,14 @@ export function SpriteExportModal() {
   ) => {
     if (indexedModeNew) {
       const isIndexedNew = indexedModeNew === 'indexed';
-      setIsIndexed(isIndexedNew);
-      storeBoolean('SpriteExportModal.isIndexed', isIndexedNew);
+      exportSettings$.isIndexed.set(isIndexedNew);
     }
-  }, [setIsIndexed]);
+  }, []);
 
-  const handleNormaliseTransparencyEnabledChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    const normaliseTransparencyEnabledNew = event.target.checked;
-    setNormaliseTransparencyEnabled(normaliseTransparencyEnabledNew);
-    storeBoolean('SpriteExportModal.normaliseTransparencyEnabled', normaliseTransparencyEnabledNew);
-  }, [setNormaliseTransparencyEnabled]);
+  const handleIsNormaliseTransparencyEnabledChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    const isNormaliseTransparencyEnabledNew = event.target.checked;
+    exportSettings$.isNormaliseTransparencyEnabled.set(isNormaliseTransparencyEnabledNew);
+  }, []);
 
   return (
     <StyledModal
@@ -241,8 +239,8 @@ export function SpriteExportModal() {
               </StyledTooltip>
             </Box>
             <Switch
-              checked={normaliseTransparencyEnabled}
-              onChange={handleNormaliseTransparencyEnabledChange}
+              checked={isNormaliseTransparencyEnabled}
+              onChange={handleIsNormaliseTransparencyEnabledChange}
             />
           </Box>
         </Box>
@@ -265,4 +263,4 @@ export function SpriteExportModal() {
       </Box>
     </StyledModal>
   );
-}
+});

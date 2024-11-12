@@ -1,39 +1,35 @@
+import {observer} from "@legendapp/state/react";
 import {DarkModeSharp, HelpOutlineSharp, WbSunnySharp} from "@mui/icons-material";
 import {Box, Switch, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
-import {ChangeEvent, Fragment, MouseEvent, useCallback, useContext} from "react";
-import {SettingsContext} from "../../contexts/SettingsContext.tsx";
+import {ChangeEvent, Fragment, MouseEvent, useCallback} from "react";
+import {settings$} from "../../state/settings.ts";
+import {ui$} from "../../state/ui.ts";
 import {StyledTooltip} from "../StyledTooltip.tsx";
 import {StyledModal} from "./StyledModal.tsx";
 
-export function SettingsModal() {
-  const {
-    isSettingsModalOpen,
-    setIsSettingsModalOpen,
-    themeId,
-    setThemeId,
-    canvasAccelerationEnabled,
-    setCanvasAccelerationEnabled,
-    ignoreColouredTransparencyEnabled,
-    setIgnoreColouredTransparencyEnabled,
-  } = useContext(SettingsContext);
+export const SettingsModal = observer(function SettingsModal() {
+  const isSettingsModalOpen = ui$.isSettingsModalOpen.get();
+  const themeId = settings$.themeId.get();
+  const isCanvasAccelerationEnabled = settings$.isCanvasAccelerationEnabled.get();
+  const isIgnoreColouredTransparencyEnabled = settings$.isIgnoreColouredTransparencyEnabled.get();
 
   const handleClose = useCallback(() => {
-    setIsSettingsModalOpen(false);
-  }, [setIsSettingsModalOpen]);
+    ui$.isSettingsModalOpen.set(false);
+  }, []);
 
   const handleThemeChange = useCallback((_event: MouseEvent<HTMLElement>, themeIdNew: string | null) => {
     if (themeIdNew) {
-      setThemeId(themeIdNew);
+      settings$.themeId.set(themeIdNew);
     }
-  }, [setThemeId]);
+  }, []);
 
   const handleCanvasAccelerationEnabledChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    setCanvasAccelerationEnabled(event.target.checked);
-  }, [setCanvasAccelerationEnabled]);
+    settings$.isCanvasAccelerationEnabled.set(event.target.checked);
+  }, []);
 
   const handleIgnoreColouredTransparencyEnabledChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    setIgnoreColouredTransparencyEnabled(event.target.checked);
-  }, [setIgnoreColouredTransparencyEnabled]);
+    settings$.isIgnoreColouredTransparencyEnabled.set(event.target.checked);
+  }, []);
 
   return (
     <StyledModal
@@ -63,14 +59,17 @@ export function SettingsModal() {
             onChange={handleThemeChange}
           >
             <ToggleButton
+              value="system"
+            >
+              System
+            </ToggleButton>
+            <ToggleButton
               value="light"
-              sx={{width: '56px'}}
             >
               <WbSunnySharp/>
             </ToggleButton>
             <ToggleButton
               value="dark"
-              sx={{width: '56px'}}
             >
               <DarkModeSharp/>
             </ToggleButton>
@@ -116,7 +115,7 @@ export function SettingsModal() {
             </StyledTooltip>
           </Box>
           <Switch
-            checked={canvasAccelerationEnabled}
+            checked={isCanvasAccelerationEnabled}
             onChange={handleCanvasAccelerationEnabledChange}
           />
         </Box>
@@ -160,11 +159,11 @@ export function SettingsModal() {
             </StyledTooltip>
           </Box>
           <Switch
-            checked={ignoreColouredTransparencyEnabled}
+            checked={isIgnoreColouredTransparencyEnabled}
             onChange={handleIgnoreColouredTransparencyEnabledChange}
           />
         </Box>
       </Box>
     </StyledModal>
   )
-}
+});

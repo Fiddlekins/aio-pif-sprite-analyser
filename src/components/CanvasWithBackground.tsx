@@ -1,6 +1,7 @@
+import {useObserveEffect} from "@legendapp/state/react";
 import {Box, styled} from "@mui/material";
-import {MutableRefObject, useContext, useEffect, useRef} from "react";
-import {BackgroundContext} from "../contexts/BackgroundContext.tsx";
+import {MutableRefObject, useRef} from "react";
+import {background$} from "../state/background.ts";
 
 interface TopCanvasProps {
   canCopy?: boolean;
@@ -34,18 +35,18 @@ export function CanvasWithBackground(
     minSize,
   }: CanvasWithBackgroundProps
 ) {
-  const {backgroundImageData} = useContext(BackgroundContext);
   const backgroundCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  useEffect(() => {
+  useObserveEffect(() => {
     const backgroundCanvas = backgroundCanvasRef.current;
+    const backgroundImageData = background$.backgroundImageData.get();
     if (backgroundCanvas && backgroundImageData) {
       const ctx = backgroundCanvas.getContext('2d', {colorSpace: 'srgb'});
       if (ctx) {
         ctx.putImageData(backgroundImageData, 0, 0);
       }
     }
-  }, [backgroundCanvasRef, backgroundImageData]);
+  });
 
   return (
     <Box display={'inline-flex'} position={'relative'} minHeight={0} sx={{aspectRatio: 1}}>

@@ -1,18 +1,17 @@
+import {observer} from "@legendapp/state/react";
 import {Box, Paper, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
-import {MouseEvent, useCallback, useContext, useEffect, useRef} from "react";
-import {AnalysisContext} from "../../../contexts/AnalysisContext.tsx";
-import {SettingsContext} from "../../../contexts/SettingsContext.tsx";
+import {MouseEvent, useCallback, useEffect, useRef} from "react";
+import {analysis$, analysisSettings$} from "../../../state/analysis.ts";
+import {ui$} from "../../../state/ui.ts";
 import {getFormattedPercent} from "../../../utils/getFormattedPercent.ts";
 import {CanvasWithBackground} from "../../CanvasWithBackground.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
-export function PartialPixelsVerdict() {
-  const {isMobile} = useContext(SettingsContext);
-  const {
-    partialPixelReport,
-    partialPixelOutputMode,
-    setPartialPixelOutputMode,
-  } = useContext(AnalysisContext);
+export const PartialPixelsVerdict = observer(function PartialPixelsVerdict() {
+  const isMobile = ui$.isMobile.get();
+  const partialPixelReport = analysis$.partialPixelReport.get();
+  const partialPixelOutputMode = analysisSettings$.partialPixelOutputMode.get();
+
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -31,9 +30,9 @@ export function PartialPixelsVerdict() {
     partialPixelOutputModeNew: string | null,
   ) => {
     if (partialPixelOutputModeNew) {
-      setPartialPixelOutputMode(partialPixelOutputModeNew);
+      analysisSettings$.partialPixelOutputMode.set(partialPixelOutputModeNew);
     }
-  }, [setPartialPixelOutputMode])
+  }, []);
 
   const partialPixelCount = partialPixelReport?.analysis.partialPixelCount || 0;
   const partialPixelPercent = getFormattedPercent(
@@ -98,4 +97,4 @@ export function PartialPixelsVerdict() {
       </Box>
     </Paper>
   );
-}
+});

@@ -626,6 +626,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@legendapp/state@npm:beta":
+  version: 3.0.0-beta.16
+  resolution: "@legendapp/state@npm:3.0.0-beta.16"
+  dependencies:
+    use-sync-external-store: ^1.2.2
+  checksum: 864b00b18fb610318286780ec1dbfd81c50135bab674afb8046ee11929a3faed7cce9a3504d396926928d99d254f1e4982e95e415f5097785bb68406ccfb3e52
+  languageName: node
+  linkType: hard
+
 "@mui/base@npm:5.0.0-beta.40":
   version: 5.0.0-beta.40
   resolution: "@mui/base@npm:5.0.0-beta.40"
@@ -1342,6 +1351,7 @@ __metadata:
   dependencies:
     "@emotion/react": ^11.11.4
     "@emotion/styled": ^11.11.5
+    "@legendapp/state": beta
     "@mui/icons-material": ^5.15.19
     "@mui/material": ^5.15.19
     "@types/react": ^18.2.66
@@ -3747,6 +3757,15 @@ __metadata:
   dependencies:
     punycode: ^2.1.0
   checksum: 7167432de6817fe8e9e0c9684f1d2de2bb688c94388f7569f7dbdb1587c9f4ca2a77962f134ec90be0cc4d004c939ff0d05acc9f34a0db39a3c797dada262633
+  languageName: node
+  linkType: hard
+
+"use-sync-external-store@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "use-sync-external-store@npm:1.2.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: fe07c071c4da3645f112c38c0e57beb479a8838616ff4e92598256ecce527f2888c08febc7f9b2f0ce2f0e18540ba3cde41eb2035e4fafcb4f52955037098a81
   languageName: node
   linkType: hard
 

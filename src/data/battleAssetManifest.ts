@@ -4,8 +4,6 @@ export interface ManifestEntry {
     night: boolean;
 }
 
-export type BattlerTime = 'day' | 'eve' | 'night';
-
 export const battleAssetManifest: Record<string,ManifestEntry> = {
   "beach": {
     "day": true,
@@ -244,7 +242,7 @@ export const battleAssetManifest: Record<string,ManifestEntry> = {
   }
 };
 
-export const battlerTimes: BattlerTime[] = ['day', 'eve', 'night'];
+export const battlerTimes: string[] = ['day', 'eve', 'night'];
 
 export const battlerMaps = Object.keys(battleAssetManifest);
 

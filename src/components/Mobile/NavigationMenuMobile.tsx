@@ -1,3 +1,4 @@
+import {observer} from "@legendapp/state/react";
 import {CloseSharp, SettingsSharp} from "@mui/icons-material";
 import {
   AppBar,
@@ -12,10 +13,11 @@ import {
   ToolbarProps,
   Typography
 } from "@mui/material";
-import {useCallback, useContext} from "react";
+import {useCallback} from "react";
 import logoUrl from "../../assets/logo.svg";
-import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
-import {SettingsContext} from "../../contexts/SettingsContext.tsx";
+import {analysis$} from "../../state/analysis.ts";
+import {settings$} from "../../state/settings.ts";
+import {ui$} from "../../state/ui.ts";
 import {Verdict} from "../../utils/image/types.ts";
 import {StyledIconButton} from "../StyledIconButton.tsx";
 import {TopBarTitle} from "../TopBarTitle.tsx";
@@ -102,7 +104,7 @@ export interface NavigationMenuMobileProps {
   setView: (viewNew: string) => void;
 }
 
-export function NavigationMenuMobile(
+export const NavigationMenuMobile = observer(function NavigationMenuMobile(
   {
     isOpen,
     close,
@@ -110,30 +112,23 @@ export function NavigationMenuMobile(
     setView,
   }: NavigationMenuMobileProps
 ) {
-  const {
-    setIsImportModalOpen,
-    setIsExportModalOpen,
-    spriteInput,
-    partialPixelReport,
-    transparencyReport,
-    colourReport,
-  } = useContext(AnalysisContext);
-  const {
-    setIsSettingsModalOpen,
-    ignoreColouredTransparencyEnabled,
-  } = useContext(SettingsContext);
+  const spriteInput = analysis$.spriteInput.get();
+  const partialPixelReport = analysis$.partialPixelReport.get();
+  const transparencyReport = analysis$.transparencyReport.get();
+  const colourReport = analysis$.colourReport.get();
+  const isIgnoreColouredTransparencyEnabled = settings$.isIgnoreColouredTransparencyEnabled.get();
 
   const openImportModal = useCallback(() => {
-    setIsImportModalOpen(true);
-  }, [setIsImportModalOpen]);
+    ui$.isImportModalOpen.set(true);
+  }, []);
 
   const openExportModal = useCallback(() => {
-    setIsExportModalOpen(true);
-  }, [setIsExportModalOpen]);
+    ui$.isExportModalOpen.set(true);
+  }, []);
 
   const openSettingsModal = useCallback(() => {
-    setIsSettingsModalOpen(true);
-  }, [setIsSettingsModalOpen]);
+    ui$.isSettingsModalOpen.set(true);
+  }, []);
 
   const onViewChange = useCallback((viewNew: string) => {
     setView(viewNew);
@@ -221,7 +216,7 @@ export function NavigationMenuMobile(
           </Box>
         </StyledToolbar>
       </StyledAppBar>
-      <NavigationMenuContentMobile view={view}/>
+      <NavigationMenuContentMobile/>
       <Box p={2}>
         <Paper>
           <Box
@@ -259,7 +254,7 @@ export function NavigationMenuMobile(
                 title={'Coloured Transparency'}
                 verdict={transparencyReport?.colouredTransparentVerdict || null}
                 active={view === 'colouredTransparency'}
-                dimmed={ignoreColouredTransparencyEnabled}
+                dimmed={isIgnoreColouredTransparencyEnabled}
                 onViewChange={onViewChange}
               />
               <NavigationOptions
@@ -282,4 +277,4 @@ export function NavigationMenuMobile(
       </Box>
     </StyledBox>
   );
-}
+});

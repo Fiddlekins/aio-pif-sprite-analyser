@@ -1,18 +1,17 @@
+import {observer} from "@legendapp/state/react";
 import {Box, Paper, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
-import {MouseEvent, useCallback, useContext, useEffect, useRef} from "react";
-import {AnalysisContext} from "../../../contexts/AnalysisContext.tsx";
-import {SettingsContext} from "../../../contexts/SettingsContext.tsx";
+import {MouseEvent, useCallback, useEffect, useRef} from "react";
+import {analysis$, analysisSettings$} from "../../../state/analysis.ts";
+import {ui$} from "../../../state/ui.ts";
 import {getFormattedPercent} from "../../../utils/getFormattedPercent.ts";
 import {CanvasWithBackground} from "../../CanvasWithBackground.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
-export function SemiTransparencyVerdict() {
-  const {isMobile} = useContext(SettingsContext);
-  const {
-    transparencyReport,
-    semiTransparentOutputMode,
-    setSemiTransparentOutputMode,
-  } = useContext(AnalysisContext);
+export const SemiTransparencyVerdict = observer(function SemiTransparencyVerdict() {
+  const isMobile = ui$.isMobile.get();
+  const transparencyReport = analysis$.transparencyReport.get();
+  const semiTransparentOutputMode = analysisSettings$.semiTransparentOutputMode.get();
+
   const semiTransparentCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -38,9 +37,9 @@ export function SemiTransparencyVerdict() {
     semiTransparentOutputModeNew: string | null,
   ) => {
     if (semiTransparentOutputModeNew) {
-      setSemiTransparentOutputMode(semiTransparentOutputModeNew);
+      analysisSettings$.semiTransparentOutputMode.set(semiTransparentOutputModeNew);
     }
-  }, [setSemiTransparentOutputMode]);
+  }, []);
 
   return (
     <Paper>
@@ -105,4 +104,4 @@ export function SemiTransparencyVerdict() {
       </Box>
     </Paper>
   );
-}
+});

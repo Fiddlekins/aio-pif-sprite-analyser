@@ -1,10 +1,11 @@
+import {observer} from "@legendapp/state/react";
 import {SettingsSharp} from "@mui/icons-material";
 import {AppBar, AppBarProps, Box, Button, Link, styled, Toolbar, ToolbarProps, Typography} from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
-import {useCallback, useContext} from "react";
+import {useCallback} from "react";
 import logoUrl from '../assets/logo.svg';
-import {AnalysisContext} from "../contexts/AnalysisContext.tsx";
-import {SettingsContext} from "../contexts/SettingsContext.tsx";
+import {analysis$} from "../state/analysis.ts";
+import {ui$} from "../state/ui.ts";
 import {StyledIconButton} from "./StyledIconButton.tsx";
 import {TopBarTitle} from "./TopBarTitle.tsx";
 
@@ -27,21 +28,20 @@ const StyledLogo = styled('img')(() => ({
 
 const styledIconButtonSx = {width: '36.5px', height: '36.5px'};
 
-export function TopBar() {
-  const {setIsImportModalOpen, setIsExportModalOpen, spriteInput} = useContext(AnalysisContext);
-  const {setIsSettingsModalOpen} = useContext(SettingsContext);
+export const TopBar = observer(function TopBar() {
+  const spriteInput = analysis$.spriteInput.get();
 
   const openImportModal = useCallback(() => {
-    setIsImportModalOpen(true);
-  }, [setIsImportModalOpen]);
+    ui$.isImportModalOpen.set(true);
+  }, []);
 
   const openExportModal = useCallback(() => {
-    setIsExportModalOpen(true);
-  }, [setIsExportModalOpen]);
+    ui$.isExportModalOpen.set(true);
+  }, []);
 
   const openSettingsModal = useCallback(() => {
-    setIsSettingsModalOpen(true);
-  }, [setIsSettingsModalOpen]);
+    ui$.isSettingsModalOpen.set(true);
+  }, []);
 
   return (
     <StyledAppBar position={'sticky'}>
@@ -101,4 +101,4 @@ export function TopBar() {
       </StyledToolbar>
     </StyledAppBar>
   );
-}
+});

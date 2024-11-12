@@ -1,5 +1,5 @@
 import {TypedArray} from "image-in-browser";
-import {battleAssetManifest, BattlerTime, defaultBattlerMap} from "../../data/battleAssetManifest.ts";
+import {battleAssetManifest, defaultBattlerMap} from "../../data/battleAssetManifest.ts";
 import {getDecodedPng} from "./getDecodedPng.ts";
 import {getValidTimeForMap} from "./getValidTimeForMap.ts";
 import {cloneImageData} from "./manipulation/cloneImageData.ts";
@@ -33,13 +33,14 @@ interface BattlerLayout {
   shadowSize: number;
 }
 
-function getMapAssetName(battlerMap: string, battlerTime: BattlerTime) {
+function getMapAssetName(battlerMap: string, battlerTime: string) {
   switch (battlerTime) {
-    case 'day':
-      return battlerMap;
     case 'eve':
     case 'night':
       return `${battlerMap}_${battlerTime}`;
+    case 'day':
+    default:
+      return battlerMap;
   }
 }
 
@@ -244,12 +245,12 @@ async function generateBattlerImageDataWithoutCanvas(battlerLayout: BattlerLayou
 export async function generateBattlerImageData(
   battlerConfig: BattlerConfig,
   battlerMap: string,
-  battlerTime: BattlerTime,
+  battlerTime: string,
   spriteImageData: ImageData | null,
   withCanvas?: boolean,
 ) {
   let map: string;
-  let time: BattlerTime;
+  let time: string;
   const manifestEntry = battleAssetManifest[battlerMap];
   if (manifestEntry) {
     map = battlerMap;

@@ -1,9 +1,16 @@
+import {Observable, ObservableHint, OpaqueObject} from "@legendapp/state";
+import {Memo, observer, useObservable, useObserveEffect} from "@legendapp/state/react";
 import {SettingsSharp, TuneSharp} from "@mui/icons-material";
 import {alpha, Box, BoxProps, Button, ButtonProps, Popover, styled, Typography} from "@mui/material";
-import {ReactNode, useCallback, useContext, useEffect, useMemo, useRef, useState} from "react";
+import {MouseEvent, ReactNode, useCallback, useMemo, useRef} from "react";
 import {RgbaColor} from "react-colorful";
-import {BackgroundContext, battlerBackgroundId} from "../../contexts/BackgroundContext.tsx";
-import {SettingsContext} from "../../contexts/SettingsContext.tsx";
+import {
+  background$,
+  backgroundSettings$,
+  battlerBackgroundId,
+  defaultBackgroundSolidFills
+} from "../../state/background.ts";
+import {ui$} from "../../state/ui.ts";
 import {getCssFromRgbaColor} from "../../utils/image/conversion/getCssFromRgbaColor.ts";
 import {ColourPicker} from "../ColourPicker/ColourPicker.tsx";
 import {StyledIconButton} from "../StyledIconButton.tsx";
@@ -24,6 +31,7 @@ const StyledButton = styled(Button, {
   outlineColor: alpha(theme.palette.primary.main, 0.54),
   outlineStyle: 'solid',
   outlineWidth: selected ? '2px' : '0px',
+  transition: 'background-color 0s',
   ['&:hover']: {
     outlineColor: alpha(theme.palette.primary.dark, 0.54),
     backgroundColor: colour ? alpha(getCssFromRgbaColor(colour), colour.a * 0.8) : undefined,
@@ -39,10 +47,7 @@ interface BackgroundOptionProps {
   id: string;
   selected: boolean;
   colour: RgbaColor | null;
-  custom?: boolean;
   onClick: (id: string) => void;
-  update?: (colourNew: RgbaColor) => void;
-  remove?: () => void;
   children?: ReactNode;
 }
 
@@ -51,32 +56,12 @@ function BackgroundOption(
     id,
     selected,
     colour,
-    custom,
     onClick,
-    update,
-    remove,
     children,
   }: BackgroundOptionProps
 ) {
-  const anchorRef = useRef(null);
-  const [colourPickerAnchorEl, setColourPickerAnchorEl] = useState<HTMLButtonElement | null>(null);
-
-
-  const onSettingsButtonClick = useCallback(() => {
-    setColourPickerAnchorEl(anchorRef.current);
-  }, [setColourPickerAnchorEl]);
-
-  const onSettingsClose = useCallback(() => {
-    setColourPickerAnchorEl(null);
-  }, [setColourPickerAnchorEl]);
-
-  const onColourChange = useCallback((colourNew: RgbaColor) => {
-    update?.(colourNew);
-  }, [update]);
-
   return (
     <StyledButton
-      ref={anchorRef}
       selected={selected}
       colour={colour}
       variant={'outlined'}
@@ -85,64 +70,120 @@ function BackgroundOption(
       }}
     >
       {children}
-      {custom && (
-        <>
-          <Button
-            component={'div'}
-            onClick={onSettingsButtonClick}
-            sx={{position: 'absolute', minWidth: 0, width: '25%', height: '25%', top: 0, right: 0, padding: '1%'}}
-          >
-            <SettingsSharp sx={{width: '100%'}}/>
-          </Button>
-          <Popover
-            open={Boolean(colourPickerAnchorEl)}
-            anchorEl={colourPickerAnchorEl}
-            onClose={onSettingsClose}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-          >
-            <Box
-              display={'flex'}
-              flexDirection={'column'}
-              gap={1}
-              p={1}
-            >
-              {colour && (
-                <ColourPicker
-                  colour={colour}
-                  onColourChange={onColourChange}
-                />
-              )}
-              <Button
-                variant={'outlined'}
-                onClick={remove}
-              >
-                Remove
-              </Button>
-            </Box>
-          </Popover>
-        </>
-      )}
     </StyledButton>
   );
 }
 
-export function BackgroundPane() {
-  const {isMobile} = useContext(SettingsContext);
-  const {
-    backgroundId,
-    backgroundSolidFills,
-    setBackgroundId,
-    battlerSceneBackgroundImageData,
-    setIsBackgroundModalOpen,
-    dispatchCustomBackgroundFills,
-  } = useContext(BackgroundContext);
+interface CustomBackgroundOptionProps {
+  id: string;
+  selected: boolean;
+  colour$: Observable<RgbaColor>;
+  onClick: (id: string) => void;
+}
+
+const CustomBackgroundOption = observer(function CustomBackgroundOption(
+  {
+    id,
+    selected,
+    colour$,
+    onClick,
+  }: CustomBackgroundOptionProps
+) {
+  // const anchorRef = useRef(null);
+  // const [colourPickerAnchorEl, setColourPickerAnchorEl] = useState<HTMLButtonElement | null>(null);
+  //
+  // const onSettingsButtonClick = useCallback(() => {
+  //   setColourPickerAnchorEl(anchorRef.current);
+  // }, [setColourPickerAnchorEl]);
+  //
+  // const onSettingsClose = useCallback(() => {
+  //   setColourPickerAnchorEl(null);
+  // }, [setColourPickerAnchorEl]);
+
+  const state$ = useObservable({
+    colourPickerAnchorEl: null as OpaqueObject<HTMLDivElement> | null,
+    onClick: (event: MouseEvent<HTMLDivElement>) => {
+      state$.colourPickerAnchorEl.set(ObservableHint.opaque(event.currentTarget));
+    },
+    onClose: () => {
+      state$.colourPickerAnchorEl.set(null);
+    }
+  });
+
+  return (
+    <StyledButton
+      // ref={anchorRef}
+      selected={selected}
+      colour={colour$.get()}
+      variant={'outlined'}
+      onClick={() => {
+        onClick(id);
+      }}
+    >
+      {/*  return (*/}
+      {/*    <div style={{*/}
+      {/*      position: 'absolute',*/}
+      {/*      width: '100%',*/}
+      {/*      height: '100%',*/}
+      {/*      borderRadius: '3px',*/}
+      {/*      backgroundColor: getCssFromRgbaColor(colour$.get())*/}
+      {/*    }}/>*/}
+      {/*  );*/}
+      <Memo>{() => {
+        const colourPickerAnchorEl = (state$.colourPickerAnchorEl.get() || null) as HTMLDivElement | null;
+        return (
+          <>
+            <Button
+              component={'div'}
+              onClick={state$.onClick}
+              sx={{position: 'absolute', minWidth: 0, width: '25%', height: '25%', top: 0, right: 0, padding: '1%'}}
+            >
+              <SettingsSharp sx={{width: '100%'}}/>
+            </Button>
+            <Popover
+              open={Boolean(colourPickerAnchorEl)}
+              anchorEl={colourPickerAnchorEl}
+              onClose={state$.onClose}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+            >
+              <Box
+                display={'flex'}
+                flexDirection={'column'}
+                gap={1}
+                p={1}
+              >
+                <ColourPicker
+                  colour$={colour$}
+                />
+                <Button
+                  variant={'outlined'}
+                  onClick={() => {
+                    colour$.delete();
+                  }}
+                >
+                  Remove
+                </Button>
+              </Box>
+            </Popover>
+          </>
+        );
+      }}</Memo>
+    </StyledButton>
+  );
+});
+
+export const BackgroundPane = observer(function BackgroundPane() {
+  const isMobile = ui$.isMobile.get();
+  const backgroundId = backgroundSettings$.backgroundId.get();
+  const backgroundSolidFills = background$.backgroundSolidFills.get();
+
   const backgroundCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const canvas = useMemo(() => {
@@ -156,23 +197,24 @@ export function BackgroundPane() {
     );
   }, [backgroundCanvasRef]);
 
-  useEffect(() => {
+  useObserveEffect(() => {
     const backgroundCanvas = backgroundCanvasRef.current;
+    const battlerSceneBackgroundImageData = background$.battlerSceneBackgroundImageData.get();
     if (backgroundCanvas && battlerSceneBackgroundImageData) {
       const ctx = backgroundCanvas.getContext('2d');
       if (ctx) {
         ctx.putImageData(battlerSceneBackgroundImageData, 0, 0);
       }
     }
-  }, [backgroundCanvasRef, battlerSceneBackgroundImageData]);
+  });
 
   const onSettingsClick = useCallback(() => {
-    setIsBackgroundModalOpen(true);
-  }, [setIsBackgroundModalOpen]);
+    ui$.isBackgroundModalOpen.set(true);
+  }, []);
 
   const onOptionClick = useCallback((optionId: string) => {
-    setBackgroundId(optionId);
-  }, [setBackgroundId]);
+    backgroundSettings$.backgroundId.set(optionId);
+  }, []);
 
   return (
     <Box
@@ -208,20 +250,30 @@ export function BackgroundPane() {
         pb={'2px'}
       >
         {
-          backgroundSolidFills.slice(0, isMobile ? 7 : undefined).map(({id, fill, custom}) => {
+          defaultBackgroundSolidFills.map(({id, fill}) => {
             return (
               <BackgroundOption
                 key={id}
                 selected={id === backgroundId}
                 id={id}
                 colour={fill}
-                custom={custom}
-                update={(colourNew: RgbaColor) => {
-                  dispatchCustomBackgroundFills({operation: 'update', backgroundId: id, colour: colourNew});
-                }}
-                remove={() => {
-                  dispatchCustomBackgroundFills({operation: 'remove', backgroundId: id});
-                }}
+                onClick={onOptionClick}
+              />
+            );
+          })
+        }
+        {
+          backgroundSettings$.customBackgroundFills.map((fill$, index) => {
+            if (isMobile && index >= 7 - defaultBackgroundSolidFills.length) {
+              return null;
+            }
+            const id = `custom_${index}`;
+            return (
+              <CustomBackgroundOption
+                key={id}
+                selected={id === backgroundId}
+                id={id}
+                colour$={fill$}
                 onClick={onOptionClick}
               />
             );
@@ -233,7 +285,7 @@ export function BackgroundPane() {
             colour={{r: 0, g: 0, b: 0, a: 0}}
             variant={'outlined'}
             onClick={() => {
-              dispatchCustomBackgroundFills({operation: 'add', colour: {r: 0, g: 0, b: 0, a: 1}})
+              backgroundSettings$.customBackgroundFills.push({r: 0, g: 0, b: 0, a: 1});
             }}
           >
             <Typography variant={'h5'}>
@@ -253,4 +305,4 @@ export function BackgroundPane() {
       </Box>
     </Box>
   );
-}
+});

@@ -1,18 +1,16 @@
+import {observer} from "@legendapp/state/react";
 import {Box, Paper, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
-import {MouseEvent, useCallback, useContext, useEffect, useRef} from "react";
-import {AnalysisContext} from "../../../contexts/AnalysisContext.tsx";
-import {SettingsContext} from "../../../contexts/SettingsContext.tsx";
+import {MouseEvent, useCallback, useEffect, useRef} from "react";
+import {analysis$, analysisSettings$} from "../../../state/analysis.ts";
+import {ui$} from "../../../state/ui.ts";
 import {getFormattedPercent} from "../../../utils/getFormattedPercent.ts";
 import {CanvasWithBackground} from "../../CanvasWithBackground.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
-export function ColouredTransparencyVerdict() {
-  const {isMobile} = useContext(SettingsContext);
-  const {
-    transparencyReport,
-    colouredTransparencyOutputMode,
-    setColouredTransparencyOutputMode,
-  } = useContext(AnalysisContext);
+export const ColouredTransparencyVerdict = observer(function ColouredTransparencyVerdict() {
+  const isMobile = ui$.isMobile.get();
+  const transparencyReport = analysis$.transparencyReport.get();
+  const colouredTransparencyOutputMode = analysisSettings$.colouredTransparencyOutputMode.get();
   const colouredTransparencyCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -38,9 +36,9 @@ export function ColouredTransparencyVerdict() {
     colouredTransparencyOutputModeNew: string | null,
   ) => {
     if (colouredTransparencyOutputModeNew) {
-      setColouredTransparencyOutputMode(colouredTransparencyOutputModeNew);
+      analysisSettings$.colouredTransparencyOutputMode.set(colouredTransparencyOutputModeNew);
     }
-  }, [setColouredTransparencyOutputMode])
+  }, []);
 
   return (
     <Paper>
@@ -108,4 +106,4 @@ export function ColouredTransparencyVerdict() {
       </Box>
     </Paper>
   );
-}
+});

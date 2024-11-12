@@ -1,13 +1,14 @@
+import {observer} from "@legendapp/state/react";
 import {HelpOutlineSharp} from "@mui/icons-material";
 import {Box, Typography} from "@mui/material";
-import {Fragment, useContext} from "react";
-import {AnalysisContext} from "../../../contexts/AnalysisContext.tsx";
+import {Fragment} from "react";
+import {analysis$} from "../../../state/analysis.ts";
 import {spriteColourCountLimit} from "../../../utils/image/ColourAnalysis.ts";
 import {StyledTooltip} from "../../StyledTooltip.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
-export function ColourCountVerdict() {
-  const {colourReport} = useContext(AnalysisContext);
+export const ColourCountVerdict = observer(function ColourCountVerdict() {
+  const colourReport = analysis$.colourReport.get();
   return (
     <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
       <VerdictIcon verdict={colourReport?.spriteColourCountVerdict || null}/>
@@ -42,4 +43,4 @@ export function ColourCountVerdict() {
       </StyledTooltip>
     </Box>
   );
-}
+});

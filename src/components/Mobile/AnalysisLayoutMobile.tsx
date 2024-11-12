@@ -1,8 +1,10 @@
+import {observer, Show} from "@legendapp/state/react";
 import {Box, BoxProps, Paper, PaperProps, styled} from "@mui/material";
-import {useCallback, useContext, useEffect, useRef, useState} from "react";
-import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
-import {SettingsContext} from "../../contexts/SettingsContext.tsx";
-import {BackgroundModal} from "../Modals/BackgroundModal.tsx";
+import {useCallback, useEffect, useRef, useState} from "react";
+import {analysis$} from "../../state/analysis.ts";
+import {settings$} from "../../state/settings.ts";
+import {ui$} from "../../state/ui.ts";
+import {BackgroundModal} from "../Modals/BackgroundModal/BackgroundModal.tsx";
 import {SettingsModal} from "../Modals/SettingsModal.tsx";
 import {SpriteExportModal} from "../Modals/SpriteExportModal/SpriteExportModal.tsx";
 import {SpriteImportModal} from "../Modals/SpriteImportModal.tsx";
@@ -42,20 +44,31 @@ const ContentBox = styled(Box)<BoxProps>(({theme}) => ({
   overflowY: 'auto',
 }));
 
-export function AnalysisLayoutMobile() {
-  const {
-    spriteInput,
-    partialPixelReport,
-    transparencyReport,
-    colourReport,
-  } = useContext(AnalysisContext);
-  const {
-    ignoreColouredTransparencyEnabled,
-  } = useContext(SettingsContext);
+export const AnalysisLayoutMobile = observer(function AnalysisLayoutMobile() {
+  const spriteInput = analysis$.spriteInput.get();
+  const partialPixelReport = analysis$.partialPixelReport.get();
+  const transparencyReport = analysis$.transparencyReport.get();
+  const colourReport = analysis$.colourReport.get();
+  const isIgnoreColouredTransparencyEnabled = settings$.isIgnoreColouredTransparencyEnabled.get();
 
   const lastHandledSpriteId = useRef('');
   const [isNavigationMenuOpen, setIsNavigationMenuOpen] = useState(true);
   const [view, setView] = useState<string>('');
+
+  const updateView = useCallback((viewNew: string) => {
+    switch (viewNew) {
+      case 'colouredTransparency':
+        ui$.highlight.currentView.set('backgroundColours');
+        break;
+      case 'colourCount':
+      case 'colourSimilarity':
+        ui$.highlight.currentView.set('spriteColours');
+        break;
+      default:
+        ui$.highlight.currentView.set('disabled');
+    }
+    setView(viewNew);
+  }, [setView]);
 
   useEffect(() => {
     // Use a ref to store the last sprite ID that was handled
@@ -63,18 +76,18 @@ export function AnalysisLayoutMobile() {
     if (spriteInput && spriteInput.id !== lastHandledSpriteId.current && partialPixelReport && transparencyReport && colourReport) {
       lastHandledSpriteId.current = spriteInput.id;
       if (partialPixelReport.verdict !== 'success') {
-        setView('partialPixels');
+        updateView('partialPixels');
       } else if (transparencyReport.semiTransparentVerdict !== 'success') {
-        setView('semiTransparent');
-      } else if (!ignoreColouredTransparencyEnabled && transparencyReport.colouredTransparentVerdict !== 'success') {
-        setView('colouredTransparency');
+        updateView('semiTransparent');
+      } else if (!isIgnoreColouredTransparencyEnabled && transparencyReport.colouredTransparentVerdict !== 'success') {
+        updateView('colouredTransparency');
       } else if (colourReport.spriteColourCountVerdict !== 'success') {
-        setView('colourCount');
+        updateView('colourCount');
       } else {
-        setView('colourSimilarity');
+        updateView('colourSimilarity');
       }
     }
-  }, [spriteInput, partialPixelReport, transparencyReport, setView, colourReport, ignoreColouredTransparencyEnabled]);
+  }, [spriteInput, partialPixelReport, transparencyReport, updateView, colourReport, isIgnoreColouredTransparencyEnabled]);
 
   const closeNavigationMenu = useCallback(() => {
     setIsNavigationMenuOpen(false);
@@ -88,11 +101,21 @@ export function AnalysisLayoutMobile() {
             setIsNavigationMenuOpen={setIsNavigationMenuOpen}
           />
           <ContentBox>
-            {view === 'partialPixels' && (<PartialPixelsBox/>)}
-            {view === 'semiTransparent' && (<SemiTransparencyBox/>)}
-            {view === 'colouredTransparency' && (<ColouredTransparencyBox/>)}
-            {view === 'colourCount' && (<ColourCountBox/>)}
-            {view === 'colourSimilarity' && (<ColourSimilarityBox/>)}
+            <Show if={view === 'partialPixels'}>
+              <PartialPixelsBox/>
+            </Show>
+            <Show if={view === 'semiTransparent'}>
+              <SemiTransparencyBox/>
+            </Show>
+            <Show if={view === 'colouredTransparency'}>
+              <ColouredTransparencyBox/>
+            </Show>
+            <Show if={view === 'colourCount'}>
+              <ColourCountBox/>
+            </Show>
+            <Show if={view === 'colourSimilarity'}>
+              <ColourSimilarityBox/>
+            </Show>
           </ContentBox>
         </GutteredBox>
       </Container>
@@ -100,7 +123,7 @@ export function AnalysisLayoutMobile() {
         isOpen={isNavigationMenuOpen}
         close={closeNavigationMenu}
         view={view}
-        setView={setView}
+        setView={updateView}
       />
       <SpriteImportModal/>
       <SpriteExportModal/>
@@ -108,4 +131,4 @@ export function AnalysisLayoutMobile() {
       <SettingsModal/>
     </>
   );
-}
+});

@@ -1,8 +1,9 @@
+import {observer} from "@legendapp/state/react";
 import {ExpandMoreSharp} from "@mui/icons-material";
 import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@mui/material";
 import {ColorObject, HSL, HSV, to as convert} from "colorjs.io/fn";
-import {useContext, useMemo} from "react";
-import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
+import {useMemo} from "react";
+import {analysis$} from "../../state/analysis.ts";
 import {getPixelFromColourKey} from "../../utils/image/conversion/getPixelFromColourKey.ts";
 import {VerdictIcon} from "../VerdictIcon.tsx";
 import {ColoursTable} from "./ColoursTable.tsx";
@@ -18,10 +19,8 @@ interface RowData extends RowDataBase {
   usage: number;
 }
 
-export function SpriteColoursTable() {
-  const {
-    colourReport,
-  } = useContext(AnalysisContext);
+export const SpriteColoursTable = observer(function SpriteColoursTable() {
+  const colourReport = analysis$.colourReport.get();
 
   const rowDataUnsorted = useMemo(() => {
     const colourAnalysisArrayNew = colourReport
@@ -87,4 +86,4 @@ export function SpriteColoursTable() {
       </Box>
     </Box>
   );
-}
+});

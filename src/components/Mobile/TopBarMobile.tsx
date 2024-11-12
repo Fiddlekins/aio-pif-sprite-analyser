@@ -1,8 +1,9 @@
+import {observer} from "@legendapp/state/react";
 import {MenuSharp} from "@mui/icons-material";
 import {AppBar, AppBarProps, Box, Link, styled, Toolbar, ToolbarProps} from "@mui/material";
-import {useCallback, useContext} from "react";
+import {useCallback} from "react";
 import logoUrl from '../../assets/logo.svg';
-import {AnalysisContext} from "../../contexts/AnalysisContext.tsx";
+import {analysis$} from "../../state/analysis.ts";
 import {StyledIconButton} from "../StyledIconButton.tsx";
 import {TopBarTitle} from "../TopBarTitle.tsx";
 
@@ -29,12 +30,12 @@ export interface TopBarMobileProps {
   setIsNavigationMenuOpen: (isNavigationMenuOpenNew: boolean) => void;
 }
 
-export function TopBarMobile(
+export const TopBarMobile = observer(function TopBarMobile(
   {
     setIsNavigationMenuOpen,
   }: TopBarMobileProps
 ) {
-  const {spriteInput} = useContext(AnalysisContext);
+  const spriteInput = analysis$.spriteInput.get();
   const openNavigationMenu = useCallback(() => {
     setIsNavigationMenuOpen(true);
   }, [setIsNavigationMenuOpen]);
@@ -82,4 +83,4 @@ export function TopBarMobile(
       </StyledToolbar>
     </StyledAppBar>
   );
-}
+});

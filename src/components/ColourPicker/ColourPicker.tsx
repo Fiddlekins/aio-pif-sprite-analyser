@@ -1,3 +1,5 @@
+import {linked, Observable} from "@legendapp/state";
+import {Computed, Memo, observer, Show, useObservable} from "@legendapp/state/react";
 import {alpha, Box, BoxProps, Button, ButtonProps, styled} from "@mui/material";
 import {RgbaColor, RgbaColorPicker} from "react-colorful";
 import {getCssFromRgbaColor} from "../../utils/image/conversion/getCssFromRgbaColor.ts";
@@ -45,19 +47,24 @@ const StyledButton = styled(Button, {
 }));
 
 export interface ColourPickerProps {
-  colour: RgbaColor;
-  onColourChange: (colourNew: RgbaColor) => void;
+  colour$: Observable<RgbaColor>;
   presetColours?: RgbaColor[];
 }
 
-export function ColourPicker(
+export const ColourPicker = observer(function ColourPicker(
   {
-    colour,
-    onColourChange,
-    presetColours,
+    colour$,
+    presetColours = [],
   }: ColourPickerProps
 ) {
-
+  const alphaPercent$ = useObservable(linked({
+    get: () => {
+      return Math.round(colour$.a.get() * 100);
+    },
+    set: ({value}) => {
+      colour$.a.set(value / 100);
+    },
+  }));
   return (
     <Box
       className={'colour-picker'}
@@ -71,11 +78,23 @@ export function ColourPicker(
         gap={1}
       >
         <Box position={'relative'}>
-          <RgbaColorPicker
-            color={colour}
-            onChange={onColourChange}
-          />
-          <StyledBox colour={colour}/>
+          <Memo>
+            {() => {
+              const {r, g, b, a} = colour$.get();
+              const colour = {r, g, b, a};
+              return (
+                <>
+                  <RgbaColorPicker
+                    color={colour}
+                    onChange={(colourNew) => {
+                      colour$.assign(colourNew);
+                    }}
+                  />
+                  <StyledBox colour={colour}/>
+                </>
+              )
+            }}
+          </Memo>
         </Box>
         <Box
           display={'flex'}
@@ -84,71 +103,85 @@ export function ColourPicker(
           gap={1}
           width={'100px'}
         >
-          <IntegerInput
-            label={'R'}
-            value={colour.r}
-            showArrowControls
-            min={0}
-            max={255}
-            onValueChange={(valueNew) => {
-              const colourNew = {...colour, r: valueNew};
-              onColourChange(colourNew);
+          <Memo>
+            {() => {
+              return (
+                <IntegerInput
+                  label={'R'}
+                  value$={colour$.r}
+                  showArrowControls
+                  min={0}
+                  max={255}
+                />
+              );
             }}
-          />
-          <IntegerInput
-            label={'G'}
-            value={colour.g}
-            showArrowControls
-            min={0}
-            max={255}
-            onValueChange={(valueNew) => {
-              const colourNew = {...colour, g: valueNew};
-              onColourChange(colourNew);
+          </Memo>
+          <Memo>
+            {() => {
+              return (
+                <IntegerInput
+                  label={'G'}
+                  value$={colour$.g}
+                  showArrowControls
+                  min={0}
+                  max={255}
+                />
+              );
             }}
-          />
-          <IntegerInput
-            label={'B'}
-            value={colour.b}
-            showArrowControls
-            min={0}
-            max={255}
-            onValueChange={(valueNew) => {
-              const colourNew = {...colour, b: valueNew};
-              onColourChange(colourNew);
+          </Memo>
+          <Memo>
+            {() => {
+              return (
+                <IntegerInput
+                  label={'B'}
+                  value$={colour$.b}
+                  showArrowControls
+                  min={0}
+                  max={255}
+                />
+              );
             }}
-          />
-          <IntegerInput
-            label={'A'}
-            value={Math.round(colour.a * 100)}
-            showArrowControls
-            min={0}
-            max={100}
-            onValueChange={(valueNew) => {
-              const colourNew = {...colour, a: valueNew / 100};
-              onColourChange(colourNew);
+          </Memo>
+          <Memo>
+            {() => {
+              return (
+                <IntegerInput
+                  label={'A'}
+                  value$={alphaPercent$}
+                  showArrowControls
+                  min={0}
+                  max={100}
+                />
+              );
             }}
-          />
+          </Memo>
         </Box>
       </Box>
-      {presetColours && (
-        <Box
-          display={'flex'}
-          flexDirection={'row'}
-          gap={1}
-        >
-          {presetColours.map((colour) => {
-            return (
-              <StyledButton
-                key={getCssFromRgbaColor(colour)}
-                colour={colour}
-                onClick={() => {
-                  onColourChange(colour);
-                }}
-              />
-            );
-          })}
-        </Box>
-      )}
+      <Computed>
+        {() => {
+          return (
+            <Show if={presetColours.length > 0}>
+              <Box
+                display={'flex'}
+                flexDirection={'row'}
+                gap={1}
+              >
+                {presetColours.map((colour) => {
+                  return (
+                    <StyledButton
+                      key={getCssFromRgbaColor(colour)}
+                      colour={colour}
+                      onClick={() => {
+                        colour$.assign(colour);
+                      }}
+                    />
+                  );
+                })}
+              </Box>
+            </Show>
+          );
+        }}
+      </Computed>
     </Box>
   )
-}
+});
