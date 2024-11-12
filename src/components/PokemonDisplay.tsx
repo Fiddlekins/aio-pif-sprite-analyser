@@ -49,9 +49,9 @@ function getFusedDexHref(headPokemonId: number, bodyPokemonId: number) {
 export interface BasePokemonDisplayProps {
   label: string;
   isFusion: boolean;
-  pokemonId?: number | null;
-  headPokemonId?: number | null;
-  bodyPokemonId?: number | null;
+  pokemonId?: number;
+  headPokemonId?: number;
+  bodyPokemonId?: number;
   isDisabled?: boolean;
   onClick?: () => void;
 }

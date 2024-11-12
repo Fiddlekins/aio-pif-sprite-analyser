@@ -1,7 +1,7 @@
 import {observer} from "@legendapp/state/react";
 import {HelpOutlineSharp} from "@mui/icons-material";
 import {Box, Link, styled, Typography, TypographyProps} from "@mui/material";
-import {SpriteInput} from "../contexts/AnalysisContext.tsx";
+import {SpriteInput} from "../state/analysis.ts";
 import {ui$} from "../state/ui.ts";
 import {getShortId} from "../utils/getShortId.ts";
 import {IdTooltipContent} from "./IdTooltipContent.tsx";
