@@ -28,15 +28,16 @@ export function PokemonImage(
 ) {
   if (isFusion && headPokemonId && bodyPokemonId) {
     return (
-      <span>pending</span>
+      <div
+        style={{
+          height: '96px',
+          width: '96px',
+          backgroundImage: `url(https://fiddlekins.github.io/aio-pif-sprite-analyser-assets/assets/spritesheets_autogen/${headPokemonId}.png)`,
+          backgroundPosition: `-${(bodyPokemonId % 10) * 96}px -${Math.floor(bodyPokemonId / 10) * 96}px`,
+          backgroundSize: `${10 * 96}px ${51 * 96}px`,
+        }}
+      />
     );
-    // return (
-    //   <img
-    //     width={'100%'}
-    //     height={'100%'}
-    //     src={getFusedSrc(headPokemonId, bodyPokemonId)}
-    //   />
-    // );
   } else if (!isFusion && pokemonId) {
     return (
       <img
