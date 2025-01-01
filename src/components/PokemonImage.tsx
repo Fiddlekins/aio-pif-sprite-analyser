@@ -1,13 +1,11 @@
 import {QuestionMarkSharp} from "@mui/icons-material";
 
-function getUnfusedSrc(pokemonId: number) {
-  // return `https://gitlab.com/infinitefusion2/autogen-fusion-sprites/-/raw/main/Battlers/${pokemonId}/${pokemonId}.png`;
-  return `https://fiddlekins.github.io/aio-pif-sprite-analyser-assets/assets/basePokemon/${pokemonId}.png`;
-}
+// const assetBaseUrl = 'https://fiddlekins.github.io/aio-pif-sprite-analyser-assets';
+const assetBaseUrl = 'https://cdn.jsdelivr.net/gh/Fiddlekins/aio-pif-sprite-analyser-assets@master';
 
-// function getFusedSrc(headPokemonId: number, bodyPokemonId: number) {
-//   return `https://gitlab.com/infinitefusion2/autogen-fusion-sprites/-/raw/main/Battlers/${headPokemonId}/${headPokemonId}.${bodyPokemonId}.png`;
-// }
+function getUnfusedSrc(pokemonId: number) {
+  return `${assetBaseUrl}/assets/basePokemon/${pokemonId}.png`;
+}
 
 const imageStyle: { imageRendering: 'pixelated' } = {imageRendering: 'pixelated'};
 
@@ -32,7 +30,7 @@ export function PokemonImage(
         style={{
           height: '96px',
           width: '96px',
-          backgroundImage: `url(https://fiddlekins.github.io/aio-pif-sprite-analyser-assets/assets/spritesheets_autogen/${headPokemonId}.png)`,
+          backgroundImage: `url(${assetBaseUrl}/assets/spritesheets_autogen/${headPokemonId}.png)`,
           backgroundPosition: `-${(bodyPokemonId % 10) * 96}px -${Math.floor(bodyPokemonId / 10) * 96}px`,
           backgroundSize: `${10 * 96}px ${51 * 96}px`,
         }}
