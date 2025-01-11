@@ -10,6 +10,7 @@ export const settings$ = observable(synced({
       themeId: 'system',
       isCanvasAccelerationEnabled: true,
       isIgnoreColouredTransparencyEnabled: false,
+      isExportCopyingEnabled: false,
     },
     persist: {
       name: 'apsa-settings',
@@ -19,6 +20,7 @@ export const settings$ = observable(synced({
           validate(value, 'themeId', isValidString({oneOf: ['system', 'light', 'dark']}));
           validate(value, 'isCanvasAccelerationEnabled', isValidBoolean());
           validate(value, 'isIgnoreColouredTransparencyEnabled', isValidBoolean());
+          validate(value, 'isExportCopyingEnabled', isValidBoolean());
           return value;
         }
       }

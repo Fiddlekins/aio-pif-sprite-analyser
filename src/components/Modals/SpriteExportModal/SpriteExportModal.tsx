@@ -15,6 +15,7 @@ import {analysis$} from "../../../state/analysis.ts";
 import {background$} from "../../../state/background.ts";
 import {exportSettings$} from "../../../state/export.ts";
 import {ui$} from "../../../state/ui.ts";
+import {settings$} from "../../../state/settings.ts";
 import {getDecodedPng} from "../../../utils/image/getDecodedPng.ts";
 import {getEncodedPng} from "../../../utils/image/getEncodedPng.ts";
 import {normaliseTransparency} from "../../../utils/image/manipulation/normaliseTransparency.ts";
@@ -29,6 +30,7 @@ const StyledToggleButton = styled(ToggleButton)<ToggleButtonProps>(() => ({
 
 export const SpriteExportModal = observer(function SpriteExportModal() {
   const isExportModalOpen = ui$.isExportModalOpen.get();
+  const isExportCopyingEnabled = settings$.isExportCopyingEnabled.get();
   const spriteInput = analysis$.spriteInput.get();
   const headId = analysis$.headId.get();
   const bodyId = analysis$.bodyId.get();
@@ -38,7 +40,7 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
   const isNormaliseTransparencyEnabled = exportSettings$.isNormaliseTransparencyEnabled.get();
 
   const images: Image[] = useMemo(() => {
-    if (!isExportModalOpen){
+    if (!isExportModalOpen) {
       return [];
     }
     if (spriteInput && backgroundImageData) {
@@ -64,7 +66,7 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
           {
             imageDataInput: spriteImageData96,
             alertIndexedFailure: true,
-            canCopy: false,
+            canCopy: isExportCopyingEnabled,
             filename: `${spriteName}_96.png`,
             filenameIndexed: `${spriteName}_96_indexed.png`
           },
@@ -81,7 +83,7 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
           {
             imageDataInput: spriteImageData288,
             alertIndexedFailure: true,
-            canCopy: false,
+            canCopy: isExportCopyingEnabled,
             filename: `${spriteName}.png`,
             filenameIndexed: `${spriteName}_indexed.png`
           },
@@ -112,7 +114,7 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
       });
     }
     return [];
-  }, [isExportModalOpen,spriteInput, backgroundImageData, headId, bodyId, isNormaliseTransparencyEnabled, isSize96, isIndexed]);
+  }, [isExportModalOpen, isExportCopyingEnabled, spriteInput, backgroundImageData, headId, bodyId, isNormaliseTransparencyEnabled, isSize96, isIndexed]);
 
   const handleClose = useCallback(() => {
     ui$.isExportModalOpen.set(false);

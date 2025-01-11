@@ -1,17 +1,48 @@
 import {observer} from "@legendapp/state/react";
-import {DarkModeSharp, HelpOutlineSharp, WbSunnySharp} from "@mui/icons-material";
-import {Box, Switch, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
-import {ChangeEvent, Fragment, MouseEvent, useCallback} from "react";
+import {DarkModeSharp, ExpandMoreSharp, HelpOutlineSharp, WbSunnySharp} from "@mui/icons-material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Switch,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography
+} from "@mui/material";
+import {ChangeEvent, Fragment, MouseEvent, ReactNode, useCallback} from "react";
 import {settings$} from "../../state/settings.ts";
 import {ui$} from "../../state/ui.ts";
 import {StyledTooltip} from "../StyledTooltip.tsx";
 import {StyledModal} from "./StyledModal.tsx";
+
+interface SettingsBoxProps {
+  children?: ReactNode;
+}
+
+const SettingsBox = function (
+  {
+    children
+  }: SettingsBoxProps
+) {
+  return (
+    <Box
+      display={'flex'}
+      flexDirection={'column'}
+      alignItems={'stretch'}
+      gap={2}
+    >
+      {children}
+    </Box>
+  )
+}
 
 export const SettingsModal = observer(function SettingsModal() {
   const isSettingsModalOpen = ui$.isSettingsModalOpen.get();
   const themeId = settings$.themeId.get();
   const isCanvasAccelerationEnabled = settings$.isCanvasAccelerationEnabled.get();
   const isIgnoreColouredTransparencyEnabled = settings$.isIgnoreColouredTransparencyEnabled.get();
+  const isExportCopyingEnabled = settings$.isExportCopyingEnabled.get();
 
   const handleClose = useCallback(() => {
     ui$.isSettingsModalOpen.set(false);
@@ -31,18 +62,17 @@ export const SettingsModal = observer(function SettingsModal() {
     settings$.isIgnoreColouredTransparencyEnabled.set(event.target.checked);
   }, []);
 
+  const handleExportCopyingEnabledChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    settings$.isExportCopyingEnabled.set(event.target.checked);
+  }, []);
+
   return (
     <StyledModal
       title={'Settings'}
       open={isSettingsModalOpen}
       handleClose={handleClose}
     >
-      <Box
-        display={'flex'}
-        flexDirection={'column'}
-        alignItems={'stretch'}
-        gap={2}
-      >
+      <SettingsBox>
         <Box
           display={'flex'}
           flexDirection={'row'}
@@ -163,7 +193,76 @@ export const SettingsModal = observer(function SettingsModal() {
             onChange={handleIgnoreColouredTransparencyEnabledChange}
           />
         </Box>
-      </Box>
+      </SettingsBox>
+
+      <div>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreSharp/>}
+          >
+            <Typography variant={'h6'}>
+              {'Advanced'}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <SettingsBox>
+              <Typography variant={'body2'}>
+                {`The following settings disable some of the safety rails built into the application. Please only use them if you know what you're doing.`}
+              </Typography>
+              <Box
+                display={'flex'}
+                flexDirection={'row'}
+                alignItems={'center'}
+                gap={2}
+              >
+                <Box
+                  display={'flex'}
+                  flexDirection={'row'}
+                  alignItems={'center'}
+                  gap={0.5}
+                >
+                  <Typography>
+                    Allow export copying
+                  </Typography>
+                  <StyledTooltip
+                    title={(
+                      <Fragment>
+                        <Box
+                          display={'flex'}
+                          flexDirection={'column'}
+                          alignItems={'left'}
+                          gap={0.5}
+                        >
+                          <Typography variant={'h6'}>
+                            Allow export copying
+                          </Typography>
+                          <Typography variant={'body2'}>
+                            {`Browsers re-encode images when they are copied to the clipboard, in order to prevent malicious websites from exploiting applications the browser may paste into.`}
+                          </Typography>
+                          <Typography variant={'body2'}>
+                            {`This re-encoding produces bloated PNG images and ignores indexed mode, making the export process pointless.`}
+                          </Typography>
+                          <Typography variant={'body2'}>
+                            {`Power users may however wish to use the application to quickly rescale sprites before pasting the result into an image editor, where this re-encoding does not cause problems. Enabling this setting permits this workflow.`}
+                          </Typography>
+                        </Box>
+                      </Fragment>
+                    )}
+                    placement={'top'}
+                    arrow
+                  >
+                    <HelpOutlineSharp fontSize={'small'}/>
+                  </StyledTooltip>
+                </Box>
+                <Switch
+                  checked={isExportCopyingEnabled}
+                  onChange={handleExportCopyingEnabledChange}
+                />
+              </Box>
+            </SettingsBox>
+          </AccordionDetails>
+        </Accordion>
+      </div>
     </StyledModal>
   )
 });
