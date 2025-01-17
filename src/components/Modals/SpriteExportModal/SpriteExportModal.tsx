@@ -45,7 +45,7 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
     }
     if (spriteInput && backgroundImageData) {
       const spriteInputNameWithoutExtension = spriteInput.name?.replace(/\.png$/i, '') || null;
-      const spriteName = headId === null || bodyId === null ? spriteInputNameWithoutExtension || 'sprite' : `${headId}.${bodyId}`;
+      const spriteName = headId === undefined || bodyId === undefined ? spriteInputNameWithoutExtension || 'sprite' : `${headId}.${bodyId}`;
       let backgroundName = 'background';
       if (bodyId !== null) {
         backgroundName = `${bodyId}_background`;
