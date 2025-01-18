@@ -1,10 +1,11 @@
 import {observer} from "@legendapp/state/react";
+import {Trans} from "@lingui/react/macro";
 import {Box} from "@mui/material";
-import {HighlightedCanvasWithBackground} from "../HighlightedCanvasWithBackground.tsx";
 import {analysis$} from "../../state/analysis.ts";
-import {getPngInfoSummary} from "../../utils/getPngInfoSummary.ts";
+import {HighlightedCanvasWithBackground} from "../HighlightedCanvasWithBackground.tsx";
 import {BackgroundPane} from "../Panes/BackgroundPane.tsx";
-import {PngInfoTooltip} from "../PngInfoTooltip.tsx";
+import {PngInfoSummary} from "../PngInfo/PngInfoSummary.tsx";
+import {PngInfoTooltip} from "../PngInfo/PngInfoTooltip.tsx";
 import {PokemonSummary} from "../PokemonSummary.tsx";
 
 export interface NavigationMenuContentMobileProps {
@@ -25,11 +26,17 @@ export const NavigationMenuContentMobile = observer(function NavigationMenuConte
         {spriteInputInfo
           ? (
             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={0.5}>
-              {`Input File: ${getPngInfoSummary(spriteInputInfo)}`}
-              <PngInfoTooltip info={spriteInputInfo}/>
+              <Trans>
+                Input File: <PngInfoSummary pngInfo={spriteInputInfo}/>
+              </Trans>
+              <PngInfoTooltip pngInfo={spriteInputInfo}/>
             </Box>
           )
-          : 'Awaiting input'
+          : (
+            <Trans>
+              Awaiting input
+            </Trans>
+          )
         }
       </Box>
       <Box

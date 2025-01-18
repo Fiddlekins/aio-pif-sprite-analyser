@@ -1,4 +1,5 @@
 import {observer} from "@legendapp/state/react";
+import {Trans, useLingui} from "@lingui/react/macro";
 import {HelpOutlineSharp} from "@mui/icons-material";
 import {
   Box,
@@ -14,8 +15,8 @@ import {ChangeEvent, Fragment, MouseEvent, useCallback, useMemo} from "react";
 import {analysis$} from "../../../state/analysis.ts";
 import {background$} from "../../../state/background.ts";
 import {exportSettings$} from "../../../state/export.ts";
-import {ui$} from "../../../state/ui.ts";
 import {settings$} from "../../../state/settings.ts";
+import {ui$} from "../../../state/ui.ts";
 import {getDecodedPng} from "../../../utils/image/getDecodedPng.ts";
 import {getEncodedPng} from "../../../utils/image/getEncodedPng.ts";
 import {normaliseTransparency} from "../../../utils/image/manipulation/normaliseTransparency.ts";
@@ -28,6 +29,11 @@ const StyledToggleButton = styled(ToggleButton)<ToggleButtonProps>(() => ({
   textTransform: 'none',
 }));
 
+const exportDimensions = [
+  {width: 288, height: 288},
+  {width: 96, height: 96},
+];
+
 export const SpriteExportModal = observer(function SpriteExportModal() {
   const isExportModalOpen = ui$.isExportModalOpen.get();
   const isExportCopyingEnabled = settings$.isExportCopyingEnabled.get();
@@ -38,6 +44,8 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
   const isSize96 = exportSettings$.isSize96.get();
   const isIndexed = exportSettings$.isIndexed.get();
   const isNormaliseTransparencyEnabled = exportSettings$.isNormaliseTransparencyEnabled.get();
+
+  const {t} = useLingui();
 
   const images: Image[] = useMemo(() => {
     if (!isExportModalOpen) {
@@ -147,12 +155,14 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
 
   return (
     <StyledModal
-      title={'Export Sprite'}
+      title={t`Export Sprite`}
       open={isExportModalOpen}
       handleClose={handleClose}
     >
       <Typography variant={'body1'}>
-        {`Export sprites in a variety of formats.`}
+        <Trans>
+          Export sprites in a variety of formats.
+        </Trans>
       </Typography>
       <Paper>
         <Box
@@ -174,12 +184,20 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
               color="primary"
               onChange={handleSizeModeChange}
             >
-              <StyledToggleButton value="288">
-                288x288
-              </StyledToggleButton>
-              <StyledToggleButton value="96">
-                96x96
-              </StyledToggleButton>
+              {
+                exportDimensions.map(({width, height}) => {
+                  return (
+                    <StyledToggleButton
+                      key={`${width}x${height}`}
+                      value={`${width}`}
+                    >
+                      <Trans>
+                        {width}x{height}
+                      </Trans>
+                    </StyledToggleButton>
+                  );
+                })
+              }
             </ToggleButtonGroup>
             <ToggleButtonGroup
               value={isIndexed ? 'indexed' : 'normal'}
@@ -188,10 +206,14 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
               onChange={handleIndexedModeChange}
             >
               <StyledToggleButton value="normal">
-                Normal
+                <Trans>
+                  Normal
+                </Trans>
               </StyledToggleButton>
               <StyledToggleButton value="indexed">
-                Indexed
+                <Trans>
+                  Indexed
+                </Trans>
               </StyledToggleButton>
             </ToggleButtonGroup>
           </Box>
@@ -208,7 +230,9 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
               gap={0.5}
             >
               <Typography>
-                Normalise Transparency
+                <Trans>
+                  Normalise Transparency
+                </Trans>
               </Typography>
               <StyledTooltip
                 title={(
@@ -220,16 +244,26 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
                       gap={0.5}
                     >
                       <Typography variant={'h6'}>
-                        Normalise Transparency
+                        <Trans>
+                          Normalise Transparency
+                        </Trans>
                       </Typography>
                       <Typography variant={'body2'}>
-                        {`When enabled, any pixel with 0% opacity will be set to transparent black (a.k.a. "#0000", "rgba(0,0,0,0)", etc).`}
+                        <Trans>
+                          When enabled, any pixel with 0% opacity will be set to transparent black (a.k.a. "#0000",
+                          "rgba(0,0,0,0)", etc).
+                        </Trans>
                       </Typography>
                       <Typography variant={'body2'}>
-                        {`This changes nothing visually about the image, but reduces the filesize and has better compatibility with some software.`}
+                        <Trans>
+                          This changes nothing visually about the image, but reduces the filesize and has better
+                          compatibility with some software.
+                        </Trans>
                       </Typography>
                       <Typography variant={'body2'}>
-                        {`Under normal circumstances this should be left enabled.`}
+                        <Trans>
+                          Under normal circumstances this should be left enabled.
+                        </Trans>
                       </Typography>
                     </Box>
                   </Fragment>

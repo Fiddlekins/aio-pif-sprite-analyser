@@ -1,5 +1,6 @@
 import {ObservableHint, OpaqueObject} from "@legendapp/state";
 import {Memo, observer, useObservable} from "@legendapp/state/react";
+import {Trans} from "@lingui/react/macro";
 import {ColorizeSharp} from "@mui/icons-material";
 import {alpha, Box, Button, ButtonProps, Popover, styled, ToggleButton, ToggleButtonGroup} from "@mui/material";
 import {MouseEvent} from "react";
@@ -84,7 +85,9 @@ export const ColourDisplayControls = observer(function ColourDisplayControls() {
                   display={'flex'}
                   gap={1}
                 >
-                  Monotone
+                  <Trans>
+                    Monotone
+                  </Trans>
                   <Memo>
                     {() => {
                       return (
@@ -126,10 +129,14 @@ export const ColourDisplayControls = observer(function ColourDisplayControls() {
                 </Box>
               </ToggleButton>
               <ToggleButton value="negative">
-                Negative
+                <Trans>
+                  Negative
+                </Trans>
               </ToggleButton>
               <ToggleButton value="rotate">
-                Rotate
+                <Trans>
+                  Rotate
+                </Trans>
               </ToggleButton>
             </ToggleButtonGroup>
             <Memo>
@@ -166,7 +173,9 @@ export const ColourDisplayControls = observer(function ColourDisplayControls() {
                     variant={'outlined'}
                     onClick={() => ui$.highlight.clearColoursFromCurrent()}
                   >
-                    Clear Highlights
+                    <Trans>
+                      Clear Highlights
+                    </Trans>
                   </Button>
                 );
               }}

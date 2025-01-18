@@ -1,3 +1,4 @@
+import {Trans} from "@lingui/react/macro";
 import {Box, Typography} from "@mui/material";
 import {Fragment} from "react";
 
@@ -13,7 +14,9 @@ export function IdTooltipContent(
   return (
     <Fragment>
       <Typography variant={'h6'}>
-        Sprite ID
+        <Trans>
+          Sprite ID
+        </Trans>
       </Typography>
       <Box
         display={'flex'}
@@ -21,10 +24,17 @@ export function IdTooltipContent(
         gap={2}
       >
         <Typography variant={'body2'}>
-          {'This is an ID generated from the raw pixel data of the sprite after it has been decoded and, if necessary, scaled to 288x288.'}
+          <Trans>
+            This is an ID generated from the raw pixel data of the sprite after it has been decoded and, if necessary,
+            scaled to 288x288.
+          </Trans>
         </Typography>
         <Typography variant={'body2'}>
-          {`The full ID is:\n ${id}`}
+          <Trans>
+            The full ID is:
+            <br/>
+            {id}
+          </Trans>
         </Typography>
       </Box>
     </Fragment>

@@ -1,9 +1,10 @@
 import {observer} from "@legendapp/state/react";
+import {useLingui} from "@lingui/react/macro";
 import {Box, Typography} from "@mui/material";
 import {ColorObject} from "colorjs.io/fn";
-import {useCallback} from "react";
+import {useCallback, useMemo} from "react";
 import {ui$, uiSettings$} from "../../state/ui.ts";
-import {getFormattedPercent} from "../../utils/getFormattedPercent.ts";
+import {percentMediumFixed} from "../../utils/formatStyles.ts";
 import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
 import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColourKey.ts";
 import {numberComparator} from "../../utils/numberComparator.ts";
@@ -13,49 +14,6 @@ import {RichTable} from "./RichTable/RichTable.tsx";
 import {Column, OrderDirection, RowComparator, RowDataBase} from "./RichTable/types.ts";
 
 const checkboxRelativeWidth = 2;
-
-const columns: Column[] = [
-  {
-    id: 'colour',
-    label: 'Colour',
-    relativeWidth: 5,
-  },
-  {
-    id: 'usage',
-    label: 'Usage',
-    sortable: true,
-    align: 'right',
-    relativeWidth: 4,
-  },
-  {
-    id: 'channel0',
-    label: 'Channel 0',
-    sortable: true,
-    align: 'right',
-    relativeWidth: 3,
-  },
-  {
-    id: 'channel1',
-    label: 'Channel 1',
-    sortable: true,
-    align: 'right',
-    relativeWidth: 3,
-  },
-  {
-    id: 'channel2',
-    label: 'Channel 2',
-    sortable: true,
-    align: 'right',
-    relativeWidth: 3,
-  },
-  {
-    id: 'channel3',
-    label: 'Channel 3',
-    sortable: true,
-    align: 'right',
-    relativeWidth: 3,
-  },
-];
 
 interface RowData extends RowDataBase {
   colour: ColorObject;
@@ -90,6 +48,53 @@ export const ColoursTable = observer(function ColoursTable(
   const isMobile = ui$.isMobile.get();
   const currentCheckedColours = ui$.highlight.currentCheckedColours.get();
   const colourSpace = uiSettings$.colourSpace.get();
+
+  const {i18n, t} = useLingui();
+
+  const columns: Column[] = useMemo(() => {
+    return [
+      {
+        id: 'colour',
+        label: t`Colour`,
+        relativeWidth: 5,
+      },
+      {
+        id: 'usage',
+        label: t`Usage`,
+        sortable: true,
+        align: 'right',
+        relativeWidth: 4,
+      },
+      {
+        id: 'channel0',
+        label: 'Channel 0',
+        sortable: true,
+        align: 'right',
+        relativeWidth: 3,
+      },
+      {
+        id: 'channel1',
+        label: 'Channel 1',
+        sortable: true,
+        align: 'right',
+        relativeWidth: 3,
+      },
+      {
+        id: 'channel2',
+        label: 'Channel 2',
+        sortable: true,
+        align: 'right',
+        relativeWidth: 3,
+      },
+      {
+        id: 'channel3',
+        label: 'Channel 3',
+        sortable: true,
+        align: 'right',
+        relativeWidth: 3,
+      },
+    ];
+  }, [t]);
 
   const onCheckboxChange = useCallback(({colourKey}: RowData, isCheckedNew: boolean) => {
     if (isCheckedNew) {
@@ -141,7 +146,7 @@ export const ColoursTable = observer(function ColoursTable(
           </Box>
         );
       case 'usage':
-        return getFormattedPercent(row.usage);
+        return i18n.number(row.usage, percentMediumFixed);
       case 'channel0': {
         switch (colourSpace) {
           case 'RGB':
@@ -159,9 +164,9 @@ export const ColoursTable = observer(function ColoursTable(
           case 'RGB':
             return row.rgba.g;
           case 'HSV':
-            return getFormattedPercent(row.hsva.coords[1] / 100);
+            return i18n.number(row.hsva.coords[1] / 100, percentMediumFixed);
           case 'HSL':
-            return getFormattedPercent(row.hsla.coords[1] / 100);
+            return i18n.number(row.hsla.coords[1] / 100, percentMediumFixed);
           default:
             return '-'
         }
@@ -171,9 +176,9 @@ export const ColoursTable = observer(function ColoursTable(
           case 'RGB':
             return row.rgba.b;
           case 'HSV':
-            return getFormattedPercent(row.hsva.coords[2] / 100);
+            return i18n.number(row.hsva.coords[2] / 100, percentMediumFixed);
           case 'HSL':
-            return getFormattedPercent(row.hsla.coords[2] / 100);
+            return i18n.number(row.hsla.coords[2] / 100, percentMediumFixed);
           default:
             return '-'
         }
@@ -181,17 +186,17 @@ export const ColoursTable = observer(function ColoursTable(
       case 'channel3': {
         switch (colourSpace) {
           case 'RGB':
-            return getFormattedPercent(row.rgba.a / 255);
+            return i18n.number(row.rgba.a / 255, percentMediumFixed);
           case 'HSV':
-            return getFormattedPercent(row.hsva.alpha);
+            return i18n.number(row.hsva.alpha || 0, percentMediumFixed);
           case 'HSL':
-            return getFormattedPercent(row.hsla.alpha);
+            return i18n.number(row.hsla.alpha || 0, percentMediumFixed);
           default:
             return '-'
         }
       }
     }
-  }, [colourSpace]);
+  }, [i18n, colourSpace]);
 
   const rowComparator: RowComparator<RowData> = useCallback((a, b, orderBy: string, orderDirection: OrderDirection) => {
     let result = 0;

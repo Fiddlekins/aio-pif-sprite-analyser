@@ -1,4 +1,5 @@
 import {observer} from "@legendapp/state/react";
+import {useLingui} from "@lingui/react/macro";
 import {Box} from "@mui/material";
 import {useCallback, useState} from "react";
 import {analysis$} from "../state/analysis.ts";
@@ -11,6 +12,7 @@ export const PokemonSummary = observer(function PokemonSummary() {
   const headId = analysis$.headId.get();
   const bodyId = analysis$.bodyId.get();
 
+  const {t} = useLingui();
   const [isHeadModalOpen, setIsHeadModalOpen] = useState(false);
   const [isBodyModalOpen, setIsBodyModalOpen] = useState(false);
 
@@ -37,13 +39,13 @@ export const PokemonSummary = observer(function PokemonSummary() {
       gap={2}
     >
       <PokemonDisplay
-        label={'Head'}
+        label={t`Head`}
         isFusion={false}
         pokemonId={headId}
         onClick={onHeadDisplayClick}
       />
       <PokemonDisplay
-        label={'Body'}
+        label={t`Body`}
         isFusion={false}
         pokemonId={bodyId}
         onClick={onBodyDisplayClick}
@@ -59,14 +61,14 @@ export const PokemonSummary = observer(function PokemonSummary() {
         pokemonId={headId}
         setPokemonId={(headIdNew) => analysis$.headId.set(headIdNew)}
         handleClose={handleHeadModalClose}
-        title={'Select Head Pokemon'}
+        title={t`Select Head Pokémon`}
       />
       <PokemonSelectModal
         open={isBodyModalOpen}
         pokemonId={bodyId}
         setPokemonId={(bodyIdNew) => analysis$.bodyId.set(bodyIdNew)}
         handleClose={handleBodyModalClose}
-        title={'Select Body Pokemon'}
+        title={t`Select Body Pokémon`}
       />
     </Box>
   );

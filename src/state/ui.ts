@@ -1,8 +1,10 @@
-import {beginBatch, endBatch, observable} from "@legendapp/state";
+import {beginBatch, endBatch, observable, observe} from "@legendapp/state";
 import {ObservablePersistLocalStorage} from "@legendapp/state/persist-plugins/local-storage";
 import {synced} from "@legendapp/state/sync";
+import {loadCatalog, resolveLocale} from "../i18n.ts";
 import {getTheme} from "../themes/getTheme.ts";
 import {parseMuiMediaQuery} from "../utils/parseMuiMediaQuery.ts";
+import {settings$} from "./settings.ts";
 import {emptyArray} from "./utils/emptyArray.ts";
 import {isValidNumber} from "./utils/validation/isValidNumber.ts";
 import {isValidString} from "./utils/validation/isValidString.ts";
@@ -37,6 +39,7 @@ export const uiSettings$ = observable(synced({
 ));
 
 export const ui$ = observable({
+  locale: resolveLocale(settings$.locale.get()),
   isMobile: window.matchMedia(isMobileQueryString).matches,
   isImportModalOpen: true,
   isExportModalOpen: false,
@@ -104,4 +107,15 @@ export const ui$ = observable({
 const matchQuery = window.matchMedia(isMobileQueryString);
 matchQuery.addEventListener('change', ({matches}) => {
   ui$.isMobile.set(matches);
+});
+
+observe(() => {
+  const localeSetting = settings$.locale.get();
+  ui$.locale.set(resolveLocale(localeSetting));
+});
+
+observe(() => {
+  const locale = ui$.locale.get();
+  console.log(locale)
+  loadCatalog(locale).catch(console.error);
 });

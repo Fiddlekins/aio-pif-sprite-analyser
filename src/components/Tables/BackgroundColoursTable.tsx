@@ -1,4 +1,5 @@
 import {observer} from "@legendapp/state/react";
+import {Trans} from "@lingui/react/macro";
 import {ExpandMoreSharp} from "@mui/icons-material";
 import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@mui/material";
 import {ColorObject, HSL, HSV, to as convert} from "colorjs.io/fn";
@@ -76,7 +77,11 @@ export const BackgroundColoursTable = observer(function BackgroundColoursTable()
           >
             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
               <VerdictIcon verdict={colourReport?.backgroundColourCountVerdict || null}/>
-              <Typography>Background Colours</Typography>
+              <Typography>
+                <Trans>
+                  Background Colours
+                </Trans>
+              </Typography>
             </Box>
           </AccordionSummary>
           <AccordionDetails>

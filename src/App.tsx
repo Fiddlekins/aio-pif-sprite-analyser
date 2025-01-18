@@ -1,4 +1,6 @@
 import {observer, Show} from "@legendapp/state/react";
+import {i18n} from "@lingui/core"
+import {I18nProvider} from "@lingui/react"
 import {Box, BoxProps, CssBaseline, styled, ThemeProvider} from "@mui/material";
 import {darken} from '@mui/material/styles';
 import {ColorSpace, HSL, HSV, OKLCH, sRGB} from "colorjs.io/fn";
@@ -38,17 +40,19 @@ const SubApp = observer(function SubApp() {
   const themeId = settings$.themeId.get();
   const theme = getTheme(themeId);
   return (
-    <ThemeProvider theme={theme}>
-      <Background/>
-      <AppBox>
-        <Show
-          if={ui$.isMobile}
-          else={<AnalysisLayout/>}
-        >
-          <AnalysisLayoutMobile/>
-        </Show>
-      </AppBox>
-    </ThemeProvider>
+    <I18nProvider i18n={i18n}>
+      <ThemeProvider theme={theme}>
+        <Background/>
+        <AppBox>
+          <Show
+            if={ui$.isMobile}
+            else={<AnalysisLayout/>}
+          >
+            <AnalysisLayoutMobile/>
+          </Show>
+        </AppBox>
+      </ThemeProvider>
+    </I18nProvider>
   );
 })
 

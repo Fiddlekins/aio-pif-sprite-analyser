@@ -1,16 +1,20 @@
 import {observer} from "@legendapp/state/react";
-import {DarkModeSharp, ExpandMoreSharp, HelpOutlineSharp, WbSunnySharp} from "@mui/icons-material";
+import {Trans, useLingui} from "@lingui/react/macro";
+import {DarkModeSharp, ExpandMoreSharp, HelpOutlineSharp, TranslateSharp, WbSunnySharp} from "@mui/icons-material";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Autocomplete,
   Box,
   Switch,
+  TextField,
   ToggleButton,
   ToggleButtonGroup,
   Typography
 } from "@mui/material";
-import {ChangeEvent, Fragment, MouseEvent, ReactNode, useCallback} from "react";
+import {ChangeEvent, Fragment, MouseEvent, ReactNode, SyntheticEvent, useCallback, useMemo} from "react";
+import {localeToNameMap, nameToLocaleMap, pseudoLocale} from "../../i18n.ts";
 import {settings$} from "../../state/settings.ts";
 import {ui$} from "../../state/ui.ts";
 import {StyledTooltip} from "../StyledTooltip.tsx";
@@ -39,13 +43,35 @@ const SettingsBox = function (
 
 export const SettingsModal = observer(function SettingsModal() {
   const isSettingsModalOpen = ui$.isSettingsModalOpen.get();
+  const locale = settings$.locale.get();
   const themeId = settings$.themeId.get();
   const isCanvasAccelerationEnabled = settings$.isCanvasAccelerationEnabled.get();
   const isIgnoreColouredTransparencyEnabled = settings$.isIgnoreColouredTransparencyEnabled.get();
   const isExportCopyingEnabled = settings$.isExportCopyingEnabled.get();
 
+  const {t} = useLingui();
+  const languageOptions = useMemo(() => {
+    const languageOptionsNew = [t`Autodetect`, ...Object.keys(nameToLocaleMap)];
+    if (import.meta.env.DEV) {
+      languageOptionsNew.push('Debug Mode');
+    }
+    return languageOptionsNew;
+  }, [t]);
+
   const handleClose = useCallback(() => {
     ui$.isSettingsModalOpen.set(false);
+  }, []);
+
+  const onLanguageChange = useCallback((_event: SyntheticEvent, newValue: string | null) => {
+    if (newValue) {
+      if (newValue === 'Debug Mode') {
+        settings$.locale.set(pseudoLocale);
+      } else {
+        settings$.locale.set(nameToLocaleMap[newValue] || 'autodetect');
+      }
+    } else {
+      settings$.locale.set('autodetect');
+    }
   }, []);
 
   const handleThemeChange = useCallback((_event: MouseEvent<HTMLElement>, themeIdNew: string | null) => {
@@ -68,7 +94,7 @@ export const SettingsModal = observer(function SettingsModal() {
 
   return (
     <StyledModal
-      title={'Settings'}
+      title={t`Settings`}
       open={isSettingsModalOpen}
       handleClose={handleClose}
     >
@@ -79,8 +105,25 @@ export const SettingsModal = observer(function SettingsModal() {
           alignItems={'center'}
           gap={2}
         >
+          <TranslateSharp/>
+          <Autocomplete
+            value={locale === pseudoLocale ? 'Debug Mode' : localeToNameMap[locale] || t`Autodetect`}
+            onChange={onLanguageChange}
+            renderInput={(params) => <TextField {...params} label={t`Language`}/>}
+            options={languageOptions}
+            sx={{flexGrow: 2}}
+          />
+        </Box>
+        <Box
+          display={'flex'}
+          flexDirection={'row'}
+          alignItems={'center'}
+          gap={2}
+        >
           <Typography>
-            Theme
+            <Trans>
+              Theme
+            </Trans>
           </Typography>
           <ToggleButtonGroup
             value={themeId}
@@ -91,7 +134,9 @@ export const SettingsModal = observer(function SettingsModal() {
             <ToggleButton
               value="system"
             >
-              System
+              <Trans>
+                System
+              </Trans>
             </ToggleButton>
             <ToggleButton
               value="light"
@@ -118,7 +163,9 @@ export const SettingsModal = observer(function SettingsModal() {
             gap={0.5}
           >
             <Typography>
-              Canvas Acceleration
+              <Trans>
+                Canvas Acceleration
+              </Trans>
             </Typography>
             <StyledTooltip
               title={(
@@ -130,10 +177,16 @@ export const SettingsModal = observer(function SettingsModal() {
                     gap={0.5}
                   >
                     <Typography variant={'h6'}>
-                      Canvas Acceleration
+                      <Trans>
+                        Canvas Acceleration
+                      </Trans>
                     </Typography>
                     <Typography variant={'body2'}>
-                      {`Leave this enabled unless you get corrupted images displaying, as it is faster and more accurate. Some browsers feature privacy settings that cause the Canvas API to output randomised image data, at which point Canvas Acceleration should be disabled.`}
+                      <Trans>
+                        Leave this enabled unless you get corrupted images displaying, as it is faster and more
+                        accurate. Some browsers feature privacy settings that cause the Canvas API to output randomised
+                        image data, at which point Canvas Acceleration should be disabled.
+                      </Trans>
                     </Typography>
                   </Box>
                 </Fragment>
@@ -162,7 +215,9 @@ export const SettingsModal = observer(function SettingsModal() {
             gap={0.5}
           >
             <Typography>
-              Ignore Coloured Transparency
+              <Trans>
+                Ignore Coloured Transparency
+              </Trans>
             </Typography>
             <StyledTooltip
               title={(
@@ -174,10 +229,16 @@ export const SettingsModal = observer(function SettingsModal() {
                     gap={0.5}
                   >
                     <Typography variant={'h6'}>
-                      Ignore Coloured Transparency
+                      <Trans>
+                        Ignore Coloured Transparency
+                      </Trans>
                     </Typography>
                     <Typography variant={'body2'}>
-                      {`The application will skip over the coloured transparency analysis when determining which view the app should automatically navigate to after importing a sprite. This makes the experience smoother for users who prefer to ignore this non-critical aspect.`}
+                      <Trans>
+                        The application will skip over the coloured transparency analysis when determining which view
+                        the app should automatically navigate to after importing a sprite. This makes the experience
+                        smoother for users who prefer to ignore this non-critical aspect.
+                      </Trans>
                     </Typography>
                   </Box>
                 </Fragment>
@@ -201,13 +262,18 @@ export const SettingsModal = observer(function SettingsModal() {
             expandIcon={<ExpandMoreSharp/>}
           >
             <Typography variant={'h6'}>
-              {'Advanced'}
+              <Trans>
+                Advanced
+              </Trans>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <SettingsBox>
               <Typography variant={'body2'}>
-                {`The following settings disable some of the safety rails built into the application. Please only use them if you know what you're doing.`}
+                <Trans>
+                  The following settings disable some of the safety rails built into the application. Please only use
+                  them if you know what you're doing.
+                </Trans>
               </Typography>
               <Box
                 display={'flex'}
@@ -222,7 +288,9 @@ export const SettingsModal = observer(function SettingsModal() {
                   gap={0.5}
                 >
                   <Typography>
-                    Allow export copying
+                    <Trans>
+                      Allow export copying
+                    </Trans>
                   </Typography>
                   <StyledTooltip
                     title={(
@@ -234,16 +302,28 @@ export const SettingsModal = observer(function SettingsModal() {
                           gap={0.5}
                         >
                           <Typography variant={'h6'}>
-                            Allow export copying
+                            <Trans>
+                              Allow export copying
+                            </Trans>
                           </Typography>
                           <Typography variant={'body2'}>
-                            {`Browsers re-encode images when they are copied to the clipboard, in order to prevent malicious websites from exploiting applications the browser may paste into.`}
+                            <Trans>
+                              Browsers re-encode images when they are copied to the clipboard, in order to prevent
+                              malicious websites from exploiting applications the browser may paste into.
+                            </Trans>
                           </Typography>
                           <Typography variant={'body2'}>
-                            {`This re-encoding produces bloated PNG images and ignores indexed mode, making the export process pointless.`}
+                            <Trans>
+                              This re-encoding produces bloated PNG images and ignores indexed mode, making the export
+                              process pointless.
+                            </Trans>
                           </Typography>
                           <Typography variant={'body2'}>
-                            {`Power users may however wish to use the application to quickly rescale sprites before pasting the result into an image editor, where this re-encoding does not cause problems. Enabling this setting permits this workflow.`}
+                            <Trans>
+                              Power users may however wish to use the application to quickly rescale sprites before
+                              pasting the result into an image editor, where this re-encoding does not cause problems.
+                              Enabling this setting permits this workflow.
+                            </Trans>
                           </Typography>
                         </Box>
                       </Fragment>

@@ -1,4 +1,5 @@
 import {observer} from "@legendapp/state/react";
+import {Trans, useLingui} from "@lingui/react/macro";
 import {CloseSharp, SettingsSharp} from "@mui/icons-material";
 import {
   AppBar,
@@ -118,6 +119,8 @@ export const NavigationMenuMobile = observer(function NavigationMenuMobile(
   const colourReport = analysis$.colourReport.get();
   const isIgnoreColouredTransparencyEnabled = settings$.isIgnoreColouredTransparencyEnabled.get();
 
+  const {t} = useLingui();
+
   const openImportModal = useCallback(() => {
     ui$.isImportModalOpen.set(true);
   }, []);
@@ -194,14 +197,18 @@ export const NavigationMenuMobile = observer(function NavigationMenuMobile(
                 variant={'outlined'}
                 onClick={openImportModal}
               >
-                Import
+                <Trans>
+                  Import
+                </Trans>
               </Button>
               <Button
                 color="inherit"
                 variant={'outlined'}
                 onClick={openExportModal}
               >
-                Export
+                <Trans>
+                  Export
+                </Trans>
               </Button>
               <Box flexGrow={1}/>
               <StyledIconButton
@@ -227,7 +234,9 @@ export const NavigationMenuMobile = observer(function NavigationMenuMobile(
             p={2}
           >
             <Typography variant={'h5'} align={'left'}>
-              Analysis Report
+              <Trans>
+                Analysis Report
+              </Trans>
             </Typography>
             <Box
               display={'flex'}
@@ -237,21 +246,21 @@ export const NavigationMenuMobile = observer(function NavigationMenuMobile(
             >
               <NavigationOptions
                 id={'partialPixels'}
-                title={'Partial Pixels'}
+                title={t`Partial Pixels`}
                 verdict={partialPixelReport?.verdict || null}
                 active={view === 'partialPixels'}
                 onViewChange={onViewChange}
               />
               <NavigationOptions
                 id={'semiTransparent'}
-                title={'Semi-Transparency'}
+                title={t`Semi-Transparency`}
                 verdict={transparencyReport?.semiTransparentVerdict || null}
                 active={view === 'semiTransparent'}
                 onViewChange={onViewChange}
               />
               <NavigationOptions
                 id={'colouredTransparency'}
-                title={'Coloured Transparency'}
+                title={t`Coloured Transparency`}
                 verdict={transparencyReport?.colouredTransparentVerdict || null}
                 active={view === 'colouredTransparency'}
                 dimmed={isIgnoreColouredTransparencyEnabled}
@@ -259,14 +268,14 @@ export const NavigationMenuMobile = observer(function NavigationMenuMobile(
               />
               <NavigationOptions
                 id={'colourCount'}
-                title={'Colour Count'}
+                title={t`Colour Count`}
                 verdict={colourReport?.spriteColourCountVerdict || null}
                 active={view === 'colourCount'}
                 onViewChange={onViewChange}
               />
               <NavigationOptions
                 id={'colourSimilarity'}
-                title={'Colour Similarity'}
+                title={t`Colour Similarity`}
                 verdict={colourReport?.colourSimilarityVerdict || null}
                 active={view === 'colourSimilarity'}
                 onViewChange={onViewChange}

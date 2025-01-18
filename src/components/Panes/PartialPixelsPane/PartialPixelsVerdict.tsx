@@ -1,9 +1,10 @@
 import {observer} from "@legendapp/state/react";
+import {Trans, useLingui} from "@lingui/react/macro";
 import {Box, Paper, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
 import {MouseEvent, useCallback, useEffect, useRef} from "react";
 import {analysis$, analysisSettings$} from "../../../state/analysis.ts";
 import {ui$} from "../../../state/ui.ts";
-import {getFormattedPercent} from "../../../utils/getFormattedPercent.ts";
+import {percentMedium} from "../../../utils/formatStyles.ts";
 import {CanvasWithBackground} from "../../CanvasWithBackground.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
@@ -11,6 +12,8 @@ export const PartialPixelsVerdict = observer(function PartialPixelsVerdict() {
   const isMobile = ui$.isMobile.get();
   const partialPixelReport = analysis$.partialPixelReport.get();
   const partialPixelOutputMode = analysisSettings$.partialPixelOutputMode.get();
+
+  const {i18n} = useLingui();
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -35,9 +38,7 @@ export const PartialPixelsVerdict = observer(function PartialPixelsVerdict() {
   }, []);
 
   const partialPixelCount = partialPixelReport?.analysis.partialPixelCount || 0;
-  const partialPixelPercent = getFormattedPercent(
-    partialPixelCount / (partialPixelReport?.analysis.totalPixelCount || 1)
-  );
+  const partialPixelFraction = partialPixelCount / (partialPixelReport?.analysis.totalPixelCount || 1);
 
   return (
     <Paper>
@@ -51,11 +52,15 @@ export const PartialPixelsVerdict = observer(function PartialPixelsVerdict() {
         <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
           <VerdictIcon verdict={partialPixelReport?.verdict || null}/>
           <Typography variant={'h5'} align={'left'}>
-            {`Partial Pixel Count: ${partialPixelCount} (${partialPixelPercent})`}
+            <Trans>
+              Partial Pixel Count: {i18n.number(partialPixelCount)} ({i18n.number(partialPixelFraction, percentMedium)})
+            </Trans>
           </Typography>
         </Box>
         <Typography align={'left'}>
-          {'Each 3x3 square of pixels should be the same colour.'}
+          <Trans>
+            Each 3x3 square of pixels should be the same colour.
+          </Trans>
         </Typography>
       </Box>
       <Box
@@ -79,18 +84,27 @@ export const PartialPixelsVerdict = observer(function PartialPixelsVerdict() {
             onChange={handlePartialPixelOutputModeChange}
           >
             <ToggleButton value="mixed">
-              Mixed
+              <Trans>
+                Mixed
+              </Trans>
             </ToggleButton>
             <ToggleButton value="full">
-              Full
+              <Trans>
+                Full
+              </Trans>
             </ToggleButton>
           </ToggleButtonGroup>
           <Typography align={'left'}>
-            {'Pixels highlighted red are colours that do not match the majority colour in their 3x3 square.'}
+            <Trans>
+              Pixels highlighted red are colours that do not match the majority colour in their 3x3 square.
+            </Trans>
           </Typography>
           {partialPixelOutputMode === 'mixed' && (
             <Typography align={'left'}>
-              {'Pixels highlighted blue are colours that are the majority colour in their 3x3 square, but still suffer from being in a partial pixel.'}
+              <Trans>
+                Pixels highlighted blue are colours that are the majority colour in their 3x3 square, but still suffer
+                from being in a partial pixel.
+              </Trans>
             </Typography>
           )}
         </Box>

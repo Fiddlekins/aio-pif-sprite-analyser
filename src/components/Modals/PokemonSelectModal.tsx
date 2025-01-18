@@ -1,7 +1,8 @@
 import {observer} from "@legendapp/state/react";
+import {useLingui} from "@lingui/react/macro";
 import {DoneSharp} from "@mui/icons-material";
 import {Autocomplete, Box, BoxProps, Button, styled, TextField} from "@mui/material";
-import {SyntheticEvent, useCallback} from "react";
+import {SyntheticEvent, useCallback, useMemo} from "react";
 import {pokemonIdToDataMap} from "../../data/pokemonIdToDataMap.ts";
 import {ui$} from "../../state/ui.ts";
 import {PokemonImage} from "../PokemonImage.tsx";
@@ -30,7 +31,6 @@ const basePokemonList = Object.keys(pokemonIdToDataMap)
   .map(({name}) => {
     return name;
   });
-basePokemonList.unshift('None');
 
 const ImageBox = styled(Box)<BoxProps>(({theme}) => ({
   width: '56px',
@@ -46,7 +46,7 @@ const ImageBox = styled(Box)<BoxProps>(({theme}) => ({
 export interface PokemonSelectModalProps {
   open: boolean;
   pokemonId?: number;
-  setPokemonId: (pokemonIdNew: number|undefined) => void;
+  setPokemonId: (pokemonIdNew: number | undefined) => void;
   handleClose: () => void;
   title?: string;
 }
@@ -62,6 +62,12 @@ export const PokemonSelectModal = observer(function PokemonSelectModal(
 ) {
   const isMobile = ui$.isMobile.get();
 
+  const {t} = useLingui();
+
+  const pokemonOptions = useMemo(() => {
+    return [t`None`, ...basePokemonList];
+  }, [t]);
+
   const onChange = useCallback((_event: SyntheticEvent, newValue: string | null) => {
     if (newValue) {
       setPokemonId(pokemonNameToIdMap[newValue] || undefined);
@@ -72,7 +78,7 @@ export const PokemonSelectModal = observer(function PokemonSelectModal(
 
   return (
     <StyledModal
-      title={title || 'Select Pokemon'}
+      title={title || t`Select Pokémon`}
       open={open}
       handleClose={handleClose}
     >
@@ -83,10 +89,10 @@ export const PokemonSelectModal = observer(function PokemonSelectModal(
           gap={2}
         >
           <Autocomplete
-            value={pokemonId ? pokemonIdToDataMap[pokemonId].Name : 'None'}
+            value={pokemonId ? pokemonIdToDataMap[pokemonId].Name : t`None`}
             onChange={onChange}
-            renderInput={(params) => <TextField {...params} label="Pokemon"/>}
-            options={basePokemonList}
+            renderInput={(params) => <TextField {...params} label={t`Pokémon`}/>}
+            options={pokemonOptions}
             sx={{flexGrow: 2}}
           />
           <Box
@@ -123,10 +129,10 @@ export const PokemonSelectModal = observer(function PokemonSelectModal(
             />
           </ImageBox>
           <Autocomplete
-            value={pokemonId ? pokemonIdToNameMap[pokemonId] : 'None'}
+            value={pokemonId ? pokemonIdToNameMap[pokemonId] : t`None`}
             onChange={onChange}
-            renderInput={(params) => <TextField {...params} label="Pokemon"/>}
-            options={basePokemonList}
+            renderInput={(params) => <TextField {...params} label={t`Pokémon`}/>}
+            options={pokemonOptions}
             sx={{flexGrow: 2}}
           />
           <Button

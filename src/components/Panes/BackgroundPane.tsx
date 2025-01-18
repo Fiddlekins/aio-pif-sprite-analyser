@@ -1,5 +1,6 @@
 import {Observable, ObservableHint, OpaqueObject} from "@legendapp/state";
 import {Memo, observer, useObservable, useObserveEffect} from "@legendapp/state/react";
+import {Trans} from "@lingui/react/macro";
 import {SettingsSharp, TuneSharp} from "@mui/icons-material";
 import {alpha, Box, BoxProps, Button, ButtonProps, Popover, styled, Typography} from "@mui/material";
 import {MouseEvent, ReactNode, useCallback, useMemo, useRef} from "react";
@@ -168,7 +169,9 @@ const CustomBackgroundOption = observer(function CustomBackgroundOption(
                     colour$.delete();
                   }}
                 >
-                  Remove
+                  <Trans>
+                    Remove
+                  </Trans>
                 </Button>
               </Box>
             </Popover>
@@ -236,7 +239,9 @@ export const BackgroundPane = observer(function BackgroundPane() {
         pb={1}
       >
         <Typography variant={'h5'} align={'left'}>
-          Background
+          <Trans>
+            Background
+          </Trans>
         </Typography>
         <StyledIconButton variant={'outlined'} onClick={onSettingsClick}>
           <TuneSharp/>

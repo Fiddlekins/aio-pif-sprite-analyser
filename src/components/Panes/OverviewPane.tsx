@@ -1,9 +1,10 @@
 import {observer} from "@legendapp/state/react";
+import {Trans} from "@lingui/react/macro";
 import {Box, BoxProps, styled} from "@mui/material";
-import {HighlightedCanvasWithBackground} from "../HighlightedCanvasWithBackground.tsx";
 import {analysis$} from "../../state/analysis.ts";
-import {getPngInfoSummary} from "../../utils/getPngInfoSummary.ts";
-import {PngInfoTooltip} from "../PngInfoTooltip.tsx";
+import {HighlightedCanvasWithBackground} from "../HighlightedCanvasWithBackground.tsx";
+import {PngInfoSummary} from "../PngInfo/PngInfoSummary.tsx";
+import {PngInfoTooltip} from "../PngInfo/PngInfoTooltip.tsx";
 import {PokemonSummary} from "../PokemonSummary.tsx";
 import {BackgroundPane} from "./BackgroundPane.tsx";
 
@@ -23,11 +24,17 @@ export const OverviewPane = observer(function OverviewPane() {
         {spriteInputInfo
           ? (
             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={0.5}>
-              {`Input File: ${getPngInfoSummary(spriteInputInfo)}`}
-              <PngInfoTooltip info={spriteInputInfo}/>
+              <Trans>
+                Input File: <PngInfoSummary pngInfo={spriteInputInfo}/>
+              </Trans>
+              <PngInfoTooltip pngInfo={spriteInputInfo}/>
             </Box>
           )
-          : 'Awaiting input'
+          : (
+            <Trans>
+              Awaiting input
+            </Trans>
+          )
         }
       </Box>
       <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>

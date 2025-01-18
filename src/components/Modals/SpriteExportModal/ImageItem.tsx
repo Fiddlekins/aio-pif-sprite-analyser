@@ -1,9 +1,10 @@
+import {Trans} from "@lingui/react/macro";
 import {ContentCopySharp, DownloadSharp} from "@mui/icons-material";
 import {Alert, Box, Button, Typography} from "@mui/material";
 import {Fragment, useCallback, useEffect, useRef} from "react";
-import {getPngInfoSummary} from "../../../utils/getPngInfoSummary.ts";
 import {PngInfo} from "../../../utils/image/getDecodedPng.ts";
-import {PngInfoTooltip} from "../../PngInfoTooltip.tsx";
+import {PngInfoSummary} from "../../PngInfo/PngInfoSummary.tsx";
+import {PngInfoTooltip} from "../../PngInfo/PngInfoTooltip.tsx";
 import {StyledTooltip} from "../../StyledTooltip.tsx";
 
 export interface Image {
@@ -80,8 +81,8 @@ export function ImageItem(
         alignItems={'center'}
         gap={0.5}
       >
-        {getPngInfoSummary(info)}
-        <PngInfoTooltip info={info}/>
+        <PngInfoSummary pngInfo={info}/>
+        <PngInfoTooltip pngInfo={info}/>
       </Box>
       <Box
         display={'flex'}
@@ -103,16 +104,26 @@ export function ImageItem(
                   gap={0.5}
                 >
                   <Typography variant={'h6'}>
-                    Copying is disabled
+                    <Trans>
+                      Copying is disabled
+                    </Trans>
                   </Typography>
                   <Typography variant={'body2'}>
-                    {`Browsers re-encode images when they are copied to the clipboard, in order to prevent malicious websites from exploiting applications the browser may paste into.`}
+                    <Trans>
+                      Browsers re-encode images when they are copied to the clipboard, in order to prevent malicious
+                      websites from exploiting applications the browser may paste into.
+                    </Trans>
                   </Typography>
                   <Typography variant={'body2'}>
-                    {`This re-encoding produces bloated PNG images and ignores indexed mode, making this export process pointless.`}
+                    <Trans>
+                      This re-encoding produces bloated PNG images and ignores indexed mode, making this export process
+                      pointless.
+                    </Trans>
                   </Typography>
                   <Typography variant={'body2'}>
-                    {`Downloading images does not suffer from this issue.`}
+                    <Trans>
+                      Downloading images does not suffer from this issue.
+                    </Trans>
                   </Typography>
                 </Box>
               </Fragment>
@@ -133,7 +144,9 @@ export function ImageItem(
       </Box>
       {alertIndexedFailure && indexedFailed && (
         <Alert severity={'error'}>
-          Unable to encode in indexed mode due to colour count exceeding 256.
+          <Trans>
+            Unable to encode in indexed mode due to colour count exceeding 256.
+          </Trans>
         </Alert>
       )}
     </Box>

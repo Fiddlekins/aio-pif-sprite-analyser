@@ -1,9 +1,11 @@
 import {observer} from "@legendapp/state/react";
+import {Trans, useLingui} from "@lingui/react/macro";
 import {ExpandMoreSharp} from "@mui/icons-material";
 import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@mui/material";
 import {useCallback, useMemo} from "react";
 import {analysis$} from "../../state/analysis.ts";
 import {ui$} from "../../state/ui.ts";
+import {decimalLargeFixed} from "../../utils/formatStyles.ts";
 import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
 import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColourKey.ts";
 import {numberComparator} from "../../utils/numberComparator.ts";
@@ -13,53 +15,7 @@ import {LongRichTable} from "./RichTable/LongRichTable.tsx";
 import {RichTable} from "./RichTable/RichTable.tsx";
 import {Column, OrderDirection, RowComparator, RowDataBase} from "./RichTable/types.ts";
 
-function toXDecimals(value: number, decimalCount: number) {
-  const scalar = 10 ** decimalCount;
-  return Math.round(value * scalar) / scalar;
-}
-
 const checkboxRelativeWidth = 2;
-
-const columns: Column[] = [
-  {
-    id: 'colourA',
-    label: 'Colour A',
-    relativeWidth: 4,
-  },
-  {
-    id: 'colourB',
-    label: 'Colour B',
-    relativeWidth: 4,
-  },
-  {
-    id: 'similarity',
-    label: 'Similarity',
-    sortable: true,
-    align: 'right',
-    relativeWidth: 3,
-  },
-  // {
-  //   id: 'deltaE2000',
-  //   label: 'deltaE2000',
-  //   sortable: true,
-  //   align: 'right',
-  //   relativeWidth: 3,
-  // },
-  // {
-  //   id: 'deltaECMC',
-  //   label: 'deltaECMC',
-  //   sortable: true,
-  //   align: 'right',
-  //   relativeWidth: 3,
-  // },
-  // {
-  //   id: 'deltaFusionBot',
-  //   label: 'deltaFusionBot',
-  //   sortable: true,
-  //   align: 'right',
-  //   relativeWidth: 3,
-  // },
-];
 
 interface RowData extends RowDataBase {
   colourPairKey: string;
@@ -74,6 +30,51 @@ interface RowData extends RowDataBase {
 
 export const SimilarityTable = observer(function SimilarityTable() {
   const colourReport = analysis$.colourReport.get();
+
+  const {i18n, t} = useLingui();
+
+  const columns: Column[] = useMemo(() => {
+    return [
+      {
+        id: 'colourA',
+        label: t`Colour A`,
+        relativeWidth: 4,
+      },
+      {
+        id: 'colourB',
+        label: t`Colour B`,
+        relativeWidth: 4,
+      },
+      {
+        id: 'similarity',
+        label: t`Similarity`,
+        sortable: true,
+        align: 'right',
+        relativeWidth: 3,
+      },
+      // {
+      //   id: 'deltaE2000',
+      //   label: 'deltaE2000',
+      //   sortable: true,
+      //   align: 'right',
+      //   relativeWidth: 3,
+      // },
+      // {
+      //   id: 'deltaECMC',
+      //   label: 'deltaECMC',
+      //   sortable: true,
+      //   align: 'right',
+      //   relativeWidth: 3,
+      // },
+      // {
+      //   id: 'deltaFusionBot',
+      //   label: 'deltaFusionBot',
+      //   sortable: true,
+      //   align: 'right',
+      //   relativeWidth: 3,
+      // },
+    ];
+  }, [t]);
 
   const rowDataUnsorted = useMemo(() => {
     if (!colourReport) {
@@ -134,18 +135,18 @@ export const SimilarityTable = observer(function SimilarityTable() {
           </Box>
         );
       case 'deltaE2000':
-        return toXDecimals(row.deltaE2000, 3);
+        return i18n.number(row.deltaE2000, decimalLargeFixed);
       case 'deltaECMCAB':
-        return toXDecimals(row.deltaECMCAB, 3);
+        return i18n.number(row.deltaECMCAB, decimalLargeFixed);
       case 'deltaECMCBA':
-        return toXDecimals(row.deltaECMCBA, 3);
+        return i18n.number(row.deltaECMCBA, decimalLargeFixed);
       case 'deltaFusionBot':
-        return toXDecimals(row.deltaFusionBot, 3);
+        return i18n.number(row.deltaFusionBot, decimalLargeFixed);
       case 'similarity':
-        return toXDecimals(row.similarity, 3);
+        return i18n.number(row.similarity, decimalLargeFixed);
     }
     throw new Error(`Unhandled columnId ${columnId}`);
-  }, []);
+  }, [i18n]);
 
   const rowComparator: RowComparator<RowData> = useCallback((a, b, orderBy: string, orderDirection: OrderDirection) => {
     let result = 0;
@@ -182,7 +183,11 @@ export const SimilarityTable = observer(function SimilarityTable() {
           >
             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
               <VerdictIcon verdict={colourReport?.colourSimilarityVerdict || null}/>
-              <Typography>Similar Colour Pairs</Typography>
+              <Typography>
+                <Trans>
+                  Similar Colour Pairs
+                </Trans>
+              </Typography>
             </Box>
           </AccordionSummary>
           <AccordionDetails>

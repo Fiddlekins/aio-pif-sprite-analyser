@@ -1,4 +1,5 @@
 import {Memo, observer, useObserveEffect} from "@legendapp/state/react";
+import {Trans, useLingui} from "@lingui/react/macro";
 import {ExpandMoreSharp, HelpOutlineSharp, RestartAltSharp} from "@mui/icons-material";
 import {Accordion, AccordionDetails, AccordionSummary, Box, Button, Switch, Typography} from "@mui/material";
 import {ChangeEvent, Fragment, useCallback, useState} from "react";
@@ -24,6 +25,7 @@ function getCanvasEl() {
 export const BackgroundModal = observer(function BackgroundModal() {
   const isMobile = ui$.isMobile.get();
 
+  const {t} = useLingui();
   const [canvasEl] = useState(getCanvasEl);
 
   useObserveEffect(() => {
@@ -47,7 +49,7 @@ export const BackgroundModal = observer(function BackgroundModal() {
 
   return (
     <StyledModal
-      title={'Configure Battler'}
+      title={t`Configure Battler`}
       open={ui$.isBackgroundModalOpen.get()}
       handleClose={handleClose}
     >
@@ -118,7 +120,9 @@ export const BackgroundModal = observer(function BackgroundModal() {
                 gap={0.5}
               >
                 <Typography variant={'h6'}>
-                  Sprite Position Override
+                  <Trans>
+                    Sprite Position Override
+                  </Trans>
                 </Typography>
               </Box>
             </AccordionSummary>
@@ -143,16 +147,26 @@ export const BackgroundModal = observer(function BackgroundModal() {
                           gap={0.5}
                         >
                           <Typography variant={'h6'}>
-                            Position Override
+                            <Trans>
+                              Position Override
+                            </Trans>
                           </Typography>
                           <Typography variant={'body2'}>
-                            {`Pokemon Infinite Fusion uses the sprite position offsets configured for the body pokemon of the fusion when determining where to draw it.`}
+                            <Trans>
+                              Pokemon Infinite Fusion uses the sprite position offsets configured for the body pokemon
+                              of the fusion when determining where to draw it.
+                            </Trans>
                           </Typography>
                           <Typography variant={'body2'}>
-                            {`This can be overridden using the settings below, but these changes will not transfer into the game.`}
+                            <Trans>
+                              This can be overridden using the settings below, but these changes will not transfer into
+                              the game.
+                            </Trans>
                           </Typography>
                           <Typography variant={'body2'} fontWeight={'bold'}>
-                            {`Be sure to use the body pokemon configuration when fine-tuning sprite placement.`}
+                            <Trans>
+                              Be sure to use the body pokemon configuration when fine-tuning sprite placement.
+                            </Trans>
                           </Typography>
                         </Box>
                       </Fragment>
@@ -163,7 +177,9 @@ export const BackgroundModal = observer(function BackgroundModal() {
                     <HelpOutlineSharp fontSize={'small'}/>
                   </StyledTooltip>
                   <Typography variant={'body2'}>
-                    The sprite position derived from the body pokemon can be overridden
+                    <Trans>
+                      The sprite position derived from the body pokemon can be overridden
+                    </Trans>
                   </Typography>
                 </Box>
                 <Box
@@ -179,7 +195,7 @@ export const BackgroundModal = observer(function BackgroundModal() {
                       return (
                         <Box>
                           <PokemonDisplay
-                            label={'Body'}
+                            label={t`Body`}
                             isFusion={false}
                             pokemonId={bodyId}
                             isDisabled={isOverrideBody}
@@ -256,7 +272,9 @@ export const BackgroundModal = observer(function BackgroundModal() {
                               onClick={onOverrideReset}
                             >
                               <RestartAltSharp/>
-                              Reset
+                              <Trans>
+                                Reset
+                              </Trans>
                             </Button>
                           </Box>
                         </>

@@ -1,3 +1,4 @@
+import {useLingui} from "@lingui/react/macro";
 import {Box, BoxProps, Link, styled, Typography} from "@mui/material";
 import {useMemo} from "react";
 import {pokemonIdToDataMap} from "../data/pokemonIdToDataMap.ts";
@@ -67,6 +68,7 @@ export function PokemonDisplay(
     onClick,
   }: BasePokemonDisplayProps
 ) {
+  const {t} = useLingui();
   const image = useMemo(() => {
     return (
       <PokemonImage
@@ -87,7 +89,7 @@ export function PokemonDisplay(
   let dexHref: string | null;
   if (isFusion && headPokemonId && bodyPokemonId) {
     id = `${headPokemonId}.${bodyPokemonId}`;
-    name = 'Autogen';
+    name = t`Autogen`;
     dexHref = getFusedDexHref(headPokemonId, bodyPokemonId);
   } else if (!isFusion && pokemonId) {
     id = `${pokemonId}`;

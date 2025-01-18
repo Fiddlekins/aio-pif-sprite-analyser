@@ -1,8 +1,9 @@
 import {observer} from "@legendapp/state/react";
+import {Trans, useLingui} from "@lingui/react/macro";
 import {ContentPasteGoSharp} from "@mui/icons-material";
 import {Alert, Box, BoxProps, Button, CircularProgress, styled, Typography} from "@mui/material";
 import {TypedArray} from "image-in-browser";
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useMemo, useState} from "react";
 import {useDropzone} from 'react-dropzone';
 import {analysis$} from "../../state/analysis.ts";
 import {ui$} from "../../state/ui.ts";
@@ -36,16 +37,25 @@ const acceptedDimensions = [
   {width: 96, height: 96, upscale: 3},
   {width: 288, height: 288, upscale: 1},
 ];
-const acceptedDimensionsStrings = acceptedDimensions.map(({width, height}) => {
-  return `${width}x${height}`
-});
-const acceptedDimensionsText = `${acceptedDimensionsStrings.slice(0, -1).join(', ')} or ${acceptedDimensionsStrings[acceptedDimensionsStrings.length - 1]}`;
 
 export const SpriteImportModal = observer(function SpriteImportModal() {
+  const locale = ui$.locale.get();
   const isImportModalOpen = ui$.isImportModalOpen.get();
   const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const {t} = useLingui();
+
+  const acceptedDimensionsText = useMemo(() => {
+    const dimensionStrings = acceptedDimensions.map(({width, height}) => {
+      return t`${width}x${height}`;
+    });
+    const formatter = new Intl.ListFormat(locale, {
+      style: 'short',
+      type: 'disjunction',
+    });
+    return formatter.format(dimensionStrings);
+  }, [t, locale]);
 
   const importImage = useCallback(async (data: TypedArray, name: string | null, sourceUrl: string | null) => {
     let decodedPngResult;
@@ -79,9 +89,11 @@ export const SpriteImportModal = observer(function SpriteImportModal() {
         return;
       }
     }
-    setError(`File is invalid size: ${imageData.width}x${imageData.height}`);
+    const {width, height} = imageData;
+    const resolutionString = t`${width}x${height}`;
+    setError(t`File is invalid size: ${resolutionString}`);
     setIsLoading(false);
-  }, [setError]);
+  }, [t, setError]);
 
   const executePaste = useCallback(async (files: File[] | null) => {
     const clipboardContents = await navigator.clipboard.read();
@@ -115,7 +127,7 @@ export const SpriteImportModal = observer(function SpriteImportModal() {
               blob = await (await fetch(url, {mode: 'cors'})).blob();
             } catch (err: unknown) {
               setIsLoading(false);
-              setError('The requested host site blocks fetching outside whitelisted domains');
+              setError(t`The requested host site blocks fetching outside whitelisted domains`);
               return;
             }
             const match = url.match(/[^/\\]+\.png/)
@@ -154,9 +166,9 @@ export const SpriteImportModal = observer(function SpriteImportModal() {
         }
       }
       setIsLoading(false);
-      setError('No suitable data found on clipboard');
+      setError(t`No suitable data found on clipboard`);
     }
-  }, [importImage, setIsLoading]);
+  }, [t, importImage, setIsLoading]);
 
   useEffect(() => {
     const pasteHandler = (e: ClipboardEvent) => {
@@ -187,10 +199,10 @@ export const SpriteImportModal = observer(function SpriteImportModal() {
           });
       } else {
         setIsLoading(false);
-        setError('File not recognised as an image');
+        setError(t`File not recognised as an image`);
       }
     }
-  }, [acceptedFiles, setError, importImage, setIsLoading]);
+  }, [t, acceptedFiles, setError, importImage, setIsLoading]);
 
   const handleClose = useCallback(() => {
     ui$.isImportModalOpen.set(false);
@@ -198,12 +210,14 @@ export const SpriteImportModal = observer(function SpriteImportModal() {
 
   return (
     <StyledModal
-      title={'Import Sprite'}
+      title={t`Import Sprite`}
       open={isImportModalOpen}
       handleClose={handleClose}
     >
       <Typography variant={'body1'}>
-        {`Accepts images that are ${acceptedDimensionsText} pixels in size.`}
+        <Trans>
+          Accepts images that are {acceptedDimensionsText} pixels in size.
+        </Trans>
       </Typography>
       <Box
         display={'flex'}
@@ -212,7 +226,11 @@ export const SpriteImportModal = observer(function SpriteImportModal() {
       >
         <DropBox {...getRootProps({className: 'dropzone'})} sx={{flexGrow: 2}}>
           <input {...getInputProps()} />
-          <p>Drag 'n' drop some files here, or click to select files</p>
+          <p>
+            <Trans>
+              Drag 'n' drop some files here, or click to select files
+            </Trans>
+          </p>
         </DropBox>
         <Button
           variant={'outlined'}

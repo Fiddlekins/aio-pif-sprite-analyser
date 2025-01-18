@@ -1,4 +1,5 @@
 import {observer} from "@legendapp/state/react";
+import {Trans} from "@lingui/react/macro";
 import {SettingsSharp} from "@mui/icons-material";
 import {AppBar, AppBarProps, Box, Button, Link, styled, Toolbar, ToolbarProps, Typography} from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
@@ -78,14 +79,18 @@ export const TopBar = observer(function TopBar() {
                 variant={'outlined'}
                 onClick={openImportModal}
               >
-                Import
+                <Trans>
+                  Import
+                </Trans>
               </Button>
               <Button
                 color="inherit"
                 variant={'outlined'}
                 onClick={openExportModal}
               >
-                Export
+                <Trans>
+                  Export
+                </Trans>
               </Button>
               <StyledIconButton
                 variant={'outlined'}

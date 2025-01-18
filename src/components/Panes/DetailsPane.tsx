@@ -1,4 +1,5 @@
 import {observer} from "@legendapp/state/react";
+import {useLingui} from "@lingui/react/macro";
 import {Box, styled, Tab, tabClasses, TabProps, Tabs} from "@mui/material";
 import {ReactNode, SyntheticEvent, useCallback, useEffect, useRef, useState} from "react";
 import {analysis$} from "../../state/analysis.ts";
@@ -49,6 +50,8 @@ export const DetailsPane = observer(function DetailsPane() {
   const transparencyReport = analysis$.transparencyReport.get();
   const colourReport = analysis$.colourReport.get();
   const isIgnoreColouredTransparencyEnabled = settings$.isIgnoreColouredTransparencyEnabled.get();
+
+  const {t} = useLingui();
 
   const lastHandledSpriteId = useRef('');
   const [tabIndex, setTabIndex] = useState(0);
@@ -101,23 +104,23 @@ export const DetailsPane = observer(function DetailsPane() {
         sx={{boxShadow: 2, zIndex: 1}}
       >
         <StyledTab
-          label="Partial Pixels"
+          label={t`Partial Pixels`}
           icon={(<VerdictIcon verdict={partialPixelReport?.verdict || null}/>)}
           iconPosition={'start'}
         />
         <StyledTab
-          label="Transparency"
+          label={t`Transparency`}
           icon={(<VerdictIcon verdict={transparencyReport?.semiTransparentVerdict || null}/>)}
           iconPosition={'start'}
         />
         <StyledTab
-          label="Background"
+          label={t`Background`}
           icon={(<VerdictIcon verdict={transparencyReport?.colouredTransparentVerdict || null}/>)}
           iconPosition={'start'}
           sx={{opacity: isIgnoreColouredTransparencyEnabled ? 0.5 : 1}}
         />
         <StyledTab
-          label="Colours"
+          label={t`Colours`}
           icon={(<VerdictIcon verdict={colourReport?.verdict || null}/>)}
           iconPosition={'start'}
         />
