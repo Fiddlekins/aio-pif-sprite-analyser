@@ -12,7 +12,9 @@
     "preview": "vite preview",
     "processPokemon": "node ./raw/processPokemon.mjs",
     "generateManifest": "node ./raw/generateBattleAssetManifest.mjs",
-    "lingui:extract": "lingui extract"
+    "lingui:extract": "lingui extract",
+    "sync": "lingui extract --overwrite && lingui compile",
+    "sync_and_purge": "lingui extract --overwrite --clean && lingui compile"
   },
   "resolutions": {
     "@swc/core": "1.5.7"

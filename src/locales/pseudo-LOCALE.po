@@ -219,8 +219,8 @@ msgstr ""
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:194
 #: src/components/Modals/SpriteImportModal.tsx:51
-#: src/components/Modals/SpriteImportModal.tsx:94
-#: src/components/PngInfo/Dimensions.tsx:17
+#: src/components/Modals/SpriteImportModal.tsx:93
+#: src/components/PngInfo/Dimensions.tsx:18
 msgid "{width}x{height}"
 msgstr ""
 
@@ -250,31 +250,31 @@ msgstr ""
 msgid "Under normal circumstances this should be left enabled."
 msgstr ""
 
-#: src/components/Modals/SpriteImportModal.tsx:95
+#: src/components/Modals/SpriteImportModal.tsx:94
 msgid "File is invalid size: {resolutionString}"
 msgstr ""
 
-#: src/components/Modals/SpriteImportModal.tsx:131
+#: src/components/Modals/SpriteImportModal.tsx:130
 msgid "The requested host site blocks fetching outside whitelisted domains"
 msgstr ""
 
-#: src/components/Modals/SpriteImportModal.tsx:170
+#: src/components/Modals/SpriteImportModal.tsx:169
 msgid "No suitable data found on clipboard"
 msgstr ""
 
-#: src/components/Modals/SpriteImportModal.tsx:203
+#: src/components/Modals/SpriteImportModal.tsx:202
 msgid "File not recognised as an image"
 msgstr ""
 
-#: src/components/Modals/SpriteImportModal.tsx:214
+#: src/components/Modals/SpriteImportModal.tsx:213
 msgid "Import Sprite"
 msgstr ""
 
-#: src/components/Modals/SpriteImportModal.tsx:219
+#: src/components/Modals/SpriteImportModal.tsx:218
 msgid "Accepts images that are {acceptedDimensionsText} pixels in size."
 msgstr ""
 
-#: src/components/Modals/SpriteImportModal.tsx:231
+#: src/components/Modals/SpriteImportModal.tsx:230
 msgid "Drag 'n' drop some files here, or click to select files"
 msgstr ""
 

@@ -7,6 +7,7 @@ export const validLocales = config.locales;
 export const pseudoLocale = config.pseudoLocale!;
 
 export const localeToNameMap: Record<string, string> = {
+  'de-DE': 'Deutsch',
   'en-GB': 'English (United Kingdom)',
   'en-US': 'English (United States)',
 };

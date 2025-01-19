@@ -3,12 +3,14 @@ import type {LinguiConfig} from "@lingui/conf";
 const config: LinguiConfig = {
   sourceLocale: "en-GB",
   locales: [
+    "de-DE",
     "en-GB",
     "en-US",
     "pseudo-LOCALE",
   ],
   pseudoLocale: "pseudo-LOCALE",
   fallbackLocales: {
+    "de": "de-DE",
     "en": "en-GB",
     "pseudo-LOCALE": "en-GB",
     "default": "en-GB",
