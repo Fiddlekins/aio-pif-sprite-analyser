@@ -1,19 +1,18 @@
 import {observer} from "@legendapp/state/react";
-import {Trans, useLingui} from "@lingui/react/macro";
+import {Trans} from "@lingui/react/macro";
 import {Box, Paper, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
 import {MouseEvent, useCallback, useEffect, useRef} from "react";
 import {analysis$, analysisSettings$} from "../../../state/analysis.ts";
 import {ui$} from "../../../state/ui.ts";
-import {percentMedium} from "../../../utils/formatStyles.ts";
 import {CanvasWithBackground} from "../../CanvasWithBackground.tsx";
+import {FormatNumber} from "../../Formatters/FormatNumber.tsx";
+import {FormatPercent} from "../../Formatters/FormatPercent.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
 export const PartialPixelsVerdict = observer(function PartialPixelsVerdict() {
   const isMobile = ui$.isMobile.get();
   const partialPixelReport = analysis$.partialPixelReport.get();
   const partialPixelOutputMode = analysisSettings$.partialPixelOutputMode.get();
-
-  const {i18n} = useLingui();
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -53,7 +52,11 @@ export const PartialPixelsVerdict = observer(function PartialPixelsVerdict() {
           <VerdictIcon verdict={partialPixelReport?.verdict || null}/>
           <Typography variant={'h5'} align={'left'}>
             <Trans>
-              Partial Pixel Count: {i18n.number(partialPixelCount)} ({i18n.number(partialPixelFraction, percentMedium)})
+              Partial Pixel Count: {
+              <FormatNumber value={partialPixelCount}/>
+            } ({
+              <FormatPercent value={partialPixelFraction}/>
+            })
             </Trans>
           </Typography>
         </Box>

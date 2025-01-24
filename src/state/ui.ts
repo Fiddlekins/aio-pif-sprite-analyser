@@ -1,7 +1,7 @@
 import {beginBatch, endBatch, observable, observe} from "@legendapp/state";
 import {ObservablePersistLocalStorage} from "@legendapp/state/persist-plugins/local-storage";
 import {synced} from "@legendapp/state/sync";
-import {loadCatalog, resolveLocale} from "../i18n.ts";
+import {loadCatalog, resolveLanguageLocale, resolveNumberLocale} from "../i18n.ts";
 import {getTheme} from "../themes/getTheme.ts";
 import {parseMuiMediaQuery} from "../utils/parseMuiMediaQuery.ts";
 import {settings$} from "./settings.ts";
@@ -38,8 +38,12 @@ export const uiSettings$ = observable(synced({
   }
 ));
 
+const languageLocaleInitial = resolveLanguageLocale(settings$.languageLocale.get());
+const resolveNumberLocaleInitial = resolveNumberLocale(languageLocaleInitial, settings$.numberLocale.get());
+
 export const ui$ = observable({
-  locale: resolveLocale(settings$.locale.get()),
+  languageLocale: languageLocaleInitial,
+  numberLocale: resolveNumberLocaleInitial,
   isMobile: window.matchMedia(isMobileQueryString).matches,
   isImportModalOpen: true,
   isExportModalOpen: false,
@@ -110,12 +114,11 @@ matchQuery.addEventListener('change', ({matches}) => {
 });
 
 observe(() => {
-  const localeSetting = settings$.locale.get();
-  ui$.locale.set(resolveLocale(localeSetting));
-});
-
-observe(() => {
-  const locale = ui$.locale.get();
-  console.log(locale)
-  loadCatalog(locale).catch(console.error);
+  const languageLocaleSetting = settings$.languageLocale.get();
+  const numberLocaleSetting = settings$.numberLocale.get();
+  const languageLocale = resolveLanguageLocale(languageLocaleSetting);
+  const numberLocale = resolveNumberLocale(languageLocale, numberLocaleSetting);
+  ui$.languageLocale.set(languageLocale);
+  ui$.numberLocale.set(numberLocale);
+  loadCatalog(languageLocale).catch(console.error);
 });

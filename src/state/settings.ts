@@ -7,7 +7,8 @@ import {validate} from "./utils/validation/validate.ts";
 
 export const settings$ = observable(synced({
     initial: {
-      locale: 'autodetect',
+      languageLocale: 'autodetect',
+      numberLocale: 'autodetect',
       themeId: 'system',
       isCanvasAccelerationEnabled: true,
       isIgnoreColouredTransparencyEnabled: false,
@@ -18,7 +19,8 @@ export const settings$ = observable(synced({
       plugin: ObservablePersistLocalStorage,
       transform: {
         load: (value) => {
-          validate(value, 'locale', isValidString());
+          validate(value, 'languageLocale', isValidString());
+          validate(value, 'numberLocale', isValidString({oneOf: ['autodetect', 'matchLanguage']}));
           validate(value, 'themeId', isValidString({oneOf: ['system', 'light', 'dark']}));
           validate(value, 'isCanvasAccelerationEnabled', isValidBoolean());
           validate(value, 'isIgnoreColouredTransparencyEnabled', isValidBoolean());

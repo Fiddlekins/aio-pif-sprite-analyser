@@ -1,19 +1,18 @@
 import {observer} from "@legendapp/state/react";
-import {Trans, useLingui} from "@lingui/react/macro";
+import {Trans} from "@lingui/react/macro";
 import {Box, Paper, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
 import {MouseEvent, useCallback, useEffect, useRef} from "react";
 import {analysis$, analysisSettings$} from "../../../state/analysis.ts";
 import {ui$} from "../../../state/ui.ts";
-import {percentMedium} from "../../../utils/formatStyles.ts";
 import {CanvasWithBackground} from "../../CanvasWithBackground.tsx";
+import {FormatNumber} from "../../Formatters/FormatNumber.tsx";
+import {FormatPercent} from "../../Formatters/FormatPercent.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
 export const SemiTransparencyVerdict = observer(function SemiTransparencyVerdict() {
   const isMobile = ui$.isMobile.get();
   const transparencyReport = analysis$.transparencyReport.get();
   const semiTransparentOutputMode = analysisSettings$.semiTransparentOutputMode.get();
-
-  const {i18n} = useLingui();
 
   const semiTransparentCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -56,7 +55,11 @@ export const SemiTransparencyVerdict = observer(function SemiTransparencyVerdict
           <Typography variant={'h5'} align={'left'}>
             <Trans>
               Semi-Transparent Pixel
-              Count: {i18n.number(semiTransparentPixelCount)} ({i18n.number(semiTransparentPixelFraction, percentMedium)})
+              Count: {
+              <FormatNumber value={semiTransparentPixelCount}/>
+            } ({
+              <FormatPercent value={semiTransparentPixelFraction}/>
+            })
             </Trans>
           </Typography>
         </Box>

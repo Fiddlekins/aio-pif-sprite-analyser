@@ -39,7 +39,7 @@ const acceptedDimensions = [
 ];
 
 export const SpriteImportModal = observer(function SpriteImportModal() {
-  const locale = ui$.locale.get();
+  const languageLocale = ui$.languageLocale.get();
   const isImportModalOpen = ui$.isImportModalOpen.get();
   const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
   const [error, setError] = useState<string | null>(null);
@@ -50,19 +50,19 @@ export const SpriteImportModal = observer(function SpriteImportModal() {
     const dimensionStrings = acceptedDimensions.map(({width, height}) => {
       return t`${width}x${height}`;
     });
-    const formatter = new Intl.ListFormat(locale, {
+    const formatter = new Intl.ListFormat(languageLocale, {
       style: 'short',
       type: 'disjunction',
     });
     return formatter.format(dimensionStrings);
-  }, [t, locale]);
+  }, [t, languageLocale]);
 
   const importImage = useCallback(async (data: TypedArray, name: string | null, sourceUrl: string | null) => {
     let decodedPngResult;
     try {
       decodedPngResult = getDecodedPng(data);
     } catch (err: unknown) {
-      console.log(err);
+      console.error(err);
       const error = err as Error;
       setError(error.message);
       setIsLoading(false);

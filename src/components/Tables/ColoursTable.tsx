@@ -4,7 +4,7 @@ import {Box, Typography} from "@mui/material";
 import {ColorObject} from "colorjs.io/fn";
 import {useCallback, useMemo} from "react";
 import {ui$, uiSettings$} from "../../state/ui.ts";
-import {percentMediumFixed} from "../../utils/formatStyles.ts";
+import {formatDecimalDefault, formatPercentMediumFixed} from "../../utils/formatStyles.ts";
 import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
 import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColourKey.ts";
 import {numberComparator} from "../../utils/numberComparator.ts";
@@ -46,10 +46,11 @@ export const ColoursTable = observer(function ColoursTable(
   }: ColoursTableProps
 ) {
   const isMobile = ui$.isMobile.get();
+  const numberLocale = ui$.numberLocale.get();
   const currentCheckedColours = ui$.highlight.currentCheckedColours.get();
   const colourSpace = uiSettings$.colourSpace.get();
 
-  const {i18n, t} = useLingui();
+  const {t} = useLingui();
 
   const columns: Column[] = useMemo(() => {
     return [
@@ -146,15 +147,15 @@ export const ColoursTable = observer(function ColoursTable(
           </Box>
         );
       case 'usage':
-        return i18n.number(row.usage, percentMediumFixed);
+        return formatPercentMediumFixed(numberLocale, row.usage);
       case 'channel0': {
         switch (colourSpace) {
           case 'RGB':
-            return row.rgba.r;
+            return formatDecimalDefault(numberLocale, row.rgba.r);
           case 'HSV':
-            return Math.round(row.hsva.coords[0] || 0);
+            return formatDecimalDefault(numberLocale, Math.round(row.hsva.coords[0] || 0));
           case 'HSL':
-            return Math.round(row.hsla.coords[0] || 0);
+            return formatDecimalDefault(numberLocale, Math.round(row.hsla.coords[0] || 0));
           default:
             return '-'
         }
@@ -162,11 +163,11 @@ export const ColoursTable = observer(function ColoursTable(
       case 'channel1': {
         switch (colourSpace) {
           case 'RGB':
-            return row.rgba.g;
+            return formatDecimalDefault(numberLocale, row.rgba.g);
           case 'HSV':
-            return i18n.number(row.hsva.coords[1] / 100, percentMediumFixed);
+            return formatPercentMediumFixed(numberLocale, row.hsva.coords[1] / 100);
           case 'HSL':
-            return i18n.number(row.hsla.coords[1] / 100, percentMediumFixed);
+            return formatPercentMediumFixed(numberLocale, row.hsla.coords[1] / 100);
           default:
             return '-'
         }
@@ -174,11 +175,11 @@ export const ColoursTable = observer(function ColoursTable(
       case 'channel2': {
         switch (colourSpace) {
           case 'RGB':
-            return row.rgba.b;
+            return formatDecimalDefault(numberLocale, row.rgba.b);
           case 'HSV':
-            return i18n.number(row.hsva.coords[2] / 100, percentMediumFixed);
+            return formatPercentMediumFixed(numberLocale, row.hsva.coords[2] / 100);
           case 'HSL':
-            return i18n.number(row.hsla.coords[2] / 100, percentMediumFixed);
+            return formatPercentMediumFixed(numberLocale, row.hsla.coords[2] / 100);
           default:
             return '-'
         }
@@ -186,17 +187,17 @@ export const ColoursTable = observer(function ColoursTable(
       case 'channel3': {
         switch (colourSpace) {
           case 'RGB':
-            return i18n.number(row.rgba.a / 255, percentMediumFixed);
+            return formatPercentMediumFixed(numberLocale, row.rgba.a / 255);
           case 'HSV':
-            return i18n.number(row.hsva.alpha || 0, percentMediumFixed);
+            return formatPercentMediumFixed(numberLocale, row.hsva.alpha || 0);
           case 'HSL':
-            return i18n.number(row.hsla.alpha || 0, percentMediumFixed);
+            return formatPercentMediumFixed(numberLocale, row.hsla.alpha || 0);
           default:
             return '-'
         }
       }
     }
-  }, [i18n, colourSpace]);
+  }, [numberLocale, colourSpace]);
 
   const rowComparator: RowComparator<RowData> = useCallback((a, b, orderBy: string, orderDirection: OrderDirection) => {
     let result = 0;

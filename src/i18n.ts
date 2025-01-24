@@ -10,6 +10,10 @@ export const localeToNameMap: Record<string, string> = {
   'de-DE': 'Deutsch',
   'en-GB': 'English (United Kingdom)',
   'en-US': 'English (United States)',
+  'fr-FR': 'Français',
+  'pl': 'Polski',
+  'zn-CN': '中文 (简体)',
+  'zn-TW': '繁體中文',
 };
 export const nameToLocaleMap: Record<string, string> = {};
 for (const locale of validLocales) {
@@ -31,7 +35,7 @@ function firstValue<T>(input: T | T[]): T {
   return input;
 }
 
-export function resolveLocale(requestedLocale: string): string {
+export function resolveLanguageLocale(requestedLocale: string): string {
   if (requestedLocale === 'autodetect') {
     for (const locale of navigator.languages) {
       if (validLocales.includes(locale)) {
@@ -64,6 +68,16 @@ export function resolveLocale(requestedLocale: string): string {
     return firstValue(config.fallbackLocales[language]);
   }
   return defaultLocale;
+}
+
+export function resolveNumberLocale(languageLocale: string, numberLocale: string): string {
+  switch (numberLocale) {
+    case 'matchLanguage':
+      return languageLocale;
+    case 'autodetect':
+    default:
+      return navigator.language;
+  }
 }
 
 export async function loadCatalog(locale: string) {

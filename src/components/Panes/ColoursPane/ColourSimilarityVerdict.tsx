@@ -1,17 +1,16 @@
 import {observer} from "@legendapp/state/react";
-import {Trans, useLingui} from "@lingui/react/macro";
+import {Trans} from "@lingui/react/macro";
 import {HelpOutlineSharp} from "@mui/icons-material";
 import {Box, Typography} from "@mui/material";
 import {Fragment} from "react";
 import {analysis$} from "../../../state/analysis.ts";
+import {FormatNumber} from "../../Formatters/FormatNumber.tsx";
 import {StyledTooltip} from "../../StyledTooltip.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
 export const ColourSimilarityVerdict = observer(function ColourSimilarityVerdict() {
   const colourReport = analysis$.colourReport.get();
   const similarColourCount = colourReport?.analysis.similarColourPairMap.size || 0;
-
-  const {i18n} = useLingui();
 
   return (
     <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
@@ -20,12 +19,12 @@ export const ColourSimilarityVerdict = observer(function ColourSimilarityVerdict
         {colourReport?.analysis.similaritySkipped !== true
           ? (
             <Trans>
-              Pairs of similar colours: {i18n.number(similarColourCount)}
+              Pairs of similar colours: {<FormatNumber value={similarColourCount}/>}
             </Trans>
           )
           : (
             <Trans>
-              Skipped due to colour count exceeding {i18n.number(256)}
+              Skipped due to colour count exceeding {<FormatNumber value={256}/>}
             </Trans>
           )
         }

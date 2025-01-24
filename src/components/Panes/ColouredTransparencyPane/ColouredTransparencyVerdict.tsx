@@ -1,11 +1,12 @@
 import {observer} from "@legendapp/state/react";
-import {Trans, useLingui} from "@lingui/react/macro";
+import {Trans} from "@lingui/react/macro";
 import {Box, Paper, ToggleButton, ToggleButtonGroup, Typography} from "@mui/material";
 import {MouseEvent, useCallback, useEffect, useRef} from "react";
 import {analysis$, analysisSettings$} from "../../../state/analysis.ts";
 import {ui$} from "../../../state/ui.ts";
-import {percentMedium} from "../../../utils/formatStyles.ts";
 import {CanvasWithBackground} from "../../CanvasWithBackground.tsx";
+import {FormatNumber} from "../../Formatters/FormatNumber.tsx";
+import {FormatPercent} from "../../Formatters/FormatPercent.tsx";
 import {VerdictIcon} from "../../VerdictIcon.tsx";
 
 export const ColouredTransparencyVerdict = observer(function ColouredTransparencyVerdict() {
@@ -13,8 +14,6 @@ export const ColouredTransparencyVerdict = observer(function ColouredTransparenc
   const transparencyReport = analysis$.transparencyReport.get();
   const colouredTransparencyOutputMode = analysisSettings$.colouredTransparencyOutputMode.get();
   const colouredTransparencyCanvasRef = useRef<HTMLCanvasElement | null>(null);
-
-  const {i18n} = useLingui();
 
   useEffect(() => {
     if (transparencyReport) {
@@ -55,7 +54,11 @@ export const ColouredTransparencyVerdict = observer(function ColouredTransparenc
           <Typography variant={'h5'} align={'left'}>
             <Trans>
               Coloured Transparent Pixel
-              Count: {i18n.number(colouredTransparencyPixelCount)} ({i18n.number(colouredTransparencyPixelFraction, percentMedium)})
+              Count: {
+              <FormatNumber value={colouredTransparencyPixelCount}/>
+            } ({
+              <FormatPercent value={colouredTransparencyPixelFraction}/>
+            })
             </Trans>
           </Typography>
         </Box>

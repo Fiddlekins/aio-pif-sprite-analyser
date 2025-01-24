@@ -5,7 +5,7 @@ import {analysis$} from "../../state/analysis.ts";
 import {settings$} from "../../state/settings.ts";
 import {ui$} from "../../state/ui.ts";
 import {BackgroundModal} from "../Modals/BackgroundModal/BackgroundModal.tsx";
-import {SettingsModal} from "../Modals/SettingsModal.tsx";
+import {SettingsModal} from "../Modals/SettingsModal/SettingsModal.tsx";
 import {SpriteExportModal} from "../Modals/SpriteExportModal/SpriteExportModal.tsx";
 import {SpriteImportModal} from "../Modals/SpriteImportModal.tsx";
 import {ColourCountBox} from "./ColourCountBox.tsx";

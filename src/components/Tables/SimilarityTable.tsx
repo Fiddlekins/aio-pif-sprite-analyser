@@ -5,7 +5,7 @@ import {Accordion, AccordionDetails, AccordionSummary, Box, Typography} from "@m
 import {useCallback, useMemo} from "react";
 import {analysis$} from "../../state/analysis.ts";
 import {ui$} from "../../state/ui.ts";
-import {decimalLargeFixed} from "../../utils/formatStyles.ts";
+import {formatDecimalLargeFixed} from "../../utils/formatStyles.ts";
 import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
 import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColourKey.ts";
 import {numberComparator} from "../../utils/numberComparator.ts";
@@ -29,9 +29,10 @@ interface RowData extends RowDataBase {
 }
 
 export const SimilarityTable = observer(function SimilarityTable() {
+  const numberLocale = ui$.numberLocale.get();
   const colourReport = analysis$.colourReport.get();
 
-  const {i18n, t} = useLingui();
+  const {t} = useLingui();
 
   const columns: Column[] = useMemo(() => {
     return [
@@ -135,18 +136,18 @@ export const SimilarityTable = observer(function SimilarityTable() {
           </Box>
         );
       case 'deltaE2000':
-        return i18n.number(row.deltaE2000, decimalLargeFixed);
+        return formatDecimalLargeFixed(numberLocale, row.deltaE2000);
       case 'deltaECMCAB':
-        return i18n.number(row.deltaECMCAB, decimalLargeFixed);
+        return formatDecimalLargeFixed(numberLocale, row.deltaECMCAB);
       case 'deltaECMCBA':
-        return i18n.number(row.deltaECMCBA, decimalLargeFixed);
+        return formatDecimalLargeFixed(numberLocale, row.deltaECMCBA);
       case 'deltaFusionBot':
-        return i18n.number(row.deltaFusionBot, decimalLargeFixed);
+        return formatDecimalLargeFixed(numberLocale, row.deltaFusionBot);
       case 'similarity':
-        return i18n.number(row.similarity, decimalLargeFixed);
+        return formatDecimalLargeFixed(numberLocale, row.similarity);
     }
     throw new Error(`Unhandled columnId ${columnId}`);
-  }, [i18n]);
+  }, [numberLocale]);
 
   const rowComparator: RowComparator<RowData> = useCallback((a, b, orderBy: string, orderDirection: OrderDirection) => {
     let result = 0;

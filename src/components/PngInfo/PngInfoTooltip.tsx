@@ -3,6 +3,7 @@ import {HelpOutlineSharp} from "@mui/icons-material";
 import {Box, Typography} from "@mui/material";
 import {Fragment, useMemo} from "react";
 import {PngInfo} from "../../utils/image/getDecodedPng.ts";
+import {FormatFilesize} from "../Formatters/FormatFilesize.tsx";
 import {StyledTooltip} from "../StyledTooltip.tsx";
 import {BitsPerChannel} from "./BitsPerChannel.tsx";
 import {ChannelCount} from "./ChannelCount.tsx";
@@ -27,7 +28,7 @@ export function PngInfoTooltip(
     channelCount,
     fileSize,
   } = pngInfo;
-  const {i18n, t} = useLingui();
+  const {t} = useLingui();
 
   const colourTypePixelFormat = useMemo(() => {
     switch (true) {
@@ -114,7 +115,7 @@ export function PngInfoTooltip(
             </Typography>
             <Typography variant={'body2'}>
               <Trans>
-                The file size is {i18n.number(fileSize)} bytes.
+                The file size is {<FormatFilesize value={fileSize} variant={'long'}/>}.
               </Trans>
             </Typography>
           </Box>
