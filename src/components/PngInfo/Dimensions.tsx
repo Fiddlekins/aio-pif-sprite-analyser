@@ -1,4 +1,4 @@
-import {useLingui} from "@lingui/react/macro";
+import {Trans} from "@lingui/react/macro";
 import {PngInfo} from "../../utils/image/getDecodedPng.ts";
 
 export interface DimensionsProps {
@@ -12,10 +12,15 @@ export function Dimensions(
 ) {
   const {width, height} = pngInfo;
   // Use the t function rather than the Trans component because lingui compiles to using the wrong key if not
-  const {t} = useLingui();
+  // const {t} = useLingui();
+  // return (
+  //   <>
+  //     {t`${width}x${height}`}
+  //   </>
+  // );
   return (
-    <>
-      {t`${width}x${height}`}
-    </>
+    <Trans>
+      {width}x{height}
+    </Trans>
   );
 }
