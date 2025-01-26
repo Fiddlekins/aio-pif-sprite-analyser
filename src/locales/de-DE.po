@@ -176,11 +176,11 @@ msgstr "Sprache"
 
 #: src/components/Modals/SettingsModal/SettingNumberFormatting.tsx:21
 msgid "Number Formatting"
-msgstr ""
+msgstr "Zahlenformat"
 
 #: src/components/Modals/SettingsModal/SettingNumberFormatting.tsx:43
 msgid "Match Language"
-msgstr ""
+msgstr "An Sprache anpassen"
 
 #: src/components/Modals/SettingsModal/SettingTheme.tsx:22
 msgid "Theme"
@@ -196,7 +196,7 @@ msgstr "Einstellungen"
 
 #: src/components/Modals/SettingsModal/SettingsModal.tsx:59
 msgid "Spot some errors? Notice a missing language? Read more <0>here</0> if you're interested in helping!"
-msgstr ""
+msgstr "Fehler gefunden? Sprache nicht vorhanden? Mehr Infos <0>hier</0> falls du helfen möchtest!"
 
 #: src/components/Modals/SettingsModal/SettingsModal.tsx:85
 msgid "Advanced"
