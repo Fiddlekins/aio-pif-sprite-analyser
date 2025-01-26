@@ -202,11 +202,11 @@ msgstr ""
 msgid "Spot some errors? Notice a missing language? Read more <0>here</0> if you're interested in helping!"
 msgstr ""
 
-#: src/components/Modals/SettingsModal/SettingsModal.tsx:86
+#: src/components/Modals/SettingsModal/SettingsModal.tsx:85
 msgid "Advanced"
 msgstr ""
 
-#: src/components/Modals/SettingsModal/SettingsModal.tsx:94
+#: src/components/Modals/SettingsModal/SettingsModal.tsx:93
 msgid "The following settings disable some of the safety rails built into the application. Please only use them if you know what you're doing."
 msgstr ""
 
@@ -237,7 +237,7 @@ msgstr ""
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:194
 #: src/components/Modals/SpriteImportModal.tsx:51
 #: src/components/Modals/SpriteImportModal.tsx:93
-#: src/components/PngInfo/Dimensions.tsx:18
+#: src/components/PngInfo/Dimensions.tsx:15
 msgid "{width}x{height}"
 msgstr ""
 

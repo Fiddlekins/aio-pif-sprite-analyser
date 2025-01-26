@@ -57,10 +57,9 @@ export const SettingsModal = observer(function SettingsModal() {
               <SettingNumberFormatting/>
               <Typography variant={'body2'}>
                 <Trans>
-                  Spot some errors? Notice a missing language?
-                  Read more <ExternalLink
-                  href={'https://github.com/Fiddlekins/aio-pif-sprite-analyser'}>here</ExternalLink> if you're
-                  interested in helping!
+                  Spot some errors? Notice a missing language? Read more <ExternalLink
+                  href={'https://github.com/Fiddlekins/aio-pif-sprite-analyser/blob/master/src/locales/README.md'}>here</ExternalLink> if
+                  you're interested in helping!
                 </Trans>
               </Typography>
             </ContentBox>

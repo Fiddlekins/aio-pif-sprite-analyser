@@ -48,7 +48,7 @@ export const TopBar = observer(function TopBar() {
     <StyledAppBar position={'sticky'}>
       <StyledToolbar>
         <Grid container width={'100%'}>
-          <Grid xs={3}>
+          <Grid xs={4}>
             <Box
               display={'flex'}
               height={'100%'}
@@ -63,10 +63,10 @@ export const TopBar = observer(function TopBar() {
               </Typography>
             </Box>
           </Grid>
-          <Grid xs={6}>
+          <Grid xs={4}>
             <TopBarTitle spriteInput={spriteInput}/>
           </Grid>
-          <Grid xs={3}>
+          <Grid xs={4}>
             <Box
               display={'flex'}
               height={'100%'}
