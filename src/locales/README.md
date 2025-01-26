@@ -134,6 +134,31 @@ If you're not familiar, or prefer not to associate your GitHub account with the 
 
 ## General Translation Guidance
 
+### Template values
+
+A core feature of translation software is the ability to put values that can change into a bit of text that otherwise remains the same.
+
+To understand why these are important, consider a basic example where we are greeting a user when they open our application. We can't have a translation for every possible username - we don't even know in advance what those usernames would be! We could set the text to "Hello user!" so that we only have one thing to translate, but that would be a bit impersonal. Instead, we make the username a template value in the text "Hello {username}!" and swap it out with their actual name when we display it.
+
+Here's an example from APSA, the en-GB text followed by the de-DE translation:
+
+```
+The full ID is:<0/>{id}
+```
+
+```
+Die ganze ID ist:<0/>{id}
+```
+
+There's actually two versions of template syntax here, `<n/>` and `{varName}`. The difference is based on whether the value being inserted is HTML or plain text, but you don't need to worry about that - just be aware there's two styles to watch out for.
+
+What's vitally important is to keep these template values in the translation. 
+
+You can move them around and reorder them so that the translation obeys the target language's grammar rules, but if they're omitted or corrupted (missing a character, or changed the number or text inside the funny symbol sequence) then APSA isn't going to show everything it's meant to when it displays the translation.
+
+(Don't worry _too_ much though - Fiddlekins is tasked with manually reviewing everything anyway, and can fix small mistakes)
+
+
 ### Special Characters
 
 There are several layers of text processing involved, with some varying depending on which method you use to submit translations.
