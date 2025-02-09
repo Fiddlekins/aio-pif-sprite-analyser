@@ -442,11 +442,11 @@ msgid "Range"
 msgstr "Bereich"
 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:110
-msgid "Pixels highlighted green if they are fully opaque or fully transparent. Pixels are highlighted red if they are partially transparent, and may be a mistake."
+msgid "Pixels are highlighted green if they are fully opaque or fully transparent. Pixels are highlighted red if they are partially transparent, and may be a mistake."
 msgstr "Pixel sind grün markiert, wenn sie voll deckend oder vollständig transparent sind. Pixel sind rot markiert, falls sie teilweise transparent sind, was ein Fehler sein kann."
 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:118
-msgid "Pixels highlighted green if they are fully opaque or fully transparent. Pixels are highlighted a hue between blue and red if they are partially transparent, where blue represents more transparency and red represents more opaqueness."
+msgid "Pixels are highlighted green if they are fully opaque or fully transparent. Pixels are highlighted a hue between blue and red if they are partially transparent, where blue represents more transparency and red represents more opaqueness."
 msgstr "Pixel sind grün markiert, wenn sie voll deckend oder vollständig transparent sind. Pixel sind in einer Farbe zwischen blau und rot markiert, falls sie teilweise transparent sind, wobei der Blauanteil höhere Transparenz und der Rotanteil höhere Undurchsichtigkeit repräsentiert"
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:36

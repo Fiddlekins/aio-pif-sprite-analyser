@@ -1,39 +1,39 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2025-01-18 21:39+0800\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: @lingui/cli\n"
-"Language: en-GB\n"
+"X-Generator: localizely.com\n"
+"Last-Translator: localizely.com\n"
+"Language-Team: localizely.com\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || n%10 == 1 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 12 && n%100 <= 14)) ? 2 : 3);\n"
+"Language: pl\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Plural-Forms: \n"
 
 #: src/components/IdTooltipContent.tsx:17
 msgid "Sprite ID"
-msgstr "Sprite ID"
+msgstr "ID Sprite'a"
 
 #: src/components/IdTooltipContent.tsx:27
 msgid "This is an ID generated from the raw pixel data of the sprite after it has been decoded and, if necessary, scaled to 288x288."
-msgstr "This is an ID generated from the raw pixel data of the sprite after it has been decoded and, if necessary, scaled to 288x288."
+msgstr "To jest ID wygenerowane z surowych danych pikseli w sprite'cie po zdekodowaniu i jeśli konieczne, przeskalowaniu do 288x288."
 
 #: src/components/IdTooltipContent.tsx:33
 msgid "The full ID is:<0/>{id}"
-msgstr "The full ID is:<0/>{id}"
+msgstr "Pełne ID jest:<0/>{id}"
 
 #: src/components/Mobile/NavigationMenuContentMobile.tsx:29
 #: src/components/Panes/OverviewPane.tsx:27
 msgid "Input File: <0/>"
-msgstr "Input File: <0/>"
+msgstr "Plik Wejściowy: <0/>"
 
 #: src/components/Mobile/NavigationMenuContentMobile.tsx:36
 #: src/components/Panes/OverviewPane.tsx:34
 msgid "Awaiting input"
-msgstr "Awaiting input"
+msgstr "Oczekiwanie na dane"
 
 #: src/components/Mobile/NavigationMenuMobile.tsx:200
 #: src/components/TopBar.tsx:82
@@ -43,152 +43,153 @@ msgstr "Import"
 #: src/components/Mobile/NavigationMenuMobile.tsx:209
 #: src/components/TopBar.tsx:91
 msgid "Export"
-msgstr "Export"
+msgstr "Eksport"
 
 #: src/components/Mobile/NavigationMenuMobile.tsx:237
 msgid "Analysis Report"
-msgstr "Analysis Report"
+msgstr "Report Analizy"
 
 #: src/components/Mobile/NavigationMenuMobile.tsx:249
 #: src/components/Panes/DetailsPane.tsx:107
 msgid "Partial Pixels"
-msgstr "Partial Pixels"
+msgstr "Częściowe Piksele"
 
 #: src/components/Mobile/NavigationMenuMobile.tsx:256
 msgid "Semi-Transparency"
-msgstr "Semi-Transparency"
+msgstr "Pórzeźroczystość"
 
 #: src/components/Mobile/NavigationMenuMobile.tsx:263
 msgid "Coloured Transparency"
-msgstr "Coloured Transparency"
+msgstr "Kolorowa Przeźroczystość"
 
 #: src/components/Mobile/NavigationMenuMobile.tsx:271
 #: src/components/Panes/ColoursPane/ColourCountVerdict.tsx:34
 #: src/components/Panes/ColoursPane/ColourSimilarityVerdict.tsx:42
 msgid "Colour Count"
-msgstr "Colour Count"
+msgstr "Liczba Kolorów"
 
 #: src/components/Mobile/NavigationMenuMobile.tsx:278
 msgid "Colour Similarity"
-msgstr "Colour Similarity"
+msgstr "Podobieństwo Kolorów"
 
 #: src/components/Modals/BackgroundModal/BackgroundModal.tsx:52
 msgid "Configure Battler"
-msgstr "Configure Battler"
+msgstr "Konfiguruj Walkę"
 
 #: src/components/Modals/BackgroundModal/BackgroundModal.tsx:123
 msgid "Sprite Position Override"
-msgstr "Sprite Position Override"
+msgstr "Nadpisanie Pozycji Sprite'a"
 
 #: src/components/Modals/BackgroundModal/BackgroundModal.tsx:150
 msgid "Position Override"
-msgstr "Position Override"
+msgstr "Nadpisanie Pozycji"
 
 #: src/components/Modals/BackgroundModal/BackgroundModal.tsx:155
 msgid "Pokemon Infinite Fusion uses the sprite position offsets configured for the body pokemon of the fusion when determining where to draw it."
-msgstr "Pokemon Infinite Fusion uses the sprite position offsets configured for the body pokemon of the fusion when determining where to draw it."
+msgstr "Pokemon Infinite Fusion używa offsetu pozycji sprite'a skonfigurowanej dla Pokémona będącego ciałem fuzji determinując gdzie go narysować."
 
 #: src/components/Modals/BackgroundModal/BackgroundModal.tsx:161
 msgid "This can be overridden using the settings below, but these changes will not transfer into the game."
-msgstr "This can be overridden using the settings below, but these changes will not transfer into the game."
+msgstr "Może być to nadpisane używając ustawień poniżej, ale te zmiany nie będą przeniesione do gry."
 
 #: src/components/Modals/BackgroundModal/BackgroundModal.tsx:167
 msgid "Be sure to use the body pokemon configuration when fine-tuning sprite placement."
-msgstr "Be sure to use the body pokemon configuration when fine-tuning sprite placement."
+msgstr "Upewnij się aby użyć konfiguracja pozycji ciała w czasie dopracowywania pozycji sprite'a."
 
 #: src/components/Modals/BackgroundModal/BackgroundModal.tsx:180
 msgid "The sprite position derived from the body pokemon can be overridden"
-msgstr "The sprite position derived from the body pokemon can be overridden"
+msgstr "Pozycja sprite'a pochodząca od ciała fuzji może być nadpisana"
 
 #: src/components/Modals/BackgroundModal/BackgroundModal.tsx:198
 #: src/components/PokemonSummary.tsx:48
 msgid "Body"
-msgstr "Body"
+msgstr "Ciało"
 
 #: src/components/Modals/BackgroundModal/BackgroundModal.tsx:275
 msgid "Reset"
-msgstr "Reset"
+msgstr "Zresetuj"
 
 #: src/components/Modals/BackgroundModal/BattlerMapControls.tsx:27
 msgid "Map"
-msgstr "Map"
+msgstr "Mapa"
 
 #: src/components/Modals/PokemonSelectModal.tsx:68
 #: src/components/Modals/PokemonSelectModal.tsx:92
 #: src/components/Modals/PokemonSelectModal.tsx:132
 msgid "None"
-msgstr "None"
+msgstr "Nic"
 
 #: src/components/Modals/PokemonSelectModal.tsx:81
 msgid "Select Pokémon"
-msgstr "Select Pokémon"
+msgstr "Wybierz Pokémona"
 
 #: src/components/Modals/PokemonSelectModal.tsx:94
 #: src/components/Modals/PokemonSelectModal.tsx:134
 msgid "Pokémon"
 msgstr "Pokémon"
 
+#: src/components/Modals/SettingsModal.tsx:291
+#: src/components/Modals/SettingsModal.tsx:305
+#~ msgid "Allow export copying"
+#~ msgstr "Pozwól na kopiowanie eksportu"
+
 #: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:19
 #: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:33
 msgid "Allow Export Copying"
-msgstr "Allow Export Copying"
-
-#: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:33
-#~ msgid "Allow export copying"
-#~ msgstr "Allow export copying"
+msgstr "Zezwól na Kopiowanie Eksportu"
 
 #: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:38
 #: src/components/Modals/SpriteExportModal/ImageItem.tsx:112
 msgid "Browsers re-encode images when they are copied to the clipboard, in order to prevent malicious websites from exploiting applications the browser may paste into."
-msgstr "Browsers re-encode images when they are copied to the clipboard, in order to prevent malicious websites from exploiting applications the browser may paste into."
+msgstr "Przeglądarki przekodowują obrazy podczas kopiowania do schowka, aby zapobiec eksploatowaniu aplikacji, do których przeglądarka może wkleić przez złośliwe strony."
 
 #: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:44
 msgid "This re-encoding produces bloated PNG images and ignores indexed mode, making the export process pointless."
-msgstr "This re-encoding produces bloated PNG images and ignores indexed mode, making the export process pointless."
+msgstr "To przekodowanie tworzy nadęte obrazy PNG i ignoruje tryb indeksowany, robiąc proces eksportowania bezsensu."
 
 #: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:50
 msgid "Power users may however wish to use the application to quickly rescale sprites before pasting the result into an image editor, where this re-encoding does not cause problems. Enabling this setting permits this workflow."
-msgstr "Power users may however wish to use the application to quickly rescale sprites before pasting the result into an image editor, where this re-encoding does not cause problems. Enabling this setting permits this workflow."
+msgstr "Zaawansowani użytkownicy mogą jednak chcieć użyć tej aplikacji do szybkiego przeskalowania sprite'ów przed wklejeniem rezultatu do edytora obrazów, gdzie to przekodowanie nie powoduje problemów. Włączenie tego ustawienia pozwala na ten tryb pracy."
 
 #: src/components/Modals/SettingsModal/SettingCanvasAcceleration.tsx:19
 #: src/components/Modals/SettingsModal/SettingCanvasAcceleration.tsx:33
 msgid "Canvas Acceleration"
-msgstr "Canvas Acceleration"
+msgstr "Przyspieszanie Płótna"
 
 #: src/components/Modals/SettingsModal/SettingCanvasAcceleration.tsx:38
 msgid "Leave this enabled unless you get corrupted images displaying, as it is faster and more accurate. Some browsers feature privacy settings that cause the Canvas API to output randomised image data, at which point Canvas Acceleration should be disabled."
-msgstr "Leave this enabled unless you get corrupted images displaying, as it is faster and more accurate. Some browsers feature privacy settings that cause the Canvas API to output randomised image data, at which point Canvas Acceleration should be disabled."
+msgstr "Pozostaw to włączone, chyba że wyświetlają ci się skorumpowane obrazy, jako iż jest to szybsze i dokładniejsze. Niektóre przeglądarki posiadają ustawienia prywatności sprawiające, że API Płótna daje zrandomizowane dane obrazu, przy czym Przyspieszanie Płótna powinno zostać wyłączone."
 
 #: src/components/Modals/SettingsModal/SettingIgnoreColouredTransparency.tsx:19
 #: src/components/Modals/SettingsModal/SettingIgnoreColouredTransparency.tsx:33
 msgid "Ignore Coloured Transparency"
-msgstr "Ignore Coloured Transparency"
+msgstr "Ignoruj Kolorową Przeźroczystość"
 
 #: src/components/Modals/SettingsModal/SettingIgnoreColouredTransparency.tsx:38
 msgid "The application will skip over the coloured transparency analysis when determining which view the app should automatically navigate to after importing a sprite. This makes the experience smoother for users who prefer to ignore this non-critical aspect."
-msgstr "The application will skip over the coloured transparency analysis when determining which view the app should automatically navigate to after importing a sprite. This makes the experience smoother for users who prefer to ignore this non-critical aspect."
+msgstr "Aplikacja pominie analizowanie kolorowej przeźroczystości determinując, do którego podglądu powinna automatycznie przekierować po importowani sprite'a. Wygładza to doświadczenie dla użytkowników, którzy wolą ignorować ten nie krytyczny aspekt."
 
 #: src/components/Modals/SettingsModal/SettingLanguage.tsx:15
 #: src/components/Modals/SettingsModal/SettingLanguage.tsx:41
 #: src/components/Modals/SettingsModal/SettingNumberFormatting.tsx:36
 msgid "Autodetect"
-msgstr "Autodetect"
+msgstr "Auto wykrycie"
 
 #: src/components/Modals/SettingsModal/SettingLanguage.tsx:43
 msgid "Language"
-msgstr "Language"
+msgstr "Język"
 
 #: src/components/Modals/SettingsModal/SettingNumberFormatting.tsx:21
 msgid "Number Formatting"
-msgstr "Number Formatting"
+msgstr "Formatowanie Liczb"
 
 #: src/components/Modals/SettingsModal/SettingNumberFormatting.tsx:43
 msgid "Match Language"
-msgstr "Match Language"
+msgstr "Dopasuj do Języka"
 
 #: src/components/Modals/SettingsModal/SettingTheme.tsx:22
 msgid "Theme"
-msgstr "Theme"
+msgstr "Motyw"
 
 #: src/components/Modals/SettingsModal/SettingTheme.tsx:37
 msgid "System"
@@ -196,43 +197,43 @@ msgstr "System"
 
 #: src/components/Modals/SettingsModal/SettingsModal.tsx:48
 msgid "Settings"
-msgstr "Settings"
+msgstr "Ustawienia"
 
 #: src/components/Modals/SettingsModal/SettingsModal.tsx:59
 msgid "Spot some errors? Notice a missing language? Read more <0>here</0> if you're interested in helping!"
-msgstr "Spot some errors? Notice a missing language? Read more <0>here</0> if you're interested in helping!"
+msgstr "Znalazłeś jakieś błędy? Zauważyłeś brakujący język? Przeczytaj więcej <0>tu</0> jeśli jesteś zainteresowany w pomocy!"
 
 #: src/components/Modals/SettingsModal/SettingsModal.tsx:85
 msgid "Advanced"
-msgstr "Advanced"
+msgstr "Zaawansowane"
 
 #: src/components/Modals/SettingsModal/SettingsModal.tsx:93
 msgid "The following settings disable some of the safety rails built into the application. Please only use them if you know what you're doing."
-msgstr "The following settings disable some of the safety rails built into the application. Please only use them if you know what you're doing."
+msgstr "Następujące ustawienia wyłączają niektóre z zabezpieczeń wbudowanych w aplikacje. Używaj ich tylko jeśli wiesz co robisz."
 
 #: src/components/Modals/SpriteExportModal/ImageItem.tsx:107
 msgid "Copying is disabled"
-msgstr "Copying is disabled"
+msgstr "Kopiowanie jest wyłączone"
 
 #: src/components/Modals/SpriteExportModal/ImageItem.tsx:118
 msgid "This re-encoding produces bloated PNG images and ignores indexed mode, making this export process pointless."
-msgstr "This re-encoding produces bloated PNG images and ignores indexed mode, making this export process pointless."
+msgstr "To przekodowanie tworzy nadęte obrazy PNG i ignoruje tryb indeksowany, robiąc proces eksportowania bezsensu."
 
 #: src/components/Modals/SpriteExportModal/ImageItem.tsx:124
 msgid "Downloading images does not suffer from this issue."
-msgstr "Downloading images does not suffer from this issue."
+msgstr "Pobieranie plików nie cierpi z tego problemu."
 
 #: src/components/Modals/SpriteExportModal/ImageItem.tsx:147
 msgid "Unable to encode in indexed mode due to colour count exceeding 256."
-msgstr "Unable to encode in indexed mode due to colour count exceeding 256."
+msgstr "Niezdolny do zakodowania w trybie indeksowanym z powodu liczby kolorów przekraczającej 256."
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:158
 msgid "Export Sprite"
-msgstr "Export Sprite"
+msgstr "Eksportuj Sprite"
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:163
 msgid "Export sprites in a variety of formats."
-msgstr "Export sprites in a variety of formats."
+msgstr "Eksportuj sprite'y w różnych formatach."
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:194
 #: src/components/Modals/SpriteImportModal.tsx:51
@@ -243,285 +244,285 @@ msgstr "{width}x{height}"
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:209
 msgid "Normal"
-msgstr "Normal"
+msgstr "Normalny"
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:214
 msgid "Indexed"
-msgstr "Indexed"
+msgstr "Indeksowany"
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:233
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:247
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyWarning.tsx:6
 msgid "Normalise Transparency"
-msgstr "Normalise Transparency"
+msgstr "Normalizuj Przeźroczystość"
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:252
 msgid "When enabled, any pixel with 0% opacity will be set to transparent black (a.k.a. \"#0000\", \"rgba(0,0,0,0)\", etc)."
-msgstr "When enabled, any pixel with 0% opacity will be set to transparent black (a.k.a. \"#0000\", \"rgba(0,0,0,0)\", etc)."
+msgstr "Kiedy włączone, każdy piksel z przeźroczystością 0% zostanie ustawiony do przeźroczystej czerni (a.k.a. \"#0000\", \"rgba(0,0,0,0)\", etc)."
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:258
 msgid "This changes nothing visually about the image, but reduces the filesize and has better compatibility with some software."
-msgstr "This changes nothing visually about the image, but reduces the filesize and has better compatibility with some software."
+msgstr "To nie zmienia nic wizualnie w obrazie, ale zmniejsza rozmiar pliku i ma lepszą kompatybilność z niektórymi programami."
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:264
 msgid "Under normal circumstances this should be left enabled."
-msgstr "Under normal circumstances this should be left enabled."
+msgstr "W normalnych okolicznościach to powinno pozostać włączone."
 
 #: src/components/Modals/SpriteImportModal.tsx:94
 msgid "File is invalid size: {resolutionString}"
-msgstr "File is invalid size: {resolutionString}"
+msgstr "Plik jest nieodpowiedniego rozmiaru: {resolutionString}"
 
 #: src/components/Modals/SpriteImportModal.tsx:130
 msgid "The requested host site blocks fetching outside whitelisted domains"
-msgstr "The requested host site blocks fetching outside whitelisted domains"
+msgstr "Wybrana strona blokuje pobieranie informacji z poza stron na białej liście"
 
 #: src/components/Modals/SpriteImportModal.tsx:169
 msgid "No suitable data found on clipboard"
-msgstr "No suitable data found on clipboard"
+msgstr "Nie znaleziono pasujących danych w schowku"
 
 #: src/components/Modals/SpriteImportModal.tsx:202
 msgid "File not recognised as an image"
-msgstr "File not recognised as an image"
+msgstr "Plik nie rozpoznany jako obraz"
 
 #: src/components/Modals/SpriteImportModal.tsx:213
 msgid "Import Sprite"
-msgstr "Import Sprite"
+msgstr "Importuj Sprite"
 
 #: src/components/Modals/SpriteImportModal.tsx:218
 msgid "Accepts images that are {acceptedDimensionsText} pixels in size."
-msgstr "Accepts images that are {acceptedDimensionsText} pixels in size."
+msgstr "Akceptuje obrazy, które są {acceptedDimensionsText} pikseli w rozmiarze."
 
 #: src/components/Modals/SpriteImportModal.tsx:230
 msgid "Drag 'n' drop some files here, or click to select files"
-msgstr "Drag 'n' drop some files here, or click to select files"
+msgstr "Przeciągnij i wrzuć tu jakiś plik, lub kliknij aby wybrać plik"
 
 #: src/components/Panes/BackgroundPane.tsx:172
 msgid "Remove"
-msgstr "Remove"
+msgstr "Usuń"
 
 #: src/components/Panes/BackgroundPane.tsx:242
 #: src/components/Panes/DetailsPane.tsx:117
 msgid "Background"
-msgstr "Background"
+msgstr "Tło"
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx:55
 msgid "Coloured Transparent Pixel Count: <0/> (<1/>)"
-msgstr "Coloured Transparent Pixel Count: <0/> (<1/>)"
+msgstr "Liczba Pikseli z Kolorową Przezroczystością: <0/> (<1/>)"
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx:66
 msgid "These are pixels that are fully transparent (the alpha channel = 0) but contain colour data instead of being invisible black."
-msgstr "These are pixels that are fully transparent (the alpha channel = 0) but contain colour data instead of being invisible black."
+msgstr "To są piksele, które są w pełni przeźroczyste (kanał alfa = 0), ale zawierają informację o kolorze zamiast bycia niewidzialną czernią."
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx:72
 msgid "They do not cause any visual problems normally, but some software will behave differently due to their presence, so it is best to remove them."
-msgstr "They do not cause any visual problems normally, but some software will behave differently due to their presence, so it is best to remove them."
+msgstr "Normalnie nie powodują one żadnych wizualnych problemów, ale niektóre programy będą zachowywać się inaczej przez ich obecność, więc dobrze jest je usunąć."
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx:78
 msgid "They are caused by specific software not enforcing that full transparency is transparent black."
-msgstr "They are caused by specific software not enforcing that full transparency is transparent black."
+msgstr "Są one spowodowane przez to, że niektóre programy nie wymuszają aby pełna przeźroczystość była przeźroczystą czernią."
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx:104
 msgid "Contrast"
-msgstr "Contrast"
+msgstr "Kontrast"
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx:109
 msgid "Opaque Colour"
-msgstr "Opaque Colour"
+msgstr "Kolor Nieprzeźroczysty"
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx:116
 msgid "Pixels highlighted green are either transparent black or not fully transparent. Pixels highlighted red are coloured transparent pixels, and should be fixed."
-msgstr "Pixels highlighted green are either transparent black or not fully transparent. Pixels highlighted red are coloured transparent pixels, and should be fixed."
+msgstr "Piksele podświetlone na zielono so albo przeźroczystą czernią lub nie w pełni przeźroczyste. Piksele podświetlone na czerwono są pikselami z kolorową przeźroczystością i powinny być naprawione."
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx:124
 msgid "Coloured transparent pixels are set to be fully opaque, and should be fixed. Valid pixels are left invisible. This mode is more whimsical than it is useful."
-msgstr "Coloured transparent pixels are set to be fully opaque, and should be fixed. Valid pixels are left invisible. This mode is more whimsical than it is useful."
+msgstr "Piksele z kolorową przeźroczystością są ustawione aby być w pełni nieprzeźroczyste i powinny być naprawione. Poprawne piksele są pozostawione niewidoczne. Ten tryb jest bardziej cudaczny niż przydatny."
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyWarning.tsx:15
 msgid "Note: The following analysis can be helpful but is not required to pass for a sprite to be considered valid."
-msgstr "Note: The following analysis can be helpful but is not required to pass for a sprite to be considered valid."
+msgstr "Przypis: Podążająca analiza może być pomocna, ale zaliczenie jej nie jest obowiązkowe aby sprite był uważany za poprawny."
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyWarning.tsx:20
 msgid "If fixing this is desired you can use the \"{exportOptionName}\" option in the Export menu to save a copy of your sprite with the coloured transparency removed."
-msgstr "If fixing this is desired you can use the \"{exportOptionName}\" option in the Export menu to save a copy of your sprite with the coloured transparency removed."
+msgstr "Jeśli naprawa tego jest pożądana możesz użyć \"{exportOptionName}\" opcji w menu Eksportowania do zapisania kopi swojego sprite'a z kolorową przeźroczystością usuniętą."
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyWarning.tsx:26
 msgid "For users that frequently find their software is introducing coloured transparency, you might prefer to ignore these warnings. You can find an option to suppress them in the Settings menu."
-msgstr "For users that frequently find their software is introducing coloured transparency, you might prefer to ignore these warnings. You can find an option to suppress them in the Settings menu."
+msgstr "Użytkownicy, których program często wprowadza kolorową przeźroczystość, mogą chcieć zignorować te ostrzeżenia. Opcje aby je wyłączyć można znaleźć w menu Ustawień."
 
 #: src/components/Panes/ColoursPane/ColourCountVerdict.tsx:20
 msgid "Colour Count: <0/>"
-msgstr "Colour Count: <0/>"
+msgstr "Liczba Kolorów: <0/>"
 
 #: src/components/Panes/ColoursPane/ColourCountVerdict.tsx:39
 msgid "This is the number of \"sprite colours\" present, where a \"sprite colour\" refers to a colour that isn't fully transparent."
-msgstr "This is the number of \"sprite colours\" present, where a \"sprite colour\" refers to a colour that isn't fully transparent."
+msgstr "To jest numer obecnych \"kolorów sprite'a\", gdzie \"kolor sprite'a\" zwraca się do koloru, który nie jest w pełni przeźroczysty."
 
 #: src/components/Panes/ColoursPane/ColourCountVerdict.tsx:45
 msgid "The sprite guidelines limit this to {spriteColourCountLimit} colours, but fewer is preferable for typical sprites."
-msgstr "The sprite guidelines limit this to {spriteColourCountLimit} colours, but fewer is preferable for typical sprites."
+msgstr "Wytyczne Sprite'owania (ang. Spriting Guidelines) ograniczają to do {spriteColourCountLimit} kolorów, ale mniej jest preferowane dla typowych sprite'ów."
 
 #: src/components/Panes/ColoursPane/ColourDisplayControls.tsx:88
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:98
 msgid "Monotone"
-msgstr "Monotone"
+msgstr "Jednotonowy"
 
 #: src/components/Panes/ColoursPane/ColourDisplayControls.tsx:132
 msgid "Negative"
-msgstr "Negative"
+msgstr "Negatyw"
 
 #: src/components/Panes/ColoursPane/ColourDisplayControls.tsx:137
 msgid "Rotate"
-msgstr "Rotate"
+msgstr "Obrócony"
 
 #: src/components/Panes/ColoursPane/ColourDisplayControls.tsx:176
 msgid "Clear Highlights"
-msgstr "Clear Highlights"
+msgstr "Wyczyść Podświetlenia"
 
 #: src/components/Panes/ColoursPane/ColourSimilarityVerdict.tsx:21
 msgid "Pairs of similar colours: <0/>"
-msgstr "Pairs of similar colours: <0/>"
+msgstr "Pary podobnych kolorów: <0/>"
 
 #: src/components/Panes/ColoursPane/ColourSimilarityVerdict.tsx:26
 msgid "Skipped due to colour count exceeding <0/>"
-msgstr "Skipped due to colour count exceeding <0/>"
+msgstr "Pominięto ponieważ liczba kolorów przekroczyła <0/>"
 
 #: src/components/Panes/ColoursPane/ColourSimilarityVerdict.tsx:47
 msgid "This is the number of pairs of colours that are considered to be too visually similar to one another."
-msgstr "This is the number of pairs of colours that are considered to be too visually similar to one another."
+msgstr "To jest number par kolorów, które są uważane za zbyt wizualnie podobne do siebie."
 
 #: src/components/Panes/ColoursPane/ColourSimilarityVerdict.tsx:52
 msgid "This is an imprecise metric due to being quite subjective, and some pokémon palettes are more prone to high similarity than others."
-msgstr "This is an imprecise metric due to being quite subjective, and some pokémon palettes are more prone to high similarity than others."
+msgstr "To jest niedokładny pomiar z powodu bycia dość subiektywnym i palety niektórych pokémonów są bardziej podatne na wysokie podobieństwo niż inne."
 
 #: src/components/Panes/ColoursPane/ColourSimilarityVerdict.tsx:58
 msgid "The sprite guidelines require artists to reduce this number where possible, and then check with other artists if they think the remaining similar colours are important to keep."
-msgstr "The sprite guidelines require artists to reduce this number where possible, and then check with other artists if they think the remaining similar colours are important to keep."
+msgstr "Wytyczne Sprite'owania (ang. Spriting Guidelines) wymagają artystów aby zredukować ten number kiedy możliwe, po czym sprawdzić z innymi artystami czy myślą, że pozostałe podobne kolory są ważne do zatrzymania."
 
 #: src/components/Panes/DetailsPane.tsx:112
 msgid "Transparency"
-msgstr "Transparency"
+msgstr "Przeźroczystość"
 
 #: src/components/Panes/DetailsPane.tsx:123
 msgid "Colours"
-msgstr "Colours"
+msgstr "Kolory"
 
 #: src/components/Panes/PartialPixelsPane/PartialPixelsVerdict.tsx:54
 msgid "Partial Pixel Count: <0/> (<1/>)"
-msgstr "Partial Pixel Count: <0/> (<1/>)"
+msgstr "Liczba Częściowych Pikseli: <0/> (<1/>)"
 
 #: src/components/Panes/PartialPixelsPane/PartialPixelsVerdict.tsx:64
 msgid "Each 3x3 square of pixels should be the same colour."
-msgstr "Each 3x3 square of pixels should be the same colour."
+msgstr "Każdy 3x3 kwadrat pikseli powinien być tego samego koloru."
 
 #: src/components/Panes/PartialPixelsPane/PartialPixelsVerdict.tsx:90
 msgid "Mixed"
-msgstr "Mixed"
+msgstr "Mieszane"
 
 #: src/components/Panes/PartialPixelsPane/PartialPixelsVerdict.tsx:95
 msgid "Full"
-msgstr "Full"
+msgstr "Pełne"
 
 #: src/components/Panes/PartialPixelsPane/PartialPixelsVerdict.tsx:101
 msgid "Pixels highlighted red are colours that do not match the majority colour in their 3x3 square."
-msgstr "Pixels highlighted red are colours that do not match the majority colour in their 3x3 square."
+msgstr "Piksele podświetlone na czerwono są kolorami, które nie pasują do większości koloru w ich 3x3 kwadracie."
 
 #: src/components/Panes/PartialPixelsPane/PartialPixelsVerdict.tsx:107
 msgid "Pixels highlighted blue are colours that are the majority colour in their 3x3 square, but still suffer from being in a partial pixel."
-msgstr "Pixels highlighted blue are colours that are the majority colour in their 3x3 square, but still suffer from being in a partial pixel."
+msgstr "Piksele podświetlone na niebiesko są są kolorami, które są większością koloru w ich 3x3 kwadracie, ale wciąż cierpią z bycia w częściowym pikselu."
 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:56
 msgid "Semi-Transparent Pixel Count: <0/> (<1/>)"
-msgstr "Semi-Transparent Pixel Count: <0/> (<1/>)"
+msgstr "Liczba Półprzeźroczystych Pikseli: <0/> (<1/>)"
 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:67
 msgid "Semi-transparent pixels are neither fully opaque nor fully transparent."
-msgstr "Semi-transparent pixels are neither fully opaque nor fully transparent."
+msgstr "Półprzeźroczyste piksele nie są ani w pełni przeźroczyste ani w pełni nieprzeźroczyste."
 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:72
 msgid "They are permitted if used intentionally."
-msgstr "They are permitted if used intentionally."
+msgstr "Są dozwolone jeśli użyte celowo."
 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:103
 msgid "Range"
-msgstr "Range"
+msgstr "Zakres"
 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:110
 msgid "Pixels are highlighted green if they are fully opaque or fully transparent. Pixels are highlighted red if they are partially transparent, and may be a mistake."
-msgstr "Pixels are highlighted green if they are fully opaque or fully transparent. Pixels are highlighted red if they are partially transparent, and may be a mistake."
+msgstr "Piksele są podświetlone na zielono jeśli są w pełni przeźroczyste lub nieprzeźroczyste. Piksele są podświetlone na czerwono jeśli są częściowo przeźroczyste i mogą być błędem."
 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:118
 msgid "Pixels are highlighted green if they are fully opaque or fully transparent. Pixels are highlighted a hue between blue and red if they are partially transparent, where blue represents more transparency and red represents more opaqueness."
-msgstr "Pixels are highlighted green if they are fully opaque or fully transparent. Pixels are highlighted a hue between blue and red if they are partially transparent, where blue represents more transparency and red represents more opaqueness."
+msgstr "Piksele są podświetlone na zielono jeśli są w pełni przeźroczyste lub nieprzeźroczyste. Piksele są podświetlone odcieniem pomiędzy niebieskim i czerwonym jeśli są częściowo przeźroczyste, gdzie niebieski przedstawia więcej a czerwony mniej przeźroczystości."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:36
 msgid "[greyscale]."
-msgstr "[greyscale]."
+msgstr "[skala szarości]."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:39
 #: src/components/PngInfo/PngInfoTooltip.tsx:42
 msgid "[red,green,blue]."
-msgstr "[red,green,blue]."
+msgstr "[czerwony,zielony,niebieski]."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:45
 #: src/components/PngInfo/PngInfoTooltip.tsx:51
 msgid "[red,green,blue,alpha]."
-msgstr "[red,green,blue,alpha]."
+msgstr "[czerwony,zielony,niebieski,alfa]."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:48
 msgid "[greyscale, alpha]."
-msgstr "[greyscale, alpha]."
+msgstr "[skala szarości, alfa]."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:64
 msgid "PNG Info"
-msgstr "PNG Info"
+msgstr "Informacje o PNG"
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:77
 msgid "The image is {width} pixels wide and {height} pixels high."
-msgstr "The image is {width} pixels wide and {height} pixels high."
+msgstr "Obraz ma {width} pikseli szerokości i {height} pikseli wysokości."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:86
 msgid "The image is Colour Type {colourType}."
-msgstr "The image is Colour Type {colourType}."
+msgstr "Obraz jest Typem Koloru {colourType}."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:90
 msgid "Each pixel is a grayscale sample."
-msgstr "Each pixel is a grayscale sample."
+msgstr "Każdy piksel jest próbką skali szarości."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:91
 msgid "Each pixel is a Red, Green, Blue triple."
-msgstr "Each pixel is a Red, Green, Blue triple."
+msgstr "Każdy piksel jest trójką Czerwonego, Zielonego i Niebieskiego."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:92
 msgid "Each pixel is a palette index."
-msgstr "Each pixel is a palette index."
+msgstr "Każdy piksel jest indeksem palety."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:93
 msgid "Each pixel is a grayscale sample, followed by an alpha sample."
-msgstr "Each pixel is a grayscale sample, followed by an alpha sample."
+msgstr "Każdy piksel jest próbką skali szarości, podążoną przez próbkę alfa."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:94
 msgid "Each pixel is a Red, Green, Blue triple, followed by an alpha sample."
-msgstr "Each pixel is a Red, Green, Blue triple, followed by an alpha sample."
+msgstr "Każdy piksel jest trójką Czerwonego, Zielonego i Niebieskiego, podążoną przez próbkę alfa."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:103
 msgid "The palette colours are defined using {bitsPerChannel} bits per channel."
-msgstr "The palette colours are defined using {bitsPerChannel} bits per channel."
+msgstr "Kolory Palety są zdefiniowane używając {bitsPerChannel} bitów na kanał."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:103
 msgid "The pixels are defined using {bitsPerChannel} bits per channel."
-msgstr "The pixels are defined using {bitsPerChannel} bits per channel."
+msgstr "Piksele są zdefiniowane używając {bitsPerChannel} bitów na kanał."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:110
 msgid "The palette colours are defined using {channelCount} channels: {colourTypePixelFormat}"
-msgstr "The palette colours are defined using {channelCount} channels: {colourTypePixelFormat}"
+msgstr "Kolory Palety są zdefiniowane używając {channelCount} kanałów: {colourTypePixelFormat}"
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:110
 msgid "The pixels are defined using {channelCount} channels: {colourTypePixelFormat}"
-msgstr "The pixels are defined using {channelCount} channels: {colourTypePixelFormat}"
+msgstr "Piksele są zdefiniowane używając {channelCount} kanałów: {colourTypePixelFormat}"
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:117
 msgid "The file size is <0/>."
-msgstr "The file size is <0/>."
+msgstr "Rozmiar pliku wynosi <0/>."
 
 #: src/components/PokemonDisplay.tsx:92
 msgid "Autogen"
@@ -529,44 +530,44 @@ msgstr "Autogen"
 
 #: src/components/PokemonSummary.tsx:42
 msgid "Head"
-msgstr "Head"
+msgstr "Głowa"
 
 #: src/components/PokemonSummary.tsx:64
 msgid "Select Head Pokémon"
-msgstr "Select Head Pokémon"
+msgstr "Wybierz Głowę Fuzji"
 
 #: src/components/PokemonSummary.tsx:71
 msgid "Select Body Pokémon"
-msgstr "Select Body Pokémon"
+msgstr "Wybierz Ciało Fuzji"
 
 #: src/components/Tables/BackgroundColoursTable.tsx:81
 msgid "Background Colours"
-msgstr "Background Colours"
+msgstr "Kolory Tła"
 
 #: src/components/Tables/ColoursTable.tsx:59
 msgid "Colour"
-msgstr "Colour"
+msgstr "Kolor"
 
 #: src/components/Tables/ColoursTable.tsx:64
 msgid "Usage"
-msgstr "Usage"
+msgstr "Użycie"
 
 #: src/components/Tables/SimilarityTable.tsx:41
 msgid "Colour A"
-msgstr "Colour A"
+msgstr "Kolor A"
 
 #: src/components/Tables/SimilarityTable.tsx:46
 msgid "Colour B"
-msgstr "Colour B"
+msgstr "Kolor B"
 
 #: src/components/Tables/SimilarityTable.tsx:51
 msgid "Similarity"
-msgstr "Similarity"
+msgstr "Podobieństwo"
 
 #: src/components/Tables/SimilarityTable.tsx:188
 msgid "Similar Colour Pairs"
-msgstr "Similar Colour Pairs"
+msgstr "Pary Podobnych Kolorów"
 
 #: src/components/Tables/SpriteColoursTable.tsx:81
 msgid "Sprite Colours"
-msgstr "Sprite Colours"
+msgstr "Kolory Sprite'a"

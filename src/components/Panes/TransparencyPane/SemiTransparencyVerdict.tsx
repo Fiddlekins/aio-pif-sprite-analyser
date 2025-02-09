@@ -108,15 +108,15 @@ export const SemiTransparencyVerdict = observer(function SemiTransparencyVerdict
           {semiTransparentOutputMode === 'monotone' && (
             <Typography align={'left'}>
               <Trans>
-                Pixels highlighted green if they are fully opaque or fully transparent. Pixels are highlighted red if
-                they are partially transparent, and may be a mistake.
+                Pixels are highlighted green if they are fully opaque or fully transparent. Pixels are highlighted red
+                if they are partially transparent, and may be a mistake.
               </Trans>
             </Typography>
           )}
           {semiTransparentOutputMode === 'range' && (
             <Typography align={'left'}>
               <Trans>
-                Pixels highlighted green if they are fully opaque or fully transparent. Pixels are highlighted a hue
+                Pixels are highlighted green if they are fully opaque or fully transparent. Pixels are highlighted a hue
                 between blue and red if they are partially transparent, where blue represents more transparency and red
                 represents more opaqueness.
               </Trans>

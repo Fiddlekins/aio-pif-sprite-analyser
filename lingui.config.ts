@@ -6,6 +6,7 @@ const config: LinguiConfig = {
     "de-DE",
     "en-GB",
     "en-US",
+    "pl",
     "pseudo-LOCALE",
   ],
   pseudoLocale: "pseudo-LOCALE",

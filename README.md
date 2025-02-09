@@ -21,3 +21,4 @@ The credits are formatted as: Preferred Nickname (`discord handle`)
 |:------------|:-------------------------|:--------------------------|
 | de-DE       | Deutsch                  | Tak (`takopus`)           |
 | en-GB       | English (United Kingdom) | Fiddlekins (`fiddlekins`) |
+| pl          | Polski                   | Fioretovi (`fioretovi`)   |
