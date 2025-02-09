@@ -28,7 +28,7 @@ export const FormatFilesize = observer(function FormatFilesize(
 
   return (
     <>
-      {formattedValue}
+      {formattedValue.replaceAll(/ /g, '\u00a0')}
     </>
   );
 });
