@@ -56,7 +56,7 @@ msgstr "Częściowe Piksele"
 
 #: src/components/Mobile/NavigationMenuMobile.tsx:256
 msgid "Semi-Transparency"
-msgstr "Pórzeźroczystość"
+msgstr "Półprzeźroczystość"
 
 #: src/components/Mobile/NavigationMenuMobile.tsx:263
 msgid "Coloured Transparency"
@@ -128,11 +128,6 @@ msgstr "Wybierz Pokémona"
 msgid "Pokémon"
 msgstr "Pokémon"
 
-#: src/components/Modals/SettingsModal.tsx:291
-#: src/components/Modals/SettingsModal.tsx:305
-#~ msgid "Allow export copying"
-#~ msgstr "Pozwól na kopiowanie eksportu"
-
 #: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:19
 #: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:33
 msgid "Allow Export Copying"
@@ -158,7 +153,7 @@ msgstr "Przyspieszanie Płótna"
 
 #: src/components/Modals/SettingsModal/SettingCanvasAcceleration.tsx:38
 msgid "Leave this enabled unless you get corrupted images displaying, as it is faster and more accurate. Some browsers feature privacy settings that cause the Canvas API to output randomised image data, at which point Canvas Acceleration should be disabled."
-msgstr "Pozostaw to włączone, chyba że wyświetlają ci się skorumpowane obrazy, jako iż jest to szybsze i dokładniejsze. Niektóre przeglądarki posiadają ustawienia prywatności sprawiające, że API Płótna daje zrandomizowane dane obrazu, przy czym Przyspieszanie Płótna powinno zostać wyłączone."
+msgstr "Pozostaw to włączone, chyba że wyświetlane są uszkodzone obrazy, jako iż jest to szybsze i dokładniejsze. Niektóre przeglądarki posiadają ustawienia prywatności sprawiające, że API Płótna daje zrandomizowane dane obrazu, przy czym Przyspieszanie Płótna powinno zostać wyłączone."
 
 #: src/components/Modals/SettingsModal/SettingIgnoreColouredTransparency.tsx:19
 #: src/components/Modals/SettingsModal/SettingIgnoreColouredTransparency.tsx:33
@@ -258,15 +253,15 @@ msgstr "Normalizuj Przeźroczystość"
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:252
 msgid "When enabled, any pixel with 0% opacity will be set to transparent black (a.k.a. \"#0000\", \"rgba(0,0,0,0)\", etc)."
-msgstr "Kiedy włączone, każdy piksel z przeźroczystością 0% zostanie ustawiony do przeźroczystej czerni (a.k.a. \"#0000\", \"rgba(0,0,0,0)\", etc)."
+msgstr "Po włączeniu, każdy piksel z przeźroczystością 0% zostanie ustawiony do przeźroczystej czerni (a.k.a. \"#0000\", \"rgba(0,0,0,0)\", etc)."
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:258
 msgid "This changes nothing visually about the image, but reduces the filesize and has better compatibility with some software."
-msgstr "To nie zmienia nic wizualnie w obrazie, ale zmniejsza rozmiar pliku i ma lepszą kompatybilność z niektórymi programami."
+msgstr "Nie zmienia to nic wizualnie w obrazie, ale zmniejsza rozmiar pliku i ma lepszą kompatybilność z niektórymi programami."
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:264
 msgid "Under normal circumstances this should be left enabled."
-msgstr "W normalnych okolicznościach to powinno pozostać włączone."
+msgstr "W normalnych okolicznościach, ta opcja powinna pozostać włączona."
 
 #: src/components/Modals/SpriteImportModal.tsx:94
 msgid "File is invalid size: {resolutionString}"
@@ -290,7 +285,7 @@ msgstr "Importuj Sprite"
 
 #: src/components/Modals/SpriteImportModal.tsx:218
 msgid "Accepts images that are {acceptedDimensionsText} pixels in size."
-msgstr "Akceptuje obrazy, które są {acceptedDimensionsText} pikseli w rozmiarze."
+msgstr "Akceptuje obrazy, mają {acceptedDimensionsText} pikseli w wielkości."
 
 #: src/components/Modals/SpriteImportModal.tsx:230
 msgid "Drag 'n' drop some files here, or click to select files"
@@ -339,11 +334,11 @@ msgstr "Piksele z kolorową przeźroczystością są ustawione aby być w pełni
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyWarning.tsx:15
 msgid "Note: The following analysis can be helpful but is not required to pass for a sprite to be considered valid."
-msgstr "Przypis: Podążająca analiza może być pomocna, ale zaliczenie jej nie jest obowiązkowe aby sprite był uważany za poprawny."
+msgstr "Przypis: Następująca analiza może być pomocna, ale wykonanie jej nie jest obowiązkowe aby sprite był uważany za poprawny."
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyWarning.tsx:20
 msgid "If fixing this is desired you can use the \"{exportOptionName}\" option in the Export menu to save a copy of your sprite with the coloured transparency removed."
-msgstr "Jeśli naprawa tego jest pożądana możesz użyć \"{exportOptionName}\" opcji w menu Eksportowania do zapisania kopi swojego sprite'a z kolorową przeźroczystością usuniętą."
+msgstr "Jeśli naprawa jest pożądana, możesz użyć \"{exportOptionName}\" opcji w menu Eksportowania, by zapisać kopię swojego sprite'a z usuniętą kolorową przeźroczystością."
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyWarning.tsx:26
 msgid "For users that frequently find their software is introducing coloured transparency, you might prefer to ignore these warnings. You can find an option to suppress them in the Settings menu."
@@ -412,7 +407,7 @@ msgstr "Liczba Częściowych Pikseli: <0/> (<1/>)"
 
 #: src/components/Panes/PartialPixelsPane/PartialPixelsVerdict.tsx:64
 msgid "Each 3x3 square of pixels should be the same colour."
-msgstr "Każdy 3x3 kwadrat pikseli powinien być tego samego koloru."
+msgstr "Każdy kwadrat pikseli 3x3 powinien być tego samego koloru."
 
 #: src/components/Panes/PartialPixelsPane/PartialPixelsVerdict.tsx:90
 msgid "Mixed"
@@ -440,7 +435,7 @@ msgstr "Półprzeźroczyste piksele nie są ani w pełni przeźroczyste ani w pe
 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:72
 msgid "They are permitted if used intentionally."
-msgstr "Są dozwolone jeśli użyte celowo."
+msgstr "Są dozwolone, jeśli zostały użyte celowo."
 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:103
 msgid "Range"

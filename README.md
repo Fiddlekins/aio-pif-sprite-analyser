@@ -17,8 +17,8 @@ If you're interested in helping with them please refer to [this](./src/locales/R
 
 The credits are formatted as: Preferred Nickname (`discord handle`)
 
-| Locale code | Name                     | Credit                    |
-|:------------|:-------------------------|:--------------------------|
-| de-DE       | Deutsch                  | Tak (`takopus`)           |
-| en-GB       | English (United Kingdom) | Fiddlekins (`fiddlekins`) |
-| pl          | Polski                   | Fioretovi (`fioretovi`)   |
+| Locale code | Name                     | Credit                                                 |
+|:------------|:-------------------------|:-------------------------------------------------------|
+| de-DE       | Deutsch                  | Tak (`takopus`)                                        |
+| en-GB       | English (United Kingdom) | Fiddlekins (`fiddlekins`)                              |
+| pl          | Polski                   | Fioretovi (`fioretovi`), Markusknight (`markusknight`) |
