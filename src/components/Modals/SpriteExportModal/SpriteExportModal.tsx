@@ -34,6 +34,46 @@ const exportDimensions = [
   {width: 96, height: 96},
 ];
 
+function getSpriteNameFromBaseIds(
+  headId: number | undefined,
+  bodyId: number | undefined,
+) {
+  if (headId !== undefined && bodyId !== undefined) {
+    return `${headId}.${bodyId}`;
+  }
+  if (headId !== undefined) {
+    return `${headId}`;
+  }
+  if (bodyId !== undefined) {
+    return `${bodyId}`;
+  }
+  return 'sprite';
+}
+
+function getSpriteNameFromInput(
+  headId: number | undefined,
+  bodyId: number | undefined,
+  spriteInputName: string | undefined,
+) {
+  if (!spriteInputName) {
+    // If there's no input name then create output name from base pokemon
+    return getSpriteNameFromBaseIds(headId, bodyId);
+  }
+  const match = spriteInputName.match(/^(?:(\d+)\.)?(\d+)(.*)\.png$/);
+  if (!match) {
+    if (headId === undefined && bodyId === undefined) {
+      // If there's a gibberish input name but the user hasn't configured the base pokemon then return input name
+      return spriteInputName;
+    }
+    // If there's a gibberish input name and some amount of base pokemon configuration then create output name from base pokemon
+    return getSpriteNameFromBaseIds(headId, bodyId);
+  }
+  const [, , , label] = match;
+  // If input name is sufficiently well formatted, keep any extra text whilst using currently configured base pokemon for name core
+  // If head and body are undefined then user must have deliberately selected them, so use fallback behaviour rather than input name values
+  return `${getSpriteNameFromBaseIds(headId, bodyId)}${label}`;
+}
+
 export const SpriteExportModal = observer(function SpriteExportModal() {
   const isExportModalOpen = ui$.isExportModalOpen.get();
   const isExportCopyingEnabled = settings$.isExportCopyingEnabled.get();
@@ -52,13 +92,10 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
       return [];
     }
     if (spriteInput && backgroundImageData) {
-      const spriteInputNameWithoutExtension = spriteInput.name?.replace(/\.png$/i, '') || null;
-      const spriteName = headId === undefined || bodyId === undefined ? spriteInputNameWithoutExtension || 'sprite' : `${headId}.${bodyId}`;
-      let backgroundName = 'background';
+      const spriteName = getSpriteNameFromInput(headId, bodyId, spriteInput.name);
+      let backgroundName = `${spriteName}_background`;
       if (bodyId !== null) {
         backgroundName = `${bodyId}_background`;
-      } else if (spriteInputNameWithoutExtension) {
-        backgroundName = `${spriteInputNameWithoutExtension}_background`;
       }
       let spriteConfigs;
       let spriteImageData288 = spriteInput.imageData as ImageData;
