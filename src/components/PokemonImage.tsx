@@ -38,7 +38,7 @@ export function PokemonImage(
           width={'100%'}
           height={'100%'}
           style={imageStyle}
-          src={getUnfusedSrc(headPokemonId)}
+          src={`${assetBaseUrl}/assets/spritesheets_autogen/${headPokemonId}.png`}
         />
       );
     }
@@ -48,7 +48,7 @@ export function PokemonImage(
           width={'100%'}
           height={'100%'}
           style={imageStyle}
-          src={getUnfusedSrc(bodyPokemonId)}
+          src={`${assetBaseUrl}/assets/spritesheets_autogen/${bodyPokemonId}.png`}
         />
       );
     }
