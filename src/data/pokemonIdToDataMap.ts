@@ -4849,7 +4849,7 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "displayName": "Kommo-o"
   },
   "474": {
-    "Name": "Unknown1",
+    "Name": "Wimpod",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 21,
     "BattlerEnemyX": 0,
@@ -4859,7 +4859,7 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "displayName": "Wimpod"
   },
   "475": {
-    "Name": "Unknown2",
+    "Name": "Golisopod",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 0,
     "BattlerEnemyX": 0,
@@ -4989,139 +4989,140 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "displayName": "Greninja"
   },
   "488": {
+    "Name": "Torkoal",
     "BattlerPlayerX": -1,
     "BattlerPlayerY": 5,
     "BattlerEnemyX": -3,
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 4,
-    "displayName": "Torkoal",
-    "Name": "Torkoal"
+    "displayName": "Torkoal"
   },
   "489": {
+    "Name": "Pumpkaboo",
+    "FormName": "Small Size",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 20,
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "Pumpkaboo",
-    "Name": "Pumpkaboo"
+    "displayName": "Pumpkaboo"
   },
   "490": {
+    "Name": "Gourgeist",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 0,
     "BattlerEnemyX": 1,
     "BattlerEnemyY": 4,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "Gourgeist",
-    "Name": "Gourgeist"
+    "displayName": "Gourgeist"
   },
   "491": {
+    "Name": "Swirlix",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 20,
     "BattlerEnemyX": 2,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "Swirlix",
-    "Name": "Swirlix"
+    "displayName": "Swirlix"
   },
   "492": {
+    "Name": "Slurpuff",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 10,
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 14,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "Slurpuff",
-    "Name": "Slurpuff"
+    "displayName": "Slurpuff"
   },
   "493": {
+    "Name": "Scraggy",
     "BattlerPlayerX": -7,
     "BattlerPlayerY": 17,
     "BattlerEnemyX": 6,
     "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "Scraggy",
-    "Name": "Scraggy"
+    "displayName": "Scraggy"
   },
   "494": {
+    "Name": "Scrafty",
     "BattlerPlayerX": -4,
     "BattlerPlayerY": 4,
     "BattlerEnemyX": 7,
     "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "Scrafty",
-    "Name": "Scrafty"
+    "displayName": "Scrafty"
   },
   "495": {
+    "Name": "Lotad",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 27,
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 24,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "Lotad",
-    "Name": "Lotad"
+    "displayName": "Lotad"
   },
   "496": {
+    "Name": "Lombre",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 17,
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 17,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "Lombre",
-    "Name": "Lombre"
+    "displayName": "Lombre"
   },
   "497": {
+    "Name": "Ludicolo",
     "BattlerPlayerX": 4,
     "BattlerPlayerY": 0,
     "BattlerEnemyX": -2,
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 3,
-    "displayName": "Ludicolo",
-    "Name": "Ludicolo"
+    "displayName": "Ludicolo"
   },
   "498": {
+    "Name": "Minior",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 0,
+    "BattlerPlayerY": -16,
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "Minior Meteor",
-    "Name": "Minior Meteor"
+    "BattlerShadowSize": 1,
+    "displayName": "Minior Meteor"
   },
   "499": {
+    "Name": "Minior",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 0,
+    "BattlerPlayerY": -14,
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "Minior Core",
-    "Name": "Minior Core"
+    "BattlerShadowSize": 1,
+    "displayName": "Minior Core"
   },
   "500": {
+    "Name": "Diancie",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 0,
+    "BattlerPlayerY": -23,
     "BattlerEnemyX": 0,
-    "BattlerEnemyY": 0,
+    "BattlerEnemyY": -5,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "Diancie",
-    "Name": "Diancie"
+    "displayName": "Diancie"
   },
   "501": {
     "Name": "Luvdisc",
     "BattlerPlayerX": 1,
-    "BattlerPlayerY": 19,
+    "BattlerPlayerY": -4,
     "BattlerEnemyX": -4,
     "BattlerEnemyY": 9,
     "BattlerShadowX": 0,
@@ -5129,668 +5130,648 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "displayName": "Luvdisc"
   },
   "502": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 11,
+    "Name": "Poochyena",
+    "BattlerPlayerX": 3,
+    "BattlerPlayerY": 18,
     "BattlerEnemyX": 0,
-    "BattlerEnemyY": 16,
-    "BattlerShadowX": -2,
+    "BattlerEnemyY": 22,
+    "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "Poochyena",
-    "Name": "Poochyena"
+    "displayName": "Poochyena"
   },
   "503": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 0,
-    "BattlerEnemyX": -2,
-    "BattlerEnemyY": 8,
-    "BattlerShadowX": 2,
+    "Name": "Mightyena",
+    "BattlerPlayerX": -8,
+    "BattlerPlayerY": 3,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 13,
+    "BattlerShadowX": 0,
     "BattlerShadowSize": 3,
-    "displayName": "Mightyena",
-    "Name": "Mightyena"
+    "displayName": "Mightyena"
   },
   "504": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 11,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 16,
-    "BattlerShadowX": -2,
-    "BattlerShadowSize": 2,
-    "displayName": "Zigzagoon",
-    "Name": "Zigzagoon"
-  },
-  "505": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 0,
-    "BattlerEnemyX": -2,
-    "BattlerEnemyY": 8,
-    "BattlerShadowX": 2,
-    "BattlerShadowSize": 3,
-    "displayName": "Linoone",
-    "Name": "Linoone"
-  },
-  "506": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 14,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 19,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Wurmple",
-    "Name": "Wurmple"
-  },
-  "507": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 18,
-    "BattlerEnemyX": -2,
-    "BattlerEnemyY": 33,
-    "BattlerAltitude": 12,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Silcoon",
-    "Name": "Silcoon"
-  },
-  "508": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -14,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 13,
-    "BattlerAltitude": 15,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Beautifly",
-    "Name": "Beautifly"
-  },
-  "509": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 18,
-    "BattlerEnemyX": -2,
-    "BattlerEnemyY": 33,
-    "BattlerAltitude": 12,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Cascoon",
-    "Name": "Cascoon"
-  },
-  "510": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -14,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 13,
-    "BattlerAltitude": 15,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Dustox",
-    "Name": "Dustox"
-  },
-  "511": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 20,
-    "BattlerEnemyX": 2,
-    "BattlerEnemyY": 23,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Seedot",
-    "Name": "Seedot"
-  },
-  "512": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 8,
-    "BattlerEnemyX": 2,
-    "BattlerEnemyY": 14,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "Nuzleaf",
-    "Name": "Nuzleaf"
-  },
-  "513": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 10,
-    "BattlerEnemyX": -2,
-    "BattlerEnemyY": 16,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 4,
-    "displayName": "Shiftry",
-    "Name": "Shiftry"
-  },
-  "514": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 17,
-    "BattlerEnemyX": 1,
-    "BattlerEnemyY": 20,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Taillow",
-    "Name": "Taillow"
-  },
-  "515": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -7,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 21,
-    "BattlerAltitude": 30,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "Swellow",
-    "Name": "Swellow"
-  },
-  "516": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 17,
-    "BattlerEnemyX": 1,
-    "BattlerEnemyY": 20,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Wingull",
-    "Name": "Wingull"
-  },
-  "517": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -7,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 21,
-    "BattlerAltitude": 30,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "Pelipper",
-    "Name": "Pelipper"
-  },
-  "518": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 13,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 19,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Surskit",
-    "Name": "Surskit"
-  },
-  "519": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -14,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 13,
-    "BattlerAltitude": 15,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Masquerain",
-    "Name": "Masquerain"
-  },
-  "520": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 8,
-    "BattlerEnemyX": 2,
-    "BattlerEnemyY": 14,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "Whismur",
-    "Name": "Whismur"
-  },
-  "521": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -4,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 6,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 3,
-    "displayName": "Loudred",
-    "Name": "Loudred"
-  },
-  "522": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -4,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 6,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 3,
-    "displayName": "Exploud",
-    "Name": "Exploud"
-  },
-  "523": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 8,
-    "BattlerEnemyX": 2,
-    "BattlerEnemyY": 14,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "Makuhita",
-    "Name": "Makuhita"
-  },
-  "524": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -4,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 6,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 3,
-    "displayName": "Hariyama",
-    "Name": "Hariyama"
-  },
-  "525": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 11,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 16,
-    "BattlerShadowX": -2,
-    "BattlerShadowSize": 2,
-    "displayName": "Skitty",
-    "Name": "Skitty"
-  },
-  "526": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 0,
-    "BattlerEnemyX": -2,
-    "BattlerEnemyY": 8,
-    "BattlerShadowX": 2,
-    "BattlerShadowSize": 3,
-    "displayName": "Delcatty",
-    "Name": "Delcatty"
-  },
-  "527": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 21,
+    "Name": "Zigzagoon",
+    "BattlerPlayerX": -1,
+    "BattlerPlayerY": 15,
     "BattlerEnemyX": -1,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Meditite",
-    "Name": "Meditite"
-  },
-  "528": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -2,
-    "BattlerEnemyX": 1,
-    "BattlerEnemyY": 4,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 4,
-    "displayName": "Medicham",
-    "Name": "Medicham"
-  },
-  "529": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 11,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 16,
-    "BattlerShadowX": -2,
-    "BattlerShadowSize": 2,
-    "displayName": "Electrike",
-    "Name": "Electrike"
-  },
-  "530": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 0,
-    "BattlerEnemyX": -2,
-    "BattlerEnemyY": 8,
-    "BattlerShadowX": 2,
     "BattlerShadowSize": 3,
-    "displayName": "Manectric",
-    "Name": "Manectric"
+    "displayName": "Zigzagoon"
   },
-  "531": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 19,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 24,
+  "505": {
+    "Name": "Linoone",
+    "BattlerPlayerX": -7,
+    "BattlerPlayerY": 24,
+    "BattlerEnemyX": 9,
+    "BattlerEnemyY": 27,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Linoone"
+  },
+  "506": {
+    "Name": "Wurmple",
+    "BattlerPlayerX": 5,
+    "BattlerPlayerY": 20,
+    "BattlerEnemyX": -2,
+    "BattlerEnemyY": 23,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "Plusle",
-    "Name": "Plusle"
+    "displayName": "Wurmple"
   },
-  "532": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 19,
+  "507": {
+    "Name": "Silcoon",
+    "BattlerPlayerX": -2,
+    "BattlerPlayerY": 26,
     "BattlerEnemyX": 0,
-    "BattlerEnemyY": 24,
+    "BattlerEnemyY": 26,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "Minun",
-    "Name": "Minun"
+    "displayName": "Silcoon"
   },
-  "533": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -11,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 8,
-    "BattlerAltitude": 11,
+  "508": {
+    "Name": "Beautifly",
+    "BattlerPlayerX": -10,
+    "BattlerPlayerY": -15,
+    "BattlerEnemyX": 9,
+    "BattlerEnemyY": 1,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Volbeat",
-    "Name": "Volbeat"
+    "BattlerShadowSize": 2,
+    "displayName": "Beautifly"
   },
-  "534": {
+  "509": {
+    "Name": "Cascoon",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": -11,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 8,
-    "BattlerAltitude": 11,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Illumise",
-    "Name": "Illumise"
-  },
-  "535": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 30,
+    "BattlerPlayerY": 28,
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 28,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "Gulpin",
-    "Name": "Gulpin"
+    "displayName": "Cascoon"
   },
-  "536": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 10,
-    "BattlerEnemyX": -2,
-    "BattlerEnemyY": 16,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 4,
-    "displayName": "Swalot",
-    "Name": "Swalot"
-  },
-  "537": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 3,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 12,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "Numel",
-    "Name": "Numel"
-  },
-  "538": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -7,
-    "BattlerEnemyX": 0,
+  "510": {
+    "Name": "Dustox",
+    "BattlerPlayerX": 6,
+    "BattlerPlayerY": -18,
+    "BattlerEnemyX": 1,
     "BattlerEnemyY": 3,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 3,
-    "displayName": "Camerupt",
-    "Name": "Camerupt"
+    "displayName": "Dustox"
   },
-  "539": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 21,
-    "BattlerEnemyX": -1,
+  "511": {
+    "Name": "Seedot",
+    "BattlerPlayerX": -1,
+    "BattlerPlayerY": 19,
+    "BattlerEnemyX": 1,
     "BattlerEnemyY": 21,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "Spoink",
-    "Name": "Spoink"
+    "displayName": "Seedot"
   },
-  "540": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 3,
+  "512": {
+    "Name": "Nuzleaf",
+    "BattlerPlayerX": -6,
+    "BattlerPlayerY": 7,
+    "BattlerEnemyX": 4,
+    "BattlerEnemyY": 13,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Nuzleaf"
+  },
+  "513": {
+    "Name": "Shiftry",
+    "BattlerPlayerX": 1,
+    "BattlerPlayerY": 2,
+    "BattlerEnemyX": 5,
+    "BattlerEnemyY": 12,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 4,
+    "displayName": "Shiftry"
+  },
+  "514": {
+    "Name": "Taillow",
+    "BattlerPlayerX": -6,
+    "BattlerPlayerY": -13,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 3,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Taillow"
+  },
+  "515": {
+    "Name": "Swellow",
+    "BattlerPlayerX": 3,
+    "BattlerPlayerY": -18,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 0,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Swellow"
+  },
+  "516": {
+    "Name": "Wingull",
+    "BattlerPlayerX": 2,
+    "BattlerPlayerY": -13,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 4,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Wingull"
+  },
+  "517": {
+    "Name": "Pelipper",
+    "BattlerPlayerX": -6,
+    "BattlerPlayerY": -11,
+    "BattlerEnemyX": 2,
+    "BattlerEnemyY": 2,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Pelipper"
+  },
+  "518": {
+    "Name": "Surskit",
+    "BattlerPlayerX": 1,
+    "BattlerPlayerY": 28,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 30,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Surskit"
+  },
+  "519": {
+    "Name": "Masquerain",
+    "BattlerPlayerX": 4,
+    "BattlerPlayerY": -20,
+    "BattlerEnemyX": 2,
+    "BattlerEnemyY": -2,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Masquerain"
+  },
+  "520": {
+    "Name": "Whismur",
+    "BattlerPlayerX": -2,
+    "BattlerPlayerY": 20,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 21,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Whismur"
+  },
+  "521": {
+    "Name": "Loudred",
+    "BattlerPlayerX": 1,
+    "BattlerPlayerY": 4,
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 2,
-    "displayName": "Grumpig",
-    "Name": "Grumpig"
+    "BattlerShadowSize": 3,
+    "displayName": "Loudred"
   },
-  "541": {
+  "522": {
+    "Name": "Exploud",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 21,
-    "BattlerEnemyX": -1,
-    "BattlerEnemyY": 21,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 10,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Spinda",
-    "Name": "Spinda"
+    "BattlerShadowSize": 4,
+    "displayName": "Exploud"
   },
-  "542": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 21,
-    "BattlerEnemyX": -1,
-    "BattlerEnemyY": 21,
+  "523": {
+    "Name": "Makuhita",
+    "BattlerPlayerX": 4,
+    "BattlerPlayerY": 8,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 15,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Zangoose",
-    "Name": "Zangoose"
+    "BattlerShadowSize": 3,
+    "displayName": "Makuhita"
   },
-  "543": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 5,
+  "524": {
+    "Name": "Hariyama",
+    "BattlerPlayerX": -10,
+    "BattlerPlayerY": -3,
     "BattlerEnemyX": 3,
+    "BattlerEnemyY": 9,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 5,
+    "displayName": "Hariyama"
+  },
+  "525": {
+    "Name": "Skitty",
+    "BattlerPlayerX": -7,
+    "BattlerPlayerY": 19,
+    "BattlerEnemyX": 5,
+    "BattlerEnemyY": 21,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Skitty"
+  },
+  "526": {
+    "Name": "Delcatty",
+    "BattlerPlayerX": -1,
+    "BattlerPlayerY": 5,
+    "BattlerEnemyX": 2,
     "BattlerEnemyY": 12,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 3,
-    "displayName": "Seviper",
-    "Name": "Seviper"
+    "displayName": "Delcatty"
+  },
+  "527": {
+    "Name": "Meditite",
+    "BattlerPlayerX": 2,
+    "BattlerPlayerY": 18,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 22,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Meditite"
+  },
+  "528": {
+    "Name": "Medicham",
+    "BattlerPlayerX": 2,
+    "BattlerPlayerY": -5,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 6,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Medicham"
+  },
+  "529": {
+    "Name": "Electrike",
+    "BattlerPlayerX": 7,
+    "BattlerPlayerY": 20,
+    "BattlerEnemyX": -2,
+    "BattlerEnemyY": 23,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Electrike"
+  },
+  "530": {
+    "Name": "Manectric",
+    "BattlerPlayerX": 1,
+    "BattlerPlayerY": -1,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 8,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Manectric"
+  },
+  "531": {
+    "Name": "Plusle",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 13,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 17,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Plusle"
+  },
+  "532": {
+    "Name": "Minun",
+    "BattlerPlayerX": -7,
+    "BattlerPlayerY": 14,
+    "BattlerEnemyX": 6,
+    "BattlerEnemyY": 17,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Minun"
+  },
+  "533": {
+    "Name": "Volbeat",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": -15,
+    "BattlerEnemyX": 3,
+    "BattlerEnemyY": 1,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Volbeat"
+  },
+  "534": {
+    "Name": "Illumise",
+    "BattlerPlayerX": -3,
+    "BattlerPlayerY": -12,
+    "BattlerEnemyX": 3,
+    "BattlerEnemyY": 2,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Illumise"
+  },
+  "535": {
+    "Name": "Gulpin",
+    "BattlerPlayerX": 4,
+    "BattlerPlayerY": 19,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 21,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Gulpin"
+  },
+  "536": {
+    "Name": "Swalot",
+    "BattlerPlayerX": 6,
+    "BattlerPlayerY": 7,
+    "BattlerEnemyX": -3,
+    "BattlerEnemyY": 15,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 4,
+    "displayName": "Swalot"
+  },
+  "537": {
+    "Name": "Numel",
+    "BattlerPlayerX": 8,
+    "BattlerPlayerY": 14,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 19,
+    "BattlerShadowX": 3,
+    "BattlerShadowSize": 2,
+    "displayName": "Numel"
+  },
+  "538": {
+    "Name": "Camerupt",
+    "BattlerPlayerX": -1,
+    "BattlerPlayerY": 4,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 14,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 5,
+    "displayName": "Camerupt"
+  },
+  "539": {
+    "Name": "Spoink",
+    "BattlerPlayerX": -1,
+    "BattlerPlayerY": 7,
+    "BattlerEnemyX": 2,
+    "BattlerEnemyY": 13,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Spoink"
+  },
+  "540": {
+    "Name": "Grumpig",
+    "BattlerPlayerX": -4,
+    "BattlerPlayerY": 4,
+    "BattlerEnemyX": 3,
+    "BattlerEnemyY": 13,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Grumpig"
+  },
+  "541": {
+    "Name": "Spinda",
+    "BattlerPlayerX": -4,
+    "BattlerPlayerY": 9,
+    "BattlerEnemyX": 6,
+    "BattlerEnemyY": 15,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Spinda"
+  },
+  "542": {
+    "Name": "Zangoose",
+    "BattlerPlayerX": -1,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 3,
+    "BattlerEnemyY": 9,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Zangoose"
+  },
+  "543": {
+    "Name": "Seviper",
+    "BattlerPlayerX": -4,
+    "BattlerPlayerY": 2,
+    "BattlerEnemyX": 5,
+    "BattlerEnemyY": 12,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Seviper"
   },
   "544": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -7,
-    "BattlerEnemyX": 1,
-    "BattlerEnemyY": 14,
-    "BattlerAltitude": 16,
+    "Name": "Lunatone",
+    "BattlerPlayerX": 1,
+    "BattlerPlayerY": -15,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": -1,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Lunatone",
-    "Name": "Lunatone"
+    "BattlerShadowSize": 2,
+    "displayName": "Lunatone"
   },
   "545": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -7,
+    "Name": "Solrock",
+    "BattlerPlayerX": 2,
+    "BattlerPlayerY": -17,
     "BattlerEnemyX": 1,
-    "BattlerEnemyY": 14,
-    "BattlerAltitude": 16,
+    "BattlerEnemyY": -2,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Solrock",
-    "Name": "Solrock"
+    "BattlerShadowSize": 2,
+    "displayName": "Solrock"
   },
   "546": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -4,
-    "BattlerEnemyX": 2,
-    "BattlerEnemyY": 17,
-    "BattlerAltitude": 11,
-    "BattlerShadowX": -2,
+    "Name": "Barboach",
+    "BattlerPlayerX": 3,
+    "BattlerPlayerY": 8,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 16,
+    "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "Barboach",
-    "Name": "Barboach"
+    "displayName": "Barboach"
   },
   "547": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -4,
-    "BattlerEnemyX": 2,
-    "BattlerEnemyY": 17,
-    "BattlerAltitude": 11,
-    "BattlerShadowX": -2,
-    "BattlerShadowSize": 2,
-    "displayName": "Whiscash",
-    "Name": "Whiscash"
+    "Name": "Whiscash",
+    "BattlerPlayerX": -4,
+    "BattlerPlayerY": -6,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 7,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Whiscash"
   },
   "548": {
+    "Name": "Corphish",
+    "BattlerPlayerX": 2,
+    "BattlerPlayerY": 15,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 20,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Corphish"
+  },
+  "549": {
+    "Name": "Crawdaunt",
+    "BattlerPlayerX": 9,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": -4,
+    "BattlerEnemyY": 11,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Crawdaught"
+  },
+  "550": {
+    "Name": "Baltoy",
+    "BattlerPlayerX": 4,
+    "BattlerPlayerY": 15,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 18,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Baltoy"
+  },
+  "551": {
+    "Name": "Claydol",
+    "BattlerPlayerX": 1,
+    "BattlerPlayerY": -11,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 2,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Claydol"
+  },
+  "552": {
+    "Name": "Castform",
+    "FormName": "Normal Form",
+    "BattlerPlayerX": -2,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 3,
+    "BattlerEnemyY": 11,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Castform"
+  },
+  "553": {
+    "Name": "Castform",
+    "FormName": "Normal Form",
+    "BattlerPlayerX": -2,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 3,
+    "BattlerEnemyY": 11,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Castform(Sunny)"
+  },
+  "554": {
+    "Name": "Castform",
+    "FormName": "Normal Form",
+    "BattlerPlayerX": -3,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 3,
+    "BattlerEnemyY": 11,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Castform(Rainy)"
+  },
+  "555": {
+    "Name": "Castform",
+    "FormName": "Normal Form",
+    "BattlerPlayerX": 1,
+    "BattlerPlayerY": -2,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 8,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Castform(Snowy)"
+  },
+  "556": {
+    "Name": "Tropius",
+    "BattlerPlayerX": -8,
+    "BattlerPlayerY": -10,
+    "BattlerEnemyX": 11,
+    "BattlerEnemyY": 1,
+    "BattlerShadowX": 3,
+    "BattlerShadowSize": 3,
+    "displayName": "Tropius"
+  },
+  "557": {
+    "Name": "Chingling",
+    "BattlerPlayerX": 1,
+    "BattlerPlayerY": -13,
+    "BattlerEnemyX": 3,
+    "BattlerEnemyY": 6,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Chingling"
+  },
+  "558": {
+    "Name": "Chimecho",
+    "BattlerPlayerX": 7,
+    "BattlerPlayerY": -20,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": -2,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Chimecho"
+  },
+  "559": {
+    "Name": "Spheal",
+    "BattlerPlayerX": -1,
+    "BattlerPlayerY": 25,
+    "BattlerEnemyX": 2,
+    "BattlerEnemyY": 25,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Spheal"
+  },
+  "560": {
+    "Name": "Sealeo",
+    "BattlerPlayerX": 1,
+    "BattlerPlayerY": 16,
+    "BattlerEnemyX": 2,
+    "BattlerEnemyY": 17,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Sealeo"
+  },
+  "561": {
+    "Name": "Walrein",
     "BattlerPlayerX": 0,
-    "BattlerPlayerY": 24,
+    "BattlerPlayerY": 4,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 14,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Walrein"
+  },
+  "562": {
+    "Name": "Clamperl",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 19,
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 23,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 2,
-    "displayName": "Corphish",
-    "Name": "Corphish"
-  },
-  "549": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 4,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 13,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 4,
-    "displayName": "Crawdaught",
-    "Name": "Crawdaught"
-  },
-  "550": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -18,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 5,
-    "BattlerAltitude": 13,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Baltoy",
-    "Name": "Baltoy"
-  },
-  "551": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -18,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 5,
-    "BattlerAltitude": 13,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Claydol",
-    "Name": "Claydol"
-  },
-  "552": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -18,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 5,
-    "BattlerAltitude": 13,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Castform",
-    "Name": "Castform"
-  },
-  "553": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -18,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 5,
-    "BattlerAltitude": 13,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Castform(Sunny)",
-    "Name": "Castform(Sunny)"
-  },
-  "554": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -18,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 5,
-    "BattlerAltitude": 13,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Castform(Rainy)",
-    "Name": "Castform(Rainy)"
-  },
-  "555": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -18,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 5,
-    "BattlerAltitude": 13,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Castform(Snowy)",
-    "Name": "Castform(Snowy)"
-  },
-  "556": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -2,
-    "BattlerEnemyX": 8,
-    "BattlerEnemyY": 4,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 4,
-    "displayName": "Tropius",
-    "Name": "Tropius"
-  },
-  "557": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -18,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 5,
-    "BattlerAltitude": 13,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Chingling",
-    "Name": "Chingling"
-  },
-  "558": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -18,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 5,
-    "BattlerAltitude": 13,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Chimecho",
-    "Name": "Chimecho"
-  },
-  "559": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 14,
-    "BattlerEnemyX": -1,
-    "BattlerEnemyY": 16,
-    "BattlerShadowX": 1,
-    "BattlerShadowSize": 2,
-    "displayName": "Spheal",
-    "Name": "Spheal"
-  },
-  "560": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 18,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 18,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 4,
-    "displayName": "Sealeo",
-    "Name": "Sealeo"
-  },
-  "561": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": 18,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 18,
-    "BattlerShadowX": 0,
-    "BattlerShadowSize": 5,
-    "displayName": "Walrein",
-    "Name": "Walrein"
-  },
-  "562": {
-    "BattlerPlayerX": 4,
-    "BattlerPlayerY": 17,
-    "BattlerEnemyX": 1,
-    "BattlerEnemyY": 20,
-    "BattlerShadowX": 1,
-    "BattlerShadowSize": 1,
-    "displayName": "Clamperl",
-    "Name": "Clamperl"
+    "displayName": "Clamperl"
   },
   "563": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -7,
-    "BattlerEnemyX": 2,
-    "BattlerEnemyY": 15,
-    "BattlerAltitude": 10,
-    "BattlerShadowX": -1,
-    "BattlerShadowSize": 2,
-    "displayName": "Huntail",
-    "Name": "Huntail"
+    "Name": "Huntail",
+    "BattlerPlayerX": -3,
+    "BattlerPlayerY": -13,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 2,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Huntail"
   },
   "564": {
-    "BattlerPlayerX": 0,
+    "Name": "Gorebyss",
+    "BattlerPlayerX": -4,
     "BattlerPlayerY": -7,
-    "BattlerEnemyX": 2,
-    "BattlerEnemyY": 15,
-    "BattlerAltitude": 10,
-    "BattlerShadowX": -1,
-    "BattlerShadowSize": 2,
-    "displayName": "Gorebyss",
-    "Name": "Gorebyss"
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 6,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Gorebyss"
   },
   "565": {
-    "BattlerPlayerX": 0,
-    "BattlerPlayerY": -7,
-    "BattlerEnemyX": 2,
-    "BattlerEnemyY": 15,
-    "BattlerAltitude": 10,
-    "BattlerShadowX": -1,
-    "BattlerShadowSize": 2,
-    "displayName": "Relicanth",
-    "Name": "Relicanth"
+    "Name": "Relicanth",
+    "BattlerPlayerX": -7,
+    "BattlerPlayerY": -12,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 4,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Relicanth"
   },
   "999999": {
     "Name": "Zapmolcuno",
@@ -6045,5 +6026,32 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 6,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 3
+  },
+  "1000027": {
+    "Name": "Chennekie",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 25,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2
+  },
+  "1000028": {
+    "Name": "Brailladier",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 21,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 2
+  },
+  "1000029": {
+    "Name": "Cheninphox",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 6,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 5
   }
 }
