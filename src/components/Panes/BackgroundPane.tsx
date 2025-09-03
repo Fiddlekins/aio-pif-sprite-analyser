@@ -225,6 +225,7 @@ export const BackgroundPane = observer(function BackgroundPane() {
       flexDirection={'column'}
       alignItems={'stretch'}
       gap={1}
+      minHeight={'150px'}
       sx={{overflowY: isMobile ? 'visible' : 'auto'}}
     >
       <StyledBox

@@ -42,7 +42,7 @@ export function AnalysisLayout() {
               <Grid
                 xs={4}
                 height={'100%'}
-                sx={{boxShadow: 2, zIndex: 2, bgcolor: 'background.default'}}
+                sx={{boxShadow: 2, zIndex: 2, bgcolor: 'background.default', overflowY: 'auto'}}
               >
                 <OverviewPane/>
               </Grid>
