@@ -2,6 +2,7 @@ export interface PokemonData {
     displayName?: string;
     Name: string;
     FormName?: string;
+    isMissingPositionalData?: boolean;
     BattlerPlayerX: number;
     BattlerPlayerY: number;
     BattlerEnemyX: number;
@@ -5607,7 +5608,7 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 3,
-    "displayName": "Crawdaught"
+    "displayName": "Crawdaunt"
   },
   "550": {
     "Name": "Baltoy",
@@ -5772,6 +5773,83 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerShadowX": 0,
     "BattlerShadowSize": 3,
     "displayName": "Relicanth"
+  },
+  "566": {
+    "isMissingPositionalData": true,
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 0,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Woobat",
+    "Name": "Woobat"
+  },
+  "567": {
+    "isMissingPositionalData": true,
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 0,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Swoobat",
+    "Name": "Swoobat"
+  },
+  "568": {
+    "isMissingPositionalData": true,
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 0,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Tynamo",
+    "Name": "Tynamo"
+  },
+  "569": {
+    "isMissingPositionalData": true,
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 0,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Eelektrik",
+    "Name": "Eelektrik"
+  },
+  "570": {
+    "isMissingPositionalData": true,
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 0,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Eelektross",
+    "Name": "Eelektross"
+  },
+  "571": {
+    "isMissingPositionalData": true,
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 0,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Skrelp",
+    "Name": "Skrelp"
+  },
+  "572": {
+    "isMissingPositionalData": true,
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": 0,
+    "BattlerEnemyY": 0,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Dragalge",
+    "Name": "Dragalge"
   },
   "999999": {
     "Name": "Zapmolcuno",

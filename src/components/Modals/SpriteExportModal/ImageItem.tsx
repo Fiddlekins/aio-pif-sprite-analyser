@@ -3,6 +3,7 @@ import {ContentCopySharp, DownloadSharp} from "@mui/icons-material";
 import {Alert, Box, Button, Typography} from "@mui/material";
 import {Fragment, useCallback, useEffect, useRef} from "react";
 import {PngInfo} from "../../../utils/image/getDecodedPng.ts";
+import {MissingPositionalDataTooltip} from "../../MissingPositionalDataTooltip.tsx";
 import {PngInfoSummary} from "../../PngInfo/PngInfoSummary.tsx";
 import {PngInfoTooltip} from "../../PngInfo/PngInfoTooltip.tsx";
 import {StyledTooltip} from "../../StyledTooltip.tsx";
@@ -16,6 +17,7 @@ export interface Image {
   indexedFailed: boolean;
   alertIndexedFailure: boolean;
   canCopy: boolean;
+  isMissingPositionalData?: boolean;
 }
 
 export interface ImageItemProps {
@@ -27,7 +29,16 @@ export function ImageItem(
     image,
   }: ImageItemProps
 ) {
-  const {imageData, pngBlob, info, filename, indexedFailed, alertIndexedFailure, canCopy} = image;
+  const {
+    imageData,
+    pngBlob,
+    info,
+    filename,
+    indexedFailed,
+    alertIndexedFailure,
+    canCopy,
+    isMissingPositionalData
+  } = image;
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -40,7 +51,7 @@ export function ImageItem(
     }
   }, [canvasRef, imageData]);
 
-  // The browser re-encode images when written to clipboard which ultimately defeats the point
+  // The browser re-encodes images when written to clipboard which ultimately defeats the point
   // Copying is only permitted for images that aren't important (namely the background)
   const onCopy = useCallback(() => {
     const htmlContent = `<img src="invalid-url/${filename}">`;
@@ -69,12 +80,15 @@ export function ImageItem(
       flexDirection={'column'}
       alignItems={'center'}
     >
-      <canvas
-        ref={canvasRef}
-        width={imageData.width}
-        height={imageData.height}
-        style={{width: 260, height: 260, pointerEvents: canCopy ? 'initial' : 'none'}}
-      />
+      <Box position={'relative'} lineHeight={0}>
+        <canvas
+          ref={canvasRef}
+          width={imageData.width}
+          height={imageData.height}
+          style={{width: 260, height: 260, pointerEvents: canCopy ? 'initial' : 'none'}}
+        />
+        {isMissingPositionalData && (<MissingPositionalDataTooltip/>)}
+      </Box>
       <Box
         display={'flex'}
         flexDirection={'row'}

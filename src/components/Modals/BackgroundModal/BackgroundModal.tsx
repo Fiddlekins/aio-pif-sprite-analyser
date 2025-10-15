@@ -3,10 +3,12 @@ import {Trans, useLingui} from "@lingui/react/macro";
 import {ExpandMoreSharp, HelpOutlineSharp, RestartAltSharp} from "@mui/icons-material";
 import {Accordion, AccordionDetails, AccordionSummary, Box, Button, Switch, Typography} from "@mui/material";
 import {ChangeEvent, Fragment, useCallback, useState} from "react";
+import {pokemonIdToDataMap} from "../../../data/pokemonIdToDataMap.ts";
 import {analysis$} from "../../../state/analysis.ts";
 import {background$, backgroundSettings$} from "../../../state/background.ts";
 import {ui$} from "../../../state/ui.ts";
 import {IntegerInput} from "../../IntegerInput.tsx";
+import {MissingPositionalDataTooltip} from "../../MissingPositionalDataTooltip.tsx";
 import {PokemonDisplay} from "../../PokemonDisplay.tsx";
 import {StyledTooltip} from "../../StyledTooltip.tsx";
 import {StyledModal} from "../StyledModal.tsx";
@@ -24,6 +26,8 @@ function getCanvasEl() {
 
 export const BackgroundModal = observer(function BackgroundModal() {
   const isMobile = ui$.isMobile.get();
+  const bodyId = analysis$.bodyId.get();
+  const isMissingPositionalData = (bodyId !== undefined && pokemonIdToDataMap[bodyId || 0]?.isMissingPositionalData) || false;
 
   const {t} = useLingui();
   const [canvasEl] = useState(getCanvasEl);
@@ -59,16 +63,19 @@ export const BackgroundModal = observer(function BackgroundModal() {
         alignItems={'stretch'}
         gap={2}
       >
-        <Memo>
-          {() => {
-            return (
-              <div
-                ref={(ref) => ref?.appendChild(canvasEl)}
-                style={{lineHeight: 0}}
-              />
-            );
-          }}
-        </Memo>
+        <Box position={'relative'}>
+          <Memo>
+            {() => {
+              return (
+                <div
+                  ref={(ref) => ref?.appendChild(canvasEl)}
+                  style={{lineHeight: 0}}
+                />
+              );
+            }}
+          </Memo>
+          {isMissingPositionalData && (<MissingPositionalDataTooltip/>)}
+        </Box>
         {isMobile ? (
           <Box
             display={'flex'}

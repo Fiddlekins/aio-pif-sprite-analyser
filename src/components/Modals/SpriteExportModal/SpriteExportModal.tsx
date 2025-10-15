@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import {ChangeEvent, Fragment, MouseEvent, useCallback, useMemo} from "react";
+import {pokemonIdToDataMap} from "../../../data/pokemonIdToDataMap.ts";
 import {analysis$} from "../../../state/analysis.ts";
 import {background$} from "../../../state/background.ts";
 import {exportSettings$} from "../../../state/export.ts";
@@ -92,6 +93,7 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
       return [];
     }
     if (spriteInput && backgroundImageData) {
+      const isMissingPositionalData = (bodyId !== undefined && pokemonIdToDataMap[bodyId || 0]?.isMissingPositionalData) || false;
       const spriteName = getSpriteNameFromInput(headId, bodyId, spriteInput.name);
       let backgroundName = `${spriteName}_background`;
       if (bodyId !== null) {
@@ -119,6 +121,7 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
             imageDataInput: backgroundImageData96,
             alertIndexedFailure: false,
             canCopy: true,
+            isMissingPositionalData,
             filename: `${backgroundName}_96.png`,
             filenameIndexed: `${backgroundName}_96_indexed.png`
           },
@@ -136,27 +139,37 @@ export const SpriteExportModal = observer(function SpriteExportModal() {
             imageDataInput: backgroundImageData288,
             alertIndexedFailure: false,
             canCopy: true,
+            isMissingPositionalData,
             filename: `${backgroundName}.png`,
             filenameIndexed: `${backgroundName}_indexed.png`
           },
         ];
       }
-      return spriteConfigs.map(({imageDataInput, filename, filenameIndexed, alertIndexedFailure, canCopy}) => {
-        const pngData = getEncodedPng(imageDataInput, {indexed: isIndexed});
-        const pngBlob = new Blob([pngData], {type: 'image/png'});
-        const {info, imageData} = getDecodedPng(pngData);
-        const isOutputIndexed = info.colourType === 3;
-        return {
-          imageData,
-          pngData,
-          pngBlob,
-          info,
-          filename: isOutputIndexed ? filenameIndexed : filename,
-          indexedFailed: isIndexed ? !isOutputIndexed : false,
-          alertIndexedFailure,
-          canCopy,
-        };
-      });
+      return spriteConfigs.map(
+        ({
+           imageDataInput,
+           filename,
+           filenameIndexed,
+           alertIndexedFailure,
+           canCopy,
+           isMissingPositionalData
+         }) => {
+          const pngData = getEncodedPng(imageDataInput, {indexed: isIndexed});
+          const pngBlob = new Blob([pngData], {type: 'image/png'});
+          const {info, imageData} = getDecodedPng(pngData);
+          const isOutputIndexed = info.colourType === 3;
+          return {
+            imageData,
+            pngData,
+            pngBlob,
+            info,
+            filename: isOutputIndexed ? filenameIndexed : filename,
+            indexedFailed: isIndexed ? !isOutputIndexed : false,
+            alertIndexedFailure,
+            canCopy,
+            isMissingPositionalData,
+          };
+        });
     }
     return [];
   }, [isExportModalOpen, isExportCopyingEnabled, spriteInput, backgroundImageData, headId, bodyId, isNormaliseTransparencyEnabled, isSize96, isIndexed]);

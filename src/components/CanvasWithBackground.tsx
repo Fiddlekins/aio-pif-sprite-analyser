@@ -1,7 +1,10 @@
-import {useObserveEffect} from "@legendapp/state/react";
+import {observer, useObserveEffect} from "@legendapp/state/react";
 import {Box, styled} from "@mui/material";
 import {MutableRefObject, useRef} from "react";
+import {pokemonIdToDataMap} from "../data/pokemonIdToDataMap.ts";
+import {analysis$} from "../state/analysis.ts";
 import {background$} from "../state/background.ts";
+import {MissingPositionalDataTooltip} from "./MissingPositionalDataTooltip.tsx";
 
 interface TopCanvasProps {
   canCopy?: boolean;
@@ -28,13 +31,16 @@ export interface CanvasWithBackgroundProps {
   minSize?: number;
 }
 
-export function CanvasWithBackground(
+export const CanvasWithBackground = observer(function CanvasWithBackground(
   {
     canvasRef,
     canCopy,
     minSize,
   }: CanvasWithBackgroundProps
 ) {
+  const bodyId = analysis$.bodyId.get();
+  const isMissingPositionalData = (bodyId !== undefined && pokemonIdToDataMap[bodyId || 0]?.isMissingPositionalData) || false;
+
   const backgroundCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useObserveEffect(() => {
@@ -61,6 +67,7 @@ export function CanvasWithBackground(
           maxWidth: '288px',
         }}/>
       <TopCanvas ref={canvasRef} width={288} height={288} canCopy={canCopy}/>
+      {isMissingPositionalData && (<MissingPositionalDataTooltip/>)}
     </Box>
   );
-}
+});

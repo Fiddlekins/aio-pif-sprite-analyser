@@ -1,12 +1,19 @@
 import {ClickAwayListener, Tooltip, TooltipProps} from "@mui/material";
-import {useCallback, useState} from "react";
+import React, {useCallback, useState} from "react";
 
-const spanStyle = {display: 'flex'};
+interface SpanStyleProps {
+  spanStyle?: React.CSSProperties;
+}
+
+const spanStyleDefault = {display: 'flex'};
 
 export function StyledTooltip(
-  props: TooltipProps
+  props: TooltipProps & SpanStyleProps,
 ) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const {spanStyle: spanStyleProps, ...tooltipProps} = props;
+  const spanStyle = {...spanStyleDefault, ...spanStyleProps};
 
   const handleTooltipOpen = useCallback(() => {
     setIsOpen(true);
@@ -27,7 +34,7 @@ export function StyledTooltip(
         onClose={handleTooltipClose}
         disableFocusListener
         disableTouchListener
-        {...props}
+        {...tooltipProps}
       >
         <span onClick={handleTooltipOpen} style={spanStyle}>
           {props.children}

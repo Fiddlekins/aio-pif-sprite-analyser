@@ -19,7 +19,9 @@ async function download(src, dest) {
 
 async function updateRawData() {
   await download('https://raw.githubusercontent.com/greystorm101/spritebot/main/src/smeargle-data/pokemon.txt', pokemonRawPath);
-  await download('https://raw.githubusercontent.com/greystorm101/spritebot/main/src/data/NamesToNumbers.json', namesToNumbersRawPath);
+  // await download('https://raw.githubusercontent.com/greystorm101/spritebot/main/src/data/NamesToNumbers.json', namesToNumbersRawPath);
+  // The following version is more up to date at this time of writing
+  await download('https://raw.githubusercontent.com/Doodleboo/bot-fusion-analyzer/refs/heads/develop/data/PokemonNames.json', namesToNumbersRawPath);
 }
 
 const keptStringKeys = [
@@ -77,6 +79,17 @@ function processPokemonText(pokemonText, namesToNumbersText) {
   }
   const namesToNumbersJson = JSON.parse(namesToNumbersText);
   for (const {id, display_name} of namesToNumbersJson.pokemon) {
+    if (!pokemonJson[id]) {
+      pokemonJson[id] = {
+        isMissingPositionalData: true,
+        BattlerPlayerX: 0,
+        BattlerPlayerY: 0,
+        BattlerEnemyX: 0,
+        BattlerEnemyY: 0,
+        BattlerShadowX: 0,
+        BattlerShadowSize: 1,
+      }
+    }
     pokemonJson[id].displayName = display_name;
     if (!pokemonJson[id].Name) {
       pokemonJson[id].Name = display_name;
@@ -90,6 +103,7 @@ function getDataFile(data) {
     displayName?: string;
     Name: string;
     FormName?: string;
+    isMissingPositionalData?: boolean;
     BattlerPlayerX: number;
     BattlerPlayerY: number;
     BattlerEnemyX: number;
