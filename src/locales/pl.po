@@ -178,7 +178,7 @@ msgstr "Ignoruj Kolorową Przeźroczystość"
 
 #: src/components/Modals/SettingsModal/SettingIgnoreColouredTransparency.tsx:38
 msgid "The application will skip over the coloured transparency analysis when determining which view the app should automatically navigate to after importing a sprite. This makes the experience smoother for users who prefer to ignore this non-critical aspect."
-msgstr "Aplikacja pominie analizowanie kolorowej przeźroczystości determinując, do którego podglądu powinna automatycznie przekierować po importowani sprite'a. Wygładza to doświadczenie dla użytkowników, którzy wolą ignorować ten nie krytyczny aspekt."
+msgstr "Aplikacja pominie analizę kolorowej przeźroczystości determinując, do którego podglądu powinna automatycznie przekierować po importowani sprite'a. Ułatwia to doświadczenie użytkowników, którzy decydują się ignorować ten mało kluczowy aspekt."
 
 #: src/components/Modals/SettingsModal/SettingLanguage.tsx:15
 #: src/components/Modals/SettingsModal/SettingLanguage.tsx:41

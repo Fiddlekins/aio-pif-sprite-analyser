@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2025-01-18 21:39+0800\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: @lingui/cli\n"
+"X-Generator: localizely.com\n"
+"Last-Translator: localizely.com\n"
+"Language-Team: localizely.com\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: en-GB\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Plural-Forms: \n"
 
 #: src/components/IdTooltipContent.tsx:17
 msgid "Sprite ID"
@@ -148,10 +148,6 @@ msgstr "Pokémon"
 #: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:33
 msgid "Allow Export Copying"
 msgstr "Allow Export Copying"
-
-#: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:33
-#~ msgid "Allow export copying"
-#~ msgstr "Allow export copying"
 
 #: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:38
 #: src/components/Modals/SpriteExportModal/ImageItem.tsx:126
