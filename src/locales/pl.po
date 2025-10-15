@@ -25,6 +25,22 @@ msgstr "To jest ID wygenerowane z surowych danych pikseli w sprite'cie po zdekod
 msgid "The full ID is:<0/>{id}"
 msgstr "Pełne ID jest:<0/>{id}"
 
+#: src/components/MissingPositionalDataTooltip.tsx:31
+msgid "Missing Position Data"
+msgstr ""
+
+#: src/components/MissingPositionalDataTooltip.tsx:41
+msgid "The body pokemon ({bodyPokemonName} #{bodyPokemonId}) is missing positional data."
+msgstr ""
+
+#: src/components/MissingPositionalDataTooltip.tsx:46
+msgid "This means that the position of the background and the size of the shadow are not displayed by APSA as they will eventually appear in the game."
+msgstr ""
+
+#: src/components/MissingPositionalDataTooltip.tsx:52
+msgid "For the time being it is recommended to position your sprite to match the position of the body pokemon's base sprite. This makes it likely that the position will look correct when positional data is added later."
+msgstr ""
+
 #: src/components/Mobile/NavigationMenuContentMobile.tsx:29
 #: src/components/Panes/OverviewPane.tsx:27
 msgid "Input File: <0/>"
@@ -72,40 +88,40 @@ msgstr "Liczba Kolorów"
 msgid "Colour Similarity"
 msgstr "Podobieństwo Kolorów"
 
-#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:52
+#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:56
 msgid "Configure Battler"
 msgstr "Konfiguruj Walkę"
 
-#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:123
+#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:130
 msgid "Sprite Position Override"
 msgstr "Nadpisanie Pozycji Sprite'a"
 
-#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:150
+#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:157
 msgid "Position Override"
 msgstr "Nadpisanie Pozycji"
 
-#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:155
+#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:162
 msgid "Pokemon Infinite Fusion uses the sprite position offsets configured for the body pokemon of the fusion when determining where to draw it."
 msgstr "Pokemon Infinite Fusion używa offsetu pozycji sprite'a skonfigurowanej dla Pokémona będącego ciałem fuzji determinując gdzie go narysować."
 
-#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:161
+#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:168
 msgid "This can be overridden using the settings below, but these changes will not transfer into the game."
 msgstr "Może być to nadpisane używając ustawień poniżej, ale te zmiany nie będą przeniesione do gry."
 
-#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:167
+#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:174
 msgid "Be sure to use the body pokemon configuration when fine-tuning sprite placement."
 msgstr "Upewnij się aby użyć konfiguracja pozycji ciała w czasie dopracowywania pozycji sprite'a."
 
-#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:180
+#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:187
 msgid "The sprite position derived from the body pokemon can be overridden"
 msgstr "Pozycja sprite'a pochodząca od ciała fuzji może być nadpisana"
 
-#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:198
+#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:205
 #: src/components/PokemonSummary.tsx:48
 msgid "Body"
 msgstr "Ciało"
 
-#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:275
+#: src/components/Modals/BackgroundModal/BackgroundModal.tsx:282
 msgid "Reset"
 msgstr "Zresetuj"
 
@@ -134,7 +150,7 @@ msgid "Allow Export Copying"
 msgstr "Zezwól na Kopiowanie Eksportu"
 
 #: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:38
-#: src/components/Modals/SpriteExportModal/ImageItem.tsx:112
+#: src/components/Modals/SpriteExportModal/ImageItem.tsx:126
 msgid "Browsers re-encode images when they are copied to the clipboard, in order to prevent malicious websites from exploiting applications the browser may paste into."
 msgstr "Przeglądarki przekodowują obrazy podczas kopiowania do schowka, aby zapobiec eksploatowaniu aplikacji, do których przeglądarka może wkleić przez złośliwe strony."
 
@@ -206,60 +222,60 @@ msgstr "Zaawansowane"
 msgid "The following settings disable some of the safety rails built into the application. Please only use them if you know what you're doing."
 msgstr "Następujące ustawienia wyłączają niektóre z zabezpieczeń wbudowanych w aplikacje. Używaj ich tylko jeśli wiesz co robisz."
 
-#: src/components/Modals/SpriteExportModal/ImageItem.tsx:107
+#: src/components/Modals/SpriteExportModal/ImageItem.tsx:121
 msgid "Copying is disabled"
 msgstr "Kopiowanie jest wyłączone"
 
-#: src/components/Modals/SpriteExportModal/ImageItem.tsx:118
+#: src/components/Modals/SpriteExportModal/ImageItem.tsx:132
 msgid "This re-encoding produces bloated PNG images and ignores indexed mode, making this export process pointless."
 msgstr "To przekodowanie tworzy nadęte obrazy PNG i ignoruje tryb indeksowany, robiąc proces eksportowania bezsensu."
 
-#: src/components/Modals/SpriteExportModal/ImageItem.tsx:124
+#: src/components/Modals/SpriteExportModal/ImageItem.tsx:138
 msgid "Downloading images does not suffer from this issue."
 msgstr "Pobieranie plików nie cierpi z tego problemu."
 
-#: src/components/Modals/SpriteExportModal/ImageItem.tsx:147
+#: src/components/Modals/SpriteExportModal/ImageItem.tsx:161
 msgid "Unable to encode in indexed mode due to colour count exceeding 256."
 msgstr "Niezdolny do zakodowania w trybie indeksowanym z powodu liczby kolorów przekraczającej 256."
 
-#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:158
+#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:208
 msgid "Export Sprite"
 msgstr "Eksportuj Sprite"
 
-#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:163
+#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:213
 msgid "Export sprites in a variety of formats."
 msgstr "Eksportuj sprite'y w różnych formatach."
 
-#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:194
+#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:244
 #: src/components/Modals/SpriteImportModal.tsx:51
 #: src/components/Modals/SpriteImportModal.tsx:93
 #: src/components/PngInfo/Dimensions.tsx:15
 msgid "{width}x{height}"
 msgstr "{width}x{height}"
 
-#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:209
+#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:259
 msgid "Normal"
 msgstr "Normalny"
 
-#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:214
+#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:264
 msgid "Indexed"
 msgstr "Indeksowany"
 
-#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:233
-#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:247
+#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:283
+#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:297
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyWarning.tsx:6
 msgid "Normalise Transparency"
 msgstr "Normalizuj Przeźroczystość"
 
-#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:252
+#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:302
 msgid "When enabled, any pixel with 0% opacity will be set to transparent black (a.k.a. \"#0000\", \"rgba(0,0,0,0)\", etc)."
 msgstr "Po włączeniu, każdy piksel z przeźroczystością 0% zostanie ustawiony do przeźroczystej czerni (a.k.a. \"#0000\", \"rgba(0,0,0,0)\", etc)."
 
-#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:258
+#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:308
 msgid "This changes nothing visually about the image, but reduces the filesize and has better compatibility with some software."
 msgstr "Nie zmienia to nic wizualnie w obrazie, ale zmniejsza rozmiar pliku i ma lepszą kompatybilność z niektórymi programami."
 
-#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:264
+#: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:314
 msgid "Under normal circumstances this should be left enabled."
 msgstr "W normalnych okolicznościach, ta opcja powinna pozostać włączona."
 
@@ -295,7 +311,7 @@ msgstr "Przeciągnij i wrzuć tu jakiś plik, lub kliknij aby wybrać plik"
 msgid "Remove"
 msgstr "Usuń"
 
-#: src/components/Panes/BackgroundPane.tsx:242
+#: src/components/Panes/BackgroundPane.tsx:243
 #: src/components/Panes/DetailsPane.tsx:117
 msgid "Background"
 msgstr "Tło"
