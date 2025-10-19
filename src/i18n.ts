@@ -12,6 +12,7 @@ export const localeToNameMap: Record<string, string> = {
   'en-US': 'English (United States)',
   'fr-FR': 'Français',
   'pl': 'Polski',
+  'ru-RU': 'Русский',
   'zn-CN': '中文 (简体)',
   'zn-TW': '繁體中文',
 };
