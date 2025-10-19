@@ -149,10 +149,6 @@ msgstr "Покемон"
 msgid "Allow Export Copying"
 msgstr "Разрешить Копирование Экспорта"
 
-#: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:33
-#~ msgid "Allow export copying"
-#~ msgstr "Разрешить копирование экспорта"
-
 #: src/components/Modals/SettingsModal/SettingAllowExportCopying.tsx:38
 #: src/components/Modals/SpriteExportModal/ImageItem.tsx:126
 msgid "Browsers re-encode images when they are copied to the clipboard, in order to prevent malicious websites from exploiting applications the browser may paste into."
@@ -324,10 +320,6 @@ msgstr "Фон Битвы"
 msgid "Coloured Transparent Pixel Count: <0/> (<1/>)"
 msgstr "Число Цветных Прозрачных Пикселей: <0/> (<1/>)"
 
-#: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx:56
-#~ msgid "Coloured Transparent Pixel Count: {0} ({1})"
-#~ msgstr "Число Цветных Прозрачных Пикселей: {0} ({1})"
-
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx:66
 msgid "These are pixels that are fully transparent (the alpha channel = 0) but contain colour data instead of being invisible black."
 msgstr "Это пиксели, которые полностью прозрачны (альфа-канал = 0), но содержат данные о цвете, а не являются невидимым чёрным."
@@ -372,10 +364,6 @@ msgstr "Пользователям, которые часто видят, что
 msgid "Colour Count: <0/>"
 msgstr "Число Цветов: <0/>"
 
-#: src/components/Panes/ColoursPane/ColourCountVerdict.tsx:21
-#~ msgid "Colour Count: {0}"
-#~ msgstr "Число Цветов: {0}"
-
 #: src/components/Panes/ColoursPane/ColourCountVerdict.tsx:39
 msgid "This is the number of \"sprite colours\" present, where a \"sprite colour\" refers to a colour that isn't fully transparent."
 msgstr "Это количество присутствующих \"цветов в спрайте\", где \"цвет спрайта\" относится к любому не полностью прозрачному цвету."
@@ -405,17 +393,9 @@ msgstr "Очистить Выделение"
 msgid "Pairs of similar colours: <0/>"
 msgstr "Пары похожих цветов: <0/>"
 
-#: src/components/Panes/ColoursPane/ColourSimilarityVerdict.tsx:22
-#~ msgid "Pairs of similar colours: {0}"
-#~ msgstr Пары похожих цветов: {0}"
-
 #: src/components/Panes/ColoursPane/ColourSimilarityVerdict.tsx:26
 msgid "Skipped due to colour count exceeding <0/>"
 msgstr "Пропущено из-за превышения <0/> цветов"
-
-#: src/components/Panes/ColoursPane/ColourSimilarityVerdict.tsx:27
-#~ msgid "Skipped due to colour count exceeding {0}"
-#~ msgstr "Пропущено из-за превышения {0} цветов"
 
 #: src/components/Panes/ColoursPane/ColourSimilarityVerdict.tsx:47
 msgid "This is the number of pairs of colours that are considered to be too visually similar to one another."
@@ -441,10 +421,6 @@ msgstr "Цвета"
 msgid "Partial Pixel Count: <0/> (<1/>)"
 msgstr "Число Полу-Пикселей: <0/> (<1/>)"
 
-#: src/components/Panes/PartialPixelsPane/PartialPixelsVerdict.tsx:55
-#~ msgid "Partial Pixel Count: {0} ({1})"
-#~ msgstr "Число Полу-Пикселей: {0} ({1})"
-
 #: src/components/Panes/PartialPixelsPane/PartialPixelsVerdict.tsx:64
 msgid "Each 3x3 square of pixels should be the same colour."
 msgstr "Каждый квадрат 3х3 пикселя должен быть одного цвета."
@@ -468,10 +444,6 @@ msgstr "Пиксели, выделенные синим, ‒ это цвета, 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:56
 msgid "Semi-Transparent Pixel Count: <0/> (<1/>)"
 msgstr "Число Полупрозрачных Пикселей: <0/> (<1/>)"
-
-#: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:57
-#~ msgid "Semi-Transparent Pixel Count: {0} ({1})"
-#~ msgstr "Число Полупрозрачных Пикселей: {0} ({1})"
 
 #: src/components/Panes/TransparencyPane/SemiTransparencyVerdict.tsx:67
 msgid "Semi-transparent pixels are neither fully opaque nor fully transparent."
@@ -558,10 +530,6 @@ msgstr "Цвета палитры определены с использован
 #: src/components/PngInfo/PngInfoTooltip.tsx:110
 msgid "The pixels are defined using {channelCount} channels: {colourTypePixelFormat}"
 msgstr "Пиксели определены с использованием {channelCount} канала(-ов): {colourTypePixelFormat}"
-
-#: src/components/PngInfo/PngInfoTooltip.tsx:116
-#~ msgid "The file size is {0} bytes."
-#~ msgstr "Размер файла {0} байт(-а)."
 
 #: src/components/PngInfo/PngInfoTooltip.tsx:117
 msgid "The file size is <0/>."
