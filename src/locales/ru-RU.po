@@ -251,7 +251,7 @@ msgstr "Экспорт спрайтов в различных форматах."
 #: src/components/Modals/SpriteImportModal.tsx:93
 #: src/components/PngInfo/Dimensions.tsx:15
 msgid "{width}x{height}"
-msgstr "{ширина}x{высота}"
+msgstr "{width}x{height}"
 
 #: src/components/Modals/SpriteExportModal/SpriteExportModal.tsx:259
 msgid "Normal"
@@ -314,7 +314,7 @@ msgstr "Удалить"
 #: src/components/Panes/BackgroundPane.tsx:243
 #: src/components/Panes/DetailsPane.tsx:117
 msgid "Background"
-msgstr "Фон Битвы"
+msgstr "Задний План"
 
 #: src/components/Panes/ColouredTransparencyPane/ColouredTransparencyVerdict.tsx:55
 msgid "Coloured Transparent Pixel Count: <0/> (<1/>)"
