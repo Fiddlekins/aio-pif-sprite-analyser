@@ -27,19 +27,19 @@ msgstr "Pełne ID jest:<0/>{id}"
 
 #: src/components/MissingPositionalDataTooltip.tsx:31
 msgid "Missing Position Data"
-msgstr ""
+msgstr "Brak Danych Pozycji"
 
 #: src/components/MissingPositionalDataTooltip.tsx:41
 msgid "The body pokemon ({bodyPokemonName} #{bodyPokemonId}) is missing positional data."
-msgstr ""
+msgstr "Ciało ({bodyPokemonName} #{bodyPokemonId}) nie posiada danych pozycji."
 
 #: src/components/MissingPositionalDataTooltip.tsx:46
 msgid "This means that the position of the background and the size of the shadow are not displayed by APSA as they will eventually appear in the game."
-msgstr ""
+msgstr "To znaczy, że pozycja tła i wielkość cienia nie są wyświetlane przez APSA dopóki nie pojawią się w grze."
 
 #: src/components/MissingPositionalDataTooltip.tsx:52
 msgid "For the time being it is recommended to position your sprite to match the position of the body pokemon's base sprite. This makes it likely that the position will look correct when positional data is added later."
-msgstr ""
+msgstr "Na czas obecny jest zalecane, aby ustawiać pozycję swojego sprite'a do pozycji sprite'a pokemona użytego jako ciało. To sprawi, że pozycja prawdopodobnie będzie wyglądała poprawnie później, kiedy dane pozycji zostaną dodane."
 
 #: src/components/Mobile/NavigationMenuContentMobile.tsx:29
 #: src/components/Panes/OverviewPane.tsx:27
