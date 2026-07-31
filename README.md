@@ -12,8 +12,8 @@ Source images and method for generating battler scenes sourced from [here](https
 
 ### Translations
 
-A massive thanks to all contributors that have worked on the translations.
-If you're interested in helping with them please refer to [this](./src/locales/README.md) page.
+A massive thanks to all contributors that have worked on the translations. If you're interested in helping with them
+please refer to [this](./src/locales/README.md) page.
 
 The credits are formatted as: Preferred Nickname (`discord handle`)
 
@@ -21,5 +21,6 @@ The credits are formatted as: Preferred Nickname (`discord handle`)
 |:------------|:-------------------------|:-------------------------------------------------------|
 | de-DE       | Deutsch                  | Tak (`takopus`)                                        |
 | en-GB       | English (United Kingdom) | Fiddlekins (`fiddlekins`)                              |
+| fr-FR       | Français                 | Yliaan (`amphi64`)                                     |
 | pl          | Polski                   | Fioretovi (`fioretovi`), Markusknight (`markusknight`) |
 | ru-RU       | Русский                  | freakun (`koren_daun`)                                 |

@@ -6,6 +6,7 @@ const config: LinguiConfig = {
     "de-DE",
     "en-GB",
     "en-US",
+    "fr-FR",
     "pl",
     "ru-RU",
     "pseudo-LOCALE",
@@ -14,6 +15,7 @@ const config: LinguiConfig = {
   fallbackLocales: {
     "de": "de-DE",
     "en": "en-GB",
+    "fr": "fr-FR",
     "ru": "ru-RU",
     "pseudo-LOCALE": "en-GB",
     "default": "en-GB",
