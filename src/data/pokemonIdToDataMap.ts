@@ -5650,7 +5650,7 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "Castform(Sunny)"
+    "displayName": "Castform Sunny"
   },
   "554": {
     "Name": "Castform",
@@ -5661,7 +5661,7 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 11,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "Castform(Rainy)"
+    "displayName": "Castform Rainy"
   },
   "555": {
     "Name": "Castform",
@@ -5672,7 +5672,7 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "BattlerEnemyY": 8,
     "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "Castform(Snowy)"
+    "displayName": "Castform Snowy"
   },
   "556": {
     "Name": "Tropius",
@@ -5775,81 +5775,118 @@ export const pokemonIdToDataMap: Record<string,PokemonData> = {
     "displayName": "Relicanth"
   },
   "566": {
-    "isMissingPositionalData": true,
-    "BattlerPlayerX": 0,
+    "Name": "Woobat",
+    "BattlerPlayerX": 2,
     "BattlerPlayerY": 0,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 0,
+    "BattlerEnemyX": 3,
+    "BattlerEnemyY": 13,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Woobat",
-    "Name": "Woobat"
+    "BattlerShadowSize": 2,
+    "displayName": "Woobat"
   },
   "567": {
-    "isMissingPositionalData": true,
-    "BattlerPlayerX": 0,
+    "Name": "Swoobat",
+    "BattlerPlayerX": -3,
     "BattlerPlayerY": 0,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 0,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 6,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Swoobat",
-    "Name": "Swoobat"
+    "BattlerShadowSize": 2,
+    "displayName": "Swoobat"
   },
   "568": {
-    "isMissingPositionalData": true,
-    "BattlerPlayerX": 0,
+    "Name": "Tynamo",
+    "BattlerPlayerX": -4,
     "BattlerPlayerY": 0,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 0,
+    "BattlerEnemyX": 1,
+    "BattlerEnemyY": 19,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Tynamo",
-    "Name": "Tynamo"
+    "BattlerShadowSize": 2,
+    "displayName": "Tynamo"
   },
   "569": {
-    "isMissingPositionalData": true,
+    "Name": "Eelektrik",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 0,
     "BattlerEnemyX": 0,
-    "BattlerEnemyY": 0,
+    "BattlerEnemyY": 18,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Eelektrik",
-    "Name": "Eelektrik"
+    "BattlerShadowSize": 2,
+    "displayName": "Eelektrik"
   },
   "570": {
-    "isMissingPositionalData": true,
-    "BattlerPlayerX": 0,
+    "Name": "Eelektross",
+    "BattlerPlayerX": -5,
     "BattlerPlayerY": 0,
-    "BattlerEnemyX": 0,
-    "BattlerEnemyY": 0,
+    "BattlerEnemyX": -7,
+    "BattlerEnemyY": 20,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Eelektross",
-    "Name": "Eelektross"
+    "BattlerShadowSize": 3,
+    "displayName": "Eelektross"
   },
   "571": {
-    "isMissingPositionalData": true,
+    "Name": "Skrelp",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 0,
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
-    "BattlerShadowSize": 1,
-    "displayName": "Skrelp",
-    "Name": "Skrelp"
+    "BattlerShadowSize": 2,
+    "displayName": "Skrelp"
   },
   "572": {
-    "isMissingPositionalData": true,
+    "Name": "Dragalge",
     "BattlerPlayerX": 0,
     "BattlerPlayerY": 0,
     "BattlerEnemyX": 0,
     "BattlerEnemyY": 0,
     "BattlerShadowX": 0,
+    "BattlerShadowSize": 2,
+    "displayName": "Dragalge"
+  },
+  "573": {
+    "Name": "Shellos",
+    "FormName": "West Sea",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 21,
+    "BattlerShadowX": 0,
     "BattlerShadowSize": 1,
-    "displayName": "Dragalge",
-    "Name": "Dragalge"
+    "displayName": "Shellos East"
+  },
+  "574": {
+    "Name": "Gastrodon",
+    "FormName": "West Sea",
+    "BattlerPlayerX": -6,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 15,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Gastrodon East"
+  },
+  "575": {
+    "Name": "Shellos",
+    "FormName": "West Sea",
+    "BattlerPlayerX": 0,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 21,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 1,
+    "displayName": "Shellos West"
+  },
+  "576": {
+    "Name": "Gastrodon",
+    "FormName": "West Sea",
+    "BattlerPlayerX": -6,
+    "BattlerPlayerY": 0,
+    "BattlerEnemyX": -1,
+    "BattlerEnemyY": 15,
+    "BattlerShadowX": 0,
+    "BattlerShadowSize": 3,
+    "displayName": "Gastrodon West"
   },
   "999999": {
     "Name": "Zapmolcuno",
