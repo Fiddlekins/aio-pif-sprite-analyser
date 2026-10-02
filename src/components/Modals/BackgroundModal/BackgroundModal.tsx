@@ -63,13 +63,13 @@ export const BackgroundModal = observer(function BackgroundModal() {
         alignItems={'stretch'}
         gap={2}
       >
-        <Box position={'relative'}>
+        <Box position={'relative'} style={{width: '100%', overflowX: 'auto'}}>
           <Memo>
             {() => {
               return (
                 <div
                   ref={(ref) => ref?.appendChild(canvasEl)}
-                  style={{lineHeight: 0}}
+                  style={{lineHeight: 0, width: 512, margin: '0 auto'}}
                 />
               );
             }}
