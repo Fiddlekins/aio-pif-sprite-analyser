@@ -6,11 +6,9 @@ import {useCallback, useMemo} from "react";
 import {analysis$} from "../../state/analysis.ts";
 import {ui$} from "../../state/ui.ts";
 import {formatDecimalLargeFixed} from "../../utils/formatStyles.ts";
-import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
-import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColourKey.ts";
 import {numberComparator} from "../../utils/numberComparator.ts";
-import {ColourSwatch} from "../ColourSwatch.tsx";
 import {VerdictIcon} from "../VerdictIcon.tsx";
+import {ColourCell} from "./ColourCell.tsx";
 import {LongRichTable} from "./RichTable/LongRichTable.tsx";
 import {RichTable} from "./RichTable/RichTable.tsx";
 import {Column, OrderDirection, RowComparator, RowDataBase} from "./RichTable/types.ts";
@@ -98,10 +96,6 @@ export const SimilarityTable = observer(function SimilarityTable() {
       case 'colourA':
         return (
           <Box
-            display={'flex'}
-            flexDirection={'row'}
-            alignItems={'center'}
-            gap={1}
             onMouseEnter={() => {
               ui$.highlight.addHoveredColourToCurrent(row.colourAKey);
             }}
@@ -109,19 +103,12 @@ export const SimilarityTable = observer(function SimilarityTable() {
               ui$.highlight.removeHoveredColourFromCurrent(row.colourAKey);
             }}
           >
-            <ColourSwatch colour={`#${getHex8FromColourKey(row.colourAKey)}`}/>
-            <Typography fontFamily={'monospace'}>
-              {getHex6FromColourKey(row.colourAKey).toUpperCase()}
-            </Typography>
+            <ColourCell colourKey={row.colourAKey}/>
           </Box>
         );
       case 'colourB':
         return (
           <Box
-            display={'flex'}
-            flexDirection={'row'}
-            alignItems={'center'}
-            gap={1}
             onMouseEnter={() => {
               ui$.highlight.addHoveredColourToCurrent(row.colourBKey);
             }}
@@ -129,10 +116,7 @@ export const SimilarityTable = observer(function SimilarityTable() {
               ui$.highlight.removeHoveredColourFromCurrent(row.colourBKey);
             }}
           >
-            <ColourSwatch colour={`#${getHex8FromColourKey(row.colourBKey)}`}/>
-            <Typography fontFamily={'monospace'}>
-              {getHex6FromColourKey(row.colourBKey).toUpperCase()}
-            </Typography>
+            <ColourCell colourKey={row.colourBKey}/>
           </Box>
         );
       case 'deltaE2000':

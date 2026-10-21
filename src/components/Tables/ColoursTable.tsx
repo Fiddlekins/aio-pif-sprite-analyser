@@ -1,14 +1,11 @@
 import {observer} from "@legendapp/state/react";
 import {useLingui} from "@lingui/react/macro";
-import {Box, Typography} from "@mui/material";
 import {ColorObject} from "colorjs.io/fn";
 import {useCallback, useMemo} from "react";
 import {ui$, uiSettings$} from "../../state/ui.ts";
 import {formatDecimalDefault, formatPercentMediumFixed} from "../../utils/formatStyles.ts";
-import {getHex6FromColourKey} from "../../utils/image/conversion/getHex6FromColourKey.ts";
-import {getHex8FromColourKey} from "../../utils/image/conversion/getHex8FromColourKey.ts";
 import {numberComparator} from "../../utils/numberComparator.ts";
-import {ColourSwatch} from "../ColourSwatch.tsx";
+import {ColourCell} from "./ColourCell.tsx";
 import {LongRichTable} from "./RichTable/LongRichTable.tsx";
 import {RichTable} from "./RichTable/RichTable.tsx";
 import {Column, OrderDirection, RowComparator, RowDataBase} from "./RichTable/types.ts";
@@ -134,17 +131,7 @@ export const ColoursTable = observer(function ColoursTable(
     switch (columnId) {
       case 'colour':
         return (
-          <Box
-            display={'flex'}
-            flexDirection={'row'}
-            alignItems={'center'}
-            gap={1}
-          >
-            <ColourSwatch colour={`#${getHex8FromColourKey(row.colourKey)}`}/>
-            <Typography fontFamily={'monospace'}>
-              {getHex6FromColourKey(row.colourKey).toUpperCase()}
-            </Typography>
-          </Box>
+          <ColourCell colourKey={row.colourKey}/>
         );
       case 'usage':
         return formatPercentMediumFixed(numberLocale, row.usage);
