@@ -58,10 +58,10 @@ function isSimilar({deltaE2000, deltaECMCAB, deltaECMCBA, deltaFusionBot}: Simil
 
 function getMaxThresholdRatio({deltaE2000, deltaECMCAB, deltaECMCBA, deltaFusionBot}: SimilarityData) {
   return Math.max(
-    deltaE2000 / thresholds.deltaE2000,
-    deltaECMCAB / thresholds.deltaECMC,
-    deltaECMCBA / thresholds.deltaECMC,
-    deltaFusionBot / thresholds.deltaFusionBot,
+    thresholds.deltaE2000 / deltaE2000,
+    thresholds.deltaECMC / deltaECMCAB,
+    thresholds.deltaECMC / deltaECMCBA,
+    thresholds.deltaFusionBot / deltaFusionBot,
   );
 }
 
@@ -135,7 +135,12 @@ export class ColourAnalysis {
                 deltaFusionBot: deltaFusionBot(coloursRgbA, coloursRgbB),
                 similarity: 0,
               };
-              similarityConfig.similarity = 1 / getMaxThresholdRatio(similarityConfig);
+              // For legacy purposes, FusionBot floors these values
+              similarityConfig.deltaE2000 = Math.floor(similarityConfig.deltaE2000);
+              similarityConfig.deltaECMCAB = Math.floor(similarityConfig.deltaECMCAB);
+              similarityConfig.deltaECMCBA = Math.floor(similarityConfig.deltaECMCBA);
+              similarityConfig.deltaFusionBot = Math.floor(similarityConfig.deltaFusionBot);
+              similarityConfig.similarity = getMaxThresholdRatio(similarityConfig);
               this.allColourPairMap.set(colourPairKey, similarityConfig);
               if (isSimilar(similarityConfig)) {
                 this.similarColourPairMap.set(colourPairKey, similarityConfig);
