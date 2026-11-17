@@ -23,7 +23,7 @@ function getColourPairKey(colourAKey: number, colourBKey: number) {
 }
 
 function deltaFusionBot(colourA: [number, number, number], colourB: [number, number, number]) {
-  // Replicates https://github.com/Aegide/bot-fusion-analyzer/blob/main/bot/analysis_sprite.py#L329
+  // Replicates https://github.com/Doodleboo/bot-fusion-analyzer/blob/b6e6b965a986d4c2fd60db22ea5bb57c14c73c7e/bot/core/sprite_analysis.py#L408
   const [rA, gA, bA] = colourA;
   const [rB, gB, bB] = colourB;
   return Math.max(
@@ -41,9 +41,11 @@ interface SimilarityData {
   deltaECMCBA: number;
   deltaFusionBot: number;
   similarity: number;
+  similarityDisplayed: number;
 }
 
 function isSimilar({deltaE2000, deltaECMCAB, deltaECMCBA, deltaFusionBot}: SimilarityData) {
+  // Replicates https://github.com/Doodleboo/bot-fusion-analyzer/blob/b6e6b965a986d4c2fd60db22ea5bb57c14c73c7e/bot/core/sprite_analysis.py#L398
   if (deltaE2000 > thresholds.deltaE2000) {
     return false;
   }
@@ -134,7 +136,9 @@ export class ColourAnalysis {
                 deltaECMCBA: deltaECMC(colourCielabB, colourCielabA),
                 deltaFusionBot: deltaFusionBot(coloursRgbA, coloursRgbB),
                 similarity: 0,
+                similarityDisplayed: 0,
               };
+              similarityConfig.similarityDisplayed = getMaxThresholdRatio(similarityConfig);
               // For legacy purposes, FusionBot floors these values
               similarityConfig.deltaE2000 = Math.floor(similarityConfig.deltaE2000);
               similarityConfig.deltaECMCAB = Math.floor(similarityConfig.deltaECMCAB);

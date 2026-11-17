@@ -53,21 +53,28 @@ export const SimilarityTable = observer(function SimilarityTable() {
       },
       // {
       //   id: 'deltaE2000',
-      //   label: 'deltaE2000',
+      //   label: 'dE2000',
       //   sortable: true,
       //   align: 'right',
       //   relativeWidth: 3,
       // },
       // {
-      //   id: 'deltaECMC',
-      //   label: 'deltaECMC',
+      //   id: 'deltaECMCAB',
+      //   label: 'dECMCAB',
+      //   sortable: true,
+      //   align: 'right',
+      //   relativeWidth: 3,
+      // },
+      // {
+      //   id: 'deltaECMCBA',
+      //   label: 'dECMCBA',
       //   sortable: true,
       //   align: 'right',
       //   relativeWidth: 3,
       // },
       // {
       //   id: 'deltaFusionBot',
-      //   label: 'deltaFusionBot',
+      //   label: 'dFusionBot',
       //   sortable: true,
       //   align: 'right',
       //   relativeWidth: 3,
@@ -84,6 +91,7 @@ export const SimilarityTable = observer(function SimilarityTable() {
       .map(([colourPairKey, data]) => {
         const row: RowData = {
           ...data,
+          similarity: data.similarityDisplayed,
           id: colourPairKey,
           colourPairKey,
         };
